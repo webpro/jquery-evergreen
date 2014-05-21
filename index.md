@@ -8,7 +8,7 @@ title: DOMtastic
 
 Small & fast DOM and event library for modern browsers.
 Having the same familiar API as jQuery (but without the extra "weight" of modules like `$.ajax`, `$.animate`, and `$.Deferred`), it works great stand-alone or paired up with e.g. Backbone.
-The full version is only 7KB minified (2KB gzip), but it's easy to create a custom build to exclude parts you don't need.
+The library is only 3-4KB (min+gzip), and it's easy to create a custom build to exclude parts you don't need.
 
 The [source](https://github.com/webpro/DOMtastic) is written using ES6 features, and transpiled to AMD and CommonJS with [Traceur](https://github.com/google/traceur-compiler). Browserify is used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global).
 
@@ -16,7 +16,7 @@ This library was recently renamed from "jQuery Evergreen".
 
 ## Quicklinks
 
-* [domtastic.min.js](https://cdn.jsdelivr.net/domtastic/latest/domtastic.min.js)
+* [domtastic.min.js](https://cdn.jsdelivr.net/domtastic/0.7/domtastic.min.js) (auto-updating release in 0.7.x branch on [jsDelivr CDN](http://www.jsdelivr.com/#!domtastic))
 * [API Docs](http://webpro.github.io/DOMtastic/doc/)
 * [Run tests](http://webpro.github.io/DOMtastic/test/)
 * [Run benchmarks](http://webpro.github.io/DOMtastic/benchmark/) (results: [class](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkvo7WCQw?v=3&layout=simple), [constructor](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkyo2ECQw?v=3&layout=simple), [DOM](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgIDk0Jv_Cgw?v=3&layout=simple), [selector](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkzLXNCAw?v=3&layout=simple))
@@ -118,7 +118,7 @@ This library was recently renamed from "jQuery Evergreen".
 
 ## API (bare)
 
-The pre-built "bare" package does not include the `attr` and `html` modules.
+The pre-built "bare" package does *not* include the `attr`, `data`, and `html` modules.
 
 ## API (full)
 
