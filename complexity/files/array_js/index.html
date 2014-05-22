@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">89.72</p>
+      <p class="stat">90.63</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">53</p>
+      <p class="stat">69</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">15.56</p>
+      <p class="stat">17.35</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.34</p>
+      <p class="stat">0.44</p>
     </div>
   </div>
 </div>
@@ -97,6 +97,7 @@ var $__0 = require(&#039;./selector&#039;),
     $ = $__0.$,
     matches = $__0.matches;
 var ArrayProto = Array.prototype;
+var every = ArrayProto.every;
 function filter(selector, thisArg) {
   var callback = typeof selector === &#039;function&#039; ? selector : function(element) {
     return matches(element, selector);
@@ -107,14 +108,17 @@ function forEach(callback, thisArg) {
   return _each(this, callback, thisArg);
 }
 var each = forEach;
+var indexOf = ArrayProto.indexOf;
 var map = ArrayProto.map;
+var pop = ArrayProto.pop;
+var push = ArrayProto.push;
 function reverse() {
   var elements = ArrayProto.slice.call(this);
   return $(ArrayProto.reverse.call(elements));
 }
-var every = ArrayProto.every;
+var shift = ArrayProto.shift;
 var some = ArrayProto.some;
-var indexOf = ArrayProto.indexOf;
+var unshift = ArrayProto.unshift;
 ;
 module.exports = {
   get each() {
@@ -135,11 +139,23 @@ module.exports = {
   get map() {
     return map;
   },
+  get pop() {
+    return pop;
+  },
+  get push() {
+    return push;
+  },
   get reverse() {
     return reverse;
   },
+  get shift() {
+    return shift;
+  },
   get some() {
     return some;
+  },
+  get unshift() {
+    return unshift;
   },
   __esModule: true
 };</textarea>

@@ -45,6 +45,7 @@ var $__0 = _dereq_('./selector'),
     $ = $__0.$,
     matches = $__0.matches;
 var ArrayProto = Array.prototype;
+var every = ArrayProto.every;
 function filter(selector, thisArg) {
   var callback = typeof selector === 'function' ? selector : function(element) {
     return matches(element, selector);
@@ -55,14 +56,17 @@ function forEach(callback, thisArg) {
   return _each(this, callback, thisArg);
 }
 var each = forEach;
+var indexOf = ArrayProto.indexOf;
 var map = ArrayProto.map;
+var pop = ArrayProto.pop;
+var push = ArrayProto.push;
 function reverse() {
   var elements = ArrayProto.slice.call(this);
   return $(ArrayProto.reverse.call(elements));
 }
-var every = ArrayProto.every;
+var shift = ArrayProto.shift;
 var some = ArrayProto.some;
-var indexOf = ArrayProto.indexOf;
+var unshift = ArrayProto.unshift;
 ;
 module.exports = {
   each: each,
@@ -71,8 +75,12 @@ module.exports = {
   forEach: forEach,
   indexOf: indexOf,
   map: map,
+  pop: pop,
+  push: push,
   reverse: reverse,
+  shift: shift,
   some: some,
+  unshift: unshift,
   __esModule: true
 };
 
@@ -312,6 +320,11 @@ function appendTo(element) {
   append.call(context, this);
   return this;
 }
+function empty() {
+  return each(this, function(element) {
+    element.innerHTML = '';
+  });
+}
 function remove() {
   return each(this, function(element) {
     if (element.parentNode) {
@@ -319,22 +332,8 @@ function remove() {
     }
   });
 }
-function empty() {
-  return each(this, function(element) {
-    element.innerHTML = '';
-  });
-}
 function replaceWith() {
   return before.apply(this, arguments).remove();
-}
-function val(value) {
-  if (typeof value !== 'string') {
-    return this[0].value;
-  }
-  each(this, function(element) {
-    element.value = value;
-  });
-  return this;
 }
 function text(value) {
   if (typeof value !== 'string') {
@@ -345,14 +344,23 @@ function text(value) {
   });
   return this;
 }
+function val(value) {
+  if (typeof value !== 'string') {
+    return this[0].value;
+  }
+  each(this, function(element) {
+    element.value = value;
+  });
+  return this;
+}
 ;
 module.exports = {
   appendTo: appendTo,
-  remove: remove,
   empty: empty,
+  remove: remove,
   replaceWith: replaceWith,
-  val: val,
   text: text,
+  val: val,
   __esModule: true
 };
 
@@ -809,13 +817,6 @@ function children(selector) {
   });
   return $(nodes);
 }
-function contents() {
-  var nodes = [];
-  each(this, function(element) {
-    nodes.push.apply(nodes, toArray(element.childNodes));
-  });
-  return $(nodes);
-}
 function closest(selector) {
   var node = this[0];
   for (; node.nodeType !== node.DOCUMENT_NODE; node = node.parentNode) {
@@ -824,6 +825,19 @@ function closest(selector) {
     }
   }
   return $();
+}
+function contents() {
+  var nodes = [];
+  each(this, function(element) {
+    nodes.push.apply(nodes, toArray(element.childNodes));
+  });
+  return $(nodes);
+}
+function eq(index) {
+  return slice.call(this, index, index + 1);
+}
+function get(index) {
+  return this[index];
 }
 function parent(selector) {
   var nodes = [];
@@ -834,12 +848,6 @@ function parent(selector) {
   });
   return $(nodes);
 }
-function eq(index) {
-  return slice.call(this, index, index + 1);
-}
-function get(index) {
-  return this[index];
-}
 function slice(start, end) {
   return $([].slice.apply(this, arguments));
 }
@@ -848,9 +856,9 @@ module.exports = {
   children: children,
   contents: contents,
   closest: closest,
-  parent: parent,
   eq: eq,
   get: get,
+  parent: parent,
   slice: slice,
   __esModule: true
 };

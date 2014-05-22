@@ -69,8 +69,12 @@ This library was recently renamed from "jQuery Evergreen".
     forEach
     indexOf
     map
+    pop
+    push
     reverse
+    shift
     some
+    unshift
 
 ### [Attr](http://webpro.github.io/DOMtastic/doc#attr)
 
@@ -96,8 +100,8 @@ This library was recently renamed from "jQuery Evergreen".
 
 	on
 	off
-	delegate
-	undelegate
+	delegate (deprecated, will be removed soon)
+	undelegate (deprecated, will be removed soon)
 	trigger
 	triggerHandler
 	ready
@@ -127,10 +131,11 @@ The pre-built "full" package also includes the following modules:
 ### [DOM (extra)](http://webpro.github.io/DOMtastic/doc#dom_extra)
 
 	appendTo
+	empty
     remove
     replaceWith
-    val
     text
+    val
 
 ### [Mode](http://webpro.github.io/DOMtastic/doc#mode)
 
