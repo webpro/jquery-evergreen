@@ -45,16 +45,16 @@ var $__0 = _dereq_('./selector'),
     $ = $__0.$,
     matches = $__0.matches;
 var ArrayProto = Array.prototype;
-function filter(selector) {
+function filter(selector, thisArg) {
   var callback = typeof selector === 'function' ? selector : function(element) {
     return matches(element, selector);
   };
-  return $(ArrayProto.filter.call(this, callback));
+  return $(ArrayProto.filter.call(this, callback, thisArg));
 }
-function each(callback) {
-  return _each(this, callback);
+function forEach(callback, thisArg) {
+  return _each(this, callback, thisArg);
 }
-var forEach = each;
+var each = forEach;
 var map = ArrayProto.map;
 function reverse() {
   var elements = ArrayProto.slice.call(this);
@@ -867,14 +867,14 @@ var toArray = (function(collection) {
 var makeIterable = (function(element) {
   return element.nodeType || element === window ? [element] : element;
 });
-function each(collection, callback) {
+function each(collection, callback, thisArg) {
   var length = collection.length;
   if (length !== undefined && collection.nodeType === undefined) {
     for (var i = 0; i < length; i++) {
-      callback(collection[i], i, collection);
+      callback.call(thisArg, collection[i], i, collection);
     }
   } else {
-    callback(collection, 0, collection);
+    callback.call(thisArg, collection, 0, collection);
   }
   return collection;
 }

@@ -10,7 +10,7 @@ FN:1,(anonymous_7)
 FN:40,(anonymous_8)
 FN:48,filter
 FN:49,(anonymous_10)
-FN:54,each
+FN:54,forEach
 FN:59,reverse
 FN:80,(anonymous_13)
 FN:84,attr
@@ -133,7 +133,7 @@ FNDA:1,(anonymous_7)
 FNDA:1,(anonymous_8)
 FNDA:3,filter
 FNDA:5,(anonymous_10)
-FNDA:25,each
+FNDA:25,forEach
 FNDA:11,reverse
 FNDA:1,(anonymous_13)
 FNDA:12,attr

@@ -129,7 +129,7 @@
                             
                                 <li><a href="#array-filter">filter</a></li>
                             
-                                <li><a href="#array-each">each</a></li>
+                                <li><a href="#array-forEach">forEach</a></li>
                             
                                 <li><a href="#array-map">map</a></li>
                             
@@ -415,11 +415,11 @@ return element.hasAttribute(&#x27;active&#x27;)
                                         </div>
                                         
                                         <div class="tab-pane" id="filter-source">
-                                            <pre><code class="language-javascript">function filter(selector) {
+                                            <pre><code class="language-javascript">function filter(selector, thisArg) {
     var callback = typeof selector === &#x27;function&#x27; ? selector : function(element) {
         return matches(element, selector);
     };
-    return $(ArrayProto.filter.call(this, callback));
+    return $(ArrayProto.filter.call(this, callback, thisArg));
 }</code></pre>
                                         </div>
                                     </div>
@@ -433,12 +433,12 @@ return element.hasAttribute(&#x27;active&#x27;)
 
                             
                             
-                            <section id="array-each">
+                            <section id="array-forEach">
 
                             
 
                                 <h3>
-                                    each
+                                    forEach
                                     <em> (callback)</em>
                                 </h3>
 
@@ -487,28 +487,28 @@ return element.hasAttribute(&#x27;active&#x27;)
 
                                     <ul class="nav nav-tabs">
                                         
-                                        <li class="active"><a href="#each-example-0" data-toggle="tab">Example</a></li>
+                                        <li class="active"><a href="#forEach-example-0" data-toggle="tab">Example</a></li>
                                         
                                         <li>
-                                            <a href="#each-source" data-toggle="tab">Source</a>
+                                            <a href="#forEach-source" data-toggle="tab">Source</a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content">
                                         
-                                        <div class="active tab-pane" id="each-example-0">
-                                            <pre><code class="language-javascript">$(&#x27;.items&#x27;).each(function(element) {
+                                        <div class="active tab-pane" id="forEach-example-0">
+                                            <pre><code class="language-javascript">$(&#x27;.items&#x27;).forEach(function(element) {
 element.style.color = &#x27;evergreen&#x27;;
 );
 </code></pre>
                                         </div>
                                         
-                                        <div class="tab-pane" id="each-source">
-                                            <pre><code class="language-javascript">function each(callback) {
-    return _each(this, callback);
+                                        <div class="tab-pane" id="forEach-source">
+                                            <pre><code class="language-javascript">function forEach(callback, thisArg) {
+    return _each(this, callback, thisArg);
 }
 
-var forEach = each;</code></pre>
+var each = forEach;</code></pre>
                                         </div>
                                     </div>
 
