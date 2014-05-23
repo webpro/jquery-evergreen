@@ -347,7 +347,7 @@
 
                                 <h3>
                                     every
-                                    <em> (callback)</em>
+                                    <em> (callback, thisArg)</em>
                                 </h3>
 
                                 <div class="block">
@@ -369,6 +369,17 @@
                                                 <td>
                                                     Function to execute for each element, invoked with `element` as argument.
                                                     
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><em>thisArg</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Value to use as `this` when executing `callback`.
+                                                    <span class="label label-default">optional</span>
                                                     
 
                                                 </td>
@@ -432,12 +443,12 @@ return element.hasAttribute(&#x27;active&#x27;)
 
                                 <h3>
                                     filter
-                                    <em> (selector)</em>
+                                    <em> (selector, thisArg)</em>
                                 </h3>
 
                                 <div class="block">
 
-                                    <p>Filter the collection by selector or function.</p>
+                                    <p>Filter the collection by selector or function, and return a new collection with the result.</p>
 
                                     
                                     <table class="table table-condensed">
@@ -459,6 +470,17 @@ return element.hasAttribute(&#x27;active&#x27;)
                                                 </td>
                                             </tr>
                                             
+                                            <tr>
+                                                <td><em>thisArg</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Value to use as `this` when executing `callback`.
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                     
@@ -468,7 +490,7 @@ return element.hasAttribute(&#x27;active&#x27;)
                                         
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        A new wrapped collection
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -528,7 +550,7 @@ return element.hasAttribute(&#x27;active&#x27;)
 
                                 <h3>
                                     forEach
-                                    <em> (callback)</em>
+                                    <em> (callback, thisArg)</em>
                                 </h3>
 
                                 <div class="block">
@@ -550,6 +572,17 @@ return element.hasAttribute(&#x27;active&#x27;)
                                                 <td>
                                                     Function to execute for each element, invoked with `element` as argument.
                                                     
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><em>thisArg</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Value to use as `this` when executing `callback`.
+                                                    <span class="label label-default">optional</span>
                                                     
 
                                                 </td>
@@ -699,7 +732,7 @@ var each = forEach;</code></pre>
 
                                 <h3>
                                     map
-                                    <em> (callback)</em>
+                                    <em> (callback, thisArg)</em>
                                 </h3>
 
                                 <div class="block">
@@ -721,6 +754,17 @@ var each = forEach;</code></pre>
                                                 <td>
                                                     Function to execute for each element, invoked with `element` as argument.
                                                     
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><em>thisArg</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Value to use as `this` when executing `callback`.
+                                                    <span class="label label-default">optional</span>
                                                     
 
                                                 </td>
@@ -849,7 +893,7 @@ return element.getAttribute(&#x27;name&#x27;)
 
                                 <div class="block">
 
-                                    <p>Adds one or more elements to the end of the collection, and returns the new length of the array.</p>
+                                    <p>Adds one or more elements to the end of the collection, and returns the new length of the collection.</p>
 
                                     
                                     <table class="table table-condensed">
@@ -1139,7 +1183,7 @@ return element.hasAttribute(&#x27;active&#x27;)
 
                                 <div class="block">
 
-                                    <p>Adds one or more elements to the beginning of the collection, and returns the new length of the array.</p>
+                                    <p>Adds one or more elements to the beginning of the collection, and returns the new length of the collection.</p>
 
                                     
                                     <table class="table table-condensed">
@@ -1168,9 +1212,9 @@ return element.hasAttribute(&#x27;active&#x27;)
                                     
                                     <p><strong>Returns</strong><br>
                                         
-                                        <span class="label label-primary">Object</span>
+                                        <span class="label label-primary">Number</span>
                                         &nbsp;
-                                        The last element from the collection.
+                                        The new length of the collection
                                         
                                         <!--
                                         &nbsp;
