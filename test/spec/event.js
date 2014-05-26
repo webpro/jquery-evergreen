@@ -32,10 +32,21 @@ describe('events', function() {
 
         it('should attach an event handler with a namespaced type to an element', function() {
             var element = $(document.body),
-                eventType = getRndStr();
-            element.on(eventType, spy);
+                eventType = getRndStr(),
+                eventNS = getRndStr();
+            element.on([eventType, eventNS].join('.'), spy);
             element.trigger(eventType);
             expect(spy).to.have.been.called;
+        });
+
+        it('should attach multiple space-separated events to an element', function() {
+            var element = $(document.body),
+                eventTypes = [getRndStr(), getRndStr(), getRndStr()];
+            element.on(eventTypes.join(' '), spy);
+            element.trigger(eventTypes[0]);
+            element.trigger(eventTypes[1]);
+            element.trigger(eventTypes[2]);
+            expect(spy).to.have.been.calledThrice;
         });
 
         it('should have the correct `event.target` and `event.currentTarget`', function() {
@@ -207,10 +218,55 @@ describe('events', function() {
 
         it('should detach an event handler with a namespace from an element', function() {
             var element = $(document.body),
-                eventType = getRndStr();
+                eventType = getRndStr(),
+                eventNS = getRndStr();
+            element.on([eventType, eventNS].join('.'), spy);
+            element.off(eventType);
+            element.trigger(eventType);
+            expect(spy).not.to.have.been.called;
+        });
+
+        it('should detach all event handler from a namespace from an element', function() {
+            var element = $(document.body),
+                eventTypes = [getRndStr(), getRndStr()],
+                eventNS = getRndStr();
+            element.on([eventTypes[0], eventNS].join('.'), spy);
+            element.on([eventTypes[1], eventNS].join('.'), spy);
+            element.off('.' + eventNS);
+            element.trigger(eventTypes[0]);
+            element.trigger(eventTypes[1]);
+            expect(spy).not.to.have.been.called;
+        });
+
+        it('should detach an event handler with a namespace from an element', function() {
+            var element = $(document.body),
+                eventType = getRndStr() + '.' + getRndStr();
             element.on(eventType, spy);
             element.off(eventType);
             element.trigger(eventType);
+            expect(spy).not.to.have.been.called;
+        });
+
+        it('should detach space-separated event handlers from an element', function() {
+            var element = $(document.body),
+                eventTypes = [getRndStr(), getRndStr(), getRndStr()];
+            element.on(eventTypes.join(' '), spy);
+            element.off(eventTypes[1]);
+            element.trigger(eventTypes[0]);
+            element.trigger(eventTypes[1]);
+            expect(spy).to.have.been.calledOnce;
+            spy.reset();
+            element.off(eventTypes.join(' '));
+            element.trigger(eventTypes[2]);
+            expect(spy).not.to.have.been.called;
+        });
+
+        it('should detach all space-separated event handlers from an element', function() {
+            var element = $(document.body),
+                eventTypes = [getRndStr(), getRndStr(), getRndStr()];
+            element.on(eventTypes.join(' '), spy);
+            element.off();
+            element.trigger(eventTypes[0]);
             expect(spy).not.to.have.been.called;
         });
 

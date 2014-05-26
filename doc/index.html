@@ -3009,7 +3009,7 @@ $(&#x27;.item&#x27;).prop(&#x27;attrName&#x27;, &#x27;attrValue&#x27;); // set
 
                                 <h3>
                                     on
-                                    <em> (eventName, selector, handler, useCapture)</em>
+                                    <em> (eventNames, selector, handler, useCapture)</em>
                                 </h3>
 
                                 <div class="block">
@@ -3026,10 +3026,10 @@ $(&#x27;.item&#x27;).prop(&#x27;attrName&#x27;, &#x27;attrValue&#x27;); // set
                                         <tbody>
                                             
                                             <tr>
-                                                <td><em>eventName</em></td>
+                                                <td><em>eventNames</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    
+                                                    List of space-separated event types to be added to the element(s)
                                                     
                                                     
 
@@ -3101,40 +3101,48 @@ $(&#x27;.item&#x27;).prop(&#x27;attrName&#x27;, &#x27;attrValue&#x27;); // set
                                         
                                         <div class="active tab-pane" id="on-example-0">
                                             <pre><code class="language-javascript">$(&#x27;.item&#x27;).on(&#x27;click&#x27;, callback);
-$(&#x27;.container&#x27;).on(&#x27;click&#x27;, &#x27;.item&#x27;, handler);
+$(&#x27;.container&#x27;).on(&#x27;click focus&#x27;, &#x27;.item&#x27;, handler);
 </code></pre>
                                         </div>
                                         
                                         <div class="tab-pane" id="on-source">
-                                            <pre><code class="language-javascript">function on(eventName, selector, handler, useCapture) {
+                                            <pre><code class="language-javascript">function on(eventNames, selector, handler, useCapture) {
 
     if (typeof selector === &#x27;function&#x27;) {
         handler = selector;
         selector = null;
     }
 
-    var parts = eventName.split(&#x27;.&#x27;);
-    eventName = parts[0] || null;
-    var namespace = parts[1] || null;
+    var parts,
+        namespace,
+        eventListener;
 
-    var eventListener = proxyHandler(handler);
+    eventNames.split(&#x27; &#x27;).forEach(function(eventName) {
 
-    each(this, function(element) {
+        parts = eventName.split(&#x27;.&#x27;);
+        eventName = parts[0] || null;
+        namespace = parts[1] || null;
 
-        if (selector) {
-            eventListener = delegateHandler.bind(element, selector, handler);
-        }
+        eventListener = proxyHandler(handler);
 
-        element.addEventListener(eventName, eventListener, useCapture || false);
+        each(this, function(element) {
 
-        getHandlers(element).push({
-            eventName: eventName,
-            handler: handler,
-            eventListener: eventListener,
-            selector: selector,
-            namespace: namespace
+            if (selector) {
+                eventListener = delegateHandler.bind(element, selector, handler);
+            }
+
+            element.addEventListener(eventName, eventListener, useCapture || false);
+
+            getHandlers(element).push({
+                eventName: eventName,
+                handler: handler,
+                eventListener: eventListener,
+                selector: selector,
+                namespace: namespace
+            });
         });
-    });
+
+    }, this);
 
     return this;
 }</code></pre>
@@ -3156,7 +3164,7 @@ $(&#x27;.container&#x27;).on(&#x27;click&#x27;, &#x27;.item&#x27;, handler);
 
                                 <h3>
                                     off
-                                    <em> (eventName, selector, handler, useCapture)</em>
+                                    <em> (eventNames, selector, handler, useCapture)</em>
                                 </h3>
 
                                 <div class="block">
@@ -3173,10 +3181,10 @@ $(&#x27;.container&#x27;).on(&#x27;click&#x27;, &#x27;.item&#x27;, handler);
                                         <tbody>
                                             
                                             <tr>
-                                                <td><em>eventName</em></td>
+                                                <td><em>eventNames</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Name or type of the event
+                                                    List of space-separated event types to be removed from the element(s)
                                                     
                                                     
 
@@ -3248,53 +3256,61 @@ $(&#x27;.container&#x27;).on(&#x27;click&#x27;, &#x27;.item&#x27;, handler);
                                         
                                         <div class="active tab-pane" id="off-example-0">
                                             <pre><code class="language-javascript">$(&#x27;.item&#x27;).off(&#x27;click&#x27;, callback);
+$(&#x27;#my-element&#x27;).off(&#x27;myEvent myOtherEvent&#x27;);
+$(&#x27;.item&#x27;).off();
 </code></pre>
                                         </div>
                                         
                                         <div class="tab-pane" id="off-source">
-                                            <pre><code class="language-javascript">function off(eventName, selector, handler, useCapture) {
+                                            <pre><code class="language-javascript">function off(eventNames = &#x27;&#x27;, selector, handler, useCapture) {
 
     if (typeof selector === &#x27;function&#x27;) {
         handler = selector;
         selector = null;
     }
 
-    if (eventName) {
-        var parts = eventName.split(&#x27;.&#x27;);
-        eventName = parts[0];
-        var namespace = parts[1];
-    }
+    var parts,
+        namespace,
+        handlers;
 
-    each(this, function(element) {
+    eventNames.split(&#x27; &#x27;).forEach(function(eventName) {
 
-        var handlers = getHandlers(element);
+        parts = eventName.split(&#x27;.&#x27;);
+        eventName = parts[0] || null;
+        namespace = parts[1] || null;
 
-        if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
+        each(this, function(element) {
 
-            each(handlers, function(item) {
-                element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-            });
+            handlers = getHandlers(element);
 
-            clearHandlers(element);
+            if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
 
-        } else {
+                each(handlers, function(item) {
+                    element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
+                });
 
-            each(handlers.filter(function(item) {
-                return ((!eventName || item.eventName === eventName) &amp;&amp;
-                    (!namespace || item.namespace === namespace) &amp;&amp;
-                    (!handler || item.handler === handler) &amp;&amp;
-                    (!selector || item.selector === selector));
-            }), function(item) {
-                element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-                handlers.splice(handlers.indexOf(item), 1);
-            });
-
-            if (handlers.length === 0) {
                 clearHandlers(element);
-            }
-        }
 
-    });
+            } else {
+
+                each(handlers.filter(function(item) {
+                    return ((!eventName || item.eventName === eventName) &amp;&amp;
+                        (!namespace || item.namespace === namespace) &amp;&amp;
+                        (!handler || item.handler === handler) &amp;&amp;
+                        (!selector || item.selector === selector));
+                }), function(item) {
+                    element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
+                    handlers.splice(handlers.indexOf(item), 1);
+                });
+
+                if (handlers.length === 0) {
+                    clearHandlers(element);
+                }
+            }
+
+        });
+
+    }, this);
 
     return this;
 }
