@@ -316,6 +316,19 @@
                     </li>
                 
                     <li>
+                        <a href="#type"><strong>Type</strong></a>
+                        
+                        <ul class="">
+                            
+                                <li><a href="#type-isFunction">isFunction</a></li>
+                            
+                                <li><a href="#type-isArray">isArray</a></li>
+                            
+                        </ul>
+                        
+                    </li>
+                
+                    <li>
                         <a href="#util"><strong>Util</strong></a>
                         
                         <ul class="">
@@ -4783,6 +4796,199 @@ $(&#x27;.selector&#x27;).parent(&#x27;.filter&#x27;);
                                             <pre><code class="language-javascript">function slice(start, end) {
     return $([].slice.apply(this, arguments));
 }</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
+                            </section>
+                            
+                            
+                        
+                    </section>
+                    
+                
+                    
+                    <section id="type">
+
+                        <h2>Type</h2>
+
+                        
+
+                            
+                            
+                            <section id="type-isFunction">
+
+                            
+
+                                <h3>
+                                    isFunction
+                                    <em> (obj)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Determine if the argument passed is a Javascript function object.</p>
+
+                                    
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr>
+                                                <td><em>obj</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Object to test whether or not it is a function.
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+
+                                    
+                                    <p><strong>Returns</strong><br>
+                                        
+                                        <span class="label label-primary">boolean</span>
+                                        &nbsp;
+                                        
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                        
+                                    </p>
+                                    
+
+                                    <ul class="nav nav-tabs">
+                                        
+                                        <li class="active"><a href="#isFunction-example-0" data-toggle="tab">Example</a></li>
+                                        
+                                        <li ><a href="#isFunction-example-1" data-toggle="tab">Example</a></li>
+                                        
+                                        <li>
+                                            <a href="#isFunction-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        
+                                        <div class="active tab-pane" id="isFunction-example-0">
+                                            <pre><code class="language-javascript">$.isFunction(function(){});
+➤ true
+</code></pre>
+                                        </div>
+                                        
+                                        <div class=" tab-pane" id="isFunction-example-1">
+                                            <pre><code class="language-javascript">$.isFunction({});
+➤ false
+</code></pre>
+                                        </div>
+                                        
+                                        <div class="tab-pane" id="isFunction-source">
+                                            <pre><code class="language-javascript">function isFunction(obj) {
+    return (typeof obj === &#x27;function&#x27;);
+}</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
+                            </section>
+                            
+                            
+                        
+
+                            
+                            
+                            <section id="type-isArray">
+
+                            
+
+                                <h3>
+                                    isArray
+                                    <em> (obj)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Determine whether the argument is an array.</p>
+
+                                    
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr>
+                                                <td><em>obj</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Object to test whether or not it is an array.
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+
+                                    
+                                    <p><strong>Returns</strong><br>
+                                        
+                                        <span class="label label-primary">boolean</span>
+                                        &nbsp;
+                                        
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                        
+                                    </p>
+                                    
+
+                                    <ul class="nav nav-tabs">
+                                        
+                                        <li class="active"><a href="#isArray-example-0" data-toggle="tab">Example</a></li>
+                                        
+                                        <li ><a href="#isArray-example-1" data-toggle="tab">Example</a></li>
+                                        
+                                        <li>
+                                            <a href="#isArray-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        
+                                        <div class="active tab-pane" id="isArray-example-0">
+                                            <pre><code class="language-javascript">$.isArray([]);
+➤ true
+</code></pre>
+                                        </div>
+                                        
+                                        <div class=" tab-pane" id="isArray-example-1">
+                                            <pre><code class="language-javascript">$.isArray({});
+➤ false
+</code></pre>
+                                        </div>
+                                        
+                                        <div class="tab-pane" id="isArray-source">
+                                            <pre><code class="language-javascript">var isArray = Array.isArray;</code></pre>
                                         </div>
                                     </div>
 
