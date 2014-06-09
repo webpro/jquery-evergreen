@@ -31,7 +31,7 @@ var type = _dereq_('./type');
 extend($, type);
 extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, selector_extra);
 extend(apiNodeList, array);
-$.version = '0.7.2';
+$.version = '0.7.3';
 $.extend = extend;
 $.fn = api;
 $.fnList = apiNodeList;
