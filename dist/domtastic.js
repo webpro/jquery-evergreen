@@ -468,10 +468,13 @@ function on(eventNames, selector, handler, useCapture) {
     namespace = parts[1] || null;
     eventListener = proxyHandler(handler);
     each(this, function(element) {
+      if (selector && eventName in hoverEvents) {
+        handler = hoverHandler(handler);
+      }
       if (selector) {
         eventListener = delegateHandler.bind(element, selector, handler);
       }
-      element.addEventListener(eventName, eventListener, useCapture || false);
+      element.addEventListener(hoverEvents[eventName] || eventName, eventListener, useCapture || false);
       getHandlers(element).push({
         eventName: eventName,
         handler: handler,
@@ -501,21 +504,16 @@ function off() {
     namespace = parts[1] || null;
     each(this, function(element) {
       handlers = getHandlers(element);
+      each(handlers.filter(function(item) {
+        return ((!eventName || item.eventName === eventName) && (!namespace || item.namespace === namespace) && (!handler || item.handler === handler) && (!selector || item.selector === selector));
+      }), function(item) {
+        element.removeEventListener(hoverEvents[item.eventName] || item.eventName, item.eventListener, useCapture || false);
+        handlers.splice(handlers.indexOf(item), 1);
+      });
       if (!eventName && !namespace && !selector && !handler) {
-        each(handlers, function(item) {
-          element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-        });
         clearHandlers(element);
-      } else {
-        each(handlers.filter(function(item) {
-          return ((!eventName || item.eventName === eventName) && (!namespace || item.namespace === namespace) && (!handler || item.handler === handler) && (!selector || item.selector === selector));
-        }), function(item) {
-          element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-          handlers.splice(handlers.indexOf(item), 1);
-        });
-        if (handlers.length === 0) {
-          clearHandlers(element);
-        }
+      } else if (handlers.length === 0) {
+        clearHandlers(element);
       }
     });
   }, this);
@@ -636,6 +634,18 @@ function delegateHandler(selector, handler, event) {
     }
     handler.call(eventTarget, event);
   }
+}
+var hoverEvents = {
+  mouseenter: 'mouseover',
+  mouseleave: 'mouseout'
+};
+function hoverHandler(handler) {
+  return function(event) {
+    var related = event.relatedTarget;
+    if (!related || (related !== this && !$.contains(this, related))) {
+      return handler.apply(this, arguments);
+    }
+  };
 }
 (function() {
   function CustomEvent(event) {

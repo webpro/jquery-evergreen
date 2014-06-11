@@ -3416,11 +3416,15 @@ $(&#x27;.container&#x27;).on(&#x27;click focus&#x27;, &#x27;.item&#x27;, handler
 
         each(this, function(element) {
 
+            if (selector &amp;&amp; eventName in hoverEvents) {
+                handler = hoverHandler(handler);
+            }
+
             if (selector) {
                 eventListener = delegateHandler.bind(element, selector, handler);
             }
 
-            element.addEventListener(eventName, eventListener, useCapture || false);
+            element.addEventListener(hoverEvents[eventName] || eventName, eventListener, useCapture || false);
 
             getHandlers(element).push({
                 eventName: eventName,
@@ -3572,29 +3576,21 @@ $(&#x27;.item&#x27;).off();
 
             handlers = getHandlers(element);
 
+            each(handlers.filter(function(item) {
+                return (
+                    (!eventName || item.eventName === eventName) &amp;&amp;
+                    (!namespace || item.namespace === namespace) &amp;&amp;
+                    (!handler || item.handler === handler) &amp;&amp;
+                    (!selector || item.selector === selector));
+            }), function(item) {
+                element.removeEventListener(hoverEvents[item.eventName] || item.eventName, item.eventListener, useCapture || false);
+                handlers.splice(handlers.indexOf(item), 1);
+            });
+
             if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
-
-                each(handlers, function(item) {
-                    element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-                });
-
                 clearHandlers(element);
-
-            } else {
-
-                each(handlers.filter(function(item) {
-                    return ((!eventName || item.eventName === eventName) &amp;&amp;
-                        (!namespace || item.namespace === namespace) &amp;&amp;
-                        (!handler || item.handler === handler) &amp;&amp;
-                        (!selector || item.selector === selector));
-                }), function(item) {
-                    element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-                    handlers.splice(handlers.indexOf(item), 1);
-                });
-
-                if (handlers.length === 0) {
-                    clearHandlers(element);
-                }
+            } else if (handlers.length === 0) {
+                clearHandlers(element);
             }
 
         });
