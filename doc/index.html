@@ -308,6 +308,8 @@
                             
                                 <li><a href="#selector-find">find</a></li>
                             
+                                <li><a href="#selector-closest">closest</a></li>
+                            
                                 <li><a href="#selector-matches">matches</a></li>
                             
                         </ul>
@@ -320,8 +322,6 @@
                         <ul class="">
                             
                                 <li><a href="#selector_extra-children">children</a></li>
-                            
-                                <li><a href="#selector_extra-closest">closest</a></li>
                             
                                 <li><a href="#selector_extra-contents">contents</a></li>
                             
@@ -3417,11 +3417,11 @@ $(&#x27;.container&#x27;).on(&#x27;click focus&#x27;, &#x27;.item&#x27;, handler
         each(this, function(element) {
 
             if (selector &amp;&amp; eventName in hoverEvents) {
-                handler = hoverHandler(handler);
+                eventListener = hoverHandler(eventListener);
             }
 
             if (selector) {
-                eventListener = delegateHandler.bind(element, selector, handler);
+                eventListener = delegateHandler.bind(element, selector, eventListener);
             }
 
             element.addEventListener(hoverEvents[eventName] || eventName, eventListener, useCapture || false);
@@ -4364,6 +4364,107 @@ $(&#x27;.item&#x27;).html(&#x27;&lt;span&gt;more&lt;/span&gt;&#x27;);
 
                             
                             
+                            <section id="selector-closest">
+
+                            
+
+                                <h3>
+                                    closest
+                                    <em> (selector, context)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Return the closest element matching the selector (starting by itself).</p>
+
+                                    
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr>
+                                                <td><em>selector</em></td>
+                                                <td><span class="label label-primary">String</span></td>
+                                                <td>
+                                                    Filter
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                            <tr>
+                                                <td><em>context</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    If provided, matching elements must be a descendant of this element
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+
+                                    
+                                    <p><strong>Returns</strong><br>
+                                        
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        New wrapped collection (containing zero or one element)
+                                        <span class="label label-default">chainable</span>
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                        
+                                    </p>
+                                    
+
+                                    <ul class="nav nav-tabs">
+                                        
+                                        <li class="active"><a href="#closest-example-0" data-toggle="tab">Example</a></li>
+                                        
+                                        <li>
+                                            <a href="#closest-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        
+                                        <div class="active tab-pane" id="closest-example-0">
+                                            <pre><code class="language-javascript">$(&#x27;.selector&#x27;).closest(&#x27;.container&#x27;);
+</code></pre>
+                                        </div>
+                                        
+                                        <div class="tab-pane" id="closest-source">
+                                            <pre><code class="language-javascript">function closest(selector, context) {
+    var node = this[0];
+    for (; node.nodeType !== node.DOCUMENT_NODE &amp;&amp; node !== context; node = node.parentNode) {
+        if (matches(node, selector)) {
+            return $(node);
+        }
+    }
+    return $();
+}</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
+                            </section>
+                            
+                            
+                        
+
+                            
+                            
                             <section id="selector-matches">
 
                             
@@ -4554,96 +4655,6 @@ $(&#x27;.selector&#x27;).children(&#x27;.filter&#x27;);
         }
     });
     return $(nodes);
-}</code></pre>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            
-                            </section>
-                            
-                            
-                        
-
-                            
-                            
-                            <section id="selector_extra-closest">
-
-                            
-
-                                <h3>
-                                    closest
-                                    <em> (selector)</em>
-                                </h3>
-
-                                <div class="block">
-
-                                    <p>Return the closest element matching the selector (starting by itself).</p>
-
-                                    
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="3">Arguments</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            
-                                            <tr>
-                                                <td><em>selector</em></td>
-                                                <td><span class="label label-primary">String</span></td>
-                                                <td>
-                                                    Filter
-                                                    
-                                                    
-
-                                                </td>
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                    
-
-                                    
-                                    <p><strong>Returns</strong><br>
-                                        
-                                        <span class="label label-primary">Object</span>
-                                        &nbsp;
-                                        New wrapped collection (containing zero or one element)
-                                        <span class="label label-default">chainable</span>
-                                        <!--
-                                        &nbsp;
-
-                                        -->
-                                        
-                                    </p>
-                                    
-
-                                    <ul class="nav nav-tabs">
-                                        
-                                        <li class="active"><a href="#closest-example-0" data-toggle="tab">Example</a></li>
-                                        
-                                        <li>
-                                            <a href="#closest-source" data-toggle="tab">Source</a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="tab-content">
-                                        
-                                        <div class="active tab-pane" id="closest-example-0">
-                                            <pre><code class="language-javascript">$(&#x27;.selector&#x27;).closest(&#x27;.container&#x27;);
-</code></pre>
-                                        </div>
-                                        
-                                        <div class="tab-pane" id="closest-source">
-                                            <pre><code class="language-javascript">function closest(selector) {
-    var node = this[0];
-    for (; node.nodeType !== node.DOCUMENT_NODE; node = node.parentNode) {
-        if (matches(node, selector)) {
-            return $(node);
-        }
-    }
-    return $();
 }</code></pre>
                                         </div>
                                     </div>

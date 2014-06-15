@@ -8,27 +8,25 @@ var api = {},
 var array = _dereq_('./array');
 var attr = _dereq_('./attr');
 var class_ = _dereq_('./class');
+var contains = _dereq_('./contains');
 var css = _dereq_('./css');
 var data = _dereq_('./data');
 var dom = _dereq_('./dom');
 var dom_extra = _dereq_('./dom_extra');
 var event = _dereq_('./event');
 var html = _dereq_('./html');
+var mode = _dereq_('./mode');
+var noconflict = _dereq_('./noconflict');
 var selector = _dereq_('./selector');
 var selector_extra = _dereq_('./selector_extra');
+var type = _dereq_('./type');
 if (typeof selector !== 'undefined') {
   $ = selector.$;
   $.matches = selector.matches;
   api.find = selector.find;
+  api.closest = selector.closest;
 }
-var contains = _dereq_('./contains');
-extend($, contains);
-var mode = _dereq_('./mode');
-extend($, mode);
-var noconflict = _dereq_('./noconflict');
-extend($, noconflict);
-var type = _dereq_('./type');
-extend($, type);
+extend($, contains, mode, noconflict, type);
 extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, selector_extra);
 extend(apiNodeList, array);
 $.version = '0.7.3';
@@ -453,7 +451,7 @@ var __moduleName = "src/event";
 var $__0 = _dereq_('./util'),
     global = $__0.global,
     each = $__0.each;
-var matches = _dereq_('./selector').matches;
+var closest = _dereq_('./selector').closest;
 function on(eventNames, selector, handler, useCapture) {
   if (typeof selector === 'function') {
     handler = selector;
@@ -469,10 +467,10 @@ function on(eventNames, selector, handler, useCapture) {
     eventListener = proxyHandler(handler);
     each(this, function(element) {
       if (selector && eventName in hoverEvents) {
-        handler = hoverHandler(handler);
+        eventListener = hoverHandler(eventListener);
       }
       if (selector) {
-        eventListener = delegateHandler.bind(element, selector, handler);
+        eventListener = delegateHandler.bind(element, selector, eventListener);
       }
       element.addEventListener(hoverEvents[eventName] || eventName, eventListener, useCapture || false);
       getHandlers(element).push({
@@ -594,15 +592,16 @@ function clearHandlers(element) {
 }
 function proxyHandler(handler) {
   return function(event) {
-    handler(augmentEvent(event), event.detail);
+    handler.call(this, augmentEvent(event), event.detail);
   };
 }
 var augmentEvent = (function() {
-  var eventMethods = {
-    preventDefault: 'isDefaultPrevented',
-    stopImmediatePropagation: 'isImmediatePropagationStopped',
-    stopPropagation: 'isPropagationStopped'
-  },
+  var methodName,
+      eventMethods = {
+        preventDefault: 'isDefaultPrevented',
+        stopImmediatePropagation: 'isImmediatePropagationStopped',
+        stopPropagation: 'isPropagationStopped'
+      },
       noop = (function() {}),
       returnTrue = (function() {
         return true;
@@ -611,7 +610,10 @@ var augmentEvent = (function() {
         return false;
       });
   return function(event) {
-    for (var methodName in eventMethods) {
+    if (event.isDefaultPrevented && event.stopImmediatePropagation && event.stopPropagation) {
+      return event;
+    }
+    for (methodName in eventMethods) {
       (function(methodName, testMethodName, originalMethod) {
         event[methodName] = function() {
           this[testMethodName] = returnTrue;
@@ -627,12 +629,12 @@ var augmentEvent = (function() {
   };
 })();
 function delegateHandler(selector, handler, event) {
-  var eventTarget = event._target || event.target;
-  if (matches(eventTarget, selector)) {
-    if (!event.currentTarget) {
-      event.currentTarget = eventTarget;
+  var eventTarget = event._target || event.target,
+      match = closest.call([eventTarget], selector, this)[0];
+  if (match && match !== this) {
+    if (match === eventTarget || !event.isPropagationStopped || !event.isPropagationStopped()) {
+      handler.call(match, event);
     }
-    handler.call(eventTarget, event);
   }
 }
 var hoverEvents = {
@@ -833,6 +835,15 @@ function $(selector) {
 function find(selector) {
   return $(selector, this);
 }
+function closest(selector, context) {
+  var node = this[0];
+  for (; node.nodeType !== node.DOCUMENT_NODE && node !== context; node = node.parentNode) {
+    if (matches(node, selector)) {
+      return $(node);
+    }
+  }
+  return $();
+}
 var matches = (function() {
   var context = typeof Element !== 'undefined' ? Element.prototype : global,
       _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.webkitMatchesSelector || context.msMatchesSelector || context.oMatchesSelector;
@@ -888,6 +899,7 @@ function Wrapper(collection) {
 module.exports = {
   $: $,
   find: find,
+  closest: closest,
   matches: matches,
   __esModule: true
 };
@@ -914,15 +926,6 @@ function children(selector) {
     }
   });
   return $(nodes);
-}
-function closest(selector) {
-  var node = this[0];
-  for (; node.nodeType !== node.DOCUMENT_NODE; node = node.parentNode) {
-    if (matches(node, selector)) {
-      return $(node);
-    }
-  }
-  return $();
 }
 function contents() {
   var nodes = [];
@@ -953,7 +956,6 @@ function slice(start, end) {
 module.exports = {
   children: children,
   contents: contents,
-  closest: closest,
   eq: eq,
   get: get,
   parent: parent,
