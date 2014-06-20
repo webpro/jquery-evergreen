@@ -29,7 +29,7 @@ if (typeof selector !== 'undefined') {
 extend($, contains, mode, noconflict, type);
 extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, selector_extra);
 extend(apiNodeList, array);
-$.version = '0.7.3';
+$.version = '0.7.4';
 $.extend = extend;
 $.fn = api;
 $.fnList = apiNodeList;
@@ -610,30 +610,29 @@ var augmentEvent = (function() {
         return false;
       });
   return function(event) {
-    if (event.isDefaultPrevented && event.stopImmediatePropagation && event.stopPropagation) {
-      return event;
-    }
-    for (methodName in eventMethods) {
-      (function(methodName, testMethodName, originalMethod) {
-        event[methodName] = function() {
-          this[testMethodName] = returnTrue;
-          return originalMethod.apply(this, arguments);
-        };
-        event[testMethodName] = returnFalse;
-      }(methodName, eventMethods[methodName], event[methodName] || noop));
-    }
-    if (event._preventDefault) {
-      event.preventDefault();
+    if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
+      for (methodName in eventMethods) {
+        (function(methodName, testMethodName, originalMethod) {
+          event[methodName] = function() {
+            this[testMethodName] = returnTrue;
+            return originalMethod.apply(this, arguments);
+          };
+          event[testMethodName] = returnFalse;
+        }(methodName, eventMethods[methodName], event[methodName] || noop));
+      }
+      if (event._preventDefault) {
+        event.preventDefault();
+      }
     }
     return event;
   };
 })();
 function delegateHandler(selector, handler, event) {
   var eventTarget = event._target || event.target,
-      match = closest.call([eventTarget], selector, this)[0];
-  if (match && match !== this) {
-    if (match === eventTarget || !event.isPropagationStopped || !event.isPropagationStopped()) {
-      handler.call(match, event);
+      currentTarget = closest.call([eventTarget], selector, this)[0];
+  if (currentTarget && currentTarget !== this) {
+    if (currentTarget === eventTarget || !(event.isPropagationStopped && event.isPropagationStopped())) {
+      handler.call(currentTarget, event);
     }
   }
 }
@@ -643,8 +642,8 @@ var hoverEvents = {
 };
 function hoverHandler(handler) {
   return function(event) {
-    var related = event.relatedTarget;
-    if (!related || (related !== this && !$.contains(this, related))) {
+    var relatedTarget = event.relatedTarget;
+    if (!relatedTarget || (relatedTarget !== this && !$.contains(this, relatedTarget))) {
       return handler.apply(this, arguments);
     }
   };

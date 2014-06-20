@@ -3845,7 +3845,7 @@ function undelegate(selector, eventName, handler) {
                                         
                                         <div class="tab-pane" id="triggerHandler-source">
                                             <pre><code class="language-javascript">function triggerHandler(type, data) {
-    if(this[0]) {
+    if (this[0]) {
         trigger.call(this[0], type, data, {bubbles: false, preventDefault: true});
     }
 }</code></pre>
