@@ -3752,7 +3752,7 @@ function undelegate(selector, eventName, handler) {
     event._preventDefault = params.preventDefault;
     each(this, function(element) {
         if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
-            element.dispatchEvent(event);
+            dispatchEvent(element, event);
         } else {
             triggerForPath(element, type, params);
         }
