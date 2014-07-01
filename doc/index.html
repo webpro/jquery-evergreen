@@ -271,8 +271,6 @@
                             
                                 <li><a href="#event-triggerHandler">triggerHandler</a></li>
                             
-                                <li><a href="#event-ready">ready</a></li>
-                            
                         </ul>
                         
                     </li>
@@ -294,6 +292,17 @@
                         <ul class="">
                             
                                 <li><a href="#noconflict-noConflict">noConflict</a></li>
+                            
+                        </ul>
+                        
+                    </li>
+                
+                    <li>
+                        <a href="#ready"><strong>Ready</strong></a>
+                        
+                        <ul class="">
+                            
+                                <li><a href="#ready-ready">ready</a></li>
                             
                         </ul>
                         
@@ -1533,7 +1542,7 @@ $(&#x27;.item&#x27;).attr({&#x27;attr1&#x27;, &#x27;value1&#x27;}, {&#x27;attr2&
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The class name to add to the element(s).
+                                                    Space-separated class name(s) to add to the element(s).
                                                     
                                                     
 
@@ -1572,14 +1581,19 @@ $(&#x27;.item&#x27;).attr({&#x27;attr1&#x27;, &#x27;value1&#x27;}, {&#x27;attr2&
                                         
                                         <div class="active tab-pane" id="addClass-example-0">
                                             <pre><code class="language-javascript">$(&#x27;.item&#x27;).addClass(&#x27;bar&#x27;);
+$(&#x27;.item&#x27;).addClass(&#x27;bar foo&#x27;);
 </code></pre>
                                         </div>
                                         
                                         <div class="tab-pane" id="addClass-source">
                                             <pre><code class="language-javascript">function addClass(value) {
-    each(this, function(element) {
-        element.classList.add(value);
-    });
+    if(value &amp;&amp; value.length) {
+        each(value.split(&#x27; &#x27;), function(className) {
+            each(this, function(element) {
+                element.classList.add(className);
+            });
+        }.bind(this));
+    }
     return this;
 }</code></pre>
                                         </div>
@@ -1620,7 +1634,7 @@ $(&#x27;.item&#x27;).attr({&#x27;attr1&#x27;, &#x27;value1&#x27;}, {&#x27;attr2&
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The class name to remove from the element(s).
+                                                    Space-separated class name(s) to remove from the element(s).
                                                     
                                                     
 
@@ -1659,14 +1673,19 @@ $(&#x27;.item&#x27;).attr({&#x27;attr1&#x27;, &#x27;value1&#x27;}, {&#x27;attr2&
                                         
                                         <div class="active tab-pane" id="removeClass-example-0">
                                             <pre><code class="language-javascript">$(&#x27;.items&#x27;).removeClass(&#x27;bar&#x27;);
+$(&#x27;.items&#x27;).removeClass(&#x27;bar foo&#x27;);
 </code></pre>
                                         </div>
                                         
                                         <div class="tab-pane" id="removeClass-source">
                                             <pre><code class="language-javascript">function removeClass(value) {
-    each(this, function(element) {
-        element.classList.remove(value);
-    });
+    if(value &amp;&amp; value.length) {
+        each(value.split(&#x27; &#x27;), function(className) {
+            each(this, function(element) {
+                element.classList.remove(className);
+            });
+        }.bind(this));
+    }
     return this;
 }</code></pre>
                                         </div>
@@ -1707,7 +1726,7 @@ $(&#x27;.item&#x27;).attr({&#x27;attr1&#x27;, &#x27;value1&#x27;}, {&#x27;attr2&
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The class name to toggle at the element(s).
+                                                    Space-separated class name(s) to toggle at the element(s).
                                                     
                                                     
 
@@ -1746,14 +1765,19 @@ $(&#x27;.item&#x27;).attr({&#x27;attr1&#x27;, &#x27;value1&#x27;}, {&#x27;attr2&
                                         
                                         <div class="active tab-pane" id="toggleClass-example-0">
                                             <pre><code class="language-javascript">$(&#x27;.item&#x27;).toggleClass(&#x27;bar&#x27;);
+$(&#x27;.item&#x27;).toggleClass(&#x27;bar foo&#x27;);
 </code></pre>
                                         </div>
                                         
                                         <div class="tab-pane" id="toggleClass-source">
                                             <pre><code class="language-javascript">function toggleClass(value) {
-    each(this, function(element) {
-        element.classList.toggle(value);
-    });
+    if(value &amp;&amp; value.length) {
+        each(value.split(&#x27; &#x27;), function(className) {
+            each(this, function(element) {
+                element.classList.toggle(className);
+            });
+        }.bind(this));
+    }
     return this;
 }</code></pre>
                                         </div>
@@ -3858,95 +3882,6 @@ function undelegate(selector, eventName, handler) {
                             
                             
                         
-
-                            
-                            
-                            <section id="event-ready">
-
-                            
-
-                                <h3>
-                                    ready
-                                    <em> (Callback)</em>
-                                </h3>
-
-                                <div class="block">
-
-                                    <p>Execute callback when <code>DOMContentLoaded</code> fires for <code>document</code>, or immediately if called afterwards.</p>
-
-                                    
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="3">Arguments</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            
-                                            <tr>
-                                                <td><em>Callback</em></td>
-                                                <td><span class="label label-primary">handler</span></td>
-                                                <td>
-                                                    to execute when initial DOM content is loaded.
-                                                    
-                                                    
-
-                                                </td>
-                                            </tr>
-                                            
-                                        </tbody>
-                                    </table>
-                                    
-
-                                    
-                                    <p><strong>Returns</strong><br>
-                                        
-                                        <span class="label label-primary">Object</span>
-                                        &nbsp;
-                                        The wrapped collection
-                                        <span class="label label-default">chainable</span>
-                                        <!--
-                                        &nbsp;
-
-                                        -->
-                                        
-                                    </p>
-                                    
-
-                                    <ul class="nav nav-tabs">
-                                        
-                                        <li class="active"><a href="#ready-example-0" data-toggle="tab">Example</a></li>
-                                        
-                                        <li>
-                                            <a href="#ready-source" data-toggle="tab">Source</a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="tab-content">
-                                        
-                                        <div class="active tab-pane" id="ready-example-0">
-                                            <pre><code class="language-javascript">$(document).ready(callback);
-</code></pre>
-                                        </div>
-                                        
-                                        <div class="tab-pane" id="ready-source">
-                                            <pre><code class="language-javascript">function ready(handler) {
-    if (/complete|loaded|interactive/.test(document.readyState) &amp;&amp; document.body) {
-        handler();
-    } else {
-        document.addEventListener(&#x27;DOMContentLoaded&#x27;, handler, false)
-    }
-    return this;
-}</code></pre>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            
-                            </section>
-                            
-                            
-                        
                     </section>
                     
                 
@@ -4113,6 +4048,104 @@ $(&#x27;.item&#x27;).html(&#x27;&lt;span&gt;more&lt;/span&gt;&#x27;);
                                         <div class="tab-pane" id="noConflict-source">
                                             <pre><code class="language-javascript">function noConflict() {
     global.$ = previousLib;
+    return this;
+}</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            
+                            </section>
+                            
+                            
+                        
+                    </section>
+                    
+                
+                    
+                    <section id="ready">
+
+                        <h2>Ready</h2>
+
+                        
+
+                            
+                            
+                            <section id="ready-ready">
+
+                            
+
+                                <h3>
+                                    ready
+                                    <em> (Callback)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Execute callback when <code>DOMContentLoaded</code> fires for <code>document</code>, or immediately if called afterwards.</p>
+
+                                    
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            
+                                            <tr>
+                                                <td><em>Callback</em></td>
+                                                <td><span class="label label-primary">handler</span></td>
+                                                <td>
+                                                    to execute when initial DOM content is loaded.
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            
+                                        </tbody>
+                                    </table>
+                                    
+
+                                    
+                                    <p><strong>Returns</strong><br>
+                                        
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        The wrapped collection
+                                        <span class="label label-default">chainable</span>
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                        
+                                    </p>
+                                    
+
+                                    <ul class="nav nav-tabs">
+                                        
+                                        <li class="active"><a href="#ready-example-0" data-toggle="tab">Example</a></li>
+                                        
+                                        <li>
+                                            <a href="#ready-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        
+                                        <div class="active tab-pane" id="ready-example-0">
+                                            <pre><code class="language-javascript">$(document).ready(callback);
+</code></pre>
+                                        </div>
+                                        
+                                        <div class="tab-pane" id="ready-source">
+                                            <pre><code class="language-javascript">function ready(handler) {
+    if (/complete|loaded|interactive/.test(document.readyState) &amp;&amp; document.body) {
+        handler();
+    } else {
+        document.addEventListener(&#x27;DOMContentLoaded&#x27;, handler, false)
+    }
     return this;
 }</code></pre>
                                         </div>
