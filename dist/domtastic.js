@@ -30,7 +30,7 @@ if (typeof selector !== 'undefined') {
 extend($, contains, mode, noconflict, type);
 extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra);
 extend(apiNodeList, array);
-$.version = '0.7.4';
+$.version = '0.7.5';
 $.extend = extend;
 $.fn = api;
 $.fnList = apiNodeList;
