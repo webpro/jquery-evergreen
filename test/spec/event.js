@@ -413,7 +413,7 @@ describe('events', function() {
             expect(spy.firstCall.args[0].detail).to.equal(eventData);
         });
 
-        it('should be able send non-bubbling events', function() {
+        it('should be able to send non-bubbling events', function() {
             var element = $(document.body),
                 eventType = getRndStr();
             element.on(eventType, spy);
@@ -461,8 +461,8 @@ describe('events', function() {
         });
 
         it('should prevent default event behavior', function() {
-            var element = $('<div></div>'),
-                eventType = getRndStr();
+            var element = $('<form action="#"/>'),
+                eventType = 'submit';
             element.on(eventType, function(event) {
                 expect(event.isDefaultPrevented()).to.be.true;
             });
