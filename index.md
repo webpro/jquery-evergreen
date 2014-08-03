@@ -6,11 +6,11 @@ title: DOMtastic
 
 # DOMtastic
 
-Small & fast DOM and event library for modern browsers.
+Small, fast, and modular DOM and event library for modern browsers.
 Having the same familiar API as jQuery (but without the extra "weight" of modules like `$.ajax`, `$.animate`, and `$.Deferred`), it works great stand-alone or paired up with e.g. Backbone or Angular.
-The library is only 3-4KB (min+gzip), and it's easy to create a custom build to exclude parts you don't need.
+It's easy to create a custom build to include or exclude parts, while the library weighs in at only 3 to 14KB (minified).
 
-The [source](https://github.com/webpro/DOMtastic) is written using ES6 features, and transpiled to AMD and CommonJS with [Traceur](https://github.com/google/traceur-compiler). Browserify is used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global).
+The [source](https://github.com/webpro/DOMtastic) is written using ES6 features, and transpiled to AMD and CommonJS with [Traceur](https://github.com/google/traceur-compiler). Browserify is used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global). However, you are encouraged to pick the modules you want in your Browserify or AMD setup, without any overhead ([read more](#Build-a-custom-API-for-your-application)).
 
 This library was recently renamed from "jQuery Evergreen".
 
@@ -31,34 +31,53 @@ This library was recently renamed from "jQuery Evergreen".
 
 ### CommonJS / Browserify
 
-    # Install
-	npm install domtastic
+#### Install
 
-	# Use
-	var $ = require('domtastic');
+```bash
+npm install domtastic
+```
+
+#### Use
+
+```javascript
+var $ = require('domtastic');
+```
 
 ### AMD
 
-    # Install
-	bower install domtastic
+#### Install
 
-	# Configure
-	paths: {
-		'domtastic': 'bower_components/domtastic/amd/index'
-	}
+```bash
+bower install domtastic
+```
 
-	# Use
-	define(['domtastic'], function($) {
-		$('.earth').addClass('evergreen').on('sunrise', '.people', awake);
-	});
+#### Configure
+
+```json
+paths: {
+    'domtastic': 'bower_components/domtastic/amd/index'
+}
+```
+
+#### Use
+
+```javascript
+define(['domtastic'], function($) {
+    $('.earth').addClass('evergreen').on('sunrise', '.people', awake);
+});
+```
 
 ### Browser Global
 
-	# Configure
-	<script src="//cdn.jsdelivr.net/domtastic/0.7/domtastic.min.js"></script>
+#### Use
 
-	# Use
-	$('.planet').addClass('evergreen').on('sunrise', '.grass', grow);
+```html
+<script src="//cdn.jsdelivr.net/domtastic/0.7/domtastic.min.js"></script>
+```
+
+```javascript
+$('.planet').addClass('evergreen').on('sunrise', '.grass', grow);
+```
 
 ### Bundles
 
@@ -82,55 +101,55 @@ After installation using npm or Bower, the `bundle` folder is where you can find
 
 ### [Attr](http://webpro.github.io/DOMtastic/doc#attr)
 
-	attr
-	removeAttr
+    attr
+    removeAttr
 
 ### [Class](http://webpro.github.io/DOMtastic/doc#class)
 
-	addClass
-	removeClass
-	toggleClass
-	hasClass
+    addClass
+    removeClass
+    toggleClass
+    hasClass
 
 ### [Contains](http://webpro.github.io/DOMtastic/doc#contains)
 
-	contains
+    contains
 
 ### [DOM](http://webpro.github.io/DOMtastic/doc#dom)
 
-	after
-	append
-	before
-	clone
-	prepend
+    after
+    append
+    before
+    clone
+    prepend
 
 ### [Event](http://webpro.github.io/DOMtastic/doc#event)
 
-	on
-	off
-	delegate (deprecated, will be removed soon)
-	undelegate (deprecated, will be removed soon)
-	trigger
-	triggerHandler
+    on
+    off
+    delegate (deprecated, will be removed soon)
+    undelegate (deprecated, will be removed soon)
+    trigger
+    triggerHandler
 
 ### [HTML](http://webpro.github.io/DOMtastic/doc#html)
 
-	html
+    html
 
 ### [NoConflict](http://webpro.github.io/DOMtastic/doc#noconflict)
 
-	noConflict
+    noConflict
 
 ### [Ready](http://webpro.github.io/DOMtastic/doc#ready)
 
-	ready
+    ready
 
 ### [Selector](http://webpro.github.io/DOMtastic/doc#selector)
 
-	$
-	closest
-	find
-	matches
+    $
+    closest
+    find
+    matches
 
 
 ## API (bare)
@@ -143,17 +162,17 @@ The pre-built "full" bundle also includes the following modules:
 
 ### [CSS](http://webpro.github.io/DOMtastic/doc#css)
 
-	css
+    css
 
 ### [Data](http://webpro.github.io/DOMtastic/doc#data)
 
-	data
-	prop
+    data
+    prop
 
 ### [DOM (extra)](http://webpro.github.io/DOMtastic/doc#dom_extra)
 
-	appendTo
-	empty
+    appendTo
+    empty
     remove
     replaceWith
     text
@@ -161,26 +180,26 @@ The pre-built "full" bundle also includes the following modules:
 
 ### [Mode](http://webpro.github.io/DOMtastic/doc#mode)
 
-	isNative
-	native
+    isNative
+    native
 
 ### [Selector (extra)](http://webpro.github.io/DOMtastic/doc#selector_extra)
 
-	children
-	contents
-	eq
-	get
-	parent
-	slice
+    children
+    contents
+    eq
+    get
+    parent
+    slice
 
 ### [Type](http://webpro.github.io/DOMtastic/doc#type)
 
-	isArray
-	isFunction
+    isArray
+    isFunction
 
-## But it doesn't even have ...!
+## But it doesn't even have _[awesomest-method]_!
 
-As mentioned in the introduction, DOMtastic doesn't have methods for your Ajax, Animation and Deferred needs. Please find your own libraries to fill in the gaps as needed. Here are just some examples:
+As mentioned in the introduction, DOMtastic doesn't have methods for your Ajax, Animation, Deferred, and whatnot needs. Please find your own libraries to fill in the gaps as needed. Here are just some examples:
 
 * Ajax: [microjs#ajax](http://microjs.com/#ajax), [rest.js](https://github.com/cujojs/rest)
 * Animation: [microjs#animation](http://microjs.com/#animation), [Move.js](http://visionmedia.github.io/move.js/), [Animate.css](https://daneden.me/animate/)
@@ -198,38 +217,47 @@ Latest versions of Chrome, Firefox, Safari, Opera, Chrome Mobile iOS, and Mobile
 
 ## Performance
 
-Run the [benchmark suite](http://webpro.github.io/DOMtastic/benchmark/) to compare the performance of various methods of jQuery, Zepto and DOMtastic.
+Run the [benchmark suite](http://webpro.github.io/DOMtastic/benchmark/) to compare the performance of various methods of jQuery, Zepto and DOMtastic (tl/dr; it's fast!).
 
 ## Native Mode
 
-You can [opt-in](https://github.com/webpro/DOMtastic/blob/master/src/mode.js) to work directly with `Node` and live `NodeList` objects, as opposed to the default, wrapped `$` object.
+You can [opt-in](https://github.com/webpro/DOMtastic/blob/master/src/mode.js) to work directly with `Node` and live `NodeList` objects, as opposed to the default, wrapped `$` object. Just make sure the "mode" module is present (i.e. in the "full" or a custom build):
+
+	$.native();
+    var elements = $('.items');
+    elements instanceof NodeList; // true
+    elements.addClass('cool'); // works
 
 ## Custom Build
 
 You can build a UMD bundle that _excludes_ specific modules that you don't need:
 
-	git clone git@github.com:webpro/DOMtastic.git
-	cd DOMtastic
-	npm install
-	gulp --exclude=attr,mode,html
+```bash
+git clone git@github.com:webpro/DOMtastic.git
+cd DOMtastic
+npm install
+gulp --exclude=attr,mode,html
+```
 
 Alternatively, you can do the opposite and _include_ what you need:
 
-	gulp --include=selector,class
+```bash
+gulp --include=selector,class
+```
 
 Find the output in the `dist/` folder.
 
-### Going all the way
+### Build a custom API for your application
 
-You can also build a custom API from the ground up. By default, DOMtastic [does it](https://github.com/webpro/DOMtastic/blob/master/src/api.js) for you, but you can also do it yourself in a highly custom approach. Grab the `$` function from the `selector`, and extend the `$.fn` object with methods from specific modules:
+You can also build a custom API from the ground up. By default, DOMtastic [does it](https://github.com/webpro/DOMtastic/blob/master/src/api.js) for you, but you can easily do it yourself in a highly custom approach. Grab the `$` function from the `selector`, and extend the `$.fn` object with methods from specific modules:
 
-```
+```javascript
 var selector = require('domtastic/commonjs/selector'),
     class_ = require('domtastic/commonjs/class');
 
 var $ = selector.$;
 $.fn = {};
-$.fn.addClass = class_.addClass;
+$.fn.addClass = class_.addClass; // Or e.g. _.extend($, class_)
 $.fn.removeClass = class_.removeClass;
 
 module.exports = $;
@@ -239,7 +267,7 @@ This way, you don't have the overhead of the UMD boilerplate in a custom bundle,
 
 ## Test
 
-Run the [test suite](http://webpro.github.io/DOMtastic/test/). You can also clone/fork the sources from Github and run tests locally.
+Run the hosted [test suite](http://webpro.github.io/DOMtastic/test/). You can also clone/fork the sources from Github, and run the tests locally.
 
 ## Credits
 
