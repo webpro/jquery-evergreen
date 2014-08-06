@@ -1047,8 +1047,7 @@ var each = forEach;</code></pre>
                                         
                                         <div class="tab-pane" id="reverse-source">
                                             <pre><code class="language-javascript">function reverse() {
-    var elements = ArrayProto.slice.call(this);
-    return $(ArrayProto.reverse.call(elements));
+    return $(toArray(this).reverse());
 }</code></pre>
                                         </div>
                                     </div>
@@ -3161,7 +3160,7 @@ var each = forEach;</code></pre>
                                         <div class="tab-pane" id="text-source">
                                             <pre><code class="language-javascript">function text(value){
 
-    if(typeof value !== &#x27;string&#x27;) {
+    if(value == null) {
         return this[0].textContent;
     }
 
@@ -3253,7 +3252,7 @@ var each = forEach;</code></pre>
                                         <div class="tab-pane" id="val-source">
                                             <pre><code class="language-javascript">function val(value){
 
-    if(typeof value !== &#x27;string&#x27;) {
+    if(value == null) {
         return this[0].value;
     }
 
