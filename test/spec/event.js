@@ -209,23 +209,24 @@ describe('events', function() {
 
         it('should prevent default', function() {
 
-            var parent = $('#testFragment'),
-                child = $('.fourth'),
-                eventType = getRndStr(),
+            var element = $('#testFragment a'),
+                eventType = 'click',
                 event = new CustomEvent(eventType, { bubbles: true, cancelable: true, detail: undefined }),
-                eventSpy = sinon.spy(event, 'preventDefault');
+                eventSpy = sinon.spy(event, 'preventDefault'),
+                hash = '#' + getRndStr();
 
-            parent.on(eventType, spy);
-            child.on(eventType, function(event) {
+            element.on(eventType, function(event) {
                 expect(event.isDefaultPrevented()).to.be.false;
                 event.preventDefault();
                 expect(event.isDefaultPrevented()).to.be.true;
             });
 
-            child[0].dispatchEvent(event);
+            element[0].dispatchEvent(event);
 
             expect(eventSpy).to.have.been.called;
-            expect(spy).to.have.been.called;
+            expect(location.hash.replace(/^#/, '')).to.equal('');
+
+            location.hash = '';
 
         });
 
@@ -388,94 +389,6 @@ describe('events', function() {
                 expect(spy).not.to.have.been.called;
             });
 
-        });
-
-    });
-
-    describe('trigger', function() {
-
-        it('should execute handler for detached nodes', function() {
-            var element = $('<div></div>'),
-                eventType = getRndStr();
-            element.on(eventType, spy);
-            element.trigger(eventType);
-            expect(spy).to.have.been.called;
-        });
-
-        it('should execute handler and pass the data as event detail', function() {
-            var element = $('#testFragment'),
-                eventType = getRndStr(),
-                eventData = {a: 1};
-            element.on(eventType, spy);
-            element.trigger(eventType, eventData);
-            expect(spy).to.have.been.called;
-            expect(spy.firstCall.args[1]).to.equal(eventData);
-            expect(spy.firstCall.args[0].detail).to.equal(eventData);
-        });
-
-        it('should be able to send non-bubbling events', function() {
-            var element = $(document.body),
-                eventType = getRndStr();
-            element.on(eventType, spy);
-            $('.two').trigger(eventType, null, {bubbles: false});
-            expect(spy).not.to.have.been.called;
-        });
-
-        it('should call direct methods for specific event types ("blur", "click", "focus", and "select")', function() {
-            var element = $('#testFragment input');
-            ['blur', 'click', 'focus', 'select'].forEach(function(eventType) {
-                spy = sinon.spy(element[0], eventType);
-                element.trigger(eventType);
-                expect(spy).to.have.been.called;
-                element[0][eventType].restore();
-            });
-        });
-
-        it('should not call direct methods for other event types that do have such methods', function() {
-            var element = $('#testFragment input'),
-                eventType = 'getAttribute';
-                spy = sinon.spy(element[0], eventType);
-            element.trigger(eventType);
-            expect(spy).not.to.have.been.called;
-            element[0][eventType].restore();
-        });
-
-    });
-
-    describe('triggerHandler', function() {
-
-        it('should execute handler', function() {
-            var element = $('<div></div>'),
-                eventType = getRndStr();
-            element.on(eventType, spy);
-            element.triggerHandler(eventType);
-            expect(spy).to.have.been.called;
-        });
-
-        it('should not bubble', function() {
-            var element = $('<div><span></span></div>'),
-                eventType = getRndStr();
-            element.on(eventType, spy);
-            element.find('span').triggerHandler(eventType);
-            expect(spy).not.to.have.been.called;
-        });
-
-        it('should prevent default event behavior', function() {
-            var element = $('<form action="#"/>'),
-                eventType = 'submit';
-            element.on(eventType, function(event) {
-                expect(event.isDefaultPrevented()).to.be.true;
-            });
-            element.triggerHandler(eventType);
-        });
-
-        it('should execute handler for first element only', function() {
-            var element = $('<p></p><p></p>'),
-                eventType = getRndStr();
-            $(element[0]).on(eventType, spy);
-            $(element[1]).on(eventType, spy);
-            element.triggerHandler(eventType);
-            expect(spy).to.have.been.calledOnce;
         });
 
     });
