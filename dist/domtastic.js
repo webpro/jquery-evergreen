@@ -906,9 +906,7 @@ var $__0 = _dereq_('./util'),
     global = $__0.global,
     each = $__0.each;
 var closest = _dereq_('./selector').closest;
-var isIE = /msie|trident/i.test(navigator.userAgent),
-    isPhantom = /phantom/i.test(navigator.userAgent),
-    reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
+var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
     reKeyEvent = /^key/;
 function trigger(type, data) {
   var params = arguments[2] !== (void 0) ? arguments[2] : {};
@@ -929,7 +927,7 @@ function trigger(type, data) {
   return this;
 }
 function getEventConstructor(type) {
-  return isIE || isPhantom ? CustomEvent : reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent;
+  return !supportsOtherEventConstructors ? CustomEvent : reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent;
 }
 function triggerHandler(type, data) {
   if (this[0]) {
@@ -989,6 +987,14 @@ var isEventBubblingInDetachedTree = (function() {
     child.dispatchEvent(new CustomEvent('e', {bubbles: true}));
   }
   return isBubbling;
+})();
+var supportsOtherEventConstructors = (function() {
+  try {
+    new window.MouseEvent('click');
+  } catch (e) {
+    return false;
+  }
+  return true;
 })();
 ;
 module.exports = {

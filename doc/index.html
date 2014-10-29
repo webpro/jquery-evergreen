@@ -3898,7 +3898,7 @@ function undelegate(selector, eventName, handler) {
 }
 
 function getEventConstructor(type) {
-    return isIE || isPhantom ? CustomEvent : reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent;
+    return !supportsOtherEventConstructors ? CustomEvent : reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent;
 }</code></pre>
                                         </div>
                                     </div>
