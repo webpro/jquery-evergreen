@@ -256,6 +256,7 @@
                         <a href="#util"><strong>Util</strong></a>
                         <ul class="">
                                 <li><a href="#util-extend">extend</a></li>
+                                <li><a href="#util-extendAll">extendAll</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -4135,7 +4136,7 @@ function getEventConstructor(type) {
 
                                 <div class="block">
 
-                                    <p>Assign properties from source object(s) to target object</p>
+                                    <p>Assign enumerable properties from source object(s) to target object</p>
 
                                     <table class="table table-condensed">
                                         <thead>
@@ -4203,6 +4204,85 @@ function getEventConstructor(type) {
                 target[prop] = src[prop];
             }
         }
+    });
+    return target;
+}</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="util-extendAll">
+
+
+                                <h3>
+                                    extendAll
+                                    <em> (target, source)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Assign all properties (including non-enumerable) from source object(s) to target object</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>target</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Object to extend
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>source</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    Object to extend from
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        Extended object
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#extendAll-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#extendAll-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="extendAll-example-0">
+                                            <pre><code class="language-javascript">// Sorry, no example available.</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="extendAll-source">
+                                            <pre><code class="language-javascript">function extendAll(target, ...sources) {
+    sources.forEach(function(src) {
+        Object.getOwnPropertyNames(src).forEach(function(prop) {
+            target[prop] = src[prop];
+        });
     });
     return target;
 }</code></pre>
