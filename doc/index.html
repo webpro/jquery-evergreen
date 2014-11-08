@@ -3350,7 +3350,7 @@ function undelegate(selector, eventName, handler) {
                                         <div class="tab-pane" id="matches-source">
                                             <pre><code class="language-javascript">var matches = (function() {
     var context = typeof Element !== &#x27;undefined&#x27; ? Element.prototype : global,
-        _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.webkitMatchesSelector || context.msMatchesSelector || context.oMatchesSelector;
+        _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
     return function(element, selector) {
         return _matches.call(element, selector);
     };
@@ -3899,7 +3899,7 @@ function undelegate(selector, eventName, handler) {
 }
 
 function getEventConstructor(type) {
-    return !supportsOtherEventConstructors ? CustomEvent : reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent;
+    return supportsOtherEventConstructors ? (reMouseEvent.test(type) ? MouseEvent : (reKeyEvent.test(type) ? KeyboardEvent : CustomEvent)) : CustomEvent;
 }</code></pre>
                                         </div>
                                     </div>
