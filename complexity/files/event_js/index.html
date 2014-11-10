@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">74.37</p>
+      <p class="stat">73.53</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">244</p>
+      <p class="stat">231</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">53.66</p>
+      <p class="stat">44.00</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">2.44</p>
+      <p class="stat">1.38</p>
     </div>
   </div>
 </div>
@@ -90,131 +89,136 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;event&quot;;
-var $__0 = require(&#039;./util&#039;),
-    global = $__0.global,
-    each = $__0.each;
-var matches = require(&#039;./selector&#039;).matches;
-function on(eventName, selector, handler, useCapture) {
-  if (typeof selector === &#039;function&#039;) {
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Events
+ */
+
+&quot;use strict&quot;;
+
+var each = require(&#039;./util&#039;).each;
+var closest = require(&#039;./selector&#039;).closest;
+
+/**
+ * Shorthand for `addEventListener`. Supports event delegation if a filter (`selector`) is provided.
+ *
+ * @param {String} eventNames List of space-separated event types to be added to the element(s)
+ * @param {String} [selector] Selector to filter descendants that delegate the event to this element.
+ * @param {Function} handler Event handler
+ * @param {Boolean} useCapture=false
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).on(&#039;click&#039;, callback);
+ *     $(&#039;.container&#039;).on(&#039;click focus&#039;, &#039;.item&#039;, handler);
+ */
+
+function on(eventNames, selector, handler, useCapture) {
+  if (typeof selector === &quot;function&quot;) {
     handler = selector;
     selector = null;
   }
-  var parts = eventName.split(&#039;.&#039;);
-  eventName = parts[0] || null;
-  var namespace = parts[1] || null;
-  var eventListener = proxyHandler(handler);
-  each(this, function(element) {
-    if (selector) {
-      eventListener = delegateHandler.bind(element, selector, handler);
-    }
-    element.addEventListener(eventName, eventListener, useCapture || false);
-    getHandlers(element).push({
-      eventName: eventName,
-      handler: handler,
-      eventListener: eventListener,
-      selector: selector,
-      namespace: namespace
+
+  var parts, namespace, eventListener;
+
+  eventNames.split(&quot; &quot;).forEach(function (eventName) {
+    parts = eventName.split(&quot;.&quot;);
+    eventName = parts[0] || null;
+    namespace = parts[1] || null;
+
+    eventListener = proxyHandler(handler);
+
+    each(this, function (element) {
+      if (selector) {
+        eventListener = delegateHandler.bind(element, selector, eventListener);
+      }
+
+      element.addEventListener(eventName, eventListener, useCapture || false);
+
+      getHandlers(element).push({
+        eventName: eventName,
+        handler: handler,
+        eventListener: eventListener,
+        selector: selector,
+        namespace: namespace
+      });
     });
-  });
+  }, this);
+
   return this;
 }
-function off(eventName, selector, handler, useCapture) {
-  if (typeof selector === &#039;function&#039;) {
+
+/**
+ * Shorthand for `removeEventListener`. Delegates to `undelegate` if that signature is used.
+ *
+ * @param {String} eventNames List of space-separated event types to be removed from the element(s)
+ * @param {String} [selector] Selector to filter descendants that undelegate the event to this element.
+ * @param {Function} handler Event handler
+ * @param {Boolean} useCapture=false
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).off(&#039;click&#039;, callback);
+ *     $(&#039;#my-element&#039;).off(&#039;myEvent myOtherEvent&#039;);
+ *     $(&#039;.item&#039;).off();
+ */
+
+function off(eventNames, selector, handler, useCapture) {
+  if (eventNames === undefined) eventNames = &quot;&quot;;
+
+  if (typeof selector === &quot;function&quot;) {
     handler = selector;
     selector = null;
   }
-  if (eventName) {
-    var parts = eventName.split(&#039;.&#039;);
-    eventName = parts[0];
-    var namespace = parts[1];
-  }
-  each(this, function(element) {
-    var handlers = getHandlers(element);
-    if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
-      each(handlers, function(item) {
-        element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-      });
-      clearHandlers(element);
-    } else {
-      each(handlers.filter(function(item) {
+
+  var parts, namespace, handlers;
+
+  eventNames.split(&quot; &quot;).forEach(function (eventName) {
+    parts = eventName.split(&quot;.&quot;);
+    eventName = parts[0] || null;
+    namespace = parts[1] || null;
+
+    each(this, function (element) {
+      handlers = getHandlers(element);
+
+      each(handlers.filter(function (item) {
         return ((!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector));
-      }), function(item) {
+      }), function (item) {
         element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
         handlers.splice(handlers.indexOf(item), 1);
       });
-      if (handlers.length === 0) {
+
+      if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
+        clearHandlers(element);
+      } else if (handlers.length === 0) {
         clearHandlers(element);
       }
-    }
-  });
+    });
+  }, this);
+
   return this;
 }
+
 function delegate(selector, eventName, handler) {
   return on.call(this, eventName, selector, handler);
 }
+
 function undelegate(selector, eventName, handler) {
   return off.call(this, eventName, selector, handler);
 }
-function trigger(type, data) {
-  var params = arguments[2] !== (void 0) ? arguments[2] : {};
-  params.bubbles = typeof params.bubbles === &#039;boolean&#039; ? params.bubbles : true;
-  params.cancelable = typeof params.cancelable === &#039;boolean&#039; ? params.cancelable : true;
-  params.preventDefault = typeof params.preventDefault === &#039;boolean&#039; ? params.preventDefault : false;
-  params.detail = data;
-  var event = new CustomEvent(type, params);
-  event._preventDefault = params.preventDefault;
-  each(this, function(element) {
-    if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
-      element.dispatchEvent(event);
-    } else {
-      triggerForPath(element, type, params);
-    }
-  });
-  return this;
-}
-function triggerHandler(type, data) {
-  if (this[0]) {
-    trigger.call(this[0], type, data, {
-      bubbles: false,
-      preventDefault: true
-    });
-  }
-}
-function ready(handler) {
-  if (/complete|loaded|interactive/.test(document.readyState) &amp;&amp; document.body) {
-    handler();
-  } else {
-    document.addEventListener(&#039;DOMContentLoaded&#039;, handler, false);
-  }
-  return this;
-}
-function isAttachedToDocument(element) {
-  if (element === window || element === document) {
-    return true;
-  }
-  var container = element.ownerDocument.documentElement;
-  if (container.contains) {
-    return container.contains(element);
-  } else if (container.compareDocumentPosition) {
-    return !(container.compareDocumentPosition(element) &amp; Node.DOCUMENT_POSITION_DISCONNECTED);
-  }
-  return false;
-}
-function triggerForPath(element, type) {
-  var params = arguments[2] !== (void 0) ? arguments[2] : {};
-  params.bubbles = false;
-  var event = new CustomEvent(type, params);
-  event._target = element;
-  do {
-    element.dispatchEvent(event);
-  } while (element = element.parentNode);
-}
-var eventKeyProp = &#039;__domtastic_event__&#039;;
+
+/**
+ * Get event handlers from an element
+ *
+ * @private
+ * @param {Node} element
+ * @return {Array}
+ */
+
+var eventKeyProp = &quot;__domtastic_event__&quot;;
 var id = 1;
 var handlers = {};
 var unusedKeys = [];
+
 function getHandlers(element) {
   if (!element[eventKeyProp]) {
     element[eventKeyProp] = unusedKeys.length === 0 ? ++id : unusedKeys.pop();
@@ -222,6 +226,14 @@ function getHandlers(element) {
   var key = element[eventKeyProp];
   return handlers[key] || (handlers[key] = []);
 }
+
+/**
+ * Clear event handlers for an element
+ *
+ * @private
+ * @param {Node} element
+ */
+
 function clearHandlers(element) {
   var key = element[eventKeyProp];
   if (handlers[key]) {
@@ -230,110 +242,88 @@ function clearHandlers(element) {
     unusedKeys.push(key);
   }
 }
+
+/**
+ * Function to create a handler that augments the event object with some extra methods,
+ * and executes the callback with the event and the event data (i.e. `event.detail`).
+ *
+ * @private
+ * @param handler Callback to execute as `handler(event, data)`
+ * @return {Function}
+ */
+
 function proxyHandler(handler) {
-  return function(event) {
-    handler(augmentEvent(event), event.detail);
+  return function (event) {
+    handler.call(this, augmentEvent(event), event.detail);
   };
 }
-var augmentEvent = (function() {
-  var eventMethods = {
-    preventDefault: &#039;isDefaultPrevented&#039;,
-    stopImmediatePropagation: &#039;isImmediatePropagationStopped&#039;,
-    stopPropagation: &#039;isPropagationStopped&#039;
-  },
-      noop = (function() {}),
-      returnTrue = (function() {
-        return true;
-      }),
-      returnFalse = (function() {
-        return false;
-      });
-  return function(event) {
-    for (var methodName in eventMethods) {
-      (function(methodName, testMethodName, originalMethod) {
-        event[methodName] = function() {
-          this[testMethodName] = returnTrue;
-          return originalMethod.apply(this, arguments);
-        };
-        event[testMethodName] = returnFalse;
-      }(methodName, eventMethods[methodName], event[methodName] || noop));
-    }
-    if (event._preventDefault) {
-      event.preventDefault();
+
+/**
+ * Attempt to augment events and implement something closer to DOM Level 3 Events.
+ *
+ * @private
+ * @param {Object} event
+ * @return {Function}
+ */
+
+var augmentEvent = (function () {
+  var methodName, eventMethods = {
+    preventDefault: &quot;isDefaultPrevented&quot;,
+    stopImmediatePropagation: &quot;isImmediatePropagationStopped&quot;,
+    stopPropagation: &quot;isPropagationStopped&quot;
+  }, returnTrue = function () {
+    return true;
+  }, returnFalse = function () {
+    return false;
+  };
+
+  return function (event) {
+    if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
+      for (methodName in eventMethods) {
+        (function (methodName, testMethodName, originalMethod) {
+          event[methodName] = function () {
+            this[testMethodName] = returnTrue;
+            return originalMethod &amp;&amp; originalMethod.apply(this, arguments);
+          };
+          event[testMethodName] = returnFalse;
+        }(methodName, eventMethods[methodName], event[methodName]));
+      }
+      if (event._preventDefault) {
+        event.preventDefault();
+      }
     }
     return event;
   };
 })();
+
+/**
+ * Function to test whether delegated events match the provided `selector` (filter),
+ * if the event propagation was stopped, and then actually call the provided event handler.
+ * Use `this` instead of `event.currentTarget` on the event object.
+ *
+ * @private
+ * @param {String} selector Selector to filter descendants that undelegate the event to this element.
+ * @param {Function} handler Event handler
+ * @param {Event} event
+ */
+
 function delegateHandler(selector, handler, event) {
-  var eventTarget = event._target || event.target;
-  if (matches(eventTarget, selector)) {
-    if (!event.currentTarget) {
-      event.currentTarget = eventTarget;
+  var eventTarget = event._target || event.target, currentTarget = closest.call([eventTarget], selector, this)[0];
+  if (currentTarget &amp;&amp; currentTarget !== this) {
+    if (currentTarget === eventTarget || !(event.isPropagationStopped &amp;&amp; event.isPropagationStopped())) {
+      handler.call(currentTarget, event);
     }
-    handler.call(eventTarget, event);
   }
 }
-(function() {
-  function CustomEvent(event) {
-    var params = arguments[1] !== (void 0) ? arguments[1] : {
-      bubbles: false,
-      cancelable: false,
-      detail: undefined
-    };
-    var customEvent = document.createEvent(&#039;CustomEvent&#039;);
-    customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-    return customEvent;
-  }
-  CustomEvent.prototype = global.CustomEvent &amp;&amp; global.CustomEvent.prototype;
-  global.CustomEvent = CustomEvent;
-})();
-var isEventBubblingInDetachedTree = (function() {
-  var isBubbling = false,
-      doc = global.document;
-  if (doc) {
-    var parent = doc.createElement(&#039;div&#039;),
-        child = parent.cloneNode();
-    parent.appendChild(child);
-    parent.addEventListener(&#039;e&#039;, function() {
-      isBubbling = true;
-    });
-    child.dispatchEvent(new CustomEvent(&#039;e&#039;, {bubbles: true}));
-  }
-  return isBubbling;
-})();
-var bind = on,
-    unbind = off;
-;
-module.exports = {
-  get on() {
-    return on;
-  },
-  get off() {
-    return off;
-  },
-  get delegate() {
-    return delegate;
-  },
-  get undelegate() {
-    return undelegate;
-  },
-  get trigger() {
-    return trigger;
-  },
-  get triggerHandler() {
-    return triggerHandler;
-  },
-  get ready() {
-    return ready;
-  },
-  get bind() {
-    return bind;
-  },
-  get unbind() {
-    return unbind;
-  },
-  __esModule: true
-};</textarea>
+
+var bind = on, unbind = off;
+
+exports.on = on;
+exports.off = off;
+exports.delegate = delegate;
+exports.undelegate = undelegate;
+exports.bind = bind;
+exports.unbind = unbind;</textarea>
   </div>
 </div>
 

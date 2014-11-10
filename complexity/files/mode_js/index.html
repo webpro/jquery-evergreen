@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">72.88</p>
+      <p class="stat">69.77</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">63</p>
+      <p class="stat">93</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">25.70</p>
+      <p class="stat">25.51</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.43</p>
+      <p class="stat">0.38</p>
     </div>
   </div>
 </div>
@@ -90,12 +89,41 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;mode&quot;;
+    <textarea id="file-source" class="col-md-12">/*
+ * # Opt-in to Native Mode
+ *
+ * The default, non-intrusive mode is similar to how jQuery operates: working with static, array-like `$` objects:
+ *
+ *     $(&#039;.items&#039;).append(&#039;&lt;span&gt;foo&lt;/span&gt;);
+ *     $(document.body).on(&#039;click&#039;, &#039;.tab&#039;, handler);
+ *
+ * However, you can opt-in to work with live NodeList objects.
+ * In this &quot;native&quot; mode, the `Node` and `NodeList` prototypes are augmented (in a safe and reversible manner) to fill up the chainable API,
+ * to enable working with `Node` and `NodeList` objects directly:
+ *
+ *     var collection = document.querySelectorAll(&#039;.items&#039;);
+ *     collection.append(&#039;&lt;span&gt;foo&lt;/span&gt;);
+ *     collection.addClass(&#039;bar&#039;);
+ *     collection.forEach(iteratorFn);
+ *     collection.find(&#039;.more&#039;);
+ *
+ *     document.body.on(&#039;click&#039;, &#039;.tab&#039;, handler)
+ *
+ * Note that in native mode, `$(selector)` can stil be used. It returns a NodeList.
+ *
+ * Build the lib using gulp with `mode` not excluded.
+ * Use `$.native()` to activate this behavior. The API is the same in both modes.
+ */
+
+&quot;use strict&quot;;
+
 var global = require(&#039;./util&#039;).global;
+
 var isNative = false;
-function native() {
-  var goNative = arguments[0] !== (void 0) ? arguments[0] : true;
+
+function native(goNative) {
+  if (goNative === undefined) goNative = true;
+
   var wasNative = isNative;
   isNative = goNative;
   if (global.$) {
@@ -109,8 +137,16 @@ function native() {
   }
   return isNative;
 }
-var NodeProto = typeof Node !== &#039;undefined&#039; &amp;&amp; Node.prototype,
-    NodeListProto = typeof NodeList !== &#039;undefined&#039; &amp;&amp; NodeList.prototype;
+
+var NodeProto = typeof Node !== &quot;undefined&quot; &amp;&amp; Node.prototype, NodeListProto = typeof NodeList !== &quot;undefined&quot; &amp;&amp; NodeList.prototype;
+
+/*
+ * Add a property (i.e. method) to an object in a safe and reversible manner.
+ * Only add the method if object not already had it (non-inherited).
+ *
+ * @private
+ */
+
 function augment(obj, key, value) {
   if (!obj.hasOwnProperty(key)) {
     Object.defineProperty(obj, key, {
@@ -120,39 +156,58 @@ function augment(obj, key, value) {
     });
   }
 }
-var unaugment = (function(obj, key) {
+
+/*
+ * Remove property from object (only inherited properties will be removed).
+ *
+ * @private
+ */
+
+var unaugment = function (obj, key) {
   delete obj[key];
-});
+};
+
+/*
+ * Augment native `Node` and `NodeList` objects in native mode.
+ *
+ * @private
+ */
+
 function augmentNativePrototypes(methodsNode, methodsNodeList) {
   var key;
+
   for (key in methodsNode) {
     augment(NodeProto, key, methodsNode[key]);
     augment(NodeListProto, key, methodsNode[key]);
   }
+
   for (key in methodsNodeList) {
     augment(NodeListProto, key, methodsNodeList[key]);
   }
 }
+
+/*
+ * Unaugment native `Node` and `NodeList` objects to switch back to default mode.
+ * Mainly used for tests.
+ *
+ * @private
+ */
+
 function unaugmentNativePrototypes(methodsNode, methodsNodeList) {
   var key;
+
   for (key in methodsNode) {
     unaugment(NodeProto, key);
     unaugment(NodeListProto, key);
   }
+
   for (key in methodsNodeList) {
     unaugment(NodeListProto, key);
   }
 }
-;
-module.exports = {
-  get isNative() {
-    return isNative;
-  },
-  get native() {
-    return native;
-  },
-  __esModule: true
-};</textarea>
+
+exports.isNative = isNative;
+exports.native = native;</textarea>
   </div>
 </div>
 

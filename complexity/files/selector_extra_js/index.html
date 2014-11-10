@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">84.47</p>
+      <p class="stat">83.09</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">80</p>
+      <p class="stat">119</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">28.00</p>
+      <p class="stat">22.65</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.53</p>
+      <p class="stat">0.38</p>
     </div>
   </div>
 </div>
@@ -90,19 +89,33 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;selector_extra&quot;;
-var $__0 = require(&#039;./util&#039;),
-    each = $__0.each,
-    toArray = $__0.toArray;
-var $__0 = require(&#039;./selector&#039;),
-    $ = $__0.$,
-    matches = $__0.matches;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Selector (extra)
+ */
+
+&quot;use strict&quot;;
+
+var each = require(&#039;./util&#039;).each;
+var toArray = require(&#039;./util&#039;).toArray;
+var $ = require(&#039;./selector&#039;).$;
+var matches = require(&#039;./selector&#039;).matches;
+
+/**
+ * Return children of each element in the collection, optionally filtered by a selector.
+ *
+ * @param {String} [selector] Filter
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).children();
+ *     $(&#039;.selector&#039;).children(&#039;.filter&#039;);
+ */
+
 function children(selector) {
   var nodes = [];
-  each(this, function(element) {
+  each(this, function (element) {
     if (element.children) {
-      each(element.children, function(child) {
+      each(element.children, function (child) {
         if (!selector || (selector &amp;&amp; matches(child, selector))) {
           nodes.push(child);
         }
@@ -111,65 +124,94 @@ function children(selector) {
   });
   return $(nodes);
 }
-function closest(selector) {
-  var node = this[0];
-  for (; node.nodeType !== node.DOCUMENT_NODE; node = node.parentNode) {
-    if (matches(node, selector)) {
-      return $(node);
-    }
-  }
-  return $();
-}
+
+/**
+ * Return child nodes of each element in the collection, including text and comment nodes.
+ *
+ * @return {Object} New wrapped collection
+ * @example
+ *     $(&#039;.selector&#039;).contents();
+ */
+
 function contents() {
   var nodes = [];
-  each(this, function(element) {
+  each(this, function (element) {
     nodes.push.apply(nodes, toArray(element.childNodes));
   });
   return $(nodes);
 }
+
+/**
+ * Return a collection containing only the one at the specified index.
+ *
+ * @param {Number} index
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).eq(1)
+ *     ➤ The second item; result is the same as doing $($(&#039;.items&#039;)[1]);
+ */
+
 function eq(index) {
   return slice.call(this, index, index + 1);
 }
+
+/**
+ * Return the DOM element at the specified index.
+ *
+ * @param {Number} index
+ * @return {Node} Element at the specified index
+ * @example
+ *     $(&#039;.items&#039;).get(1)
+ *     ➤ The second element; result is the same as doing $(&#039;.items&#039;)[1];
+ */
+
 function get(index) {
   return this[index];
 }
+
+/**
+ * Return the parent elements of each element in the collection, optionally filtered by a selector.
+ *
+ * @param {String} [selector] Filter
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).parent();
+ *     $(&#039;.selector&#039;).parent(&#039;.filter&#039;);
+ */
+
 function parent(selector) {
   var nodes = [];
-  each(this, function(element) {
+  each(this, function (element) {
     if (!selector || (selector &amp;&amp; matches(element.parentNode, selector))) {
       nodes.push(element.parentNode);
     }
   });
   return $(nodes);
 }
+
+/**
+ * Create a new, sliced collection.
+ *
+ * @param {Number} start
+ * @param {Number} end
+ * @return {Object} New wrapped collection
+ * @example
+ *     $(&#039;.items&#039;).slice(1, 3)
+ *     ➤ New wrapped collection containing the second, third, and fourth element.
+ */
+
 function slice(start, end) {
   return $([].slice.apply(this, arguments));
 }
-;
-module.exports = {
-  get children() {
-    return children;
-  },
-  get contents() {
-    return contents;
-  },
-  get closest() {
-    return closest;
-  },
-  get eq() {
-    return eq;
-  },
-  get get() {
-    return get;
-  },
-  get parent() {
-    return parent;
-  },
-  get slice() {
-    return slice;
-  },
-  __esModule: true
-};</textarea>
+
+exports.children = children;
+exports.contents = contents;
+exports.eq = eq;
+exports.get = get;
+exports.parent = parent;
+exports.slice = slice;</textarea>
   </div>
 </div>
 

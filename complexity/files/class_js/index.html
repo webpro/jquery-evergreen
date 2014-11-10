@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">91.33</p>
+      <p class="stat">84.66</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">44</p>
+      <p class="stat">91</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">11.23</p>
+      <p class="stat">15.68</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.22</p>
+      <p class="stat">0.29</p>
     </div>
   </div>
 </div>
@@ -90,50 +89,101 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;class&quot;;
-var $__0 = require(&#039;./util&#039;),
-    makeIterable = $__0.makeIterable,
-    each = $__0.each;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Class
+ */
+
+&quot;use strict&quot;;
+
+var makeIterable = require(&#039;./util&#039;).makeIterable;
+var each = require(&#039;./util&#039;).each;
+
+/**
+ * Add a class to the element(s)
+ *
+ * @param {String} value Space-separated class name(s) to add to the element(s).
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).addClass(&#039;bar&#039;);
+ *     $(&#039;.item&#039;).addClass(&#039;bar foo&#039;);
+ */
+
 function addClass(value) {
-  each(this, function(element) {
-    element.classList.add(value);
-  });
+  if (value &amp;&amp; value.length) {
+    each(value.split(&quot; &quot;), function (className) {
+      each(this, function (element) {
+        element.classList.add(className);
+      });
+    }.bind(this));
+  }
   return this;
 }
+
+/**
+ * Remove a class from the element(s)
+ *
+ * @param {String} value Space-separated class name(s) to remove from the element(s).
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).removeClass(&#039;bar&#039;);
+ *     $(&#039;.items&#039;).removeClass(&#039;bar foo&#039;);
+ */
+
 function removeClass(value) {
-  each(this, function(element) {
-    element.classList.remove(value);
-  });
+  if (value &amp;&amp; value.length) {
+    each(value.split(&quot; &quot;), function (className) {
+      each(this, function (element) {
+        element.classList.remove(className);
+      });
+    }.bind(this));
+  }
   return this;
 }
+
+/**
+ * Toggle a class at the element(s)
+ *
+ * @param {String} value Space-separated class name(s) to toggle at the element(s).
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).toggleClass(&#039;bar&#039;);
+ *     $(&#039;.item&#039;).toggleClass(&#039;bar foo&#039;);
+ */
+
 function toggleClass(value) {
-  each(this, function(element) {
-    element.classList.toggle(value);
-  });
+  if (value &amp;&amp; value.length) {
+    each(value.split(&quot; &quot;), function (className) {
+      each(this, function (element) {
+        element.classList.toggle(className);
+      });
+    }.bind(this));
+  }
   return this;
 }
+
+/**
+ * Check if the element(s) have a class.
+ *
+ * @param {String} value Check if the DOM element contains the class name. When applied to multiple elements,
+ * returns `true` if _any_ of them contains the class name.
+ * @return {Boolean} Whether the element&#039;s class attribute contains the class name.
+ * @example
+ *     $(&#039;.item&#039;).hasClass(&#039;bar&#039;);
+ */
+
 function hasClass(value) {
-  return makeIterable(this).some(function(element) {
+  return makeIterable(this).some(function (element) {
     return element.classList.contains(value);
   });
 }
-;
-module.exports = {
-  get addClass() {
-    return addClass;
-  },
-  get removeClass() {
-    return removeClass;
-  },
-  get toggleClass() {
-    return toggleClass;
-  },
-  get hasClass() {
-    return hasClass;
-  },
-  __esModule: true
-};</textarea>
+
+exports.addClass = addClass;
+exports.removeClass = removeClass;
+exports.toggleClass = toggleClass;
+exports.hasClass = hasClass;</textarea>
   </div>
 </div>
 

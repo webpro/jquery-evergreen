@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">69.85</p>
+      <p class="stat">66.98</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">94</p>
+      <p class="stat">186</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">36.00</p>
+      <p class="stat">33.04</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.94</p>
+      <p class="stat">0.97</p>
     </div>
   </div>
 </div>
@@ -90,100 +89,196 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;selector&quot;;
-var $__0 = require(&#039;./util&#039;),
-    global = $__0.global,
-    makeIterable = $__0.makeIterable;
-var slice = [].slice,
-    isPrototypeSet = false,
-    reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/,
-    reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/,
-    reSimpleSelector = /^[\.#]?[\w-]*$/;
-function $(selector) {
-  var context = arguments[1] !== (void 0) ? arguments[1] : document;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Selector
+ */
+
+&quot;use strict&quot;;
+
+var global = require(&#039;./util&#039;).global;
+var makeIterable = require(&#039;./util&#039;).makeIterable;
+
+var isPrototypeSet = false, reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/, reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/, reSimpleSelector = /^[\.#]?[\w-]*$/;
+
+/*
+ * Versatile wrapper for `querySelectorAll`.
+ *
+ * @param {String|Node|NodeList|Array} selector Query selector, `Node`, `NodeList`, array of elements, or HTML fragment string.
+ * @param {String|Node|NodeList} context=document The context for the selector to query elements.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     var $items = $(.items&#039;);
+ * @example
+ *     var $element = $(domElement);
+ * @example
+ *     var $list = $(nodeList, document.body);
+ * @example
+ *     var $element = $(&#039;&lt;p&gt;evergreen&lt;/p&gt;&#039;);
+ */
+
+function $(selector, context) {
+  if (context === undefined) context = document;
+
   var collection;
+
   if (!selector) {
     collection = document.querySelectorAll(null);
   } else if (selector instanceof Wrapper) {
     return selector;
-  } else if (typeof selector !== &#039;string&#039;) {
+  } else if (typeof selector !== &quot;string&quot;) {
     collection = makeIterable(selector);
   } else if (reFragment.test(selector)) {
     collection = createFragment(selector);
   } else {
-    context = typeof context === &#039;string&#039; ? document.querySelector(context) : context.length ? context[0] : context;
+    context = typeof context === &quot;string&quot; ? document.querySelector(context) : context.length ? context[0] : context;
+
     collection = querySelector(selector, context);
   }
+
   return $.isNative ? collection : wrap(collection);
 }
+
+/*
+ * Chaining for the `$` wrapper (aliasing `find` for `$`).
+ *
+ * @param {String|Node|NodeList|Array} selector Query selector, `Node`, `NodeList`, array of elements, or HTML fragment string.
+ * @return {Object} The wrapped collection
+ * @example
+ *     $(&#039;.selector&#039;).find(&#039;.deep&#039;).$(&#039;.deepest&#039;);
+ */
+
 function find(selector) {
   return $(selector, this);
 }
-var matches = (function() {
-  var context = typeof Element !== &#039;undefined&#039; ? Element.prototype : global,
-      _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.webkitMatchesSelector || context.msMatchesSelector || context.oMatchesSelector;
-  return function(element, selector) {
+
+/**
+ * Return the closest element matching the selector (starting by itself).
+ *
+ * @param {String} selector Filter
+ * @param {Object} [context] If provided, matching elements must be a descendant of this element
+ * @return {Object} New wrapped collection (containing zero or one element)
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).closest(&#039;.container&#039;);
+ */
+
+function closest(selector, context) {
+  var node = this[0];
+  for (; node.nodeType !== node.DOCUMENT_NODE &amp;&amp; node !== context; node = node.parentNode) {
+    if (matches(node, selector)) {
+      return $(node);
+    }
+  }
+  return $();
+}
+
+/*
+ * Returns `true` if the element would be selected by the specified selector string; otherwise, returns `false`.
+ *
+ * @param {Node} element Element to test
+ * @param {String} selector Selector to match against element
+ * @return {Boolean}
+ *
+ * @example
+ *     $.matches(element, &#039;.match&#039;);
+ */
+
+var matches = (function () {
+  var context = typeof Element !== &quot;undefined&quot; ? Element.prototype : global, _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
+  return function (element, selector) {
     return _matches.call(element, selector);
   };
 })();
+
+/*
+ * Use the faster `getElementById`, `getElementsByClassName` or `getElementsByTagName` over `querySelectorAll` if possible.
+ *
+ * @private
+ * @param {String} selector Query selector.
+ * @param {Node} context The context for the selector to query elements.
+ * @return {Object} NodeList, HTMLCollection, or Array of matching elements (depending on method used).
+ */
+
 function querySelector(selector, context) {
   var isSimpleSelector = reSimpleSelector.test(selector);
+
   if (isSimpleSelector &amp;&amp; !$.isNative) {
-    if (selector[0] === &#039;#&#039;) {
+    if (selector[0] === &quot;#&quot;) {
       var element = (context.getElementById ? context : document).getElementById(selector.slice(1));
       return element ? [element] : [];
     }
-    if (selector[0] === &#039;.&#039;) {
+    if (selector[0] === &quot;.&quot;) {
       return context.getElementsByClassName(selector.slice(1));
     }
     return context.getElementsByTagName(selector);
   }
+
   return context.querySelectorAll(selector);
 }
+
+/*
+ * Create DOM fragment from an HTML string
+ *
+ * @private
+ * @param {String} html String representing HTML.
+ * @return {NodeList}
+ */
+
 function createFragment(html) {
   if (reSingleTag.test(html)) {
     return [document.createElement(RegExp.$1)];
   }
-  var elements = [],
-      container = document.createElement(&#039;div&#039;),
-      children = container.childNodes;
+
+  var elements = [], container = document.createElement(&quot;div&quot;), children = container.childNodes;
+
   container.innerHTML = html;
-  for (var i = 0,
-      l = children.length; i &lt; l; i++) {
+
+  for (var i = 0, l = children.length; i &lt; l; i++) {
     elements.push(children[i]);
   }
+
   return elements;
 }
+
+/*
+ * Calling `$(selector)` returns a wrapped collection of elements.
+ *
+ * @private
+ * @param {NodeList|Array} collection Element(s) to wrap.
+ * @return (Object) The wrapped collection
+ */
+
 function wrap(collection) {
   if (!isPrototypeSet) {
     Wrapper.prototype = $.fn;
     Wrapper.prototype.constructor = Wrapper;
     isPrototypeSet = true;
   }
+
   return new Wrapper(collection);
 }
+
+/*
+ * Constructor for the Object.prototype strategy
+ *
+ * @constructor
+ * @private
+ * @param {NodeList|Array} collection Element(s) to wrap.
+ */
+
 function Wrapper(collection) {
-  var i = 0,
-      length = collection.length;
-  for (; i &lt; length; ) {
+  var i = 0, length = collection.length;
+  for (; i &lt; length;) {
     this[i] = collection[i++];
   }
   this.length = length;
 }
-;
-module.exports = {
-  get $() {
-    return $;
-  },
-  get find() {
-    return find;
-  },
-  get matches() {
-    return matches;
-  },
-  __esModule: true
-};</textarea>
+
+exports.$ = $;
+exports.find = find;
+exports.closest = closest;
+exports.matches = matches;</textarea>
   </div>
 </div>
 

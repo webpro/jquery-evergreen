@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">78.15</p>
+      <p class="stat">74.82</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">35</p>
+      <p class="stat">59</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">23.33</p>
+      <p class="stat">24.97</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.26</p>
+      <p class="stat">0.22</p>
     </div>
   </div>
 </div>
@@ -90,41 +89,69 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;data&quot;;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Data
+ */
+
+&quot;use strict&quot;;
+
 var each = require(&#039;./util&#039;).each;
-var dataKeyProp = &#039;__domtastic_data__&#039;;
+
+var dataKeyProp = &quot;__domtastic_data__&quot;;
+
+/**
+ * Get data from first element, or set data for each element in the collection.
+ *
+ * @param {String} key The key for the data to get or set.
+ * @param {String} [value] The data to set.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).data(&#039;attrName&#039;); // get
+ *     $(&#039;.item&#039;).data(&#039;attrName&#039;, {any: &#039;data&#039;}); // set
+ */
+
 function data(key, value) {
-  if (typeof key === &#039;string&#039; &amp;&amp; typeof value === &#039;undefined&#039;) {
+  if (typeof key === &quot;string&quot; &amp;&amp; typeof value === &quot;undefined&quot;) {
     var element = this.nodeType ? this : this[0];
     return element &amp;&amp; element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
   }
-  each(this, function(element) {
+
+  each(this, function (element) {
     element[dataKeyProp] = element[dataKeyProp] || {};
     element[dataKeyProp][key] = value;
   });
+
   return this;
 }
+
+/**
+ * Get property from first element, or set property on each element in the collection.
+ *
+ * @param {String} key The name of the property to get or set.
+ * @param {String} [value] The value of the property to set.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).prop(&#039;attrName&#039;); // get
+ *     $(&#039;.item&#039;).prop(&#039;attrName&#039;, &#039;attrValue&#039;); // set
+ */
+
 function prop(key, value) {
-  if (typeof key === &#039;string&#039; &amp;&amp; typeof value === &#039;undefined&#039;) {
+  if (typeof key === &quot;string&quot; &amp;&amp; typeof value === &quot;undefined&quot;) {
     var element = this.nodeType ? this : this[0];
     return element &amp;&amp; element ? element[key] : undefined;
   }
-  each(this, function(element) {
+
+  each(this, function (element) {
     element[key] = value;
   });
+
   return this;
 }
-;
-module.exports = {
-  get data() {
-    return data;
-  },
-  get prop() {
-    return prop;
-  },
-  __esModule: true
-};</textarea>
+
+exports.data = data;
+exports.prop = prop;</textarea>
   </div>
 </div>
 

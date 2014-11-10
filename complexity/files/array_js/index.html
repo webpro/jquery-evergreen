@@ -15,7 +15,6 @@
   <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
   <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="../../assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
   <link href="../../assets/css/plato.css" rel="stylesheet">
   <link href="../../assets/css/plato-file.css" rel="stylesheet">
@@ -45,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">90.63</p>
+      <p class="stat">87.37</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">69</p>
+      <p class="stat">173</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">17.35</p>
+      <p class="stat">15.89</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.44</p>
+      <p class="stat">0.37</p>
     </div>
   </div>
 </div>
@@ -90,75 +89,183 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
-var __moduleName = &quot;array&quot;;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Array
+ */
+
+&quot;use strict&quot;;
+
 var _each = require(&#039;./util&#039;).each;
-var $__0 = require(&#039;./selector&#039;),
-    $ = $__0.$,
-    matches = $__0.matches;
+var toArray = require(&#039;./util&#039;).toArray;
+var $ = require(&#039;./selector&#039;).$;
+var matches = require(&#039;./selector&#039;).matches;
+
 var ArrayProto = Array.prototype;
+
+/**
+ * Checks if the given callback returns a true(-ish) value for each element in the collection.
+ *
+ * @param {Function} callback Function to execute for each element, invoked with `element` as argument.
+ * @param {Object} [thisArg] Value to use as `this` when executing `callback`.
+ * @return {Boolean} Whether each element passed the callback check.
+ * @example
+ *     $(&#039;.items&#039;).every(function(element) {
+ *         return element.hasAttribute(&#039;active&#039;)
+ *     });
+ *     ➤ true/false
+ */
+
 var every = ArrayProto.every;
+
+/**
+ * Filter the collection by selector or function, and return a new collection with the result.
+ *
+ * @param {String|Function} selector Selector or function to filter the collection.
+ * @param {Object} [thisArg] Value to use as `this` when executing `callback`.
+ * @return {Object} A new wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).filter(&#039;.active&#039;);
+ * @example
+ *     $(&#039;.items&#039;).filter(function(element) {
+ *         return element.hasAttribute(&#039;active&#039;)
+ *     });
+ */
+
 function filter(selector, thisArg) {
-  var callback = typeof selector === &#039;function&#039; ? selector : function(element) {
+  var callback = typeof selector === &quot;function&quot; ? selector : function (element) {
     return matches(element, selector);
   };
   return $(ArrayProto.filter.call(this, callback, thisArg));
 }
+
+/**
+ * Execute a function for each element in the collection.
+ *
+ * @param {Function} callback Function to execute for each element, invoked with `element` as argument.
+ * @param {Object} [thisArg] Value to use as `this` when executing `callback`.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).forEach(function(element) {
+ *         element.style.color = &#039;evergreen&#039;;
+ *     );
+ */
+
 function forEach(callback, thisArg) {
   return _each(this, callback, thisArg);
 }
+
 var each = forEach;
+
+/**
+ * Returns the index of an element in the collection.
+ *
+ * @param {Node} element
+ * @return {Number} The zero-based index, -1 if not found.
+ * @example
+ *     $(&#039;.items&#039;).indexOf(element);
+ *     ➤ 2
+ */
+
 var indexOf = ArrayProto.indexOf;
+
+/**
+ * Create a new collection by executing the callback for each element in the collection.
+ *
+ * @param {Function} callback Function to execute for each element, invoked with `element` as argument.
+ * @param {Object} [thisArg] Value to use as `this` when executing `callback`.
+ * @return {Array} Collection with the return value of the executed callback for each element.
+ * @example
+ *     $(&#039;.items&#039;).map(function(element) {
+ *         return element.getAttribute(&#039;name&#039;)
+ *     });
+ *     ➤ [&#039;ever&#039;, &#039;green&#039;]
+ */
+
 var map = ArrayProto.map;
+
+/**
+ * Removes the last element from the collection, and returns that element.
+ *
+ * @return {Object} The last element from the collection.
+ * @example
+ *     var lastElement = $(&#039;.items&#039;).pop();
+ */
+
 var pop = ArrayProto.pop;
+
+/**
+ * Adds one or more elements to the end of the collection, and returns the new length of the collection.
+ *
+ * @param {Object} element Element(s) to add to the collection
+ * @return {Number} The new length of the collection
+ * @example
+ *     $(&#039;.items&#039;).push(element);
+ */
+
 var push = ArrayProto.push;
+
+/**
+ * Reverses an array in place. The first array element becomes the last and the last becomes the first.
+ *
+ * @return {Object} The wrapped collection, reversed
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).reverse();
+ */
+
 function reverse() {
-  var elements = ArrayProto.slice.call(this);
-  return $(ArrayProto.reverse.call(elements));
+  return $(toArray(this).reverse());
 }
+
+/**
+ * Removes the first element from the collection, and returns that element.
+ *
+ * @return {Object} The first element from the collection.
+ * @example
+ *     var firstElement = $(&#039;.items&#039;).shift();
+ */
+
 var shift = ArrayProto.shift;
+
+/**
+ * Checks if the given callback returns a true(-ish) value for any of the elements in the collection.
+ *
+ * @param {Function} callback Function to execute for each element, invoked with `element` as argument.
+ * @return {Boolean} Whether any element passed the callback check.
+ * @example
+ *     $(&#039;.items&#039;).some(function(element) {
+ *         return element.hasAttribute(&#039;active&#039;)
+ *     });
+ *     ➤ true/false
+ */
+
 var some = ArrayProto.some;
+
+/**
+ * Adds one or more elements to the beginning of the collection, and returns the new length of the collection.
+ *
+ * @param {Object} element Element(s) to add to the collection
+ * @return {Number} The new length of the collection
+ * @example
+ *     $(&#039;.items&#039;).unshift(element);
+ */
+
 var unshift = ArrayProto.unshift;
-;
-module.exports = {
-  get each() {
-    return each;
-  },
-  get every() {
-    return every;
-  },
-  get filter() {
-    return filter;
-  },
-  get forEach() {
-    return forEach;
-  },
-  get indexOf() {
-    return indexOf;
-  },
-  get map() {
-    return map;
-  },
-  get pop() {
-    return pop;
-  },
-  get push() {
-    return push;
-  },
-  get reverse() {
-    return reverse;
-  },
-  get shift() {
-    return shift;
-  },
-  get some() {
-    return some;
-  },
-  get unshift() {
-    return unshift;
-  },
-  __esModule: true
-};</textarea>
+
+exports.each = each;
+exports.every = every;
+exports.filter = filter;
+exports.forEach = forEach;
+exports.indexOf = indexOf;
+exports.map = map;
+exports.pop = pop;
+exports.push = push;
+exports.reverse = reverse;
+exports.shift = shift;
+exports.some = some;
+exports.unshift = unshift;</textarea>
   </div>
 </div>
 

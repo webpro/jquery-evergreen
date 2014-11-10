@@ -18,7 +18,6 @@
 
   <link href="assets/css/vendor/bootstrap.css" rel="stylesheet">
   <link href="assets/css/vendor/font-awesome.css" rel="stylesheet">
-  <link href="assets/css/vendor/font-awesome-ie7.css" rel="stylesheet">
   <link href="assets/css/vendor/morris.css" rel="stylesheet">
   <link href="assets/css/plato.css" rel="stylesheet">
   <link href="assets/css/plato-overview.css" rel="stylesheet">
@@ -50,11 +49,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Total/Average Lines <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code" data-original-title="SLOC" data-container="body"></i></h2>
-      <p class="stat">989 / 65</p>
+      <p class="stat">1887 / 89</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Average Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index" data-container="body"></i></a></h2>
-      <p class="stat">82.82</p>
+      <p class="stat">72.25</p>
     </div>
   </div>
 </div>
@@ -102,7 +101,9 @@
         <button type="button" id="button-complexity" class="btn btn-default complexity">complexity</button>
         <button type="button" id="button-sloc" class="btn btn-default sloc">sloc</button>
         <button type="button" id="button-bugs" class="btn btn-default bugs">est errors</button>
+        
         <button type="button" id="button-lint" class="btn btn-default lint">lint errors</button>
+        
       </div>
     </div>
   </div>
@@ -117,24 +118,11 @@
       <li class="col-md-12">
         <div class="row">
           <span class="fade-left fadeout visible-large"></span>
-          <span class="col-md-4 file"><a class="file-link" href="./files/api_js/index.html">api.js</a></span>
-        <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="38"
-              data-bugs="0.36"
-              data-complexity="2"
-          ></span>
-        </div>
-      </li>
-      
-      <li class="col-md-12">
-        <div class="row">
-          <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/array_js/index.html">array.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="69"
-              data-bugs="0.44"
+              data-lint="0"
+              data-sloc="173"
+              data-bugs="0.37"
               data-complexity="2"
           ></span>
         </div>
@@ -145,9 +133,9 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/attr_js/index.html">attr.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="35"
-              data-bugs="0.21"
+              data-lint="0"
+              data-sloc="55"
+              data-bugs="0.17"
               data-complexity="5"
           ></span>
         </div>
@@ -158,10 +146,36 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/class_js/index.html">class.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="44"
-              data-bugs="0.22"
-              data-complexity="1"
+              data-lint="0"
+              data-sloc="91"
+              data-bugs="0.29"
+              data-complexity="4"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/contains_js/index.html">contains.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="0"
+              data-sloc="14"
+              data-bugs="0.07"
+              data-complexity="6"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/css_js/index.html">css.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="0"
+              data-sloc="71"
+              data-bugs="0.35"
+              data-complexity="8"
           ></span>
         </div>
       </li>
@@ -171,9 +185,9 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/data_js/index.html">data.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="35"
-              data-bugs="0.26"
+              data-lint="0"
+              data-sloc="59"
+              data-bugs="0.22"
               data-complexity="8"
           ></span>
         </div>
@@ -184,9 +198,9 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/dom_js/index.html">dom.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="2"
-              data-sloc="121"
-              data-bugs="0.89"
+              data-lint="1"
+              data-sloc="173"
+              data-bugs="0.83"
               data-complexity="28"
           ></span>
         </div>
@@ -197,9 +211,9 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/dom_extra_js/index.html">dom_extra.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="68"
-              data-bugs="0.40"
+              data-lint="2"
+              data-sloc="115"
+              data-bugs="0.36"
               data-complexity="5"
           ></span>
         </div>
@@ -210,10 +224,10 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/event_js/index.html">event.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="3"
-              data-sloc="244"
-              data-bugs="2.44"
-              data-complexity="42"
+              data-lint="1"
+              data-sloc="231"
+              data-bugs="1.38"
+              data-complexity="29"
           ></span>
         </div>
       </li>
@@ -223,10 +237,36 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/html_js/index.html">html.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="20"
-              data-bugs="0.11"
+              data-lint="0"
+              data-sloc="29"
+              data-bugs="0.08"
               data-complexity="4"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/index_bare_js/index.html">index.bare.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="1"
+              data-sloc="41"
+              data-bugs="0.20"
+              data-complexity="2"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/index_full_js/index.html">index.full.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="1"
+              data-sloc="65"
+              data-bugs="0.41"
+              data-complexity="2"
           ></span>
         </div>
       </li>
@@ -236,10 +276,10 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/index_js/index.html">index.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="0"
-              data-sloc="10"
-              data-bugs="0.05"
-              data-complexity="1"
+              data-lint="1"
+              data-sloc="49"
+              data-bugs="0.26"
+              data-complexity="2"
           ></span>
         </div>
       </li>
@@ -249,9 +289,9 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/mode_js/index.html">mode.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="63"
-              data-bugs="0.43"
+              data-lint="0"
+              data-sloc="93"
+              data-bugs="0.38"
               data-complexity="6"
           ></span>
         </div>
@@ -262,10 +302,23 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/noconflict_js/index.html">noconflict.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="15"
-              data-bugs="0.06"
+              data-lint="0"
+              data-sloc="26"
+              data-bugs="0.04"
               data-complexity="1"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/ready_js/index.html">ready.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="0"
+              data-sloc="12"
+              data-bugs="0.05"
+              data-complexity="2"
           ></span>
         </div>
       </li>
@@ -275,10 +328,10 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/selector_js/index.html">selector.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="94"
-              data-bugs="0.94"
-              data-complexity="24"
+              data-lint="0"
+              data-sloc="186"
+              data-bugs="0.97"
+              data-complexity="26"
           ></span>
         </div>
       </li>
@@ -288,10 +341,36 @@
           <span class="fade-left fadeout visible-large"></span>
           <span class="col-md-4 file"><a class="file-link" href="./files/selector_extra_js/index.html">selector_extra.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
-              data-lint="1"
-              data-sloc="80"
-              data-bugs="0.53"
-              data-complexity="8"
+              data-lint="0"
+              data-sloc="119"
+              data-bugs="0.38"
+              data-complexity="6"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/trigger_js/index.html">trigger.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="3"
+              data-sloc="174"
+              data-bugs="1.02"
+              data-complexity="19"
+          ></span>
+        </div>
+      </li>
+      
+      <li class="col-md-12">
+        <div class="row">
+          <span class="fade-left fadeout visible-large"></span>
+          <span class="col-md-4 file"><a class="file-link" href="./files/type_js/index.html">type.js</a></span>
+        <span class="col-md-8 file-chart js-file-chart"
+              data-lint="0"
+              data-sloc="23"
+              data-bugs="0.03"
+              data-complexity="1"
           ></span>
         </div>
       </li>
@@ -302,8 +381,8 @@
           <span class="col-md-4 file"><a class="file-link" href="./files/util_js/index.html">util.js</a></span>
         <span class="col-md-8 file-chart js-file-chart"
               data-lint="2"
-              data-sloc="53"
-              data-bugs="0.37"
+              data-sloc="88"
+              data-bugs="0.34"
               data-complexity="7"
           ></span>
         </div>
