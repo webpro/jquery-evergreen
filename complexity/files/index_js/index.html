@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">51.68</p>
+      <p class="stat">47.62</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">49</p>
+      <p class="stat">65</p>
     </div>
   </div>
   <div class="row historical">
@@ -66,7 +66,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.26</p>
+      <p class="stat">0.41</p>
     </div>
   </div>
 </div>
@@ -97,7 +97,7 @@
 
 var extend = require(&#039;./util&#039;).extend;
 
-var api = {}, $ = {};
+var api = {}, apiNodeList = {}, $ = {};
 
 var array = require(&#039;./array&#039;);
 
@@ -107,17 +107,31 @@ var class_ = require(&#039;./class&#039;);
 
 var contains = require(&#039;./contains&#039;);
 
+var css = require(&#039;./css&#039;);
+
+var data = require(&#039;./data&#039;);
+
 var dom = require(&#039;./dom&#039;);
+
+var dom_extra = require(&#039;./dom_extra&#039;);
 
 var event = require(&#039;./event&#039;);
 
 var html = require(&#039;./html&#039;);
+
+var mode = require(&#039;./mode&#039;);
 
 var noconflict = require(&#039;./noconflict&#039;);
 
 var ready = require(&#039;./ready&#039;);
 
 var selector = require(&#039;./selector&#039;);
+
+var selector_extra = require(&#039;./selector_extra&#039;);
+
+var trigger = require(&#039;./trigger&#039;);
+
+var type = require(&#039;./type&#039;);
 
 if (typeof selector !== &quot;undefined&quot;) {
   $ = selector.$;
@@ -126,8 +140,9 @@ if (typeof selector !== &quot;undefined&quot;) {
   api.closest = selector.closest;
 }
 
-extend($, contains, noconflict);
-extend(api, array, attr, class_, dom, event, html, ready);
+extend($, contains, mode, noconflict, type);
+extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+extend(apiNodeList, array);
 
 // Version
 
@@ -137,9 +152,10 @@ $.version = &quot;0.8.0&quot;;
 
 $.extend = extend;
 
-// Compatibility for jQuery plugins
+// Internal properties to switch between default and native mode
 
 $.fn = api;
+$.fnList = apiNodeList;
 
 exports.default = $;</textarea>
   </div>

@@ -177,7 +177,7 @@ exports.shift = shift;
 exports.some = some;
 exports.unshift = unshift;
 
-},{"./selector":15,"./util":19}],2:[function(require,module,exports){
+},{"./selector":14,"./util":18}],2:[function(require,module,exports){
 /**
  * @module Attr
  */
@@ -238,7 +238,7 @@ function removeAttr(key) {
 exports.attr = attr;
 exports.removeAttr = removeAttr;
 
-},{"./util":19}],3:[function(require,module,exports){
+},{"./util":18}],3:[function(require,module,exports){
 /**
  * @module Class
  */
@@ -335,7 +335,7 @@ exports.removeClass = removeClass;
 exports.toggleClass = toggleClass;
 exports.hasClass = hasClass;
 
-},{"./util":19}],4:[function(require,module,exports){
+},{"./util":18}],4:[function(require,module,exports){
 /**
  * @module contains
  */
@@ -443,7 +443,7 @@ function css(key, value) {
 
 exports.css = css;
 
-},{"./util":19}],6:[function(require,module,exports){
+},{"./util":18}],6:[function(require,module,exports){
 /**
  * @module Data
  */
@@ -508,7 +508,7 @@ function prop(key, value) {
 exports.data = data;
 exports.prop = prop;
 
-},{"./util":19}],7:[function(require,module,exports){
+},{"./util":18}],7:[function(require,module,exports){
 /**
  * @module DOM
  */
@@ -687,7 +687,7 @@ exports.before = before;
 exports.after = after;
 exports.clone = clone;
 
-},{"./util":19}],8:[function(require,module,exports){
+},{"./util":18}],8:[function(require,module,exports){
 /**
  * @module DOM (extra)
  */
@@ -808,7 +808,7 @@ exports.replaceWith = replaceWith;
 exports.text = text;
 exports.val = val;
 
-},{"./dom":7,"./selector":15,"./util":19}],9:[function(require,module,exports){
+},{"./dom":7,"./selector":14,"./util":18}],9:[function(require,module,exports){
 /**
  * @module Events
  */
@@ -991,7 +991,7 @@ var augmentEvent = (function () {
     preventDefault: "isDefaultPrevented",
     stopImmediatePropagation: "isImmediatePropagationStopped",
     stopPropagation: "isPropagationStopped"
-  }, returnTrue = function () {
+  }, noop = function () {}, returnTrue = function () {
     return true;
   }, returnFalse = function () {
     return false;
@@ -1003,10 +1003,10 @@ var augmentEvent = (function () {
         (function (methodName, testMethodName, originalMethod) {
           event[methodName] = function () {
             this[testMethodName] = returnTrue;
-            return originalMethod && originalMethod.apply(this, arguments);
+            return originalMethod.apply(this, arguments);
           };
           event[testMethodName] = returnFalse;
-        }(methodName, eventMethods[methodName], event[methodName]));
+        }(methodName, eventMethods[methodName], event[methodName] || noop));
       }
       if (event._preventDefault) {
         event.preventDefault();
@@ -1045,7 +1045,7 @@ exports.undelegate = undelegate;
 exports.bind = bind;
 exports.unbind = unbind;
 
-},{"./selector":15,"./util":19}],10:[function(require,module,exports){
+},{"./selector":14,"./util":18}],10:[function(require,module,exports){
 /**
  * @module HTML
  */
@@ -1080,78 +1080,7 @@ function html(fragment) {
 
 exports.html = html;
 
-},{"./util":19}],11:[function(require,module,exports){
-/**
- * @module API
- */
-
-"use strict";
-
-var extend = require('./util').extend;
-
-var api = {}, apiNodeList = {}, $ = {};
-
-var array = require('./array');
-
-var attr = require('./attr');
-
-var class_ = require('./class');
-
-var contains = require('./contains');
-
-var css = require('./css');
-
-var data = require('./data');
-
-var dom = require('./dom');
-
-var dom_extra = require('./dom_extra');
-
-var event = require('./event');
-
-var html = require('./html');
-
-var mode = require('./mode');
-
-var noconflict = require('./noconflict');
-
-var ready = require('./ready');
-
-var selector = require('./selector');
-
-var selector_extra = require('./selector_extra');
-
-var trigger = require('./trigger');
-
-var type = require('./type');
-
-if (typeof selector !== "undefined") {
-  $ = selector.$;
-  $.matches = selector.matches;
-  api.find = selector.find;
-  api.closest = selector.closest;
-}
-
-extend($, contains, mode, noconflict, type);
-extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
-extend(apiNodeList, array);
-
-// Version
-
-$.version = "0.8.0";
-
-// Util
-
-$.extend = extend;
-
-// Internal properties to switch between default and native mode
-
-$.fn = api;
-$.fnList = apiNodeList;
-
-exports.default = $;
-
-},{"./array":1,"./attr":2,"./class":3,"./contains":4,"./css":5,"./data":6,"./dom":7,"./dom_extra":8,"./event":9,"./html":10,"./mode":12,"./noconflict":13,"./ready":14,"./selector":15,"./selector_extra":16,"./trigger":17,"./type":18,"./util":19}],12:[function(require,module,exports){
+},{"./util":18}],11:[function(require,module,exports){
 /*
  * # Opt-in to Native Mode
  *
@@ -1174,7 +1103,7 @@ exports.default = $;
  *
  * Note that in native mode, `$(selector)` can stil be used. It returns a NodeList.
  *
- * Build the lib using gulp with `mode` not excluded.
+ * Build the lib with `mode` included.
  * Use `$.native()` to activate this behavior. The API is the same in both modes.
  */
 
@@ -1272,7 +1201,7 @@ function unaugmentNativePrototypes(methodsNode, methodsNodeList) {
 exports.isNative = isNative;
 exports.native = native;
 
-},{"./util":19}],13:[function(require,module,exports){
+},{"./util":18}],12:[function(require,module,exports){
 /**
  * @module noConflict
  */
@@ -1304,7 +1233,7 @@ function noConflict() {
 
 exports.noConflict = noConflict;
 
-},{"./util":19}],14:[function(require,module,exports){
+},{"./util":18}],13:[function(require,module,exports){
 /**
  * @module Ready
  */
@@ -1332,7 +1261,7 @@ function ready(handler) {
 
 exports.ready = ready;
 
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /**
  * @module Selector
  */
@@ -1429,7 +1358,7 @@ function closest(selector, context) {
  */
 
 var matches = (function () {
-  var context = typeof Element !== "undefined" ? Element.prototype : global, _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
+  var context = typeof Element !== "undefined" ? Element.prototype : global, _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.webkitMatchesSelector || context.msMatchesSelector || context.oMatchesSelector;
   return function (element, selector) {
     return _matches.call(element, selector);
   };
@@ -1524,7 +1453,7 @@ exports.find = find;
 exports.closest = closest;
 exports.matches = matches;
 
-},{"./util":19}],16:[function(require,module,exports){
+},{"./util":18}],15:[function(require,module,exports){
 /**
  * @module Selector (extra)
  */
@@ -1649,7 +1578,7 @@ exports.get = get;
 exports.parent = parent;
 exports.slice = slice;
 
-},{"./selector":15,"./util":19}],17:[function(require,module,exports){
+},{"./selector":14,"./util":18}],16:[function(require,module,exports){
 /**
  * @module trigger
  */
@@ -1700,7 +1629,7 @@ function trigger(type, data, params) {
 }
 
 function getEventConstructor(type) {
-  return supportsOtherEventConstructors ? (reMouseEvent.test(type) ? MouseEvent : (reKeyEvent.test(type) ? KeyboardEvent : CustomEvent)) : CustomEvent;
+  return !supportsOtherEventConstructors ? CustomEvent : reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent;
 }
 
 /**
@@ -1829,7 +1758,7 @@ var supportsOtherEventConstructors = (function () {
 exports.trigger = trigger;
 exports.triggerHandler = triggerHandler;
 
-},{"./selector":15,"./util":19}],18:[function(require,module,exports){
+},{"./selector":14,"./util":18}],17:[function(require,module,exports){
 /**
  * @module Type
  */
@@ -1871,7 +1800,7 @@ var isArray = Array.isArray;
 exports.isFunction = isFunction;
 exports.isArray = isArray;
 
-},{}],19:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 /*
  * @module Util
  */
@@ -1970,7 +1899,78 @@ exports.makeIterable = makeIterable;
 exports.each = each;
 exports.extend = extend;
 
-},{}]},{},[11])(11)
+},{}],19:[function(require,module,exports){
+/**
+ * @module API
+ */
+
+"use strict";
+
+var extend = require('./util').extend;
+
+var api = {}, apiNodeList = {}, $ = {};
+
+var array = require('./array');
+
+var attr = require('./attr');
+
+var class_ = require('./class');
+
+var contains = require('./contains');
+
+var css = require('./css');
+
+var data = require('./data');
+
+var dom = require('./dom');
+
+var dom_extra = require('./dom_extra');
+
+var event = require('./event');
+
+var html = require('./html');
+
+var mode = require('./mode');
+
+var noconflict = require('./noconflict');
+
+var ready = require('./ready');
+
+var selector = require('./selector');
+
+var selector_extra = require('./selector_extra');
+
+var trigger = require('./trigger');
+
+var type = require('./type');
+
+if (typeof selector !== "undefined") {
+  $ = selector.$;
+  $.matches = selector.matches;
+  api.find = selector.find;
+  api.closest = selector.closest;
+}
+
+extend($, contains, mode, noconflict, type);
+extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+extend(apiNodeList, array);
+
+// Version
+
+$.version = "0.8.0";
+
+// Util
+
+$.extend = extend;
+
+// Internal properties to switch between default and native mode
+
+$.fn = api;
+$.fnList = apiNodeList;
+
+exports.default = $;
+
+},{"./array":1,"./attr":2,"./class":3,"./contains":4,"./css":5,"./data":6,"./dom":7,"./dom_extra":8,"./event":9,"./html":10,"./mode":11,"./noconflict":12,"./ready":13,"./selector":14,"./selector_extra":15,"./trigger":16,"./type":17,"./util":18}]},{},[19])(19)
 });
 
 

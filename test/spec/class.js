@@ -60,7 +60,7 @@ describe('class methods', function() {
 
     it('should not throw when trying to check a class in empty collection', function() {
         var element = $('#not-there'),
-            fn = element.hasClass.bind(element),
+            fn = element.attr.bind(element),
             hasClass = element.hasClass('testClass6');
         expect(fn).not.to.throw(TypeError);
         expect(hasClass).to.be.false;

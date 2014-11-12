@@ -11,7 +11,7 @@ describe('events', function() {
         it('should attach an event handler to an element', function() {
             var element = $(document.body);
             element.on('click', spy);
-            trigger(element, 'click');
+            element.trigger('click');
             expect(spy).to.have.been.called;
         });
 
@@ -20,14 +20,14 @@ describe('events', function() {
                 eventType = getRndStr(),
                 expected = element[0];
             element.on(eventType, spy);
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy.firstCall.thisValue).to.equal(expected);
         });
 
         it('should attach event handlers to multiple elements', function() {
             var elements = $('#testFragment li');
             elements.on('click', spy);
-            trigger(elements, 'click');
+            elements.trigger('click');
             expect(spy.callCount).to.equal(5);
         });
 
@@ -35,7 +35,7 @@ describe('events', function() {
             var element = $(document.body),
                 eventType = getRndStr();
             element.on(eventType, spy);
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy).to.have.been.called;
         });
 
@@ -44,7 +44,7 @@ describe('events', function() {
                 eventType = getRndStr(),
                 eventNS = getRndStr();
             element.on([eventType, eventNS].join('.'), spy);
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy).to.have.been.called;
         });
 
@@ -52,9 +52,9 @@ describe('events', function() {
             var element = $(document.body),
                 eventTypes = [getRndStr(), getRndStr(), getRndStr()];
             element.on(eventTypes.join(' '), spy);
-            trigger(element, eventTypes[0]);
-            trigger(element, eventTypes[1]);
-            trigger(element, eventTypes[2]);
+            element.trigger(eventTypes[0]);
+            element.trigger(eventTypes[1]);
+            element.trigger(eventTypes[2]);
             expect(spy).to.have.been.calledThrice;
         });
 
@@ -64,7 +64,7 @@ describe('events', function() {
                 var eventType = getRndStr(),
                     expected = $('#testFragment')[0];
                 $(document.body).on(eventType, '#testFragment', spy);
-                trigger($('.fourth'), eventType);
+                $('.fourth').trigger(eventType);
                 expect(spy.firstCall.thisValue).to.equal(expected);
             });
 
@@ -76,7 +76,7 @@ describe('events', function() {
                     expect(this).to.equal(element[0]);
                     // expect(this).to.equal(event.currentTarget); // Can't override this property
                 });
-                trigger(element, eventType);
+                element.trigger(eventType);
             });
 
             it('should receive a delegated event from a child element', function() {
@@ -84,7 +84,7 @@ describe('events', function() {
                     eventType = getRndStr();
                 element.on(eventType, '#testFragment ul', spy);
                 element.on(eventType, '#testFragment li', spy);
-                trigger($('.fourth'), eventType);
+                $('.fourth').trigger(eventType);
                 expect(spy).to.have.been.calledTwice;
             });
 
@@ -92,17 +92,25 @@ describe('events', function() {
                 var element = $(document.body),
                     eventType = getRndStr();
                 element.on(eventType, 'li', spy);
-                trigger($('.two'), eventType);
-                trigger($('.three'), eventType);
-                trigger($('.fourth'), eventType);
+                $('.two').trigger(eventType);
+                $('.three').trigger(eventType);
+                $('.fourth').trigger(eventType);
                 expect(spy).to.have.been.calledThrice;
+            });
+
+            it('should receive a delegated event in detached nodes', function() {
+                var element = $('<div><span></span></div>'),
+                    eventType = getRndStr();
+                element.on(eventType, 'span', spy);
+                element.find('span').trigger(eventType);
+                expect(spy).to.have.been.called;
             });
 
             it('should receive delegated events from multiple child elements', function() {
                 var elements = $('#testFragment li'),
                     eventType = getRndStr();
                 elements.on(eventType, 'span', spy);
-                trigger($('#testFragment li span'), eventType);
+                $('#testFragment li span').trigger(eventType);
                 expect(spy.callCount).to.have.equal(5);
             });
 
@@ -231,8 +239,28 @@ describe('events', function() {
             var element = $(document.body),
                 eventType = getRndStr();
             element.on(eventType, spy);
-            trigger($('.two'), eventType);
+            $('.two').trigger(eventType);
             expect(spy).to.have.been.called;
+        });
+
+        it('should receive events bubbling up to a detached element', function() {
+            var element = $('<div><p></p></div>'),
+                child = $(element[0].querySelector('p')),
+                eventType = getRndStr();
+            element.on(eventType, spy);
+            child.trigger(eventType);
+            expect(spy).to.have.been.called;
+            expect(spy).to.have.been.calledOnce;
+        });
+
+        it('should receive delegated events bubbling up to a detached element', function() {
+            var element = $('<div><p></p></div>'),
+                child = $(element[0].querySelector('p')),
+                eventType = getRndStr();
+            element.on(eventType, 'p', spy);
+            child.trigger(eventType);
+            expect(spy).to.have.been.called;
+            expect(spy).to.have.been.calledOnce;
         });
 
     });
@@ -244,7 +272,7 @@ describe('events', function() {
                 eventType = getRndStr();
             element.on(eventType, spy);
             element.off(eventType, spy);
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy).not.to.have.been.called;
         });
 
@@ -254,7 +282,7 @@ describe('events', function() {
                 eventNS = getRndStr();
             element.on([eventType, eventNS].join('.'), spy);
             element.off(eventType);
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy).not.to.have.been.called;
         });
 
@@ -265,8 +293,8 @@ describe('events', function() {
             element.on([eventTypes[0], eventNS].join('.'), spy);
             element.on([eventTypes[1], eventNS].join('.'), spy);
             element.off('.' + eventNS);
-            trigger(element, eventTypes[0]);
-            trigger(element, eventTypes[1]);
+            element.trigger(eventTypes[0]);
+            element.trigger(eventTypes[1]);
             expect(spy).not.to.have.been.called;
         });
 
@@ -275,7 +303,7 @@ describe('events', function() {
                 eventType = getRndStr() + '.' + getRndStr();
             element.on(eventType, spy);
             element.off(eventType);
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy).not.to.have.been.called;
         });
 
@@ -284,12 +312,12 @@ describe('events', function() {
                 eventTypes = [getRndStr(), getRndStr(), getRndStr()];
             element.on(eventTypes.join(' '), spy);
             element.off(eventTypes[1]);
-            trigger(element, eventTypes[0]);
-            trigger(element, eventTypes[1]);
+            element.trigger(eventTypes[0]);
+            element.trigger(eventTypes[1]);
             expect(spy).to.have.been.calledOnce;
             spy.reset();
             element.off(eventTypes.join(' '));
-            trigger(element, eventTypes[2]);
+            element.trigger(eventTypes[2]);
             expect(spy).not.to.have.been.called;
         });
 
@@ -298,7 +326,7 @@ describe('events', function() {
                 eventTypes = [getRndStr(), getRndStr(), getRndStr()];
             element.on(eventTypes.join(' '), spy);
             element.off();
-            trigger(element, eventTypes[0]);
+            element.trigger(eventTypes[0]);
             expect(spy).not.to.have.been.called;
         });
 
@@ -308,7 +336,7 @@ describe('events', function() {
             element.on(eventType, spy);
             element.on(eventType, spy);
             element.off();
-            trigger(element, eventType);
+            element.trigger(eventType);
             expect(spy).not.to.have.been.called;
         });
 
@@ -317,7 +345,7 @@ describe('events', function() {
                 eventType = getRndStr();
             elements.on(eventType, spy);
             elements.off(eventType, spy);
-            trigger(elements, eventType);
+            elements.trigger(eventType);
             expect(spy).not.to.have.been.called;
         });
 
@@ -337,7 +365,7 @@ describe('events', function() {
                     eventType = getRndStr();
                 element.on(eventType, 'li', spy);
                 element.off(eventType, 'li', spy);
-                trigger($('.fourth'), eventType);
+                $('.fourth').trigger('testEvent2');
                 expect(spy).not.to.have.been.called;
             });
 
@@ -346,7 +374,7 @@ describe('events', function() {
                     eventType = getRndStr();
                 elements.on(eventType, 'li', spy);
                 elements.off(eventType, 'li', spy);
-                trigger($('.fourth'), eventType);
+                $('.fourth').trigger('testEvent21');
                 expect(spy).not.to.have.been.called;
             });
 
@@ -357,7 +385,7 @@ describe('events', function() {
                 element.on(eventType, 'li', spy);
                 element.on(eventType, 'li', spy);
                 element.off(eventType, 'li', spy);
-                trigger($('.two'), eventType);
+                $('.two').trigger(eventType);
                 expect(spy).not.to.have.been.called;
             });
 
