@@ -10,9 +10,7 @@ Small, fast, and modular DOM and event library for modern browsers.
 Having the same familiar API as jQuery (but without the extra "weight" of modules like `$.ajax`, `$.animate`, and `$.Deferred`), it works great stand-alone or paired up with e.g. Backbone or Angular.
 It's easy to create a custom build to include or exclude parts, while the library weighs in at only 3 to 14KB (minified).
 
-The [source](https://github.com/webpro/DOMtastic) is written using ES6 features, and transpiled to AMD and CommonJS with [Traceur](https://github.com/google/traceur-compiler). Browserify is used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global). However, you are encouraged to pick the modules you want in your Browserify or AMD setup, without any overhead ([read more](#Build-a-custom-API-for-your-application)).
-
-This library was recently renamed from "jQuery Evergreen".
+The [source](https://github.com/webpro/DOMtastic) is written in ES6 format, and transpiled to AMD and CommonJS with [6to5](https://6to5.github.io/). Browserify is used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global). However, you are encouraged to pick the modules you want in your Browserify or AMD setup, without any overhead ([read more](#Build-a-custom-API-for-your-application)).
 
 ## Quicklinks
 
@@ -241,20 +239,20 @@ You can build a UMD bundle that _excludes_ specific modules that you don't need:
 git clone git@github.com:webpro/DOMtastic.git
 cd DOMtastic
 npm install
-gulp bundle-custom --exclude=attr,mode,html
+bin/custom --exclude=attr,mode,html
 ```
 
 Alternatively, you can do the opposite and _include_ what you need:
 
 ```bash
-gulp bundle-custom --include=selector,class
+bin/custom --include=selector,class
 ```
 
 Find the output in the `dist/` folder.
 
 ### Build a custom API for your application
 
-You can also build a custom API from the ground up. By default, DOMtastic [does it](https://github.com/webpro/DOMtastic/blob/master/src/api.js) for you, but you can easily do it yourself in a highly custom approach. Grab the `$` function from the `selector`, and extend the `$.fn` object with methods from specific modules:
+You can also build a custom API from the ground up. By default, DOMtastic [does it](https://github.com/webpro/DOMtastic/blob/master/src/index.js) for you, but you can easily do it yourself in a highly custom approach. Grab the `$` function from the `selector`, and extend the `$.fn` object with methods from specific modules:
 
 ```javascript
 var selector = require('domtastic/commonjs/selector'),

@@ -112,7 +112,7 @@ var global = new Function(&quot;return this&quot;)();
  */
 
 function toArray(collection) {
-  var length = collection.length, result = Array(length);
+  var length = collection.length, result = new Array(length);
   for (var i = 0; i &lt; length; i++) {
     result[i] = collection[i];
   }
