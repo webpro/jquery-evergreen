@@ -1959,7 +1959,7 @@ extend(apiNodeList, array);
 
 // Version
 
-$.version = "0.8.0";
+$.version = "0.8.1";
 
 // Util
 
