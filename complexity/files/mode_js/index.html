@@ -89,41 +89,15 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">/*
- * # Opt-in to Native Mode
- *
- * The default, non-intrusive mode is similar to how jQuery operates: working with static, array-like `$` objects:
- *
- *     $(&#039;.items&#039;).append(&#039;&lt;span&gt;foo&lt;/span&gt;);
- *     $(document.body).on(&#039;click&#039;, &#039;.tab&#039;, handler);
- *
- * However, you can opt-in to work with live NodeList objects.
- * In this &quot;native&quot; mode, the `Node` and `NodeList` prototypes are augmented (in a safe and reversible manner) to fill up the chainable API,
- * to enable working with `Node` and `NodeList` objects directly:
- *
- *     var collection = document.querySelectorAll(&#039;.items&#039;);
- *     collection.append(&#039;&lt;span&gt;foo&lt;/span&gt;);
- *     collection.addClass(&#039;bar&#039;);
- *     collection.forEach(iteratorFn);
- *     collection.find(&#039;.more&#039;);
- *
- *     document.body.on(&#039;click&#039;, &#039;.tab&#039;, handler)
- *
- * Note that in native mode, `$(selector)` can stil be used. It returns a NodeList.
- *
- * Build the lib with `mode` included.
- * Use `$.native()` to activate this behavior. The API is the same in both modes.
- */
-
-&quot;use strict&quot;;
+    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
 var global = require(&#039;./util&#039;).global;
+
 
 var isNative = false;
 
 function native(goNative) {
   if (goNative === undefined) goNative = true;
-
   var wasNative = isNative;
   isNative = goNative;
   if (global.$) {

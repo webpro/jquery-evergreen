@@ -1,14 +1,11 @@
 !function(_e){function e(){return _e()["default"]};if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.$=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/**
- * @module Array
- */
-
 "use strict";
 
 var _each = require('./util').each;
 var toArray = require('./util').toArray;
 var $ = require('./selector').$;
 var matches = require('./selector').matches;
+
 
 var ArrayProto = Array.prototype;
 
@@ -22,7 +19,7 @@ var ArrayProto = Array.prototype;
  *     $('.items').every(function(element) {
  *         return element.hasAttribute('active')
  *     });
- *     ➤ true/false
+ *     // true/false
  */
 
 var every = ArrayProto.every;
@@ -75,7 +72,7 @@ var each = forEach;
  * @return {Number} The zero-based index, -1 if not found.
  * @example
  *     $('.items').indexOf(element);
- *     ➤ 2
+ *     // 2
  */
 
 var indexOf = ArrayProto.indexOf;
@@ -90,7 +87,7 @@ var indexOf = ArrayProto.indexOf;
  *     $('.items').map(function(element) {
  *         return element.getAttribute('name')
  *     });
- *     ➤ ['ever', 'green']
+ *     // ['ever', 'green']
  */
 
 var map = ArrayProto.map;
@@ -148,7 +145,7 @@ var shift = ArrayProto.shift;
  *     $('.items').some(function(element) {
  *         return element.hasAttribute('active')
  *     });
- *     ➤ true/false
+ *     // true/false
  */
 
 var some = ArrayProto.some;
@@ -178,13 +175,10 @@ exports.some = some;
 exports.unshift = unshift;
 
 },{"./selector":14,"./util":18}],2:[function(require,module,exports){
-/**
- * @module Attr
- */
-
 "use strict";
 
 var each = require('./util').each;
+
 
 /**
  * Get the value of an attribute for the first element, or set one or more attributes for each element in the collection.
@@ -239,14 +233,11 @@ exports.attr = attr;
 exports.removeAttr = removeAttr;
 
 },{"./util":18}],3:[function(require,module,exports){
-/**
- * @module Class
- */
-
 "use strict";
 
 var makeIterable = require('./util').makeIterable;
 var each = require('./util').each;
+
 
 /**
  * Add a class to the element(s)
@@ -325,7 +316,7 @@ function toggleClass(value) {
  */
 
 function hasClass(value) {
-  return makeIterable(this).some(function (element) {
+  return (this.nodeType ? [this] : this).some(function (element) {
     return element.classList.contains(value);
   });
 }
@@ -336,6 +327,8 @@ exports.toggleClass = toggleClass;
 exports.hasClass = hasClass;
 
 },{"./util":18}],4:[function(require,module,exports){
+"use strict";
+
 /**
  * @module contains
  */
@@ -348,10 +341,8 @@ exports.hasClass = hasClass;
  * @return {Boolean} Whether the `container` element contains the `element`.
  * @example
  *     $.contains(parentElement, childElement);
- *     ➤ true/false
+ *     // true/false
  */
-
-"use strict";
 
 function contains(container, element) {
   if (!container || !element || container === element) {
@@ -364,16 +355,14 @@ function contains(container, element) {
   return false;
 }
 
+
 exports.contains = contains;
 
 },{}],5:[function(require,module,exports){
-/**
- * @module Attr
- */
-
 "use strict";
 
 var each = require('./util').each;
+
 
 function isNumeric(value) {
   return !isNaN(parseFloat(value)) && isFinite(value);
@@ -444,13 +433,10 @@ function css(key, value) {
 exports.css = css;
 
 },{"./util":18}],6:[function(require,module,exports){
-/**
- * @module Data
- */
-
 "use strict";
 
 var each = require('./util').each;
+
 
 var dataKeyProp = "__domtastic_data__";
 
@@ -505,18 +491,16 @@ function prop(key, value) {
   return this;
 }
 
+
 exports.data = data;
 exports.prop = prop;
 
 },{"./util":18}],7:[function(require,module,exports){
-/**
- * @module DOM
- */
-
 "use strict";
 
 var toArray = require('./util').toArray;
 var $ = require('./selector').$;
+
 
 /**
  * Append element(s) to each element in the collection.
@@ -689,10 +673,6 @@ exports.after = after;
 exports.clone = clone;
 
 },{"./selector":14,"./util":18}],8:[function(require,module,exports){
-/**
- * @module DOM (extra)
- */
-
 "use strict";
 
 var each = require('./util').each;
@@ -700,6 +680,7 @@ var append = require('./dom').append;
 var before = require('./dom').before;
 var after = require('./dom').after;
 var $ = require('./selector').$;
+
 
 /**
  * Append each element in the collection to the specified element(s).
@@ -810,14 +791,11 @@ exports.text = text;
 exports.val = val;
 
 },{"./dom":7,"./selector":14,"./util":18}],9:[function(require,module,exports){
-/**
- * @module Events
- */
-
 "use strict";
 
 var each = require('./util').each;
 var closest = require('./selector').closest;
+
 
 /**
  * Shorthand for `addEventListener`. Supports event delegation if a filter (`selector`) is provided.
@@ -885,6 +863,7 @@ function on(eventNames, selector, handler, useCapture) {
 
 function off(eventNames, selector, handler, useCapture) {
   if (eventNames === undefined) eventNames = "";
+
 
   if (typeof selector === "function") {
     handler = selector;
@@ -1047,13 +1026,10 @@ exports.bind = bind;
 exports.unbind = unbind;
 
 },{"./selector":14,"./util":18}],10:[function(require,module,exports){
-/**
- * @module HTML
- */
-
 "use strict";
 
 var each = require('./util').each;
+
 
 /*
  * Get the HTML contents of the first element, or set the HTML contents for each element in the collection.
@@ -1082,41 +1058,15 @@ function html(fragment) {
 exports.html = html;
 
 },{"./util":18}],11:[function(require,module,exports){
-/*
- * # Opt-in to Native Mode
- *
- * The default, non-intrusive mode is similar to how jQuery operates: working with static, array-like `$` objects:
- *
- *     $('.items').append('<span>foo</span>);
- *     $(document.body).on('click', '.tab', handler);
- *
- * However, you can opt-in to work with live NodeList objects.
- * In this "native" mode, the `Node` and `NodeList` prototypes are augmented (in a safe and reversible manner) to fill up the chainable API,
- * to enable working with `Node` and `NodeList` objects directly:
- *
- *     var collection = document.querySelectorAll('.items');
- *     collection.append('<span>foo</span>);
- *     collection.addClass('bar');
- *     collection.forEach(iteratorFn);
- *     collection.find('.more');
- *
- *     document.body.on('click', '.tab', handler)
- *
- * Note that in native mode, `$(selector)` can stil be used. It returns a NodeList.
- *
- * Build the lib with `mode` included.
- * Use `$.native()` to activate this behavior. The API is the same in both modes.
- */
-
 "use strict";
 
 var global = require('./util').global;
+
 
 var isNative = false;
 
 function native(goNative) {
   if (goNative === undefined) goNative = true;
-
   var wasNative = isNative;
   isNative = goNative;
   if (global.$) {
@@ -1203,13 +1153,10 @@ exports.isNative = isNative;
 exports.native = native;
 
 },{"./util":18}],12:[function(require,module,exports){
-/**
- * @module noConflict
- */
-
 "use strict";
 
 var global = require('./util').global;
+
 
 /*
  * Save the previous value of the global `$` variable, so that it can be restored later on.
@@ -1235,6 +1182,8 @@ function noConflict() {
 exports.noConflict = noConflict;
 
 },{"./util":18}],13:[function(require,module,exports){
+"use strict";
+
 /**
  * @module Ready
  */
@@ -1249,8 +1198,6 @@ exports.noConflict = noConflict;
  *     $(document).ready(callback);
  */
 
-"use strict";
-
 function ready(handler) {
   if (/complete|loaded|interactive/.test(document.readyState) && document.body) {
     handler();
@@ -1263,14 +1210,11 @@ function ready(handler) {
 exports.ready = ready;
 
 },{}],14:[function(require,module,exports){
-/**
- * @module Selector
- */
-
 "use strict";
 
 var global = require('./util').global;
 var makeIterable = require('./util').makeIterable;
+
 
 var isPrototypeSet = false, reFragment = /^\s*<(\w+|!)[^>]*>/, reSingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/, reSimpleSelector = /^[\.#]?[\w-]*$/;
 
@@ -1294,6 +1238,7 @@ var isPrototypeSet = false, reFragment = /^\s*<(\w+|!)[^>]*>/, reSingleTag = /^<
 function $(selector, context) {
   if (context === undefined) context = document;
 
+
   var collection;
 
   if (!selector) {
@@ -1301,7 +1246,7 @@ function $(selector, context) {
   } else if (selector instanceof Wrapper) {
     return selector;
   } else if (typeof selector !== "string") {
-    collection = makeIterable(selector);
+    collection = selector.nodeType || selector === window ? [selector] : selector;
   } else if (reFragment.test(selector)) {
     collection = createFragment(selector);
   } else {
@@ -1337,15 +1282,28 @@ function find(selector) {
  *     $('.selector').closest('.container');
  */
 
-function closest(selector, context) {
-  var node = this[0];
-  for (; node.nodeType !== node.DOCUMENT_NODE && node !== context; node = node.parentNode) {
-    if (matches(node, selector)) {
-      return $(node);
+var closest = (function () {
+  function closest(selector, context) {
+    var node = this[0];
+    while (node && node !== context) {
+      if (matches(node, selector)) {
+        return $(node);
+      } else {
+        node = node.parentElement;
+      }
     }
+    return $();
   }
-  return $();
-}
+
+  return !Element.prototype.closest ? closest : function (selector, context) {
+    if (!context) {
+      var node = this[0];
+      return $(node.closest(selector));
+    } else {
+      return closest.call(this, selector, context);
+    }
+  };
+})();
 
 /*
  * Returns `true` if the element would be selected by the specified selector string; otherwise, returns `false`.
@@ -1455,16 +1413,13 @@ exports.closest = closest;
 exports.matches = matches;
 
 },{"./util":18}],15:[function(require,module,exports){
-/**
- * @module Selector (extra)
- */
-
 "use strict";
 
 var each = require('./util').each;
 var toArray = require('./util').toArray;
 var $ = require('./selector').$;
 var matches = require('./selector').matches;
+
 
 /**
  * Return children of each element in the collection, optionally filtered by a selector.
@@ -1515,7 +1470,7 @@ function contents() {
  * @chainable
  * @example
  *     $('.items').eq(1)
- *     ➤ The second item; result is the same as doing $($('.items')[1]);
+ *     // The second item; result is the same as doing $($('.items')[1]);
  */
 
 function eq(index) {
@@ -1529,7 +1484,7 @@ function eq(index) {
  * @return {Node} Element at the specified index
  * @example
  *     $('.items').get(1)
- *     ➤ The second element; result is the same as doing $('.items')[1];
+ *     // The second element; result is the same as doing $('.items')[1];
  */
 
 function get(index) {
@@ -1565,7 +1520,7 @@ function parent(selector) {
  * @return {Object} New wrapped collection
  * @example
  *     $('.items').slice(1, 3)
- *     ➤ New wrapped collection containing the second, third, and fourth element.
+ *     // New wrapped collection containing the second, third, and fourth element.
  */
 
 function slice(start, end) {
@@ -1580,16 +1535,12 @@ exports.parent = parent;
 exports.slice = slice;
 
 },{"./selector":14,"./util":18}],16:[function(require,module,exports){
-/**
- * @module trigger
- */
-
 "use strict";
 
 var global = require('./util').global;
 var each = require('./util').each;
-var $ = require('./selector').$;
-var closest = require('./selector').closest;
+var contains = require('./contains').contains;
+
 
 var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/, reKeyEvent = /^key/;
 
@@ -1610,6 +1561,7 @@ var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/, reKeyEvent = /^key/;
 
 function trigger(type, data, params) {
   if (params === undefined) params = {};
+
 
   params.bubbles = typeof params.bubbles === "boolean" ? params.bubbles : true;
   params.cancelable = typeof params.cancelable === "boolean" ? params.cancelable : true;
@@ -1665,7 +1617,7 @@ function isAttachedToDocument(element) {
   if (element === window || element === document) {
     return true;
   }
-  return $.contains(element.ownerDocument.documentElement, element);
+  return contains(element.ownerDocument.documentElement, element);
 }
 
 /**
@@ -1684,7 +1636,6 @@ function isAttachedToDocument(element) {
 
 function triggerForPath(element, type, params) {
   if (params === undefined) params = {};
-
   params.bubbles = false;
   var event = new CustomEvent(type, params);
   event._target = element;
@@ -1720,7 +1671,6 @@ function dispatchEvent(element, event) {
 (function () {
   function CustomEvent(event, params) {
     if (params === undefined) params = { bubbles: false, cancelable: false, detail: undefined };
-
     var customEvent = document.createEvent("CustomEvent");
     customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
     return customEvent;
@@ -1760,7 +1710,9 @@ var supportsOtherEventConstructors = (function () {
 exports.trigger = trigger;
 exports.triggerHandler = triggerHandler;
 
-},{"./selector":14,"./util":18}],17:[function(require,module,exports){
+},{"./contains":4,"./util":18}],17:[function(require,module,exports){
+"use strict";
+
 /**
  * @module Type
  */
@@ -1772,13 +1724,11 @@ exports.triggerHandler = triggerHandler;
  * @return {boolean} 
  * @example
  *     $.isFunction(function(){});
- *     ➤ true
+ *     // true
  * @example
  *     $.isFunction({});
- *     ➤ false
+ *     // false
  */
-
-"use strict";
 
 function isFunction(obj) {
   return (typeof obj === "function");
@@ -1791,10 +1741,10 @@ function isFunction(obj) {
  * @return {boolean} 
  * @example
  *     $.isArray([]);
- *     ➤ true
+ *     // true
  * @example
  *     $.isArray({});
- *     ➤ false
+ *     // false
  */
 
 var isArray = Array.isArray;
@@ -1803,6 +1753,9 @@ exports.isFunction = isFunction;
 exports.isArray = isArray;
 
 },{}],18:[function(require,module,exports){
+"use strict";
+
+var _slice = Array.prototype.slice;
 /*
  * @module Util
  */
@@ -1812,9 +1765,6 @@ exports.isArray = isArray;
  * @private
  */
 
-"use strict";
-
-var _slice = Array.prototype.slice;
 var global = new Function("return this")();
 
 /**
@@ -1832,19 +1782,6 @@ function toArray(collection) {
   }
   return result;
 }
-
-/**
- * Return something that can be iterated over (e.g. using `forEach`).
- * Arrays and NodeLists are returned as-is, but a Node will be wrapped in a `[]`.
- *
- * @param {Node|NodeList|Array} element
- * @return {Array|NodeList}
- * @private
- */
-
-var makeIterable = function (element) {
-  return element.nodeType || element === window ? [element] : element;
-};
 
 /**
  * Faster alternative to [].forEach method
@@ -1876,10 +1813,10 @@ function each(collection, callback, thisArg) {
  * @return {Object} Extended object
  * @example
  *     $.extend({a: 1}, {b: 2});
- *     ➤ {a: 1, b: 2}
+ *     // {a: 1, b: 2}
  * @example
  *     $.extend({a: 1}, {b: 2}, {a: 3});
- *     ➤ {a: 3, b: 2}
+ *     // {a: 3, b: 2}
  */
 
 function extend(target) {
@@ -1897,18 +1834,14 @@ function extend(target) {
 
 exports.global = global;
 exports.toArray = toArray;
-exports.makeIterable = makeIterable;
 exports.each = each;
 exports.extend = extend;
 
 },{}],19:[function(require,module,exports){
-/**
- * @module API
- */
-
 "use strict";
 
 var extend = require('./util').extend;
+
 
 var api = {}, apiNodeList = {}, $ = {};
 
@@ -1970,7 +1903,7 @@ $.extend = extend;
 $.fn = api;
 $.fnList = apiNodeList;
 
-exports.default = $;
+exports["default"] = $;
 
 },{"./array":1,"./attr":2,"./class":3,"./contains":4,"./css":5,"./data":6,"./dom":7,"./dom_extra":8,"./event":9,"./html":10,"./mode":11,"./noconflict":12,"./ready":13,"./selector":14,"./selector_extra":15,"./trigger":16,"./type":17,"./util":18}]},{},[19])(19)
 });

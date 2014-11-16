@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">23</p>
+      <p class="stat">40</p>
     </div>
   </div>
   <div class="row historical">
@@ -89,7 +89,9 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">/**
+    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+
+/**
  * @module Type
  */
 
@@ -100,13 +102,11 @@
  * @return {boolean} 
  * @example
  *     $.isFunction(function(){});
- *     ➤ true
+ *     // true
  * @example
  *     $.isFunction({});
- *     ➤ false
+ *     // false
  */
-
-&quot;use strict&quot;;
 
 function isFunction(obj) {
   return (typeof obj === &quot;function&quot;);
@@ -119,10 +119,10 @@ function isFunction(obj) {
  * @return {boolean} 
  * @example
  *     $.isArray([]);
- *     ➤ true
+ *     // true
  * @example
  *     $.isArray({});
- *     ➤ false
+ *     // false
  */
 
 var isArray = Array.isArray;

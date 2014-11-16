@@ -333,7 +333,7 @@
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).every(function(element) {
         return element.hasAttribute(&#x27;active&#x27;)
     });
-    ➤ true/false</code></pre>
+    // true/false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="every-source">
                                             <pre><code class="language-javascript">var every = ArrayProto.every;</code></pre>
@@ -557,7 +557,7 @@ var each = forEach;</code></pre>
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="indexOf-example-0">
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).indexOf(element);
-    ➤ 2</code></pre>
+    // 2</code></pre>
                                         </div>
                                         <div class="tab-pane" id="indexOf-source">
                                             <pre><code class="language-javascript">var indexOf = ArrayProto.indexOf;</code></pre>
@@ -632,7 +632,7 @@ var each = forEach;</code></pre>
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).map(function(element) {
         return element.getAttribute(&#x27;name&#x27;)
     });
-    ➤ [&#x27;ever&#x27;, &#x27;green&#x27;]</code></pre>
+    // [&#x27;ever&#x27;, &#x27;green&#x27;]</code></pre>
                                         </div>
                                         <div class="tab-pane" id="map-source">
                                             <pre><code class="language-javascript">var map = ArrayProto.map;</code></pre>
@@ -890,7 +890,7 @@ var each = forEach;</code></pre>
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).some(function(element) {
         return element.hasAttribute(&#x27;active&#x27;)
     });
-    ➤ true/false</code></pre>
+    // true/false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="some-source">
                                             <pre><code class="language-javascript">var some = ArrayProto.some;</code></pre>
@@ -1403,7 +1403,7 @@ var each = forEach;</code></pre>
                                         </div>
                                         <div class="tab-pane" id="hasClass-source">
                                             <pre><code class="language-javascript">function hasClass(value) {
-    return makeIterable(this).some(function(element) {
+    return (this.nodeType ? [this] : this).some(function(element) {
         return element.classList.contains(value);
     });
 }</code></pre>
@@ -1481,7 +1481,7 @@ var each = forEach;</code></pre>
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="contains-example-0">
                                             <pre><code class="language-javascript">    $.contains(parentElement, childElement);
-    ➤ true/false</code></pre>
+    // true/false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="contains-source">
                                             <pre><code class="language-javascript">function contains(container, element) {
@@ -3115,7 +3115,7 @@ function undelegate(selector, eventName, handler) {
 
     } else if (typeof selector !== &#x27;string&#x27;) {
 
-        collection = makeIterable(selector);
+        collection = selector.nodeType || selector === window ? [selector] : selector;
 
     } else if (reFragment.test(selector)) {
 
@@ -3267,15 +3267,29 @@ function undelegate(selector, eventName, handler) {
                                             <pre><code class="language-javascript">    $(&#x27;.selector&#x27;).closest(&#x27;.container&#x27;);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="closest-source">
-                                            <pre><code class="language-javascript">function closest(selector, context) {
-    var node = this[0];
-    for (; node.nodeType !== node.DOCUMENT_NODE &amp;&amp; node !== context; node = node.parentNode) {
-        if (matches(node, selector)) {
-            return $(node);
+                                            <pre><code class="language-javascript">var closest = (function() {
+
+    function closest(selector, context) {
+        var node = this[0];
+        while (node &amp;&amp; node !== context) {
+            if (matches(node, selector)) {
+                return $(node);
+            } else {
+                node = node.parentElement;
+            }
+        }
+        return $();
+    }
+
+    return !Element.prototype.closest ? closest : function(selector, context) {
+        if(!context) {
+            var node = this[0];
+            return $(node.closest(selector));
+        } else {
+            return closest.call(this, selector, context)
         }
     }
-    return $();
-}</code></pre>
+})();</code></pre>
                                         </div>
                                     </div>
 
@@ -3542,7 +3556,7 @@ function undelegate(selector, eventName, handler) {
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="eq-example-0">
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).eq(1)
-    ➤ The second item; result is the same as doing $($(&#x27;.items&#x27;)[1]);</code></pre>
+    // The second item; result is the same as doing $($(&#x27;.items&#x27;)[1]);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="eq-source">
                                             <pre><code class="language-javascript">function eq(index) {
@@ -3607,7 +3621,7 @@ function undelegate(selector, eventName, handler) {
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="get-example-0">
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).get(1)
-    ➤ The second element; result is the same as doing $(&#x27;.items&#x27;)[1];</code></pre>
+    // The second element; result is the same as doing $(&#x27;.items&#x27;)[1];</code></pre>
                                         </div>
                                         <div class="tab-pane" id="get-source">
                                             <pre><code class="language-javascript">function get(index) {
@@ -3753,7 +3767,7 @@ function undelegate(selector, eventName, handler) {
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="slice-example-0">
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).slice(1, 3)
-    ➤ New wrapped collection containing the second, third, and fourth element.</code></pre>
+    // New wrapped collection containing the second, third, and fourth element.</code></pre>
                                         </div>
                                         <div class="tab-pane" id="slice-source">
                                             <pre><code class="language-javascript">function slice(start, end) {
@@ -4036,11 +4050,11 @@ function getEventConstructor(type) {
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="isFunction-example-0">
                                             <pre><code class="language-javascript">    $.isFunction(function(){});
-    ➤ true</code></pre>
+    // true</code></pre>
                                         </div>
                                         <div class=" tab-pane" id="isFunction-example-1">
                                             <pre><code class="language-javascript">    $.isFunction({});
-    ➤ false</code></pre>
+    // false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="isFunction-source">
                                             <pre><code class="language-javascript">function isFunction(obj) {
@@ -4106,11 +4120,11 @@ function getEventConstructor(type) {
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="isArray-example-0">
                                             <pre><code class="language-javascript">    $.isArray([]);
-    ➤ true</code></pre>
+    // true</code></pre>
                                         </div>
                                         <div class=" tab-pane" id="isArray-example-1">
                                             <pre><code class="language-javascript">    $.isArray({});
-    ➤ false</code></pre>
+    // false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="isArray-source">
                                             <pre><code class="language-javascript">var isArray = Array.isArray;</code></pre>
@@ -4189,11 +4203,11 @@ function getEventConstructor(type) {
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="extend-example-0">
                                             <pre><code class="language-javascript">    $.extend({a: 1}, {b: 2});
-    ➤ {a: 1, b: 2}</code></pre>
+    // {a: 1, b: 2}</code></pre>
                                         </div>
                                         <div class=" tab-pane" id="extend-example-1">
                                             <pre><code class="language-javascript">    $.extend({a: 1}, {b: 2}, {a: 3});
-    ➤ {a: 3, b: 2}</code></pre>
+    // {a: 3, b: 2}</code></pre>
                                         </div>
                                         <div class="tab-pane" id="extend-source">
                                             <pre><code class="language-javascript">function extend(target, ...sources) {
