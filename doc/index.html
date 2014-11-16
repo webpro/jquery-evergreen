@@ -4212,10 +4212,8 @@ function getEventConstructor(type) {
                                         <div class="tab-pane" id="extend-source">
                                             <pre><code class="language-javascript">function extend(target, ...sources) {
     sources.forEach(function(src) {
-        if (src) {
-            for (var prop in src) {
-                target[prop] = src[prop];
-            }
+        for (var prop in src) {
+            target[prop] = src[prop];
         }
     });
     return target;

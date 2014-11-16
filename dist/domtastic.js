@@ -1749,8 +1749,8 @@ function isFunction(obj) {
 
 var isArray = Array.isArray;
 
-exports.isFunction = isFunction;
 exports.isArray = isArray;
+exports.isFunction = isFunction;
 
 },{}],18:[function(require,module,exports){
 "use strict";
@@ -1823,10 +1823,8 @@ function extend(target) {
   var sources = _slice.call(arguments, 1);
 
   sources.forEach(function (src) {
-    if (src) {
-      for (var prop in src) {
-        target[prop] = src[prop];
-      }
+    for (var prop in src) {
+      target[prop] = src[prop];
     }
   });
   return target;
@@ -1892,7 +1890,7 @@ extend(apiNodeList, array);
 
 // Version
 
-$.version = "0.8.1";
+$.version = "0.8.2";
 
 // Util
 
