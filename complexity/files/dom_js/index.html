@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">175</p>
+      <p class="stat">116</p>
     </div>
   </div>
   <div class="row historical">
@@ -95,17 +95,6 @@ var toArray = require(&#039;./util&#039;).toArray;
 var $ = require(&#039;./selector&#039;).$;
 
 
-/**
- * Append element(s) to each element in the collection.
- *
- * @param {String|Node|NodeList|Object} element What to append to the element(s).
- * Clones elements as necessary.
- * @return {Object} The wrapped collection
- * @chainable
- * @example
- *     $(&#039;.item&#039;).append(&#039;&lt;p&gt;more&lt;/p&gt;&#039;);
- */
-
 function append(element) {
   if (this instanceof Node) {
     if (typeof element === &quot;string&quot;) {
@@ -127,17 +116,6 @@ function append(element) {
   }
   return this;
 }
-
-/**
- * Place element(s) at the beginning of each element in the collection.
- *
- * @param {String|Node|NodeList|Object} element What to place at the beginning of the element(s).
- * Clones elements as necessary.
- * @return {Object} The wrapped collection
- * @chainable
- * @example
- *     $(&#039;.item&#039;).prepend(&#039;&lt;span&gt;start&lt;/span&gt;&#039;);
- */
 
 function prepend(element) {
   if (this instanceof Node) {
@@ -161,17 +139,6 @@ function prepend(element) {
   return this;
 }
 
-/**
- * Place element(s) before each element in the collection.
- *
- * @param {String|Node|NodeList|Object} element What to place as sibling(s) before to the element(s).
- * Clones elements as necessary.
- * @return {Object} The wrapped collection
- * @chainable
- * @example
- *     $(&#039;.items&#039;).before(&#039;&lt;p&gt;prefix&lt;/p&gt;&#039;);
- */
-
 function before(element) {
   if (this instanceof Node) {
     if (typeof element === &quot;string&quot;) {
@@ -193,16 +160,6 @@ function before(element) {
   }
   return this;
 }
-
-/**
- * Place element(s) after each element in the collection.
- *
- * @param {String|Node|NodeList|Object} element What to place as sibling(s) after to the element(s). Clones elements as necessary.
- * @return {Object} The wrapped collection
- * @chainable
- * @example
- *     $(&#039;.items&#039;).after(&#039;&lt;span&gt;suf&lt;/span&gt;&lt;span&gt;fix&lt;/span&gt;&#039;);
- */
 
 function after(element) {
   if (this instanceof Node) {
@@ -226,25 +183,9 @@ function after(element) {
   return this;
 }
 
-/**
- * Clone a wrapped object.
- *
- * @return {Object} Wrapped collection of cloned nodes.
- * @example
- *     $(element).clone();
- */
-
 function clone() {
   return $(_clone(this));
 }
-
-/**
- * Clone an object
- *
- * @param {String|Node|NodeList|Array} element The element(s) to clone.
- * @return {String|Node|NodeList|Array} The cloned element(s)
- * @private
- */
 
 function _clone(element) {
   if (typeof element === &quot;string&quot;) {

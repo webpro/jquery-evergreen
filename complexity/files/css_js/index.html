@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">72</p>
+      <p class="stat">59</p>
     </div>
   </div>
   <div class="row historical">
@@ -107,19 +107,6 @@ function camelize(value) {
 function dasherize(value) {
   return value.replace(/([a-z\d])([A-Z])/g, &quot;$1-$2&quot;).toLowerCase();
 }
-
-/**
- * Get the value of a style property for the first element, or set one or more style properties for each element in the collection.
- *
- * @param {String|Object} key The name of the style property to get or set. Or an object containing key-value pairs to set as style properties.
- * @param {String} [value] The value of the style property to set.
- * @return {Object} The wrapped collection
- * @chainable
- * @example
- *     $(&#039;.item&#039;).css(&#039;padding-left&#039;); // get
- *     $(&#039;.item&#039;).css(&#039;color&#039;, &#039;#f00&#039;); // set
- *     $(&#039;.item&#039;).css({&#039;border-width&#039;, &#039;1px&#039;}, {&#039;display&#039;, &#039;inline-block}); // set multiple
- */
 
 function css(key, value) {
   var styleProps, prop, val;
