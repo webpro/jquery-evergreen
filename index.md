@@ -132,21 +132,12 @@ $('.planet').addClass('evergreen').on('sunrise', '.grass', grow);
 
     on (alias: bind)
     off (alias: unbind)
-    delegate (deprecated, will be removed soon)
-    undelegate (deprecated, will be removed soon)
     trigger
     triggerHandler
 
 ### [HTML](http://webpro.github.io/DOMtastic/doc#html)
 
     html
-
-### [Mode](http://webpro.github.io/DOMtastic/doc#mode)
-
-_WARNING: This module is deprecated and will be removed soon._
-
-    isNative
-    native
 
 ### [NoConflict](http://webpro.github.io/DOMtastic/doc#noconflict)
 
@@ -203,17 +194,6 @@ Latest versions of Chrome, Firefox, Safari, Opera, Android, Chrome Mobile iOS, a
 ## Performance
 
 Run the [benchmark suite](http://webpro.github.io/DOMtastic/benchmark/) to compare the performance of various methods of jQuery, Zepto and DOMtastic (tl/dr; it's fast!).
-
-## Native Mode
-
-_WARNING: This module is deprecated and will be removed soon._
-
-You can [opt-in](https://github.com/webpro/DOMtastic/blob/master/src/mode.js) to work directly with `Node` and live `NodeList` objects, as opposed to the default, wrapped `$` object (make sure the "mode" module is included):
-
-    $.native();
-    var elements = $('.items');
-    elements instanceof NodeList; // true
-    elements.addClass('cool'); // works
 
 ## Custom Build
 

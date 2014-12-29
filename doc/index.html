@@ -2678,7 +2678,7 @@ var each = forEach;</code></pre>
 
                                 <div class="block">
 
-                                    <p>Shorthand for <code>removeEventListener</code>. Delegates to <code>undelegate</code> if that signature is used.</p>
+                                    <p>Shorthand for <code>removeEventListener</code>.</p>
 
                                     <table class="table table-condensed">
                                         <thead>
@@ -2798,14 +2798,6 @@ var each = forEach;</code></pre>
     }, this);
 
     return this;
-}
-
-function delegate(selector, eventName, handler) {
-    return on.call(this, eventName, selector, handler);
-}
-
-function undelegate(selector, eventName, handler) {
-    return off.call(this, eventName, selector, handler);
 }</code></pre>
                                         </div>
                                     </div>
