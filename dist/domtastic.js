@@ -98,33 +98,21 @@ var each = require('./util').each;
 
 function addClass(value) {
   if (value && value.length) {
-    each(value.split(" "), function (className) {
-      each(this, function (element) {
-        element.classList.add(className);
-      });
-    }.bind(this));
+    each(value.split(" "), _each.bind(this, "add"));
   }
   return this;
 }
 
 function removeClass(value) {
   if (value && value.length) {
-    each(value.split(" "), function (className) {
-      each(this, function (element) {
-        element.classList.remove(className);
-      });
-    }.bind(this));
+    each(value.split(" "), _each.bind(this, "remove"));
   }
   return this;
 }
 
 function toggleClass(value) {
   if (value && value.length) {
-    each(value.split(" "), function (className) {
-      each(this, function (element) {
-        element.classList.toggle(className);
-      });
-    }.bind(this));
+    each(value.split(" "), _each.bind(this, "toggle"));
   }
   return this;
 }
@@ -132,6 +120,12 @@ function toggleClass(value) {
 function hasClass(value) {
   return (this.nodeType ? [this] : this).some(function (element) {
     return element.classList.contains(value);
+  });
+}
+
+function _each(fnName, className) {
+  each(this, function (element) {
+    element.classList[fnName](className);
   });
 }
 
@@ -277,11 +271,7 @@ function append(element) {
       }
     }
   } else {
-    var l = this.length;
-    while (l--) {
-      var elm = l === 0 ? element : _clone(element);
-      append.call(this[l], elm);
-    }
+    _each(this, append, element);
   }
   return this;
 }
@@ -299,11 +289,7 @@ function prepend(element) {
       }
     }
   } else {
-    var l = this.length;
-    while (l--) {
-      var elm = l === 0 ? element : _clone(element);
-      prepend.call(this[l], elm);
-    }
+    _each(this, prepend, element);
   }
   return this;
 }
@@ -321,11 +307,7 @@ function before(element) {
       }
     }
   } else {
-    var l = this.length;
-    while (l--) {
-      var elm = l === 0 ? element : _clone(element);
-      before.call(this[l], elm);
-    }
+    _each(this, before, element);
   }
   return this;
 }
@@ -343,11 +325,7 @@ function after(element) {
       }
     }
   } else {
-    var l = this.length;
-    while (l--) {
-      var elm = l === 0 ? element : _clone(element);
-      after.call(this[l], elm);
-    }
+    _each(this, after, element);
   }
   return this;
 }
@@ -367,6 +345,14 @@ function _clone(element) {
     });
   }
   return element;
+}
+
+function _each(collection, fn, element) {
+  var l = collection.length;
+  while (l--) {
+    var elm = l === 0 ? element : _clone(element);
+    fn.call(collection[l], elm);
+  }
 }
 
 exports.append = append;
@@ -1041,7 +1027,7 @@ extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, 
 
 $.fn = api;
 
-$.version = "0.8.4";
+$.version = "0.9.0";
 
 $.extend = extend;
 

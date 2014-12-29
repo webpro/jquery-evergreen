@@ -1189,11 +1189,7 @@ var each = forEach;</code></pre>
                                         <div class="tab-pane" id="addClass-source">
                                             <pre><code class="language-javascript">function addClass(value) {
     if(value &amp;&amp; value.length) {
-        each(value.split(&#x27; &#x27;), function(className) {
-            each(this, function(element) {
-                element.classList.add(className);
-            });
-        }.bind(this));
+        each(value.split(&#x27; &#x27;), _each.bind(this, &#x27;add&#x27;));
     }
     return this;
 }</code></pre>
@@ -1261,11 +1257,7 @@ var each = forEach;</code></pre>
                                         <div class="tab-pane" id="removeClass-source">
                                             <pre><code class="language-javascript">function removeClass(value) {
     if(value &amp;&amp; value.length) {
-        each(value.split(&#x27; &#x27;), function(className) {
-            each(this, function(element) {
-                element.classList.remove(className);
-            });
-        }.bind(this));
+        each(value.split(&#x27; &#x27;), _each.bind(this, &#x27;remove&#x27;));
     }
     return this;
 }</code></pre>
@@ -1333,11 +1325,7 @@ var each = forEach;</code></pre>
                                         <div class="tab-pane" id="toggleClass-source">
                                             <pre><code class="language-javascript">function toggleClass(value) {
     if(value &amp;&amp; value.length) {
-        each(value.split(&#x27; &#x27;), function(className) {
-            each(this, function(element) {
-                element.classList.toggle(className);
-            });
-        }.bind(this));
+        each(value.split(&#x27; &#x27;), _each.bind(this, &#x27;toggle&#x27;));
     }
     return this;
 }</code></pre>
@@ -1868,11 +1856,7 @@ var each = forEach;</code></pre>
             }
         }
     } else {
-        var l = this.length;
-        while (l--) {
-            var elm = l === 0 ? element : _clone(element);
-            append.call(this[l], elm);
-        }
+        _each(this, append, element);
     }
     return this;
 }</code></pre>
@@ -1950,11 +1934,7 @@ var each = forEach;</code></pre>
             }
         }
     } else {
-        var l = this.length;
-        while (l--) {
-            var elm = l === 0 ? element : _clone(element);
-            prepend.call(this[l], elm);
-        }
+        _each(this, prepend, element);
     }
     return this;
 }</code></pre>
@@ -2032,11 +2012,7 @@ var each = forEach;</code></pre>
             }
         }
     } else {
-        var l = this.length;
-        while (l--) {
-            var elm = l === 0 ? element : _clone(element);
-            before.call(this[l], elm);
-        }
+        _each(this, before, element);
     }
     return this;
 }</code></pre>
@@ -2114,11 +2090,7 @@ var each = forEach;</code></pre>
             }
         }
     } else {
-        var l = this.length;
-        while (l--) {
-            var elm = l === 0 ? element : _clone(element);
-            after.call(this[l], elm);
-        }
+        _each(this, after, element);
     }
     return this;
 }</code></pre>
