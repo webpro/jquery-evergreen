@@ -91,8 +91,8 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var each = require(&#039;./util&#039;).each;
-var closest = require(&#039;./selector&#039;).closest;
+var each = require(&quot;./util&quot;).each;
+var closest = require(&quot;./selector&quot;).closest;
 
 
 function on(eventNames, selector, handler, useCapture) {
@@ -150,7 +150,7 @@ function off(eventNames, selector, handler, useCapture) {
       handlers = getHandlers(element);
 
       each(handlers.filter(function (item) {
-        return ((!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector));
+        return (!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector);
       }), function (item) {
         element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
         handlers.splice(handlers.indexOf(item), 1);
@@ -223,7 +223,7 @@ var augmentEvent = (function () {
             return originalMethod &amp;&amp; originalMethod.apply(this, arguments);
           };
           event[testMethodName] = returnFalse;
-        }(methodName, eventMethods[methodName], event[methodName]));
+        })(methodName, eventMethods[methodName], event[methodName]);
       }
       if (event._preventDefault) {
         event.preventDefault();

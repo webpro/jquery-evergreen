@@ -205,7 +205,7 @@
         Branches: <span class="metric">81.62% <small>(293 / 359)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">93.57% <small>(131 / 140)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">93.66% <small>(133 / 142)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Lines: <span class="metric">93.99% <small>(579 / 616)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1352,7 +1352,7 @@
 1134
 1135
 1136
-1137</td><td class="line-coverage"><span class="cline-any cline-yes">50</span>
+1137</td><td class="line-coverage"><span class="cline-any cline-yes">48</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -1447,7 +1447,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2081,15 +2080,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">361</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">361</span>
 <span class="cline-any cline-yes">361</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">361</span>
@@ -2107,6 +2104,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">360</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -2335,6 +2333,8 @@
 <span class="cline-any cline-yes">53</span>
 <span class="cline-any cline-yes">53</span>
 <span class="cline-any cline-yes">53</span>
+<span class="cline-any cline-yes">53</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -2583,7 +2583,6 @@ exports.removeAttr = removeAttr;
 },{"./util":18}],3:[function(require,module,exports){
 "use strict";
 &nbsp;
-var makeIterable = require('./util').makeIterable;
 var each = require('./util').each;
 &nbsp;
 &nbsp;
@@ -3217,32 +3216,31 @@ exports.ready = ready;
 "use strict";
 &nbsp;
 var global = require('./util').global;
-var makeIterable = require('./util').makeIterable;
 &nbsp;
 &nbsp;
 var isPrototypeSet = false, reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/, reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/, reSimpleSelector = /^[\.#]?[\w-]*$/;
 &nbsp;
 function $(selector, context) {
   if (context === undefined) context = document;
+  return (function () {
+    var collection;
 &nbsp;
+    if (!selector) {
+      collection = document.querySelectorAll(null);
+    } else if (selector instanceof Wrapper) {
+      return selector;
+    } else if (typeof selector !== "string") {
+      collection = selector.nodeType || selector === window ? [selector] : selector;
+    } else if (reFragment.test(selector)) {
+      collection = createFragment(selector);
+    } else {
+      context = typeof context === "string" ? document.querySelector(context) : context.length ? context[0] : context;
 &nbsp;
-  var collection;
+      collection = querySelector(selector, context);
+    }
 &nbsp;
-  if (!selector) {
-    collection = document.querySelectorAll(null);
-  } else if (selector instanceof Wrapper) {
-    return selector;
-  } else if (typeof selector !== "string") {
-    collection = selector.nodeType || selector === window ? [selector] : selector;
-  } else if (reFragment.test(selector)) {
-    collection = createFragment(selector);
-  } else {
-    context = typeof context === "string" ? document.querySelector(context) : context.length ? context[0] : context;
-&nbsp;
-    collection = querySelector(selector, context);
-  }
-&nbsp;
-  return $.isNative ? <span class="branch-0 cbranch-no" title="branch not covered" >collection </span>: wrap(collection);
+    return $.isNative ? <span class="branch-0 cbranch-no" title="branch not covered" >collection </span>: wrap(collection);
+  })();
 }
 &nbsp;
 function find(selector) {
@@ -3468,9 +3466,11 @@ function dispatchEvent(element, event) {
 (function () {
   function CustomEvent(event, params) {
     if (params === undefined) params = { bubbles: false, cancelable: false, detail: undefined };
-    var customEvent = document.createEvent("CustomEvent");
-    customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-    return customEvent;
+    return (function () {
+      var customEvent = document.createEvent("CustomEvent");
+      customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+      return customEvent;
+    })();
   }
 &nbsp;
   CustomEvent.prototype = global.CustomEvent &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >global.CustomEvent.prototype;</span>
@@ -3611,7 +3611,7 @@ extend($, contains, mode, noconflict, type);
 extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 extend(apiNodeList, array);
 &nbsp;
-$.version = "0.8.3";
+$.version = "0.8.4";
 &nbsp;
 $.extend = extend;
 &nbsp;
@@ -3629,7 +3629,7 @@ exports["default"] = $;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 19 2014 16:05:54 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Dec 29 2014 11:28:14 GMT+0000 (UTC)</div>
 </div>
 
 <script src="../prettify.js"></script>

@@ -91,10 +91,10 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var each = require(&#039;./util&#039;).each;
-var toArray = require(&#039;./util&#039;).toArray;
-var $ = require(&#039;./selector&#039;).$;
-var matches = require(&#039;./selector&#039;).matches;
+var each = require(&quot;./util&quot;).each;
+var toArray = require(&quot;./util&quot;).toArray;
+var $ = require(&quot;./selector&quot;).$;
+var matches = require(&quot;./selector&quot;).matches;
 
 
 function children(selector) {
@@ -102,7 +102,7 @@ function children(selector) {
   each(this, function (element) {
     if (element.children) {
       each(element.children, function (child) {
-        if (!selector || (selector &amp;&amp; matches(child, selector))) {
+        if (!selector || selector &amp;&amp; matches(child, selector)) {
           nodes.push(child);
         }
       });
@@ -130,7 +130,7 @@ function get(index) {
 function parent(selector) {
   var nodes = [];
   each(this, function (element) {
-    if (!selector || (selector &amp;&amp; matches(element.parentNode, selector))) {
+    if (!selector || selector &amp;&amp; matches(element.parentNode, selector)) {
       nodes.push(element.parentNode);
     }
   });

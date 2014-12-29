@@ -91,44 +91,44 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var extend = require(&#039;./util&#039;).extend;
+var extend = require(&quot;./util&quot;).extend;
 
 
 var api = {}, apiNodeList = {}, $ = {};
 
-var array = require(&#039;./array&#039;);
+var array = require(&quot;./array&quot;);
 
-var attr = require(&#039;./attr&#039;);
+var attr = require(&quot;./attr&quot;);
 
-var class_ = require(&#039;./class&#039;);
+var class_ = require(&quot;./class&quot;);
 
-var contains = require(&#039;./contains&#039;);
+var contains = require(&quot;./contains&quot;);
 
-var css = require(&#039;./css&#039;);
+var css = require(&quot;./css&quot;);
 
-var data = require(&#039;./data&#039;);
+var data = require(&quot;./data&quot;);
 
-var dom = require(&#039;./dom&#039;);
+var dom = require(&quot;./dom&quot;);
 
-var dom_extra = require(&#039;./dom_extra&#039;);
+var dom_extra = require(&quot;./dom_extra&quot;);
 
-var event = require(&#039;./event&#039;);
+var event = require(&quot;./event&quot;);
 
-var html = require(&#039;./html&#039;);
+var html = require(&quot;./html&quot;);
 
-var mode = require(&#039;./mode&#039;);
+var mode = require(&quot;./mode&quot;);
 
-var noconflict = require(&#039;./noconflict&#039;);
+var noconflict = require(&quot;./noconflict&quot;);
 
-var ready = require(&#039;./ready&#039;);
+var ready = require(&quot;./ready&quot;);
 
-var selector = require(&#039;./selector&#039;);
+var selector = require(&quot;./selector&quot;);
 
-var selector_extra = require(&#039;./selector_extra&#039;);
+var selector_extra = require(&quot;./selector_extra&quot;);
 
-var trigger = require(&#039;./trigger&#039;);
+var trigger = require(&quot;./trigger&quot;);
 
-var type = require(&#039;./type&#039;);
+var type = require(&quot;./type&quot;);
 
 if (typeof selector !== &quot;undefined&quot;) {
   $ = selector.$;
@@ -141,14 +141,14 @@ extend($, contains, mode, noconflict, type);
 extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 extend(apiNodeList, array);
 
-$.version = &quot;0.8.3&quot;;
+$.version = &quot;0.8.4&quot;;
 
 $.extend = extend;
 
 $.fn = api;
 $.fnList = apiNodeList;
 
-exports[&quot;default&quot;] = $;</textarea>
+module.exports = $;</textarea>
   </div>
 </div>
 
