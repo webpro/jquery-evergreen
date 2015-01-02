@@ -131,6 +131,8 @@
                                 <li><a href="#array-map">map</a></li>
                                 <li><a href="#array-pop">pop</a></li>
                                 <li><a href="#array-push">push</a></li>
+                                <li><a href="#array-reduce">reduce</a></li>
+                                <li><a href="#array-reduceRight">reduceRight</a></li>
                                 <li><a href="#array-reverse">reverse</a></li>
                                 <li><a href="#array-shift">shift</a></li>
                                 <li><a href="#array-some">some</a></li>
@@ -235,6 +237,7 @@
                                 <li><a href="#selector_extra-eq">eq</a></li>
                                 <li><a href="#selector_extra-get">get</a></li>
                                 <li><a href="#selector_extra-parent">parent</a></li>
+                                <li><a href="#selector_extra-siblings">siblings</a></li>
                                 <li><a href="#selector_extra-slice">slice</a></li>
                         </ul>
                     </li>
@@ -741,6 +744,136 @@ var each = forEach;</code></pre>
                                         </div>
                                         <div class="tab-pane" id="push-source">
                                             <pre><code class="language-javascript">var push = ArrayProto.push;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-reduce">
+
+
+                                <h3>
+                                    reduce
+                                    <em> (callback, initialValue)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Apply a function against each element in the collection, and this accumulator function has to reduce it<br />to a single value.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    Function to execute on each value in the array, taking four arguments (see example).
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>initialValue</em></td>
+                                                <td><span class="label label-primary">Mixed</span></td>
+                                                <td>
+                                                    Object to use as the first argument to the first call of the callback.
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#reduce-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#reduce-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="reduce-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).reduce(function(previousValue, element, index, collection) {
+        return previousValue + element.clientHeight;
+    }, 0);
+    // [total height of elements]</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="reduce-source">
+                                            <pre><code class="language-javascript">var reduce = ArrayProto.reduce;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-reduceRight">
+
+
+                                <h3>
+                                    reduceRight
+                                    <em> (callback, initialValue)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Apply a function against each element in the collection (from right-to-left), and this accumulator function has<br />to reduce it to a single value.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    Function to execute on each value in the array, taking four arguments (see example).
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>initialValue</em></td>
+                                                <td><span class="label label-primary">Mixed</span></td>
+                                                <td>
+                                                    Object to use as the first argument to the first call of the callback.
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#reduceRight-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#reduceRight-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="reduceRight-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).reduceRight(function(previousValue, element, index, collection) {
+        return previousValue + element.textContent;
+    }, &#x27;&#x27;)
+    // [reversed text of elements]</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="reduceRight-source">
+                                            <pre><code class="language-javascript">var reduceRight = ArrayProto.reduceRight;</code></pre>
                                         </div>
                                     </div>
 
@@ -3659,6 +3792,79 @@ var each = forEach;</code></pre>
         if (!selector || (selector &amp;&amp; matches(element.parentNode, selector))) {
             nodes.push(element.parentNode);
         }
+    });
+    return $(nodes);
+}</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="selector_extra-siblings">
+
+
+                                <h3>
+                                    siblings
+                                    <em> (selector)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Return the sibling elements of each element in the collection, optionally filtered by a selector.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>selector</em></td>
+                                                <td><span class="label label-primary">String</span></td>
+                                                <td>
+                                                    Filter
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        New wrapped collection
+                                        <span class="label label-default">chainable</span>
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#siblings-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#siblings-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="siblings-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.selector&#x27;).siblings();
+    $(&#x27;.selector&#x27;).siblings(&#x27;.filter&#x27;);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="siblings-source">
+                                            <pre><code class="language-javascript">function siblings(selector) {
+    var nodes = [];
+    each(this, function(element) {
+        each(element.parentNode.children, function(sibling) {
+            if (sibling !== element &amp;&amp; (!selector || (selector &amp;&amp; matches(sibling, selector)))) {
+                nodes.push(sibling);
+            }
+        });
     });
     return $(nodes);
 }</code></pre>
