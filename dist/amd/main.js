@@ -1,6 +1,6 @@
-"use strict";
+define(["exports", "module", "./util", "./array", "./attr", "./class", "./contains", "./css", "./data", "./dom", "./dom_extra", "./event", "./html", "./noconflict", "./ready", "./selector", "./selector_extra", "./trigger", "./type"], function (exports, module, _util, _array, _attr, _class, _contains, _css, _data, _dom, _domExtra, _event, _html, _noconflict, _ready, _selector, _selectorExtra, _trigger, _type) {
+  "use strict";
 
-define(["exports", "./util", "./array", "./attr", "./class", "./contains", "./css", "./data", "./dom", "./dom_extra", "./event", "./html", "./noconflict", "./ready", "./selector", "./selector_extra", "./trigger", "./type"], function (exports, _util, _array, _attr, _class, _contains, _css, _data, _dom, _domExtra, _event, _html, _noconflict, _ready, _selector, _selectorExtra, _trigger, _type) {
   var extend = _util.extend;
 
 
@@ -40,5 +40,5 @@ define(["exports", "./util", "./array", "./attr", "./class", "./contains", "./cs
 
   $.extend = extend;
 
-  exports["default"] = $;
+  module.exports = $;
 });

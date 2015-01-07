@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">49.07</p>
+      <p class="stat">81.56</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">56</p>
+      <p class="stat">62</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">8.75</p>
+      <p class="stat">17.43</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.36</p>
+      <p class="stat">0.48</p>
     </div>
   </div>
 </div>
@@ -91,42 +91,48 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
+var _interopRequireWildcard = function (obj) {
+  return obj &amp;&amp; obj.constructor === Object ? obj : {
+    &quot;default&quot;: obj
+  };
+};
+
 var extend = require(&quot;./util&quot;).extend;
 
 
 var api = {}, $ = {};
 
-var array = require(&quot;./array&quot;);
+var array = _interopRequireWildcard(require(&quot;./array&quot;));
 
-var attr = require(&quot;./attr&quot;);
+var attr = _interopRequireWildcard(require(&quot;./attr&quot;));
 
-var class_ = require(&quot;./class&quot;);
+var class_ = _interopRequireWildcard(require(&quot;./class&quot;));
 
-var contains = require(&quot;./contains&quot;);
+var contains = _interopRequireWildcard(require(&quot;./contains&quot;));
 
-var css = require(&quot;./css&quot;);
+var css = _interopRequireWildcard(require(&quot;./css&quot;));
 
-var data = require(&quot;./data&quot;);
+var data = _interopRequireWildcard(require(&quot;./data&quot;));
 
-var dom = require(&quot;./dom&quot;);
+var dom = _interopRequireWildcard(require(&quot;./dom&quot;));
 
-var dom_extra = require(&quot;./dom_extra&quot;);
+var dom_extra = _interopRequireWildcard(require(&quot;./dom_extra&quot;));
 
-var event = require(&quot;./event&quot;);
+var event = _interopRequireWildcard(require(&quot;./event&quot;));
 
-var html = require(&quot;./html&quot;);
+var html = _interopRequireWildcard(require(&quot;./html&quot;));
 
-var noconflict = require(&quot;./noconflict&quot;);
+var noconflict = _interopRequireWildcard(require(&quot;./noconflict&quot;));
 
-var ready = require(&quot;./ready&quot;);
+var ready = _interopRequireWildcard(require(&quot;./ready&quot;));
 
-var selector = require(&quot;./selector&quot;);
+var selector = _interopRequireWildcard(require(&quot;./selector&quot;));
 
-var selector_extra = require(&quot;./selector_extra&quot;);
+var selector_extra = _interopRequireWildcard(require(&quot;./selector_extra&quot;));
 
-var trigger = require(&quot;./trigger&quot;);
+var trigger = _interopRequireWildcard(require(&quot;./trigger&quot;));
 
-var type = require(&quot;./type&quot;);
+var type = _interopRequireWildcard(require(&quot;./type&quot;));
 
 if (typeof selector !== &quot;undefined&quot;) {
   $ = selector.$;
