@@ -1053,7 +1053,7 @@ extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, 
 
 $.fn = api;
 
-$.version = "0.9.1";
+$.version = "0.9.2";
 
 $.extend = extend;
 

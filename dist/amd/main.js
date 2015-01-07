@@ -36,7 +36,7 @@ define(["exports", "module", "./util", "./array", "./attr", "./class", "./contai
 
   $.fn = api;
 
-  $.version = "0.9.1";
+  $.version = "0.9.2";
 
   $.extend = extend;
 
