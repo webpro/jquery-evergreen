@@ -3245,7 +3245,7 @@ var each = forEach;</code></pre>
 
                                 <div class="block">
 
-                                    <p>Chaining for the <code>$</code> wrapper (aliasing <code>find</code> for <code>$</code>).</p>
+                                    <p>Find descendants matching the provided <code>selector</code> for each element in the collection.</p>
 
                                     <table class="table table-condensed">
                                         <thead>
@@ -3291,7 +3291,15 @@ var each = forEach;</code></pre>
                                         </div>
                                         <div class="tab-pane" id="find-source">
                                             <pre><code class="language-javascript">function find(selector) {
-    return $(selector, this);
+    var nodes = [];
+    each(this, function(node) {
+        each(querySelector(selector, node), function(child) {
+            if(nodes.indexOf(child) === -1) {
+                nodes.push(child);
+            }
+        });
+    });
+    return $(nodes);
 }</code></pre>
                                         </div>
                                     </div>
@@ -3309,7 +3317,7 @@ var each = forEach;</code></pre>
 
                                 <div class="block">
 
-                                    <p>Return the closest element matching the selector (starting by itself).</p>
+                                    <p>Return the closest element matching the selector (starting by itself) for each element in the collection.</p>
 
                                     <table class="table table-condensed">
                                         <thead>
@@ -3367,21 +3375,29 @@ var each = forEach;</code></pre>
                                             <pre><code class="language-javascript">var closest = (function() {
 
     function closest(selector, context) {
-        var node = this[0];
-        while (node &amp;&amp; node !== context) {
-            if (matches(node, selector)) {
-                return $(node);
-            } else {
+        var nodes = [];
+        each(this, function(node) {
+            while (node &amp;&amp; node !== context) {
+                if (matches(node, selector)) {
+                    nodes.push(node);
+                    break;
+                }
                 node = node.parentElement;
             }
-        }
-        return $();
+        });
+        return $(uniq(nodes));
     }
 
     return !Element.prototype.closest ? closest : function(selector, context) {
         if(!context) {
-            var node = this[0];
-            return $(node.closest(selector));
+            var nodes = [];
+            each(this, function(node) {
+                var n = node.closest(selector);
+                if(n) {
+                    nodes.push(n);
+                }
+            });
+            return $(uniq(nodes));
         } else {
             return closest.call(this, selector, context)
         }
