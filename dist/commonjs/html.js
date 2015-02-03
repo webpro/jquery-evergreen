@@ -17,3 +17,4 @@ function html(fragment) {
 }
 
 exports.html = html;
+exports.__esModule = true;

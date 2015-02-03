@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">59</p>
+      <p class="stat">60</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.77</p>
+      <p class="stat">24.12</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.35</p>
+      <p class="stat">0.36</p>
     </div>
   </div>
 </div>
@@ -95,59 +95,60 @@ var each = require(&quot;./util&quot;).each;
 
 
 function isNumeric(value) {
-  return !isNaN(parseFloat(value)) &amp;&amp; isFinite(value);
+    return !isNaN(parseFloat(value)) &amp;&amp; isFinite(value);
 }
 
 function camelize(value) {
-  return value.replace(/-([\da-z])/gi, function (matches, letter) {
-    return letter.toUpperCase();
-  });
+    return value.replace(/-([\da-z])/gi, function (matches, letter) {
+        return letter.toUpperCase();
+    });
 }
 
 function dasherize(value) {
-  return value.replace(/([a-z\d])([A-Z])/g, &quot;$1-$2&quot;).toLowerCase();
+    return value.replace(/([a-z\d])([A-Z])/g, &quot;$1-$2&quot;).toLowerCase();
 }
 
 function css(key, value) {
-  var styleProps, prop, val;
+    var styleProps, prop, val;
 
-  if (typeof key === &quot;string&quot;) {
-    key = camelize(key);
+    if (typeof key === &quot;string&quot;) {
+        key = camelize(key);
 
-    if (typeof value === &quot;undefined&quot;) {
-      var element = this.nodeType ? this : this[0];
-      if (element) {
-        val = element.style[key];
-        return isNumeric(val) ? parseFloat(val) : val;
-      }
-      return undefined;
+        if (typeof value === &quot;undefined&quot;) {
+            var element = this.nodeType ? this : this[0];
+            if (element) {
+                val = element.style[key];
+                return isNumeric(val) ? parseFloat(val) : val;
+            }
+            return undefined;
+        }
+
+        styleProps = {};
+        styleProps[key] = value;
+    } else {
+        styleProps = key;
+        for (prop in styleProps) {
+            val = styleProps[prop];
+            delete styleProps[prop];
+            styleProps[camelize(prop)] = val;
+        }
     }
 
-    styleProps = {};
-    styleProps[key] = value;
-  } else {
-    styleProps = key;
-    for (prop in styleProps) {
-      val = styleProps[prop];
-      delete styleProps[prop];
-      styleProps[camelize(prop)] = val;
-    }
-  }
+    each(this, function (element) {
+        for (prop in styleProps) {
+            if (styleProps[prop] || styleProps[prop] === 0) {
+                element.style[prop] = styleProps[prop];
+            } else {
+                element.style.removeProperty(dasherize(prop));
+            }
+        }
+    });
 
-  each(this, function (element) {
-    for (prop in styleProps) {
-      if (styleProps[prop] || styleProps[prop] === 0) {
-        element.style[prop] = styleProps[prop];
-      } else {
-        element.style.removeProperty(dasherize(prop));
-      }
-    }
-  });
-
-  return this;
+    return this;
 }
 
-exports.css = css;</textarea>
+exports.css = css;
+exports.__esModule = true;</textarea>
   </div>
 </div>
 

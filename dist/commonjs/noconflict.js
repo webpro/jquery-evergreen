@@ -11,3 +11,4 @@ function noConflict() {
 }
 
 exports.noConflict = noConflict;
+exports.__esModule = true;

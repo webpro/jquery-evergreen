@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">72.68</p>
+      <p class="stat">72.69</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">151</p>
+      <p class="stat">157</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">42.18</p>
+      <p class="stat">41.50</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.30</p>
+      <p class="stat">1.32</p>
     </div>
   </div>
 </div>
@@ -96,75 +96,75 @@ var closest = require(&quot;./selector&quot;).closest;
 
 
 function on(eventNames, selector, handler, useCapture) {
-  if (typeof selector === &quot;function&quot;) {
-    handler = selector;
-    selector = null;
-  }
+    if (typeof selector === &quot;function&quot;) {
+        handler = selector;
+        selector = null;
+    }
 
-  var parts, namespace, eventListener;
+    var parts, namespace, eventListener;
 
-  eventNames.split(&quot; &quot;).forEach(function (eventName) {
-    parts = eventName.split(&quot;.&quot;);
-    eventName = parts[0] || null;
-    namespace = parts[1] || null;
+    eventNames.split(&quot; &quot;).forEach(function (eventName) {
+        parts = eventName.split(&quot;.&quot;);
+        eventName = parts[0] || null;
+        namespace = parts[1] || null;
 
-    eventListener = proxyHandler(handler);
+        eventListener = proxyHandler(handler);
 
-    each(this, function (element) {
-      if (selector) {
-        eventListener = delegateHandler.bind(element, selector, eventListener);
-      }
+        each(this, function (element) {
+            if (selector) {
+                eventListener = delegateHandler.bind(element, selector, eventListener);
+            }
 
-      element.addEventListener(eventName, eventListener, useCapture || false);
+            element.addEventListener(eventName, eventListener, useCapture || false);
 
-      getHandlers(element).push({
-        eventName: eventName,
-        handler: handler,
-        eventListener: eventListener,
-        selector: selector,
-        namespace: namespace
-      });
-    });
-  }, this);
+            getHandlers(element).push({
+                eventName: eventName,
+                handler: handler,
+                eventListener: eventListener,
+                selector: selector,
+                namespace: namespace
+            });
+        });
+    }, this);
 
-  return this;
+    return this;
 }
 
-function off(eventNames, selector, handler, useCapture) {
-  var eventNames = arguments[0] === undefined ? &quot;&quot; : arguments[0];
+function off(_x, selector, handler, useCapture) {
+    var eventNames = arguments[0] === undefined ? &quot;&quot; : arguments[0];
 
 
-  if (typeof selector === &quot;function&quot;) {
-    handler = selector;
-    selector = null;
-  }
+    if (typeof selector === &quot;function&quot;) {
+        handler = selector;
+        selector = null;
+    }
 
-  var parts, namespace, handlers;
+    var parts, namespace, handlers;
 
-  eventNames.split(&quot; &quot;).forEach(function (eventName) {
-    parts = eventName.split(&quot;.&quot;);
-    eventName = parts[0] || null;
-    namespace = parts[1] || null;
+    eventNames.split(&quot; &quot;).forEach(function (eventName) {
+        parts = eventName.split(&quot;.&quot;);
+        eventName = parts[0] || null;
+        namespace = parts[1] || null;
 
-    each(this, function (element) {
-      handlers = getHandlers(element);
+        each(this, function (element) {
+            handlers = getHandlers(element);
 
-      each(handlers.filter(function (item) {
-        return (!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector);
-      }), function (item) {
-        element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
-        handlers.splice(handlers.indexOf(item), 1);
-      });
+            each(handlers.filter(function (item) {
+                return (!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector);
+            }), function (item) {
+                element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
+                handlers.splice(handlers.indexOf(item), 1);
+            });
 
-      if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
-        clearHandlers(element);
-      } else if (handlers.length === 0) {
-        clearHandlers(element);
-      }
-    });
-  }, this);
+            if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
+                clearHandlers(element);
+            } else if (handlers.length === 0) {
+                clearHandlers(element);
+            }
+        });
+    }, this);
 
-  return this;
+    return this;
 }
 
 var eventKeyProp = &quot;__domtastic_event__&quot;;
@@ -173,73 +173,79 @@ var handlers = {};
 var unusedKeys = [];
 
 function getHandlers(element) {
-  if (!element[eventKeyProp]) {
-    element[eventKeyProp] = unusedKeys.length === 0 ? ++id : unusedKeys.pop();
-  }
-  var key = element[eventKeyProp];
-  return handlers[key] || (handlers[key] = []);
+    if (!element[eventKeyProp]) {
+        element[eventKeyProp] = unusedKeys.length === 0 ? ++id : unusedKeys.pop();
+    }
+    var key = element[eventKeyProp];
+    return handlers[key] || (handlers[key] = []);
 }
 
 function clearHandlers(element) {
-  var key = element[eventKeyProp];
-  if (handlers[key]) {
-    handlers[key] = null;
-    element[key] = null;
-    unusedKeys.push(key);
-  }
+    var key = element[eventKeyProp];
+    if (handlers[key]) {
+        handlers[key] = null;
+        element[key] = null;
+        unusedKeys.push(key);
+    }
 }
 
 function proxyHandler(handler) {
-  return function (event) {
-    handler.call(this, augmentEvent(event), event.detail);
-  };
+    return function (event) {
+        handler.call(this, augmentEvent(event), event.detail);
+    };
 }
 
 var augmentEvent = (function () {
-  var methodName, eventMethods = {
-    preventDefault: &quot;isDefaultPrevented&quot;,
-    stopImmediatePropagation: &quot;isImmediatePropagationStopped&quot;,
-    stopPropagation: &quot;isPropagationStopped&quot;
-  }, returnTrue = function () {
-    return true;
-  }, returnFalse = function () {
-    return false;
-  };
+    var methodName,
+        eventMethods = {
+        preventDefault: &quot;isDefaultPrevented&quot;,
+        stopImmediatePropagation: &quot;isImmediatePropagationStopped&quot;,
+        stopPropagation: &quot;isPropagationStopped&quot;
+    },
+        returnTrue = function () {
+        return true;
+    },
+        returnFalse = function () {
+        return false;
+    };
 
-  return function (event) {
-    if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
-      for (methodName in eventMethods) {
-        (function (methodName, testMethodName, originalMethod) {
-          event[methodName] = function () {
-            this[testMethodName] = returnTrue;
-            return originalMethod &amp;&amp; originalMethod.apply(this, arguments);
-          };
-          event[testMethodName] = returnFalse;
-        })(methodName, eventMethods[methodName], event[methodName]);
-      }
-      if (event._preventDefault) {
-        event.preventDefault();
-      }
-    }
-    return event;
-  };
+    return function (event) {
+        if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
+            for (methodName in eventMethods) {
+                (function (methodName, testMethodName, originalMethod) {
+                    event[methodName] = function () {
+                        this[testMethodName] = returnTrue;
+                        return originalMethod &amp;&amp; originalMethod.apply(this, arguments);
+                    };
+                    event[testMethodName] = returnFalse;
+                })(methodName, eventMethods[methodName], event[methodName]);
+            }
+            if (event._preventDefault) {
+                event.preventDefault();
+            }
+        }
+        return event;
+    };
 })();
 
 function delegateHandler(selector, handler, event) {
-  var eventTarget = event._target || event.target, currentTarget = closest.call([eventTarget], selector, this)[0];
-  if (currentTarget &amp;&amp; currentTarget !== this) {
-    if (currentTarget === eventTarget || !(event.isPropagationStopped &amp;&amp; event.isPropagationStopped())) {
-      handler.call(currentTarget, event);
+    var eventTarget = event._target || event.target,
+        currentTarget = closest.call([eventTarget], selector, this)[0];
+    if (currentTarget &amp;&amp; currentTarget !== this) {
+        if (currentTarget === eventTarget || !(event.isPropagationStopped &amp;&amp; event.isPropagationStopped())) {
+            handler.call(currentTarget, event);
+        }
     }
-  }
 }
 
-var bind = on, unbind = off;
+var bind = on,
+    unbind = off;
 
 exports.on = on;
 exports.off = off;
 exports.bind = bind;
-exports.unbind = unbind;</textarea>
+exports.unbind = unbind;
+exports.__esModule = true;</textarea>
   </div>
 </div>
 

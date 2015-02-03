@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">37</p>
+      <p class="stat">38</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">24.97</p>
+      <p class="stat">23.52</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.22</p>
+      <p class="stat">0.23</p>
     </div>
   </div>
 </div>
@@ -97,35 +97,36 @@ var each = require(&quot;./util&quot;).each;
 var dataKeyProp = &quot;__domtastic_data__&quot;;
 
 function data(key, value) {
-  if (typeof key === &quot;string&quot; &amp;&amp; typeof value === &quot;undefined&quot;) {
-    var element = this.nodeType ? this : this[0];
-    return element &amp;&amp; element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
-  }
+    if (typeof key === &quot;string&quot; &amp;&amp; typeof value === &quot;undefined&quot;) {
+        var element = this.nodeType ? this : this[0];
+        return element &amp;&amp; element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
+    }
 
-  each(this, function (element) {
-    element[dataKeyProp] = element[dataKeyProp] || {};
-    element[dataKeyProp][key] = value;
-  });
+    each(this, function (element) {
+        element[dataKeyProp] = element[dataKeyProp] || {};
+        element[dataKeyProp][key] = value;
+    });
 
-  return this;
+    return this;
 }
 
 function prop(key, value) {
-  if (typeof key === &quot;string&quot; &amp;&amp; typeof value === &quot;undefined&quot;) {
-    var element = this.nodeType ? this : this[0];
-    return element &amp;&amp; element ? element[key] : undefined;
-  }
+    if (typeof key === &quot;string&quot; &amp;&amp; typeof value === &quot;undefined&quot;) {
+        var element = this.nodeType ? this : this[0];
+        return element &amp;&amp; element ? element[key] : undefined;
+    }
 
-  each(this, function (element) {
-    element[key] = value;
-  });
+    each(this, function (element) {
+        element[key] = value;
+    });
 
-  return this;
+    return this;
 }
 
 
 exports.data = data;
-exports.prop = prop;</textarea>
+exports.prop = prop;
+exports.__esModule = true;</textarea>
   </div>
 </div>
 

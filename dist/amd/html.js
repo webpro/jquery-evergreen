@@ -18,4 +18,5 @@ define(["exports", "./util"], function (exports, _util) {
   }
 
   exports.html = html;
+  exports.__esModule = true;
 });

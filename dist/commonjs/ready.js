@@ -10,3 +10,4 @@ function ready(handler) {
 }
 
 exports.ready = ready;
+exports.__esModule = true;

@@ -1,9 +1,13 @@
 "use strict";
 
-var _each = require("./util").each;
-var toArray = require("./util").toArray;
-var $ = require("./selector").$;
-var matches = require("./selector").matches;
+var _util = require("./util");
+
+var _each = _util.each;
+var toArray = _util.toArray;
+var _selector = require("./selector");
+
+var $ = _selector.$;
+var matches = _selector.matches;
 
 
 var ArrayProto = Array.prototype;
@@ -59,3 +63,4 @@ exports.reverse = reverse;
 exports.shift = shift;
 exports.some = some;
 exports.unshift = unshift;
+exports.__esModule = true;

@@ -1,15 +1,12 @@
 "use strict";
 
-var _interopRequireWildcard = function (obj) {
-  return obj && obj.constructor === Object ? obj : {
-    "default": obj
-  };
-};
+var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
 var extend = require("./util").extend;
 
 
-var api = {}, $ = {};
+var api = {},
+    $ = {};
 
 var array = _interopRequireWildcard(require("./array"));
 
@@ -44,10 +41,10 @@ var trigger = _interopRequireWildcard(require("./trigger"));
 var type = _interopRequireWildcard(require("./type"));
 
 if (typeof selector !== "undefined") {
-  $ = selector.$;
-  $.matches = selector.matches;
-  api.find = selector.find;
-  api.closest = selector.closest;
+    $ = selector.$;
+    $.matches = selector.matches;
+    api.find = selector.find;
+    api.closest = selector.closest;
 }
 
 extend($, contains, noconflict, type);

@@ -12,4 +12,5 @@ define(["exports", "./util"], function (exports, _util) {
   }
 
   exports.noConflict = noConflict;
+  exports.__esModule = true;
 });

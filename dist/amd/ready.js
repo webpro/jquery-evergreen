@@ -11,4 +11,5 @@ define(["exports"], function (exports) {
   }
 
   exports.ready = ready;
+  exports.__esModule = true;
 });

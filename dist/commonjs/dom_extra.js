@@ -1,58 +1,60 @@
 "use strict";
 
 var each = require("./util").each;
-var append = require("./dom").append;
-var before = require("./dom").before;
-var after = require("./dom").after;
+var _dom = require("./dom");
+
+var append = _dom.append;
+var before = _dom.before;
+var after = _dom.after;
 var $ = require("./selector").$;
 
 
 function appendTo(element) {
-  var context = typeof element === "string" ? $(element) : element;
-  append.call(context, this);
-  return this;
+    var context = typeof element === "string" ? $(element) : element;
+    append.call(context, this);
+    return this;
 }
 
 function empty() {
-  return each(this, function (element) {
-    element.innerHTML = "";
-  });
+    return each(this, function (element) {
+        element.innerHTML = "";
+    });
 }
 
 function remove() {
-  return each(this, function (element) {
-    if (element.parentNode) {
-      element.parentNode.removeChild(element);
-    }
-  });
+    return each(this, function (element) {
+        if (element.parentNode) {
+            element.parentNode.removeChild(element);
+        }
+    });
 }
 
 function replaceWith() {
-  return before.apply(this, arguments).remove();
+    return before.apply(this, arguments).remove();
 }
 
 function text(value) {
-  if (value === undefined) {
-    return this[0].textContent;
-  }
+    if (value === undefined) {
+        return this[0].textContent;
+    }
 
-  each(this, function (element) {
-    element.textContent = "" + value;
-  });
+    each(this, function (element) {
+        element.textContent = "" + value;
+    });
 
-  return this;
+    return this;
 }
 
 function val(value) {
-  if (value === undefined) {
-    return this[0].value;
-  }
+    if (value === undefined) {
+        return this[0].value;
+    }
 
-  each(this, function (element) {
-    element.value = value;
-  });
+    each(this, function (element) {
+        element.value = value;
+    });
 
-  return this;
+    return this;
 }
 
 exports.appendTo = appendTo;
@@ -61,3 +63,4 @@ exports.remove = remove;
 exports.replaceWith = replaceWith;
 exports.text = text;
 exports.val = val;
+exports.__esModule = true;

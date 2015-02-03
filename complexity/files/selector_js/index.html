@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">70.69</p>
+      <p class="stat">70.06</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">137</p>
+      <p class="stat">147</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">44.40</p>
+      <p class="stat">43.61</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.24</p>
+      <p class="stat">1.25</p>
     </div>
   </div>
 </div>
@@ -91,141 +91,151 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var global = require(&quot;./util&quot;).global;
-var each = require(&quot;./util&quot;).each;
-var uniq = require(&quot;./util&quot;).uniq;
+var _util = require(&quot;./util&quot;);
+
+var global = _util.global;
+var each = _util.each;
+var uniq = _util.uniq;
 
 
-var isPrototypeSet = false, reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/, reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/, reSimpleSelector = /^[\.#]?[\w-]*$/;
+var isPrototypeSet = false,
+    reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/,
+    reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/,
+    reSimpleSelector = /^[\.#]?[\w-]*$/;
 
 function $(selector) {
-  var context = arguments[1] === undefined ? document : arguments[1];
-  return (function () {
+    var context = arguments[1] === undefined ? document : arguments[1];
+
+
     var collection;
 
     if (!selector) {
-      collection = document.querySelectorAll(null);
+        collection = document.querySelectorAll(null);
     } else if (selector instanceof Wrapper) {
-      return selector;
+        return selector;
     } else if (typeof selector !== &quot;string&quot;) {
-      collection = selector.nodeType || selector === window ? [selector] : selector;
+        collection = selector.nodeType || selector === window ? [selector] : selector;
     } else if (reFragment.test(selector)) {
-      collection = createFragment(selector);
+        collection = createFragment(selector);
     } else {
-      context = typeof context === &quot;string&quot; ? document.querySelector(context) : context.length ? context[0] : context;
+        context = typeof context === &quot;string&quot; ? document.querySelector(context) : context.length ? context[0] : context;
 
-      collection = querySelector(selector, context);
+        collection = querySelector(selector, context);
     }
 
     return wrap(collection);
-  })();
 }
 
 function find(selector) {
-  var nodes = [];
-  each(this, function (node) {
-    each(querySelector(selector, node), function (child) {
-      if (nodes.indexOf(child) === -1) {
-        nodes.push(child);
-      }
+    var nodes = [];
+    each(this, function (node) {
+        each(querySelector(selector, node), function (child) {
+            if (nodes.indexOf(child) === -1) {
+                nodes.push(child);
+            }
+        });
     });
-  });
-  return $(nodes);
+    return $(nodes);
 }
 
 var closest = (function () {
-  function closest(selector, context) {
-    var nodes = [];
-    each(this, function (node) {
-      while (node &amp;&amp; node !== context) {
-        if (matches(node, selector)) {
-          nodes.push(node);
-          break;
-        }
-        node = node.parentElement;
-      }
-    });
-    return $(uniq(nodes));
-  }
-
-  return !Element.prototype.closest ? closest : function (selector, context) {
-    if (!context) {
-      var nodes = [];
-      each(this, function (node) {
-        var n = node.closest(selector);
-        if (n) {
-          nodes.push(n);
-        }
-      });
-      return $(uniq(nodes));
-    } else {
-      return closest.call(this, selector, context);
+    function closest(selector, context) {
+        var nodes = [];
+        each(this, function (node) {
+            while (node &amp;&amp; node !== context) {
+                if (matches(node, selector)) {
+                    nodes.push(node);
+                    break;
+                }
+                node = node.parentElement;
+            }
+        });
+        return $(uniq(nodes));
     }
-  };
+
+    return !Element.prototype.closest ? closest : function (selector, context) {
+        if (!context) {
+            var nodes = [];
+            each(this, function (node) {
+                var n = node.closest(selector);
+                if (n) {
+                    nodes.push(n);
+                }
+            });
+            return $(uniq(nodes));
+        } else {
+            return closest.call(this, selector, context);
+        }
+    };
 })();
 
 var matches = (function () {
-  var context = typeof Element !== &quot;undefined&quot; ? Element.prototype : global, _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
-  return function (element, selector) {
-    return _matches.call(element, selector);
-  };
+    var context = typeof Element !== &quot;undefined&quot; ? Element.prototype : global,
+        _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
+    return function (element, selector) {
+        return _matches.call(element, selector);
+    };
 })();
 
 function querySelector(selector, context) {
-  var isSimpleSelector = reSimpleSelector.test(selector);
+    var isSimpleSelector = reSimpleSelector.test(selector);
 
-  if (isSimpleSelector) {
-    if (selector[0] === &quot;#&quot;) {
-      var element = (context.getElementById ? context : document).getElementById(selector.slice(1));
-      return element ? [element] : [];
+    if (isSimpleSelector) {
+        if (selector[0] === &quot;#&quot;) {
+            var element = (context.getElementById ? context : document).getElementById(selector.slice(1));
+            return element ? [element] : [];
+        }
+        if (selector[0] === &quot;.&quot;) {
+            return context.getElementsByClassName(selector.slice(1));
+        }
+        return context.getElementsByTagName(selector);
     }
-    if (selector[0] === &quot;.&quot;) {
-      return context.getElementsByClassName(selector.slice(1));
-    }
-    return context.getElementsByTagName(selector);
-  }
 
-  return context.querySelectorAll(selector);
+    return context.querySelectorAll(selector);
 }
 
 function createFragment(html) {
-  if (reSingleTag.test(html)) {
-    return [document.createElement(RegExp.$1)];
-  }
+    if (reSingleTag.test(html)) {
+        return [document.createElement(RegExp.$1)];
+    }
 
-  var elements = [], container = document.createElement(&quot;div&quot;), children = container.childNodes;
+    var elements = [],
+        container = document.createElement(&quot;div&quot;),
+        children = container.childNodes;
 
-  container.innerHTML = html;
+    container.innerHTML = html;
 
-  for (var i = 0, l = children.length; i &lt; l; i++) {
-    elements.push(children[i]);
-  }
+    for (var i = 0, l = children.length; i &lt; l; i++) {
+        elements.push(children[i]);
+    }
 
-  return elements;
+    return elements;
 }
 
 function wrap(collection) {
-  if (!isPrototypeSet) {
-    Wrapper.prototype = $.fn;
-    Wrapper.prototype.constructor = Wrapper;
-    isPrototypeSet = true;
-  }
+    if (!isPrototypeSet) {
+        Wrapper.prototype = $.fn;
+        Wrapper.prototype.constructor = Wrapper;
+        isPrototypeSet = true;
+    }
 
-  return new Wrapper(collection);
+    return new Wrapper(collection);
 }
 
 function Wrapper(collection) {
-  var i = 0, length = collection.length;
-  for (; i &lt; length;) {
-    this[i] = collection[i++];
-  }
-  this.length = length;
+    var i = 0,
+        length = collection.length;
+    for (; i &lt; length;) {
+        this[i] = collection[i++];
+    }
+    this.length = length;
 }
 
 exports.$ = $;
 exports.find = find;
 exports.closest = closest;
-exports.matches = matches;</textarea>
+exports.matches = matches;
+exports.__esModule = true;</textarea>
   </div>
 </div>
 
