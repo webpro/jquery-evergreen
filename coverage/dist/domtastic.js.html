@@ -2478,14 +2478,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="missing-if-branch" title="if path not taken" >I</span>!function(e){if("object"==typeof exports&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >"undefined"!=typeof module)<span class="cstat-no" title="statement not covered" ></span>module.ex<span class="missing-if-branch" title="if path not taken" >I</span>ports=e();e</span>lse if("function"==typeof define&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >define.amd)<span class="cstat-no" title="statement not covered" ></span>define([],e);e</span>lse{var f;"undefined"!=typeof window?f=window:<span class="branch-1 cbranch-no" title="branch not covered" >"undefined"!=typeof global?f=global:"undefined"!=typeof self&amp;&amp;(f=self),</span>f.$=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(<span class="missing-if-branch" title="if path not taken" >I</span>o,u){if(!n[o]){if(!t[o]){<span class="cstat-no" title="statement not covered" >var a=typeof require=="function"&amp;&amp;require;<span class="cstat-no" title="statement not covered" >i</span>f(!u&amp;&amp;a)<span class="cstat-no" title="statement not covered" >return a(o,!0);<span class="cstat-no" title="statement not covered" >i</span></span>f(i)<span class="cstat-no" title="statement not covered" >return i(o,!0);<span class="cstat-no" title="statement not covered" >v</span></span>ar f=new Error("Cannot find module '"+o+"'");<span class="cstat-no" title="statement not covered" >t</span>hrow f.code="MODULE_NOT_FOUND",f}</span>var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:<span class="branch-1 cbranch-no" title="branch not covered" >e)</span>},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >require;</span>for(var o=0;o&lt;r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="missing-if-branch" title="if path not taken" >I</span>!function(e){if("object"==typeof exports&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >"undefined"!=typeof module)<span class="cstat-no" title="statement not covered" ></span>module.ex<span class="missing-if-branch" title="if path not taken" >I</span>ports=e();e</span>lse if("function"==typeof define&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >define.amd)<span class="cstat-no" title="statement not covered" ></span>define([],e);e</span>lse{var f;"undefined"!=typeof window?f=window:<span class="branch-1 cbranch-no" title="branch not covered" >"undefined"!=typeof global?f=global:"undefined"!=typeof self&amp;&amp;(f=self),</span>f.$=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(<span class="missing-if-branch" title="if path not taken" >I</span>o,u){if(!n[o]){if(!t[o]){<span class="cstat-no" title="statement not covered" >var a=typeof require=="function"&amp;&amp;require;<span class="cstat-no" title="statement not covered" >i</span>f(!u&amp;&amp;a)<span class="cstat-no" title="statement not covered" >return a(o,!0);<span class="cstat-no" title="statement not covered" >i</span></span>f(i)<span class="cstat-no" title="statement not covered" >return i(o,!0);<span class="cstat-no" title="statement not covered" >v</span></span>ar f=new Error("Cannot find module '"+o+"'");<span class="cstat-no" title="statement not covered" >t</span>hrow f.code="MODULE_NOT_FOUND",f}</span>var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?<span class="branch-0 cbranch-no" title="branch not covered" >n:</span>e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&amp;&amp;<span class="branch-1 cbranch-no" title="branch not covered" >require;</span>for(var o=0;o&lt;r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 &nbsp;
-var _util = require("./util");
+var _util = require(17);
 &nbsp;
 var _each = _util.each;
 var toArray = _util.toArray;
-var _selector = require("./selector");
+var _selector = require(13);
 &nbsp;
 var $ = _selector.$;
 var matches = _selector.matches;
@@ -2546,10 +2546,10 @@ exports.some = some;
 exports.unshift = unshift;
 exports.__esModule = true;
 &nbsp;
-},{"./selector":13,"./util":17}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
+var each = require(17).each;
 &nbsp;
 &nbsp;
 function attr(key, value) {
@@ -2582,10 +2582,10 @@ exports.attr = attr;
 exports.removeAttr = removeAttr;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],3:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
+var each = require(17).each;
 &nbsp;
 &nbsp;
 function addClass(value) {
@@ -2627,7 +2627,7 @@ exports.toggleClass = toggleClass;
 exports.hasClass = hasClass;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 &nbsp;
 function contains(container, element) {
@@ -2648,7 +2648,7 @@ exports.__esModule = true;
 },{}],5:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
+var each = require(17).each;
 &nbsp;
 &nbsp;
 function isNumeric(value) {
@@ -2707,10 +2707,10 @@ function css(key, value) {
 exports.css = css;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],6:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
+var each = require(17).each;
 &nbsp;
 &nbsp;
 var dataKeyProp = "__domtastic_data__";
@@ -2747,11 +2747,11 @@ exports.data = data;
 exports.prop = prop;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],7:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 &nbsp;
-var toArray = require("./util").toArray;
-var $ = require("./selector").$;
+var toArray = require(17).toArray;
+var $ = require(13).$;
 &nbsp;
 &nbsp;
 function append(element) {
@@ -2858,16 +2858,16 @@ exports.after = after;
 exports.clone = clone;
 exports.__esModule = true;
 &nbsp;
-},{"./selector":13,"./util":17}],8:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
-var _dom = require("./dom");
+var each = require(17).each;
+var _dom = require(7);
 &nbsp;
 var append = _dom.append;
 var before = _dom.before;
 var after = _dom.after;
-var $ = require("./selector").$;
+var $ = require(13).$;
 &nbsp;
 &nbsp;
 function appendTo(element) {
@@ -2926,11 +2926,11 @@ exports.text = text;
 exports.val = val;
 exports.__esModule = true;
 &nbsp;
-},{"./dom":7,"./selector":13,"./util":17}],9:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
-var closest = require("./selector").closest;
+var each = require(17).each;
+var closest = require(13).closest;
 &nbsp;
 &nbsp;
 function on(eventNames, selector, handler, useCapture) {
@@ -3085,10 +3085,10 @@ exports.bind = bind;
 exports.unbind = unbind;
 exports.__esModule = true;
 &nbsp;
-},{"./selector":13,"./util":17}],10:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 &nbsp;
-var each = require("./util").each;
+var each = require(17).each;
 &nbsp;
 &nbsp;
 function html(fragment) {
@@ -3107,10 +3107,10 @@ function html(fragment) {
 exports.html = html;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],11:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 &nbsp;
-var global = require("./util").global;
+var global = require(17).global;
 &nbsp;
 &nbsp;
 var previousLib = global.$;
@@ -3123,7 +3123,7 @@ function noConflict() {
 exports.noConflict = noConflict;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],12:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 &nbsp;
 function ready(handler) {
@@ -3141,7 +3141,7 @@ exports.__esModule = true;
 },{}],13:[function(require,module,exports){
 "use strict";
 &nbsp;
-var _util = require("./util");
+var _util = require(17);
 &nbsp;
 var global = _util.global;
 var each = _util.each;
@@ -3287,14 +3287,14 @@ exports.closest = closest;
 exports.matches = matches;
 exports.__esModule = true;
 &nbsp;
-},{"./util":17}],14:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 &nbsp;
-var _util = require("./util");
+var _util = require(17);
 &nbsp;
 var each = _util.each;
 var toArray = _util.toArray;
-var _selector = require("./selector");
+var _selector = require(13);
 &nbsp;
 var $ = _selector.$;
 var matches = _selector.matches;
@@ -3365,14 +3365,14 @@ exports.siblings = siblings;
 exports.slice = slice;
 exports.__esModule = true;
 &nbsp;
-},{"./selector":13,"./util":17}],15:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 &nbsp;
-var _util = require("./util");
+var _util = require(17);
 &nbsp;
 var global = _util.global;
 var each = _util.each;
-var contains = require("./contains").contains;
+var contains = require(4).contains;
 &nbsp;
 &nbsp;
 var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
@@ -3479,7 +3479,7 @@ exports.trigger = trigger;
 exports.triggerHandler = triggerHandler;
 exports.__esModule = true;
 &nbsp;
-},{"./contains":4,"./util":17}],16:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 &nbsp;
 function isFunction(obj) {
@@ -3549,43 +3549,43 @@ exports.__esModule = true;
 &nbsp;
 var _interopRequireWildcard = function (obj) { return obj &amp;&amp; obj.__esModule ? obj : <span class="branch-1 cbranch-no" title="branch not covered" >{ "default": obj };</span> };
 &nbsp;
-var extend = require("./util").extend;
+var extend = require(17).extend;
 &nbsp;
 &nbsp;
 var api = {},
     $ = {};
 &nbsp;
-var array = _interopRequireWildcard(require("./array"));
+var array = _interopRequireWildcard(require(1));
 &nbsp;
-var attr = _interopRequireWildcard(require("./attr"));
+var attr = _interopRequireWildcard(require(2));
 &nbsp;
-var class_ = _interopRequireWildcard(require("./class"));
+var class_ = _interopRequireWildcard(require(3));
 &nbsp;
-var contains = _interopRequireWildcard(require("./contains"));
+var contains = _interopRequireWildcard(require(4));
 &nbsp;
-var css = _interopRequireWildcard(require("./css"));
+var css = _interopRequireWildcard(require(5));
 &nbsp;
-var data = _interopRequireWildcard(require("./data"));
+var data = _interopRequireWildcard(require(6));
 &nbsp;
-var dom = _interopRequireWildcard(require("./dom"));
+var dom = _interopRequireWildcard(require(7));
 &nbsp;
-var dom_extra = _interopRequireWildcard(require("./dom_extra"));
+var dom_extra = _interopRequireWildcard(require(8));
 &nbsp;
-var event = _interopRequireWildcard(require("./event"));
+var event = _interopRequireWildcard(require(9));
 &nbsp;
-var html = _interopRequireWildcard(require("./html"));
+var html = _interopRequireWildcard(require(10));
 &nbsp;
-var noconflict = _interopRequireWildcard(require("./noconflict"));
+var noconflict = _interopRequireWildcard(require(11));
 &nbsp;
-var ready = _interopRequireWildcard(require("./ready"));
+var ready = _interopRequireWildcard(require(12));
 &nbsp;
-var selector = _interopRequireWildcard(require("./selector"));
+var selector = _interopRequireWildcard(require(13));
 &nbsp;
-var selector_extra = _interopRequireWildcard(require("./selector_extra"));
+var selector_extra = _interopRequireWildcard(require(14));
 &nbsp;
-var trigger = _interopRequireWildcard(require("./trigger"));
+var trigger = _interopRequireWildcard(require(15));
 &nbsp;
-var type = _interopRequireWildcard(require("./type"));
+var type = _interopRequireWildcard(require(16));
 &nbsp;
 <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof selector !== "undefined") {
     $ = selector.$;
@@ -3605,7 +3605,7 @@ $.extend = extend;
 &nbsp;
 module.exports = $;
 &nbsp;
-},{"./array":1,"./attr":2,"./class":3,"./contains":4,"./css":5,"./data":6,"./dom":7,"./dom_extra":8,"./event":9,"./html":10,"./noconflict":11,"./ready":12,"./selector":13,"./selector_extra":14,"./trigger":15,"./type":16,"./util":17}]},{},[18])(18)
+},{}]},{},[18])(18)
 });
 &nbsp;
 &nbsp;
@@ -3614,7 +3614,7 @@ module.exports = $;
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Feb 03 2015 20:25:37 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Feb 06 2015 08:16:50 GMT+0000 (UTC)</div>
 </div>
 
 <script src="../prettify.js"></script>

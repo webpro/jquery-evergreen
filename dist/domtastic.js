@@ -1,11 +1,11 @@
 !function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.$=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var _util = require("./util");
+var _util = require(17);
 
 var _each = _util.each;
 var toArray = _util.toArray;
-var _selector = require("./selector");
+var _selector = require(13);
 
 var $ = _selector.$;
 var matches = _selector.matches;
@@ -66,10 +66,10 @@ exports.some = some;
 exports.unshift = unshift;
 exports.__esModule = true;
 
-},{"./selector":13,"./util":17}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
+var each = require(17).each;
 
 
 function attr(key, value) {
@@ -102,10 +102,10 @@ exports.attr = attr;
 exports.removeAttr = removeAttr;
 exports.__esModule = true;
 
-},{"./util":17}],3:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
+var each = require(17).each;
 
 
 function addClass(value) {
@@ -147,7 +147,7 @@ exports.toggleClass = toggleClass;
 exports.hasClass = hasClass;
 exports.__esModule = true;
 
-},{"./util":17}],4:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 "use strict";
 
 function contains(container, element) {
@@ -168,7 +168,7 @@ exports.__esModule = true;
 },{}],5:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
+var each = require(17).each;
 
 
 function isNumeric(value) {
@@ -227,10 +227,10 @@ function css(key, value) {
 exports.css = css;
 exports.__esModule = true;
 
-},{"./util":17}],6:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
+var each = require(17).each;
 
 
 var dataKeyProp = "__domtastic_data__";
@@ -267,11 +267,11 @@ exports.data = data;
 exports.prop = prop;
 exports.__esModule = true;
 
-},{"./util":17}],7:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 "use strict";
 
-var toArray = require("./util").toArray;
-var $ = require("./selector").$;
+var toArray = require(17).toArray;
+var $ = require(13).$;
 
 
 function append(element) {
@@ -378,16 +378,16 @@ exports.after = after;
 exports.clone = clone;
 exports.__esModule = true;
 
-},{"./selector":13,"./util":17}],8:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
-var _dom = require("./dom");
+var each = require(17).each;
+var _dom = require(7);
 
 var append = _dom.append;
 var before = _dom.before;
 var after = _dom.after;
-var $ = require("./selector").$;
+var $ = require(13).$;
 
 
 function appendTo(element) {
@@ -446,11 +446,11 @@ exports.text = text;
 exports.val = val;
 exports.__esModule = true;
 
-},{"./dom":7,"./selector":13,"./util":17}],9:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
-var closest = require("./selector").closest;
+var each = require(17).each;
+var closest = require(13).closest;
 
 
 function on(eventNames, selector, handler, useCapture) {
@@ -605,10 +605,10 @@ exports.bind = bind;
 exports.unbind = unbind;
 exports.__esModule = true;
 
-},{"./selector":13,"./util":17}],10:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
-var each = require("./util").each;
+var each = require(17).each;
 
 
 function html(fragment) {
@@ -627,10 +627,10 @@ function html(fragment) {
 exports.html = html;
 exports.__esModule = true;
 
-},{"./util":17}],11:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 
-var global = require("./util").global;
+var global = require(17).global;
 
 
 var previousLib = global.$;
@@ -643,7 +643,7 @@ function noConflict() {
 exports.noConflict = noConflict;
 exports.__esModule = true;
 
-},{"./util":17}],12:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 function ready(handler) {
@@ -661,7 +661,7 @@ exports.__esModule = true;
 },{}],13:[function(require,module,exports){
 "use strict";
 
-var _util = require("./util");
+var _util = require(17);
 
 var global = _util.global;
 var each = _util.each;
@@ -807,14 +807,14 @@ exports.closest = closest;
 exports.matches = matches;
 exports.__esModule = true;
 
-},{"./util":17}],14:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 "use strict";
 
-var _util = require("./util");
+var _util = require(17);
 
 var each = _util.each;
 var toArray = _util.toArray;
-var _selector = require("./selector");
+var _selector = require(13);
 
 var $ = _selector.$;
 var matches = _selector.matches;
@@ -885,14 +885,14 @@ exports.siblings = siblings;
 exports.slice = slice;
 exports.__esModule = true;
 
-},{"./selector":13,"./util":17}],15:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 "use strict";
 
-var _util = require("./util");
+var _util = require(17);
 
 var global = _util.global;
 var each = _util.each;
-var contains = require("./contains").contains;
+var contains = require(4).contains;
 
 
 var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
@@ -999,7 +999,7 @@ exports.trigger = trigger;
 exports.triggerHandler = triggerHandler;
 exports.__esModule = true;
 
-},{"./contains":4,"./util":17}],16:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 "use strict";
 
 function isFunction(obj) {
@@ -1069,43 +1069,43 @@ exports.__esModule = true;
 
 var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
-var extend = require("./util").extend;
+var extend = require(17).extend;
 
 
 var api = {},
     $ = {};
 
-var array = _interopRequireWildcard(require("./array"));
+var array = _interopRequireWildcard(require(1));
 
-var attr = _interopRequireWildcard(require("./attr"));
+var attr = _interopRequireWildcard(require(2));
 
-var class_ = _interopRequireWildcard(require("./class"));
+var class_ = _interopRequireWildcard(require(3));
 
-var contains = _interopRequireWildcard(require("./contains"));
+var contains = _interopRequireWildcard(require(4));
 
-var css = _interopRequireWildcard(require("./css"));
+var css = _interopRequireWildcard(require(5));
 
-var data = _interopRequireWildcard(require("./data"));
+var data = _interopRequireWildcard(require(6));
 
-var dom = _interopRequireWildcard(require("./dom"));
+var dom = _interopRequireWildcard(require(7));
 
-var dom_extra = _interopRequireWildcard(require("./dom_extra"));
+var dom_extra = _interopRequireWildcard(require(8));
 
-var event = _interopRequireWildcard(require("./event"));
+var event = _interopRequireWildcard(require(9));
 
-var html = _interopRequireWildcard(require("./html"));
+var html = _interopRequireWildcard(require(10));
 
-var noconflict = _interopRequireWildcard(require("./noconflict"));
+var noconflict = _interopRequireWildcard(require(11));
 
-var ready = _interopRequireWildcard(require("./ready"));
+var ready = _interopRequireWildcard(require(12));
 
-var selector = _interopRequireWildcard(require("./selector"));
+var selector = _interopRequireWildcard(require(13));
 
-var selector_extra = _interopRequireWildcard(require("./selector_extra"));
+var selector_extra = _interopRequireWildcard(require(14));
 
-var trigger = _interopRequireWildcard(require("./trigger"));
+var trigger = _interopRequireWildcard(require(15));
 
-var type = _interopRequireWildcard(require("./type"));
+var type = _interopRequireWildcard(require(16));
 
 if (typeof selector !== "undefined") {
     $ = selector.$;
@@ -1125,7 +1125,7 @@ $.extend = extend;
 
 module.exports = $;
 
-},{"./array":1,"./attr":2,"./class":3,"./contains":4,"./css":5,"./data":6,"./dom":7,"./dom_extra":8,"./event":9,"./html":10,"./noconflict":11,"./ready":12,"./selector":13,"./selector_extra":14,"./trigger":15,"./type":16,"./util":17}]},{},[18])(18)
+},{}]},{},[18])(18)
 });
 
 
