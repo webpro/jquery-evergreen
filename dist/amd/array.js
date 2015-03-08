@@ -60,5 +60,7 @@ define(["exports", "./util", "./selector"], function (exports, _util, _selector)
   exports.shift = shift;
   exports.some = some;
   exports.unshift = unshift;
-  exports.__esModule = true;
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 });

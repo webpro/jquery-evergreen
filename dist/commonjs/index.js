@@ -10,33 +10,33 @@ var api = {},
 
 var array = _interopRequireWildcard(require("./array"));
 
-var attr = _interopRequireWildcard(require("./attr"));
+var attr = _interopRequireWildcard(require("./dom/attr"));
 
-var class_ = _interopRequireWildcard(require("./class"));
+var class_ = _interopRequireWildcard(require("./dom/class"));
 
-var contains = _interopRequireWildcard(require("./contains"));
+var contains = _interopRequireWildcard(require("./dom/contains"));
 
 var css = _interopRequireWildcard(require("./css"));
 
-var data = _interopRequireWildcard(require("./data"));
+var data = _interopRequireWildcard(require("./dom/data"));
 
 var dom = _interopRequireWildcard(require("./dom"));
 
-var dom_extra = _interopRequireWildcard(require("./dom_extra"));
+var dom_extra = _interopRequireWildcard(require("./dom/extra"));
 
 var event = _interopRequireWildcard(require("./event"));
 
-var html = _interopRequireWildcard(require("./html"));
+var html = _interopRequireWildcard(require("./dom/html"));
 
 var noconflict = _interopRequireWildcard(require("./noconflict"));
 
-var ready = _interopRequireWildcard(require("./ready"));
+var ready = _interopRequireWildcard(require("./event/ready"));
 
 var selector = _interopRequireWildcard(require("./selector"));
 
-var selector_extra = _interopRequireWildcard(require("./selector_extra"));
+var selector_extra = _interopRequireWildcard(require("./selector/extra"));
 
-var trigger = _interopRequireWildcard(require("./trigger"));
+var trigger = _interopRequireWildcard(require("./event/trigger"));
 
 var type = _interopRequireWildcard(require("./type"));
 

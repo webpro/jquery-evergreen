@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Plato - event/index.js</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <link href="../../assets/css/vendor/morris.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/bootstrap.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/font-awesome.css" rel="stylesheet">
+  <link href="../../assets/css/vendor/codemirror.css" rel="stylesheet">
+  <link href="../../assets/css/plato.css" rel="stylesheet">
+  <link href="../../assets/css/plato-file.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="http://github.com/es-analysis/plato">Plato on Github</a>
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="../../index.html">Report Home</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>event/index.js</h1>
+  </div>
+</div>
+
+<div class="container aggregate-stats">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
+      <p class="stat">72.69</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
+      <p class="stat">159</p>
+    </div>
+  </div>
+  <div class="row historical">
+    <div class="col-md-6">
+      <p id="chart_historical_maint" class="chart"></p>
+    </div>
+    <div class="col-md-6">
+      <p id="chart_historical_sloc" class="chart"></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
+      <p class="stat">40.48</p>
+    </div>
+    <div class="col-md-6">
+      <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
+      <p class="stat">1.34</p>
+    </div>
+  </div>
+</div>
+
+<div class="container charts">
+  <div class="row">
+    <h2 class="header">Function weight</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="chart-header">By Complexity <a href="http://en.wikipedia.org/wiki/Cyclomatic_complexity"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="This metric counts the number of distinct paths through a block of code. Lower values are better." data-original-title="Cyclomatic Complexity" data-container="body"></i></a></h3>
+      <div id="fn-by-complexity" class="stat"></div>
+    </div>
+    <div class="col-md-6">
+      <h3 class="chart-header">By SLOC  <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h3>
+      <div id="fn-by-sloc" class="stat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+
+var each = require(&quot;../util&quot;).each;
+var closest = require(&quot;../selector&quot;).closest;
+
+
+function on(eventNames, selector, handler, useCapture) {
+    if (typeof selector === &quot;function&quot;) {
+        handler = selector;
+        selector = null;
+    }
+
+    var parts, namespace, eventListener;
+
+    eventNames.split(&quot; &quot;).forEach(function (eventName) {
+        parts = eventName.split(&quot;.&quot;);
+        eventName = parts[0] || null;
+        namespace = parts[1] || null;
+
+        eventListener = proxyHandler(handler);
+
+        each(this, function (element) {
+            if (selector) {
+                eventListener = delegateHandler.bind(element, selector, eventListener);
+            }
+
+            element.addEventListener(eventName, eventListener, useCapture || false);
+
+            getHandlers(element).push({
+                eventName: eventName,
+                handler: handler,
+                eventListener: eventListener,
+                selector: selector,
+                namespace: namespace
+            });
+        });
+    }, this);
+
+    return this;
+}
+
+function off(_x, selector, handler, useCapture) {
+    var eventNames = arguments[0] === undefined ? &quot;&quot; : arguments[0];
+
+
+    if (typeof selector === &quot;function&quot;) {
+        handler = selector;
+        selector = null;
+    }
+
+    var parts, namespace, handlers;
+
+    eventNames.split(&quot; &quot;).forEach(function (eventName) {
+        parts = eventName.split(&quot;.&quot;);
+        eventName = parts[0] || null;
+        namespace = parts[1] || null;
+
+        each(this, function (element) {
+            handlers = getHandlers(element);
+
+            each(handlers.filter(function (item) {
+                return (!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector);
+            }), function (item) {
+                element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
+                handlers.splice(handlers.indexOf(item), 1);
+            });
+
+            if (!eventName &amp;&amp; !namespace &amp;&amp; !selector &amp;&amp; !handler) {
+                clearHandlers(element);
+            } else if (handlers.length === 0) {
+                clearHandlers(element);
+            }
+        });
+    }, this);
+
+    return this;
+}
+
+var eventKeyProp = &quot;__domtastic_event__&quot;;
+var id = 1;
+var handlers = {};
+var unusedKeys = [];
+
+function getHandlers(element) {
+    if (!element[eventKeyProp]) {
+        element[eventKeyProp] = unusedKeys.length === 0 ? ++id : unusedKeys.pop();
+    }
+    var key = element[eventKeyProp];
+    return handlers[key] || (handlers[key] = []);
+}
+
+function clearHandlers(element) {
+    var key = element[eventKeyProp];
+    if (handlers[key]) {
+        handlers[key] = null;
+        element[key] = null;
+        unusedKeys.push(key);
+    }
+}
+
+function proxyHandler(handler) {
+    return function (event) {
+        handler.call(this, augmentEvent(event), event.detail);
+    };
+}
+
+var augmentEvent = (function () {
+    var methodName,
+        eventMethods = {
+        preventDefault: &quot;isDefaultPrevented&quot;,
+        stopImmediatePropagation: &quot;isImmediatePropagationStopped&quot;,
+        stopPropagation: &quot;isPropagationStopped&quot;
+    },
+        returnTrue = function () {
+        return true;
+    },
+        returnFalse = function () {
+        return false;
+    };
+
+    return function (event) {
+        if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
+            for (methodName in eventMethods) {
+                (function (methodName, testMethodName, originalMethod) {
+                    event[methodName] = function () {
+                        this[testMethodName] = returnTrue;
+                        return originalMethod &amp;&amp; originalMethod.apply(this, arguments);
+                    };
+                    event[testMethodName] = returnFalse;
+                })(methodName, eventMethods[methodName], event[methodName]);
+            }
+            if (event._preventDefault) {
+                event.preventDefault();
+            }
+        }
+        return event;
+    };
+})();
+
+function delegateHandler(selector, handler, event) {
+    var eventTarget = event._target || event.target,
+        currentTarget = closest.call([eventTarget], selector, this)[0];
+    if (currentTarget &amp;&amp; currentTarget !== this) {
+        if (currentTarget === eventTarget || !(event.isPropagationStopped &amp;&amp; event.isPropagationStopped())) {
+            handler.call(currentTarget, event);
+        }
+    }
+}
+
+var bind = on,
+    unbind = off;
+
+exports.on = on;
+exports.off = off;
+exports.bind = bind;
+exports.unbind = unbind;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});</textarea>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>.</p>
+  </div>
+</footer>
+
+<script type="text/html" id="complexity-popover-template">
+  <div class="complexity-notice">
+    Complexity : {{ complexity.cyclomatic }} <br>
+    Length : {{ complexity.halstead.length }} <br>
+    Difficulty : {{ complexity.halstead.difficulty.toFixed(2) }} <br>
+    Est # bugs : {{ complexity.halstead.bugs.toFixed(2) }}<br>
+  </div>
+</script>
+
+<script type="text/javascript" src="../../assets/scripts/bundles/core-bundle.js"></script>
+<script type="text/javascript" src="../../assets/scripts/bundles/codemirror.js"></script>
+<script type="text/javascript" src="../../assets/scripts/codemirror.markpopovertext.js"></script>
+<script type="text/javascript" src="report.js"></script>
+<script type="text/javascript" src="report.history.js"></script>
+<script type="text/javascript" src="../../assets/scripts/plato-file.js"></script>
+</body>
+</html>

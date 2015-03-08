@@ -1,4 +1,4 @@
-define(["exports", "module", "./util", "./array", "./attr", "./class", "./contains", "./css", "./data", "./dom", "./dom_extra", "./event", "./html", "./noconflict", "./ready", "./selector", "./selector_extra", "./trigger", "./type"], function (exports, module, _util, _array, _attr, _class, _contains, _css, _data, _dom, _dom_extra, _event, _html, _noconflict, _ready, _selector, _selector_extra, _trigger, _type) {
+define(["exports", "module", "./util", "./array", "./dom/attr", "./dom/class", "./dom/contains", "./css", "./dom/data", "./dom", "./dom/extra", "./event", "./dom/html", "./noconflict", "./event/ready", "./selector", "./selector/extra", "./event/trigger", "./type"], function (exports, module, _util, _array, _domAttr, _domClass, _domContains, _css, _domData, _dom, _domExtra, _event, _domHtml, _noconflict, _eventReady, _selector, _selectorExtra, _eventTrigger, _type) {
     "use strict";
 
     var extend = _util.extend;
@@ -8,20 +8,20 @@ define(["exports", "module", "./util", "./array", "./attr", "./class", "./contai
         $ = {};
 
     var array = _array;
-    var attr = _attr;
-    var class_ = _class;
-    var contains = _contains;
+    var attr = _domAttr;
+    var class_ = _domClass;
+    var contains = _domContains;
     var css = _css;
-    var data = _data;
+    var data = _domData;
     var dom = _dom;
-    var dom_extra = _dom_extra;
+    var dom_extra = _domExtra;
     var event = _event;
-    var html = _html;
+    var html = _domHtml;
     var noconflict = _noconflict;
-    var ready = _ready;
+    var ready = _eventReady;
     var selector = _selector;
-    var selector_extra = _selector_extra;
-    var trigger = _trigger;
+    var selector_extra = _selectorExtra;
+    var trigger = _eventTrigger;
     var type = _type;
 
 

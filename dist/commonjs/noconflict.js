@@ -11,4 +11,6 @@ function noConflict() {
 }
 
 exports.noConflict = noConflict;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});

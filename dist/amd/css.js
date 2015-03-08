@@ -58,5 +58,7 @@ define(["exports", "./util"], function (exports, _util) {
     }
 
     exports.css = css;
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
 });

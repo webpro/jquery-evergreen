@@ -48,5 +48,7 @@ define(["exports"], function (exports) {
     exports.each = each;
     exports.extend = extend;
     exports.uniq = uniq;
-    exports.__esModule = true;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
 });

@@ -1,11 +1,11 @@
-!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.$=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.$ = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
 var _util = require(17);
 
 var _each = _util.each;
 var toArray = _util.toArray;
-var _selector = require(13);
+var _selector = require(15);
 
 var $ = _selector.$;
 var matches = _selector.matches;
@@ -64,108 +64,11 @@ exports.reverse = reverse;
 exports.shift = shift;
 exports.some = some;
 exports.unshift = unshift;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-},{}],2:[function(require,module,exports){
-"use strict";
-
-var each = require(17).each;
-
-
-function attr(key, value) {
-    if (typeof key === "string" && typeof value === "undefined") {
-        var element = this.nodeType ? this : this[0];
-        return element ? element.getAttribute(key) : undefined;
-    }
-
-    each(this, function (element) {
-        if (typeof key === "object") {
-            for (var attr in key) {
-                element.setAttribute(attr, key[attr]);
-            }
-        } else {
-            element.setAttribute(key, value);
-        }
-    });
-
-    return this;
-}
-
-function removeAttr(key) {
-    each(this, function (element) {
-        element.removeAttribute(key);
-    });
-    return this;
-}
-
-exports.attr = attr;
-exports.removeAttr = removeAttr;
-exports.__esModule = true;
-
-},{}],3:[function(require,module,exports){
-"use strict";
-
-var each = require(17).each;
-
-
-function addClass(value) {
-    if (value && value.length) {
-        each(value.split(" "), _each.bind(this, "add"));
-    }
-    return this;
-}
-
-function removeClass(value) {
-    if (value && value.length) {
-        each(value.split(" "), _each.bind(this, "remove"));
-    }
-    return this;
-}
-
-function toggleClass(value) {
-    if (value && value.length) {
-        each(value.split(" "), _each.bind(this, "toggle"));
-    }
-    return this;
-}
-
-function hasClass(value) {
-    return (this.nodeType ? [this] : this).some(function (element) {
-        return element.classList.contains(value);
-    });
-}
-
-function _each(fnName, className) {
-    each(this, function (element) {
-        element.classList[fnName](className);
-    });
-}
-
-exports.addClass = addClass;
-exports.removeClass = removeClass;
-exports.toggleClass = toggleClass;
-exports.hasClass = hasClass;
-exports.__esModule = true;
-
-},{}],4:[function(require,module,exports){
-"use strict";
-
-function contains(container, element) {
-    if (!container || !element || container === element) {
-        return false;
-    } else if (container.contains) {
-        return container.contains(element);
-    } else if (container.compareDocumentPosition) {
-        return !(container.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_DISCONNECTED);
-    }
-    return false;
-}
-
-
-exports.contains = contains;
-exports.__esModule = true;
-
-},{}],5:[function(require,module,exports){
+},{"15":15,"17":17}],2:[function(require,module,exports){
 "use strict";
 
 var each = require(17).each;
@@ -225,7 +128,114 @@ function css(key, value) {
 }
 
 exports.css = css;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"17":17}],3:[function(require,module,exports){
+"use strict";
+
+var each = require(17).each;
+
+
+function attr(key, value) {
+    if (typeof key === "string" && typeof value === "undefined") {
+        var element = this.nodeType ? this : this[0];
+        return element ? element.getAttribute(key) : undefined;
+    }
+
+    each(this, function (element) {
+        if (typeof key === "object") {
+            for (var attr in key) {
+                element.setAttribute(attr, key[attr]);
+            }
+        } else {
+            element.setAttribute(key, value);
+        }
+    });
+
+    return this;
+}
+
+function removeAttr(key) {
+    each(this, function (element) {
+        element.removeAttribute(key);
+    });
+    return this;
+}
+
+exports.attr = attr;
+exports.removeAttr = removeAttr;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"17":17}],4:[function(require,module,exports){
+"use strict";
+
+var each = require(17).each;
+
+
+function addClass(value) {
+    if (value && value.length) {
+        each(value.split(" "), _each.bind(this, "add"));
+    }
+    return this;
+}
+
+function removeClass(value) {
+    if (value && value.length) {
+        each(value.split(" "), _each.bind(this, "remove"));
+    }
+    return this;
+}
+
+function toggleClass(value) {
+    if (value && value.length) {
+        each(value.split(" "), _each.bind(this, "toggle"));
+    }
+    return this;
+}
+
+function hasClass(value) {
+    return (this.nodeType ? [this] : this).some(function (element) {
+        return element.classList.contains(value);
+    });
+}
+
+function _each(fnName, className) {
+    each(this, function (element) {
+        element.classList[fnName](className);
+    });
+}
+
+exports.addClass = addClass;
+exports.removeClass = removeClass;
+exports.toggleClass = toggleClass;
+exports.hasClass = hasClass;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"17":17}],5:[function(require,module,exports){
+"use strict";
+
+function contains(container, element) {
+    if (!container || !element || container === element) {
+        return false;
+    } else if (container.contains) {
+        return container.contains(element);
+    } else if (container.compareDocumentPosition) {
+        return !(container.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_DISCONNECTED);
+    }
+    return false;
+}
+
+
+exports.contains = contains;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 },{}],6:[function(require,module,exports){
 "use strict";
@@ -265,13 +275,109 @@ function prop(key, value) {
 
 exports.data = data;
 exports.prop = prop;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-},{}],7:[function(require,module,exports){
+},{"17":17}],7:[function(require,module,exports){
+"use strict";
+
+var each = require(17).each;
+var _ = require(9);
+
+var append = _.append;
+var before = _.before;
+var after = _.after;
+var $ = require(15).$;
+
+
+function appendTo(element) {
+    var context = typeof element === "string" ? $(element) : element;
+    append.call(context, this);
+    return this;
+}
+
+function empty() {
+    return each(this, function (element) {
+        element.innerHTML = "";
+    });
+}
+
+function remove() {
+    return each(this, function (element) {
+        if (element.parentNode) {
+            element.parentNode.removeChild(element);
+        }
+    });
+}
+
+function replaceWith() {
+    return before.apply(this, arguments).remove();
+}
+
+function text(value) {
+    if (value === undefined) {
+        return this[0].textContent;
+    }
+
+    each(this, function (element) {
+        element.textContent = "" + value;
+    });
+
+    return this;
+}
+
+function val(value) {
+    if (value === undefined) {
+        return this[0].value;
+    }
+
+    each(this, function (element) {
+        element.value = value;
+    });
+
+    return this;
+}
+
+exports.appendTo = appendTo;
+exports.empty = empty;
+exports.remove = remove;
+exports.replaceWith = replaceWith;
+exports.text = text;
+exports.val = val;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"15":15,"17":17,"9":9}],8:[function(require,module,exports){
+"use strict";
+
+var each = require(17).each;
+
+
+function html(fragment) {
+  if (typeof fragment !== "string") {
+    var element = this.nodeType ? this : this[0];
+    return element ? element.innerHTML : undefined;
+  }
+
+  each(this, function (element) {
+    element.innerHTML = fragment;
+  });
+
+  return this;
+}
+
+exports.html = html;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+},{"17":17}],9:[function(require,module,exports){
 "use strict";
 
 var toArray = require(17).toArray;
-var $ = require(13).$;
+var $ = require(15).$;
 
 
 function append(element) {
@@ -376,81 +482,15 @@ exports.prepend = prepend;
 exports.before = before;
 exports.after = after;
 exports.clone = clone;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-},{}],8:[function(require,module,exports){
+},{"15":15,"17":17}],10:[function(require,module,exports){
 "use strict";
 
 var each = require(17).each;
-var _dom = require(7);
-
-var append = _dom.append;
-var before = _dom.before;
-var after = _dom.after;
-var $ = require(13).$;
-
-
-function appendTo(element) {
-    var context = typeof element === "string" ? $(element) : element;
-    append.call(context, this);
-    return this;
-}
-
-function empty() {
-    return each(this, function (element) {
-        element.innerHTML = "";
-    });
-}
-
-function remove() {
-    return each(this, function (element) {
-        if (element.parentNode) {
-            element.parentNode.removeChild(element);
-        }
-    });
-}
-
-function replaceWith() {
-    return before.apply(this, arguments).remove();
-}
-
-function text(value) {
-    if (value === undefined) {
-        return this[0].textContent;
-    }
-
-    each(this, function (element) {
-        element.textContent = "" + value;
-    });
-
-    return this;
-}
-
-function val(value) {
-    if (value === undefined) {
-        return this[0].value;
-    }
-
-    each(this, function (element) {
-        element.value = value;
-    });
-
-    return this;
-}
-
-exports.appendTo = appendTo;
-exports.empty = empty;
-exports.remove = remove;
-exports.replaceWith = replaceWith;
-exports.text = text;
-exports.val = val;
-exports.__esModule = true;
-
-},{}],9:[function(require,module,exports){
-"use strict";
-
-var each = require(17).each;
-var closest = require(13).closest;
+var closest = require(15).closest;
 
 
 function on(eventNames, selector, handler, useCapture) {
@@ -603,31 +643,144 @@ exports.on = on;
 exports.off = off;
 exports.bind = bind;
 exports.unbind = unbind;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-},{}],10:[function(require,module,exports){
+},{"15":15,"17":17}],11:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
-
-
-function html(fragment) {
-  if (typeof fragment !== "string") {
-    var element = this.nodeType ? this : this[0];
-    return element ? element.innerHTML : undefined;
+function ready(handler) {
+  if (/complete|loaded|interactive/.test(document.readyState) && document.body) {
+    handler();
+  } else {
+    document.addEventListener("DOMContentLoaded", handler, false);
   }
-
-  each(this, function (element) {
-    element.innerHTML = fragment;
-  });
-
   return this;
 }
 
-exports.html = html;
-exports.__esModule = true;
+exports.ready = ready;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+"use strict";
+
+var _util = require(17);
+
+var global = _util.global;
+var each = _util.each;
+var contains = require(5).contains;
+
+
+var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
+    reKeyEvent = /^key/;
+
+function trigger(type, data) {
+    var params = arguments[2] === undefined ? {} : arguments[2];
+
+
+    params.bubbles = typeof params.bubbles === "boolean" ? params.bubbles : true;
+    params.cancelable = typeof params.cancelable === "boolean" ? params.cancelable : true;
+    params.preventDefault = typeof params.preventDefault === "boolean" ? params.preventDefault : false;
+    params.detail = data;
+
+    var EventConstructor = getEventConstructor(type),
+        event = new EventConstructor(type, params);
+
+    event._preventDefault = params.preventDefault;
+
+    each(this, function (element) {
+        if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
+            dispatchEvent(element, event);
+        } else {
+            triggerForPath(element, type, params);
+        }
+    });
+    return this;
+}
+
+function getEventConstructor(type) {
+    return supportsOtherEventConstructors ? reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent : CustomEvent;
+}
+
+function triggerHandler(type, data) {
+    if (this[0]) {
+        trigger.call(this[0], type, data, { bubbles: false, preventDefault: true });
+    }
+}
+
+function isAttachedToDocument(element) {
+    if (element === window || element === document) {
+        return true;
+    }
+    return contains(element.ownerDocument.documentElement, element);
+}
+
+function triggerForPath(element, type) {
+    var params = arguments[2] === undefined ? {} : arguments[2];
+    params.bubbles = false;
+    var event = new CustomEvent(type, params);
+    event._target = element;
+    do {
+        dispatchEvent(element, event);
+    } while (element = element.parentNode);
+}
+
+var directEventMethods = ["blur", "focus", "select", "submit"];
+
+function dispatchEvent(element, event) {
+    if (directEventMethods.indexOf(event.type) !== -1 && typeof element[event.type] === "function" && !event._preventDefault && !event.cancelable) {
+        element[event.type]();
+    } else {
+        element.dispatchEvent(event);
+    }
+}
+
+(function () {
+    function CustomEvent(event) {
+        var params = arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
+        var customEvent = document.createEvent("CustomEvent");
+        customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+        return customEvent;
+    }
+
+    CustomEvent.prototype = global.CustomEvent && global.CustomEvent.prototype;
+    global.CustomEvent = CustomEvent;
+})();
+
+var isEventBubblingInDetachedTree = (function () {
+    var isBubbling = false,
+        doc = global.document;
+    if (doc) {
+        var parent = doc.createElement("div"),
+            child = parent.cloneNode();
+        parent.appendChild(child);
+        parent.addEventListener("e", function () {
+            isBubbling = true;
+        });
+        child.dispatchEvent(new CustomEvent("e", { bubbles: true }));
+    }
+    return isBubbling;
+})();
+
+var supportsOtherEventConstructors = (function () {
+    try {
+        new window.MouseEvent("click");
+    } catch (e) {
+        return false;
+    }
+    return true;
+})();
+
+exports.trigger = trigger;
+exports.triggerHandler = triggerHandler;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"17":17,"5":5}],13:[function(require,module,exports){
 "use strict";
 
 var global = require(17).global;
@@ -641,24 +794,91 @@ function noConflict() {
 }
 
 exports.noConflict = noConflict;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
-},{}],12:[function(require,module,exports){
+},{"17":17}],14:[function(require,module,exports){
 "use strict";
 
-function ready(handler) {
-  if (/complete|loaded|interactive/.test(document.readyState) && document.body) {
-    handler();
-  } else {
-    document.addEventListener("DOMContentLoaded", handler, false);
-  }
-  return this;
+var _util = require(17);
+
+var each = _util.each;
+var toArray = _util.toArray;
+var _ = require(15);
+
+var $ = _.$;
+var matches = _.matches;
+
+
+function children(selector) {
+    var nodes = [];
+    each(this, function (element) {
+        if (element.children) {
+            each(element.children, function (child) {
+                if (!selector || selector && matches(child, selector)) {
+                    nodes.push(child);
+                }
+            });
+        }
+    });
+    return $(nodes);
 }
 
-exports.ready = ready;
-exports.__esModule = true;
+function contents() {
+    var nodes = [];
+    each(this, function (element) {
+        nodes.push.apply(nodes, toArray(element.childNodes));
+    });
+    return $(nodes);
+}
 
-},{}],13:[function(require,module,exports){
+function eq(index) {
+    return slice.call(this, index, index + 1);
+}
+
+function get(index) {
+    return this[index];
+}
+
+function parent(selector) {
+    var nodes = [];
+    each(this, function (element) {
+        if (!selector || selector && matches(element.parentNode, selector)) {
+            nodes.push(element.parentNode);
+        }
+    });
+    return $(nodes);
+}
+
+function siblings(selector) {
+    var nodes = [];
+    each(this, function (element) {
+        each(element.parentNode.children, function (sibling) {
+            if (sibling !== element && (!selector || selector && matches(sibling, selector))) {
+                nodes.push(sibling);
+            }
+        });
+    });
+    return $(nodes);
+}
+
+function slice(start, end) {
+    return $([].slice.apply(this, arguments));
+}
+
+exports.children = children;
+exports.contents = contents;
+exports.eq = eq;
+exports.get = get;
+exports.parent = parent;
+exports.siblings = siblings;
+exports.slice = slice;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"15":15,"17":17}],15:[function(require,module,exports){
 "use strict";
 
 var _util = require(17);
@@ -805,201 +1025,11 @@ exports.$ = $;
 exports.find = find;
 exports.closest = closest;
 exports.matches = matches;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-},{}],14:[function(require,module,exports){
-"use strict";
-
-var _util = require(17);
-
-var each = _util.each;
-var toArray = _util.toArray;
-var _selector = require(13);
-
-var $ = _selector.$;
-var matches = _selector.matches;
-
-
-function children(selector) {
-    var nodes = [];
-    each(this, function (element) {
-        if (element.children) {
-            each(element.children, function (child) {
-                if (!selector || selector && matches(child, selector)) {
-                    nodes.push(child);
-                }
-            });
-        }
-    });
-    return $(nodes);
-}
-
-function contents() {
-    var nodes = [];
-    each(this, function (element) {
-        nodes.push.apply(nodes, toArray(element.childNodes));
-    });
-    return $(nodes);
-}
-
-function eq(index) {
-    return slice.call(this, index, index + 1);
-}
-
-function get(index) {
-    return this[index];
-}
-
-function parent(selector) {
-    var nodes = [];
-    each(this, function (element) {
-        if (!selector || selector && matches(element.parentNode, selector)) {
-            nodes.push(element.parentNode);
-        }
-    });
-    return $(nodes);
-}
-
-function siblings(selector) {
-    var nodes = [];
-    each(this, function (element) {
-        each(element.parentNode.children, function (sibling) {
-            if (sibling !== element && (!selector || selector && matches(sibling, selector))) {
-                nodes.push(sibling);
-            }
-        });
-    });
-    return $(nodes);
-}
-
-function slice(start, end) {
-    return $([].slice.apply(this, arguments));
-}
-
-exports.children = children;
-exports.contents = contents;
-exports.eq = eq;
-exports.get = get;
-exports.parent = parent;
-exports.siblings = siblings;
-exports.slice = slice;
-exports.__esModule = true;
-
-},{}],15:[function(require,module,exports){
-"use strict";
-
-var _util = require(17);
-
-var global = _util.global;
-var each = _util.each;
-var contains = require(4).contains;
-
-
-var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
-    reKeyEvent = /^key/;
-
-function trigger(type, data) {
-    var params = arguments[2] === undefined ? {} : arguments[2];
-
-
-    params.bubbles = typeof params.bubbles === "boolean" ? params.bubbles : true;
-    params.cancelable = typeof params.cancelable === "boolean" ? params.cancelable : true;
-    params.preventDefault = typeof params.preventDefault === "boolean" ? params.preventDefault : false;
-    params.detail = data;
-
-    var EventConstructor = getEventConstructor(type),
-        event = new EventConstructor(type, params);
-
-    event._preventDefault = params.preventDefault;
-
-    each(this, function (element) {
-        if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
-            dispatchEvent(element, event);
-        } else {
-            triggerForPath(element, type, params);
-        }
-    });
-    return this;
-}
-
-function getEventConstructor(type) {
-    return supportsOtherEventConstructors ? reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent : CustomEvent;
-}
-
-function triggerHandler(type, data) {
-    if (this[0]) {
-        trigger.call(this[0], type, data, { bubbles: false, preventDefault: true });
-    }
-}
-
-function isAttachedToDocument(element) {
-    if (element === window || element === document) {
-        return true;
-    }
-    return contains(element.ownerDocument.documentElement, element);
-}
-
-function triggerForPath(element, type) {
-    var params = arguments[2] === undefined ? {} : arguments[2];
-    params.bubbles = false;
-    var event = new CustomEvent(type, params);
-    event._target = element;
-    do {
-        dispatchEvent(element, event);
-    } while (element = element.parentNode);
-}
-
-var directEventMethods = ["blur", "focus", "select", "submit"];
-
-function dispatchEvent(element, event) {
-    if (directEventMethods.indexOf(event.type) !== -1 && typeof element[event.type] === "function" && !event._preventDefault && !event.cancelable) {
-        element[event.type]();
-    } else {
-        element.dispatchEvent(event);
-    }
-}
-
-(function () {
-    function CustomEvent(event) {
-        var params = arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
-        var customEvent = document.createEvent("CustomEvent");
-        customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-        return customEvent;
-    }
-
-    CustomEvent.prototype = global.CustomEvent && global.CustomEvent.prototype;
-    global.CustomEvent = CustomEvent;
-})();
-
-var isEventBubblingInDetachedTree = (function () {
-    var isBubbling = false,
-        doc = global.document;
-    if (doc) {
-        var parent = doc.createElement("div"),
-            child = parent.cloneNode();
-        parent.appendChild(child);
-        parent.addEventListener("e", function () {
-            isBubbling = true;
-        });
-        child.dispatchEvent(new CustomEvent("e", { bubbles: true }));
-    }
-    return isBubbling;
-})();
-
-var supportsOtherEventConstructors = (function () {
-    try {
-        new window.MouseEvent("click");
-    } catch (e) {
-        return false;
-    }
-    return true;
-})();
-
-exports.trigger = trigger;
-exports.triggerHandler = triggerHandler;
-exports.__esModule = true;
-
-},{}],16:[function(require,module,exports){
+},{"17":17}],16:[function(require,module,exports){
 "use strict";
 
 function isFunction(obj) {
@@ -1010,7 +1040,9 @@ var isArray = Array.isArray;
 
 exports.isArray = isArray;
 exports.isFunction = isFunction;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 
 },{}],17:[function(require,module,exports){
 "use strict";
@@ -1062,7 +1094,9 @@ exports.toArray = toArray;
 exports.each = each;
 exports.extend = extend;
 exports.uniq = uniq;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
 },{}],18:[function(require,module,exports){
 "use strict";
@@ -1077,33 +1111,33 @@ var api = {},
 
 var array = _interopRequireWildcard(require(1));
 
-var attr = _interopRequireWildcard(require(2));
+var attr = _interopRequireWildcard(require(3));
 
-var class_ = _interopRequireWildcard(require(3));
+var class_ = _interopRequireWildcard(require(4));
 
-var contains = _interopRequireWildcard(require(4));
+var contains = _interopRequireWildcard(require(5));
 
-var css = _interopRequireWildcard(require(5));
+var css = _interopRequireWildcard(require(2));
 
 var data = _interopRequireWildcard(require(6));
 
-var dom = _interopRequireWildcard(require(7));
+var dom = _interopRequireWildcard(require(9));
 
-var dom_extra = _interopRequireWildcard(require(8));
+var dom_extra = _interopRequireWildcard(require(7));
 
-var event = _interopRequireWildcard(require(9));
+var event = _interopRequireWildcard(require(10));
 
-var html = _interopRequireWildcard(require(10));
+var html = _interopRequireWildcard(require(8));
 
-var noconflict = _interopRequireWildcard(require(11));
+var noconflict = _interopRequireWildcard(require(13));
 
-var ready = _interopRequireWildcard(require(12));
+var ready = _interopRequireWildcard(require(11));
 
-var selector = _interopRequireWildcard(require(13));
+var selector = _interopRequireWildcard(require(15));
 
 var selector_extra = _interopRequireWildcard(require(14));
 
-var trigger = _interopRequireWildcard(require(15));
+var trigger = _interopRequireWildcard(require(12));
 
 var type = _interopRequireWildcard(require(16));
 
@@ -1125,7 +1159,7 @@ $.extend = extend;
 
 module.exports = $;
 
-},{}]},{},[18])(18)
+},{"1":1,"10":10,"11":11,"12":12,"13":13,"14":14,"15":15,"16":16,"17":17,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9}]},{},[18])(18)
 });
 
 

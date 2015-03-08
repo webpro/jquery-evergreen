@@ -8,4 +8,6 @@ var isArray = Array.isArray;
 
 exports.isArray = isArray;
 exports.isFunction = isFunction;
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
