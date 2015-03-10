@@ -1,11 +1,9 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.$ = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 "use strict";
 
-var _util = require(17);
-
-var _each = _util.each;
-var toArray = _util.toArray;
-var _selector = require(15);
+var toArray = require(19).toArray;
+var _each = require(18).each;
+var _selector = require(16);
 
 var $ = _selector.$;
 var matches = _selector.matches;
@@ -68,10 +66,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-},{"15":15,"17":17}],2:[function(require,module,exports){
+},{"16":16,"18":18,"19":19}],2:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
+var each = require(18).each;
 
 
 function isNumeric(value) {
@@ -132,10 +130,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"17":17}],3:[function(require,module,exports){
+},{"18":18}],3:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
+var each = require(18).each;
 
 
 function attr(key, value) {
@@ -170,10 +168,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"17":17}],4:[function(require,module,exports){
+},{"18":18}],4:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
+var each = require(18).each;
 
 
 function addClass(value) {
@@ -217,7 +215,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"17":17}],5:[function(require,module,exports){
+},{"18":18}],5:[function(require,module,exports){
 "use strict";
 
 function contains(container, element) {
@@ -240,7 +238,7 @@ Object.defineProperty(exports, "__esModule", {
 },{}],6:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
+var each = require(18).each;
 
 
 var dataKeyProp = "__domtastic_data__";
@@ -279,16 +277,16 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"17":17}],7:[function(require,module,exports){
+},{"18":18}],7:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
+var each = require(18).each;
 var _ = require(9);
 
 var append = _.append;
 var before = _.before;
 var after = _.after;
-var $ = require(15).$;
+var $ = require(16).$;
 
 
 function appendTo(element) {
@@ -349,10 +347,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"15":15,"17":17,"9":9}],8:[function(require,module,exports){
+},{"16":16,"18":18,"9":9}],8:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
+var each = require(18).each;
 
 
 function html(fragment) {
@@ -373,11 +371,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-},{"17":17}],9:[function(require,module,exports){
+},{"18":18}],9:[function(require,module,exports){
 "use strict";
 
-var toArray = require(17).toArray;
-var $ = require(15).$;
+var toArray = require(19).toArray;
+var $ = require(16).$;
 
 
 function append(element) {
@@ -486,11 +484,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"15":15,"17":17}],10:[function(require,module,exports){
+},{"16":16,"19":19}],10:[function(require,module,exports){
 "use strict";
 
-var each = require(17).each;
-var closest = require(15).closest;
+var each = require(18).each;
+var closest = require(14).closest;
 
 
 function on(eventNames, selector, handler, useCapture) {
@@ -647,7 +645,7 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"15":15,"17":17}],11:[function(require,module,exports){
+},{"14":14,"18":18}],11:[function(require,module,exports){
 "use strict";
 
 function ready(handler) {
@@ -667,10 +665,8 @@ Object.defineProperty(exports, "__esModule", {
 },{}],12:[function(require,module,exports){
 "use strict";
 
-var _util = require(17);
-
-var global = _util.global;
-var each = _util.each;
+var global = require(19).global;
+var each = require(18).each;
 var contains = require(5).contains;
 
 
@@ -780,10 +776,10 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"17":17,"5":5}],13:[function(require,module,exports){
+},{"18":18,"19":19,"5":5}],13:[function(require,module,exports){
 "use strict";
 
-var global = require(17).global;
+var global = require(19).global;
 
 
 var previousLib = global.$;
@@ -798,14 +794,56 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-},{"17":17}],14:[function(require,module,exports){
+},{"19":19}],14:[function(require,module,exports){
 "use strict";
 
-var _util = require(17);
+var matches = require(16).matches;
+var uniq = require(19).uniq;
+var each = require(18).each;
 
-var each = _util.each;
-var toArray = _util.toArray;
-var _ = require(15);
+
+var closest = (function () {
+    function closest(selector, context) {
+        var nodes = [];
+        each(this, function (node) {
+            while (node && node !== context) {
+                if (matches(node, selector)) {
+                    nodes.push(node);
+                    break;
+                }
+                node = node.parentElement;
+            }
+        });
+        return $(uniq(nodes));
+    }
+
+    return !Element.prototype.closest ? closest : function (selector, context) {
+        if (!context) {
+            var nodes = [];
+            each(this, function (node) {
+                var n = node.closest(selector);
+                if (n) {
+                    nodes.push(n);
+                }
+            });
+            return $(uniq(nodes));
+        } else {
+            return closest.call(this, selector, context);
+        }
+    };
+})();
+
+exports.closest = closest;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{"16":16,"18":18,"19":19}],15:[function(require,module,exports){
+"use strict";
+
+var toArray = require(19).toArray;
+var each = require(18).each;
+var _ = require(16);
 
 var $ = _.$;
 var matches = _.matches;
@@ -878,14 +916,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"15":15,"17":17}],15:[function(require,module,exports){
+},{"16":16,"18":18,"19":19}],16:[function(require,module,exports){
 "use strict";
 
-var _util = require(17);
-
-var global = _util.global;
-var each = _util.each;
-var uniq = _util.uniq;
+var global = require(19).global;
+var each = require(18).each;
 
 
 var isPrototypeSet = false,
@@ -927,37 +962,6 @@ function find(selector) {
     });
     return $(nodes);
 }
-
-var closest = (function () {
-    function closest(selector, context) {
-        var nodes = [];
-        each(this, function (node) {
-            while (node && node !== context) {
-                if (matches(node, selector)) {
-                    nodes.push(node);
-                    break;
-                }
-                node = node.parentElement;
-            }
-        });
-        return $(uniq(nodes));
-    }
-
-    return !Element.prototype.closest ? closest : function (selector, context) {
-        if (!context) {
-            var nodes = [];
-            each(this, function (node) {
-                var n = node.closest(selector);
-                if (n) {
-                    nodes.push(n);
-                }
-            });
-            return $(uniq(nodes));
-        } else {
-            return closest.call(this, selector, context);
-        }
-    };
-})();
 
 var matches = (function () {
     var context = typeof Element !== "undefined" ? Element.prototype : global,
@@ -1023,13 +1027,12 @@ function Wrapper(collection) {
 
 exports.$ = $;
 exports.find = find;
-exports.closest = closest;
 exports.matches = matches;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{"17":17}],16:[function(require,module,exports){
+},{"18":18,"19":19}],17:[function(require,module,exports){
 "use strict";
 
 function isFunction(obj) {
@@ -1044,19 +1047,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 "use strict";
-
-var global = new Function("return this")();
-
-function toArray(collection) {
-    var length = collection.length,
-        result = new Array(length);
-    for (var i = 0; i < length; i++) {
-        result[i] = collection[i];
-    }
-    return result;
-}
 
 function each(collection, callback, thisArg) {
     var length = collection.length;
@@ -1068,6 +1060,25 @@ function each(collection, callback, thisArg) {
         callback.call(thisArg, collection, 0, collection);
     }
     return collection;
+}
+
+exports.each = each;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+},{}],19:[function(require,module,exports){
+"use strict";
+
+var global = new Function("return this")();
+
+function toArray(collection) {
+    var length = collection.length,
+        result = new Array(length);
+    for (var i = 0; i < length; i++) {
+        result[i] = collection[i];
+    }
+    return result;
 }
 
 function extend(target) {
@@ -1091,19 +1102,18 @@ function uniq(collection) {
 
 exports.global = global;
 exports.toArray = toArray;
-exports.each = each;
 exports.extend = extend;
 exports.uniq = uniq;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 
 var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
-var extend = require(17).extend;
+var extend = require(19).extend;
 
 
 var api = {},
@@ -1133,23 +1143,24 @@ var noconflict = _interopRequireWildcard(require(13));
 
 var ready = _interopRequireWildcard(require(11));
 
-var selector = _interopRequireWildcard(require(15));
+var selector = _interopRequireWildcard(require(16));
 
-var selector_extra = _interopRequireWildcard(require(14));
+var closest = _interopRequireWildcard(require(14));
+
+var selector_extra = _interopRequireWildcard(require(15));
 
 var trigger = _interopRequireWildcard(require(12));
 
-var type = _interopRequireWildcard(require(16));
+var type = _interopRequireWildcard(require(17));
 
 if (typeof selector !== "undefined") {
     $ = selector.$;
     $.matches = selector.matches;
     api.find = selector.find;
-    api.closest = selector.closest;
 }
 
 extend($, contains, noconflict, type);
-extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 
@@ -1159,7 +1170,7 @@ $.extend = extend;
 
 module.exports = $;
 
-},{"1":1,"10":10,"11":11,"12":12,"13":13,"14":14,"15":15,"16":16,"17":17,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9}]},{},[18])(18)
+},{"1":1,"10":10,"11":11,"12":12,"13":13,"14":14,"15":15,"16":16,"17":17,"19":19,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9}]},{},[20])(20)
 });
 
 

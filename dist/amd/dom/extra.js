@@ -1,7 +1,7 @@
-define(["exports", "../util", ".", "../selector"], function (exports, _util, _, _selector) {
+define(["exports", "../util/each", ".", "../selector"], function (exports, _utilEach, _, _selector) {
     "use strict";
 
-    var each = _util.each;
+    var each = _utilEach.each;
     var append = _.append;
     var before = _.before;
     var after = _.after;

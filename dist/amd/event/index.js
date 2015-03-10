@@ -1,8 +1,8 @@
-define(["exports", "../util", "../selector"], function (exports, _util, _selector) {
+define(["exports", "../util/each", "../selector/closest"], function (exports, _utilEach, _selectorClosest) {
     "use strict";
 
-    var each = _util.each;
-    var closest = _selector.closest;
+    var each = _utilEach.each;
+    var closest = _selectorClosest.closest;
 
 
     function on(eventNames, selector, handler, useCapture) {

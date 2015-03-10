@@ -1,8 +1,8 @@
-define(["exports", "../util", "."], function (exports, _util, _) {
+define(["exports", "../util", "../util/each", "."], function (exports, _util, _utilEach, _) {
     "use strict";
 
-    var each = _util.each;
     var toArray = _util.toArray;
+    var each = _utilEach.each;
     var $ = _.$;
     var matches = _.matches;
 

@@ -34,6 +34,8 @@ var ready = _interopRequireWildcard(require("./event/ready"));
 
 var selector = _interopRequireWildcard(require("./selector"));
 
+var closest = _interopRequireWildcard(require("./selector/closest"));
+
 var selector_extra = _interopRequireWildcard(require("./selector/extra"));
 
 var trigger = _interopRequireWildcard(require("./event/trigger"));
@@ -44,11 +46,10 @@ if (typeof selector !== "undefined") {
     $ = selector.$;
     $.matches = selector.matches;
     api.find = selector.find;
-    api.closest = selector.closest;
 }
 
 extend($, contains, noconflict, type);
-extend(api, array, attr, class_, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 

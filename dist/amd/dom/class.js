@@ -1,7 +1,7 @@
-define(["exports", "../util"], function (exports, _util) {
+define(["exports", "../util/each"], function (exports, _utilEach) {
     "use strict";
 
-    var each = _util.each;
+    var each = _utilEach.each;
 
 
     function addClass(value) {

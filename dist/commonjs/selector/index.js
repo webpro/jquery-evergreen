@@ -1,10 +1,7 @@
 "use strict";
 
-var _util = require("../util");
-
-var global = _util.global;
-var each = _util.each;
-var uniq = _util.uniq;
+var global = require("../util").global;
+var each = require("../util/each").each;
 
 
 var isPrototypeSet = false,
@@ -46,37 +43,6 @@ function find(selector) {
     });
     return $(nodes);
 }
-
-var closest = (function () {
-    function closest(selector, context) {
-        var nodes = [];
-        each(this, function (node) {
-            while (node && node !== context) {
-                if (matches(node, selector)) {
-                    nodes.push(node);
-                    break;
-                }
-                node = node.parentElement;
-            }
-        });
-        return $(uniq(nodes));
-    }
-
-    return !Element.prototype.closest ? closest : function (selector, context) {
-        if (!context) {
-            var nodes = [];
-            each(this, function (node) {
-                var n = node.closest(selector);
-                if (n) {
-                    nodes.push(n);
-                }
-            });
-            return $(uniq(nodes));
-        } else {
-            return closest.call(this, selector, context);
-        }
-    };
-})();
 
 var matches = (function () {
     var context = typeof Element !== "undefined" ? Element.prototype : global,
@@ -142,7 +108,6 @@ function Wrapper(collection) {
 
 exports.$ = $;
 exports.find = find;
-exports.closest = closest;
 exports.matches = matches;
 Object.defineProperty(exports, "__esModule", {
     value: true

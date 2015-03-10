@@ -1,7 +1,7 @@
 "use strict";
 
-var each = require("../util").each;
-var closest = require("../selector").closest;
+var each = require("../util/each").each;
+var closest = require("../selector/closest").closest;
 
 
 function on(eventNames, selector, handler, useCapture) {

@@ -232,8 +232,13 @@
                         <ul class="">
                                 <li><a href="#selector/index-dollar">$</a></li>
                                 <li><a href="#selector/index-find">find</a></li>
-                                <li><a href="#selector/index-closest">closest</a></li>
                                 <li><a href="#selector/index-matches">matches</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#selector/closest"><strong>Selector/closest</strong></a>
+                        <ul class="">
+                                <li><a href="#selector/closest-closest">closest</a></li>
                         </ul>
                     </li>
                     <li>
@@ -256,9 +261,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#util"><strong>Util</strong></a>
+                        <a href="#util/index"><strong>Util</strong></a>
                         <ul class="">
-                                <li><a href="#util-extend">extend</a></li>
+                                <li><a href="#util/index-extend">extend</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -3519,7 +3524,90 @@ function getEventConstructor(type) {
                                 </div>
                             </section>
 
-                            <section id="selector/index-closest">
+                            <section id="selector/index-matches">
+
+
+                                <h3>
+                                    matches
+                                    <em> (element, selector)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Returns <code>true</code> if the element would be selected by the specified selector string; otherwise, returns <code>false</code>.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>element</em></td>
+                                                <td><span class="label label-primary">Node</span></td>
+                                                <td>
+                                                    Element to test
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>selector</em></td>
+                                                <td><span class="label label-primary">String</span></td>
+                                                <td>
+                                                    Selector to match against element
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Boolean</span>
+                                        &nbsp;
+                                        
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#matches-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#matches-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="matches-example-0">
+                                            <pre><code class="language-javascript">    $.matches(element, &#x27;.match&#x27;);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="matches-source">
+                                            <pre><code class="language-javascript">var matches = (function() {
+    var context = typeof Element !== &#x27;undefined&#x27; ? Element.prototype : global,
+        _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
+    return function(element, selector) {
+        return _matches.call(element, selector);
+    };
+})();</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                    </section>
+                    <section id="selector/closest">
+
+                        <h2>Selector/closest</h2>
+
+
+                            <section id="selector/closest-closest">
 
 
                                 <h3>
@@ -3614,84 +3702,6 @@ function getEventConstructor(type) {
             return closest.call(this, selector, context)
         }
     }
-})();</code></pre>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </section>
-
-                            <section id="selector/index-matches">
-
-
-                                <h3>
-                                    matches
-                                    <em> (element, selector)</em>
-                                </h3>
-
-                                <div class="block">
-
-                                    <p>Returns <code>true</code> if the element would be selected by the specified selector string; otherwise, returns <code>false</code>.</p>
-
-                                    <table class="table table-condensed">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="3">Arguments</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><em>element</em></td>
-                                                <td><span class="label label-primary">Node</span></td>
-                                                <td>
-                                                    Element to test
-                                                    
-                                                    
-
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><em>selector</em></td>
-                                                <td><span class="label label-primary">String</span></td>
-                                                <td>
-                                                    Selector to match against element
-                                                    
-                                                    
-
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <p><strong>Returns</strong><br>
-                                        <span class="label label-primary">Boolean</span>
-                                        &nbsp;
-                                        
-                                        
-                                        <!--
-                                        &nbsp;
-
-                                        -->
-                                    </p>
-
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#matches-example-0" data-toggle="tab">Example</a></li>
-                                        <li>
-                                            <a href="#matches-source" data-toggle="tab">Source</a>
-                                        </li>
-                                    </ul>
-
-                                    <div class="tab-content">
-                                        <div class="active tab-pane" id="matches-example-0">
-                                            <pre><code class="language-javascript">    $.matches(element, &#x27;.match&#x27;);</code></pre>
-                                        </div>
-                                        <div class="tab-pane" id="matches-source">
-                                            <pre><code class="language-javascript">var matches = (function() {
-    var context = typeof Element !== &#x27;undefined&#x27; ? Element.prototype : global,
-        _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
-    return function(element, selector) {
-        return _matches.call(element, selector);
-    };
 })();</code></pre>
                                         </div>
                                     </div>
@@ -4320,12 +4330,12 @@ function getEventConstructor(type) {
                                 </div>
                             </section>
                     </section>
-                    <section id="util">
+                    <section id="util/index">
 
                         <h2>Util</h2>
 
 
-                            <section id="util-extend">
+                            <section id="util/index-extend">
 
 
                                 <h3>

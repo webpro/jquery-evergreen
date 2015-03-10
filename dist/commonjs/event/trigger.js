@@ -1,9 +1,7 @@
 "use strict";
 
-var _util = require("../util");
-
-var global = _util.global;
-var each = _util.each;
+var global = require("../util").global;
+var each = require("../util/each").each;
 var contains = require("../dom/contains").contains;
 
 

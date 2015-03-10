@@ -11,18 +11,6 @@ function toArray(collection) {
     return result;
 }
 
-function each(collection, callback, thisArg) {
-    var length = collection.length;
-    if (length !== undefined && collection.nodeType === undefined) {
-        for (var i = 0; i < length; i++) {
-            callback.call(thisArg, collection[i], i, collection);
-        }
-    } else {
-        callback.call(thisArg, collection, 0, collection);
-    }
-    return collection;
-}
-
 function extend(target) {
     for (var _len = arguments.length, sources = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
         sources[_key - 1] = arguments[_key];
@@ -44,7 +32,6 @@ function uniq(collection) {
 
 exports.global = global;
 exports.toArray = toArray;
-exports.each = each;
 exports.extend = extend;
 exports.uniq = uniq;
 Object.defineProperty(exports, "__esModule", {

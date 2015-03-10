@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">70.06</p>
+      <p class="stat">68.36</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">149</p>
+      <p class="stat">114</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">46.19</p>
+      <p class="stat">33.93</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.28</p>
+      <p class="stat">0.99</p>
     </div>
   </div>
 </div>
@@ -91,11 +91,8 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var _util = require(&quot;../util&quot;);
-
-var global = _util.global;
-var each = _util.each;
-var uniq = _util.uniq;
+var global = require(&quot;../util&quot;).global;
+var each = require(&quot;../util/each&quot;).each;
 
 
 var isPrototypeSet = false,
@@ -137,37 +134,6 @@ function find(selector) {
     });
     return $(nodes);
 }
-
-var closest = (function () {
-    function closest(selector, context) {
-        var nodes = [];
-        each(this, function (node) {
-            while (node &amp;&amp; node !== context) {
-                if (matches(node, selector)) {
-                    nodes.push(node);
-                    break;
-                }
-                node = node.parentElement;
-            }
-        });
-        return $(uniq(nodes));
-    }
-
-    return !Element.prototype.closest ? closest : function (selector, context) {
-        if (!context) {
-            var nodes = [];
-            each(this, function (node) {
-                var n = node.closest(selector);
-                if (n) {
-                    nodes.push(n);
-                }
-            });
-            return $(uniq(nodes));
-        } else {
-            return closest.call(this, selector, context);
-        }
-    };
-})();
 
 var matches = (function () {
     var context = typeof Element !== &quot;undefined&quot; ? Element.prototype : global,
@@ -233,7 +199,6 @@ function Wrapper(collection) {
 
 exports.$ = $;
 exports.find = find;
-exports.closest = closest;
 exports.matches = matches;
 Object.defineProperty(exports, &quot;__esModule&quot;, {
     value: true

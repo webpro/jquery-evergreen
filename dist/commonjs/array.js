@@ -1,9 +1,7 @@
 "use strict";
 
-var _util = require("./util");
-
-var _each = _util.each;
-var toArray = _util.toArray;
+var toArray = require("./util").toArray;
+var _each = require("./util/each").each;
 var _selector = require("./selector");
 
 var $ = _selector.$;
