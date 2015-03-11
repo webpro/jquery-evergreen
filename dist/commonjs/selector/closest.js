@@ -1,11 +1,32 @@
 "use strict";
 
-var matches = require(".").matches;
-var uniq = require("../util").uniq;
-var each = require("../util/each").each;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/**
+ * @module closest
+ */
 
+var matches = require(".").matches;
+
+var _util = require("../util");
+
+var each = _util.each;
+var uniq = _util.uniq;
+
+/**
+ * Return the closest element matching the selector (starting by itself) for each element in the collection.
+ *
+ * @param {String} selector Filter
+ * @param {Object} [context] If provided, matching elements must be a descendant of this element
+ * @return {Object} New wrapped collection (containing zero or one element)
+ * @chainable
+ * @example
+ *     $('.selector').closest('.container');
+ */
 
 var closest = (function () {
+
     function closest(selector, context) {
         var nodes = [];
         each(this, function (node) {
@@ -36,7 +57,8 @@ var closest = (function () {
     };
 })();
 
+/*
+ * Export interface
+ */
+
 exports.closest = closest;
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});

@@ -1,7 +1,13 @@
 "use strict";
 
-var each = require("./util/each").each;
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+/**
+ * @module Attr
+ */
 
+var each = require("./util").each;
 
 function isNumeric(value) {
     return !isNaN(parseFloat(value)) && isFinite(value);
@@ -17,7 +23,21 @@ function dasherize(value) {
     return value.replace(/([a-z\d])([A-Z])/g, "$1-$2").toLowerCase();
 }
 
+/**
+ * Get the value of a style property for the first element, or set one or more style properties for each element in the collection.
+ *
+ * @param {String|Object} key The name of the style property to get or set. Or an object containing key-value pairs to set as style properties.
+ * @param {String} [value] The value of the style property to set.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $('.item').css('padding-left'); // get
+ *     $('.item').css('color', '#f00'); // set
+ *     $('.item').css({'border-width', '1px'}, {'display', 'inline-block}); // set multiple
+ */
+
 function css(key, value) {
+
     var styleProps, prop, val;
 
     if (typeof key === "string") {
@@ -56,7 +76,8 @@ function css(key, value) {
     return this;
 }
 
+/*
+ * Export interface
+ */
+
 exports.css = css;
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});

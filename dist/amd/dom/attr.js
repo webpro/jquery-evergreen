@@ -1,10 +1,30 @@
-define(["exports", "../util/each"], function (exports, _utilEach) {
+define(["exports", "../util"], function (exports, _util) {
     "use strict";
 
-    var each = _utilEach.each;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    /**
+     * @module Attr
+     */
 
+    var each = _util.each;
+
+    /**
+     * Get the value of an attribute for the first element, or set one or more attributes for each element in the collection.
+     *
+     * @param {String|Object} key The name of the attribute to get or set. Or an object containing key-value pairs to set as attributes.
+     * @param {String} [value] The value of the attribute to set.
+     * @return {Object} The wrapped collection
+     * @chainable
+     * @example
+     *     $('.item').attr('attrName'); // get
+     *     $('.item').attr('attrName', 'attrValue'); // set
+     *     $('.item').attr({'attr1', 'value1'}, {'attr2', 'value2}); // set multiple
+     */
 
     function attr(key, value) {
+
         if (typeof key === "string" && typeof value === "undefined") {
             var element = this.nodeType ? this : this[0];
             return element ? element.getAttribute(key) : undefined;
@@ -23,6 +43,16 @@ define(["exports", "../util/each"], function (exports, _utilEach) {
         return this;
     }
 
+    /**
+     * Remove attribute from each element in the collection.
+     *
+     * @param {String} key Attribute name
+     * @return {Object} The wrapped collection
+     * @chainable
+     * @example
+     *     $('.items').removeAttr('attrName');
+     */
+
     function removeAttr(key) {
         each(this, function (element) {
             element.removeAttribute(key);
@@ -30,9 +60,10 @@ define(["exports", "../util/each"], function (exports, _utilEach) {
         return this;
     }
 
+    /*
+     * Export interface
+     */
+
     exports.attr = attr;
     exports.removeAttr = removeAttr;
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
 });

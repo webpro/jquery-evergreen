@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">76</p>
+      <p class="stat">159</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">28.88</p>
+      <p class="stat">29.06</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -91,13 +91,33 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var toArray = require(&quot;../util&quot;).toArray;
-var each = require(&quot;../util/each&quot;).each;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/**
+ * @module Selector (extra)
+ */
+
+var _util = require(&quot;../util&quot;);
+
+var each = _util.each;
+var toArray = _util.toArray;
+
 var _ = require(&quot;.&quot;);
 
 var $ = _.$;
 var matches = _.matches;
 
+/**
+ * Return children of each element in the collection, optionally filtered by a selector.
+ *
+ * @param {String} [selector] Filter
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).children();
+ *     $(&#039;.selector&#039;).children(&#039;.filter&#039;);
+ */
 
 function children(selector) {
     var nodes = [];
@@ -113,6 +133,14 @@ function children(selector) {
     return $(nodes);
 }
 
+/**
+ * Return child nodes of each element in the collection, including text and comment nodes.
+ *
+ * @return {Object} New wrapped collection
+ * @example
+ *     $(&#039;.selector&#039;).contents();
+ */
+
 function contents() {
     var nodes = [];
     each(this, function (element) {
@@ -121,13 +149,45 @@ function contents() {
     return $(nodes);
 }
 
+/**
+ * Return a collection containing only the one at the specified index.
+ *
+ * @param {Number} index
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).eq(1)
+ *     // The second item; result is the same as doing $($(&#039;.items&#039;)[1]);
+ */
+
 function eq(index) {
     return slice.call(this, index, index + 1);
 }
 
+/**
+ * Return the DOM element at the specified index.
+ *
+ * @param {Number} index
+ * @return {Node} Element at the specified index
+ * @example
+ *     $(&#039;.items&#039;).get(1)
+ *     // The second element; result is the same as doing $(&#039;.items&#039;)[1];
+ */
+
 function get(index) {
     return this[index];
 }
+
+/**
+ * Return the parent elements of each element in the collection, optionally filtered by a selector.
+ *
+ * @param {String} [selector] Filter
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).parent();
+ *     $(&#039;.selector&#039;).parent(&#039;.filter&#039;);
+ */
 
 function parent(selector) {
     var nodes = [];
@@ -138,6 +198,17 @@ function parent(selector) {
     });
     return $(nodes);
 }
+
+/**
+ * Return the sibling elements of each element in the collection, optionally filtered by a selector.
+ *
+ * @param {String} [selector] Filter
+ * @return {Object} New wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).siblings();
+ *     $(&#039;.selector&#039;).siblings(&#039;.filter&#039;);
+ */
 
 function siblings(selector) {
     var nodes = [];
@@ -151,9 +222,24 @@ function siblings(selector) {
     return $(nodes);
 }
 
+/**
+ * Create a new, sliced collection.
+ *
+ * @param {Number} start
+ * @param {Number} end
+ * @return {Object} New wrapped collection
+ * @example
+ *     $(&#039;.items&#039;).slice(1, 3)
+ *     // New wrapped collection containing the second, third, and fourth element.
+ */
+
 function slice(start, end) {
     return $([].slice.apply(this, arguments));
 }
+
+/*
+ * Export interface
+ */
 
 exports.children = children;
 exports.contents = contents;
@@ -161,10 +247,7 @@ exports.eq = eq;
 exports.get = get;
 exports.parent = parent;
 exports.siblings = siblings;
-exports.slice = slice;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+exports.slice = slice;</textarea>
   </div>
 </div>
 

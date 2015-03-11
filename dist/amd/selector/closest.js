@@ -1,12 +1,30 @@
-define(["exports", ".", "../util", "../util/each"], function (exports, _, _util, _utilEach) {
+define(["exports", ".", "../util"], function (exports, _, _util) {
     "use strict";
 
-    var matches = _.matches;
-    var uniq = _util.uniq;
-    var each = _utilEach.each;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    /**
+     * @module closest
+     */
 
+    var matches = _.matches;
+    var each = _util.each;
+    var uniq = _util.uniq;
+
+    /**
+     * Return the closest element matching the selector (starting by itself) for each element in the collection.
+     *
+     * @param {String} selector Filter
+     * @param {Object} [context] If provided, matching elements must be a descendant of this element
+     * @return {Object} New wrapped collection (containing zero or one element)
+     * @chainable
+     * @example
+     *     $('.selector').closest('.container');
+     */
 
     var closest = (function () {
+
         function closest(selector, context) {
             var nodes = [];
             each(this, function (node) {
@@ -37,8 +55,9 @@ define(["exports", ".", "../util", "../util/each"], function (exports, _, _util,
         };
     })();
 
+    /*
+     * Export interface
+     */
+
     exports.closest = closest;
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
 });

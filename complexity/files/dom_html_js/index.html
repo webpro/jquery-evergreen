@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">22</p>
+      <p class="stat">41</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,10 +91,28 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var each = require(&quot;../util/each&quot;).each;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+  value: true
+});
+/**
+ * @module HTML
+ */
 
+var each = require(&quot;../util&quot;).each;
+
+/*
+ * Get the HTML contents of the first element, or set the HTML contents for each element in the collection.
+ *
+ * @param {String} [fragment] HTML fragment to set for the element. If this argument is omitted, the HTML contents are returned.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).html();
+ *     $(&#039;.item&#039;).html(&#039;&lt;span&gt;more&lt;/span&gt;&#039;);
+ */
 
 function html(fragment) {
+
   if (typeof fragment !== &quot;string&quot;) {
     var element = this.nodeType ? this : this[0];
     return element ? element.innerHTML : undefined;
@@ -107,10 +125,11 @@ function html(fragment) {
   return this;
 }
 
-exports.html = html;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-  value: true
-});</textarea>
+/*
+ * Export interface
+ */
+
+exports.html = html;</textarea>
   </div>
 </div>
 

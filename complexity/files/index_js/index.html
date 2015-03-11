@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">60</p>
+      <p class="stat">71</p>
     </div>
   </div>
   <div class="row historical">
@@ -93,11 +93,16 @@
 
 var _interopRequireWildcard = function (obj) { return obj &amp;&amp; obj.__esModule ? obj : { &quot;default&quot;: obj }; };
 
-var extend = require(&quot;./util&quot;).extend;
+/**
+ * @module API
+ */
 
+var extend = require(&quot;./util&quot;).extend;
 
 var api = {},
     $ = {};
+
+// Import modules to build up the API
 
 var array = _interopRequireWildcard(require(&quot;./array&quot;));
 
@@ -144,9 +149,15 @@ extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html
 
 $.fn = api;
 
+// Version
+
 $.version = &quot;0.9.3&quot;;
 
+// Util
+
 $.extend = extend;
+
+// Export interface
 
 module.exports = $;</textarea>
   </div>

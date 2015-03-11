@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">52</p>
+      <p class="stat">105</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,7 +91,27 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/*
+ * @module Util
+ */
+
+/*
+ * Reference to the global scope
+ * @private
+ */
+
 var global = new Function(&quot;return this&quot;)();
+
+/**
+ * Convert `NodeList` to `Array`.
+ *
+ * @param {NodeList|Array} collection
+ * @return {Array}
+ * @private
+ */
 
 function toArray(collection) {
     var length = collection.length,
@@ -101,6 +121,15 @@ function toArray(collection) {
     }
     return result;
 }
+
+/**
+ * Faster alternative to [].forEach method
+ *
+ * @param {Node|NodeList|Array} collection
+ * @param {Function} callback
+ * @return {Node|NodeList|Array}
+ * @private
+ */
 
 function each(collection, callback, thisArg) {
     var length = collection.length;
@@ -113,6 +142,21 @@ function each(collection, callback, thisArg) {
     }
     return collection;
 }
+
+/**
+ * Assign enumerable properties from source object(s) to target object
+ *
+ * @method extend
+ * @param {Object} target Object to extend
+ * @param {Object} [source] Object to extend from
+ * @return {Object} Extended object
+ * @example
+ *     $.extend({a: 1}, {b: 2});
+ *     // {a: 1, b: 2}
+ * @example
+ *     $.extend({a: 1}, {b: 2}, {a: 3});
+ *     // {a: 3, b: 2}
+ */
 
 function extend(target) {
     for (var _len = arguments.length, sources = Array(_len &gt; 1 ? _len - 1 : 0), _key = 1; _key &lt; _len; _key++) {
@@ -127,20 +171,29 @@ function extend(target) {
     return target;
 }
 
+/**
+ * Return the collection without duplicates
+ *
+ * @param collection Collection to remove duplicates from
+ * @return {Node|NodeList|Array}
+ * @private
+ */
+
 function uniq(collection) {
     return collection.filter(function (item, index) {
         return collection.indexOf(item) === index;
     });
 }
 
+/*
+ * Export interface
+ */
+
 exports.global = global;
 exports.toArray = toArray;
 exports.each = each;
 exports.extend = extend;
-exports.uniq = uniq;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+exports.uniq = uniq;</textarea>
   </div>
 </div>
 

@@ -2,11 +2,16 @@
 
 var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { "default": obj }; };
 
-var extend = require("./util").extend;
+/**
+ * @module API
+ */
 
+var extend = require("./util").extend;
 
 var api = {},
     $ = {};
+
+// Import modules to build up the API
 
 var array = _interopRequireWildcard(require("./array"));
 
@@ -53,8 +58,14 @@ extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html
 
 $.fn = api;
 
+// Version
+
 $.version = "0.9.3";
 
+// Util
+
 $.extend = extend;
+
+// Export interface
 
 module.exports = $;

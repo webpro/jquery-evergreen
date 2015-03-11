@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.95</p>
+      <p class="stat">64.96</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">111</p>
+      <p class="stat">189</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">37.80</p>
+      <p class="stat">37.73</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.79</p>
+      <p class="stat">0.82</p>
     </div>
   </div>
 </div>
@@ -91,9 +91,29 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/**
+ * @module DOM
+ */
+
 var toArray = require(&quot;../util&quot;).toArray;
+
 var $ = require(&quot;../selector&quot;).$;
 
+var forEach = Array.prototype.forEach;
+
+/**
+ * Append element(s) to each element in the collection.
+ *
+ * @param {String|Node|NodeList|Object} element What to append to the element(s).
+ * Clones elements as necessary.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).append(&#039;&lt;p&gt;more&lt;/p&gt;&#039;);
+ */
 
 function append(element) {
     if (this instanceof Node) {
@@ -104,7 +124,7 @@ function append(element) {
                 this.appendChild(element);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.forEach(this.appendChild.bind(this));
+                forEach.call(elements, this.appendChild.bind(this));
             }
         }
     } else {
@@ -112,6 +132,17 @@ function append(element) {
     }
     return this;
 }
+
+/**
+ * Place element(s) at the beginning of each element in the collection.
+ *
+ * @param {String|Node|NodeList|Object} element What to place at the beginning of the element(s).
+ * Clones elements as necessary.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).prepend(&#039;&lt;span&gt;start&lt;/span&gt;&#039;);
+ */
 
 function prepend(element) {
     if (this instanceof Node) {
@@ -122,7 +153,7 @@ function prepend(element) {
                 this.insertBefore(element, this.firstChild);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.reverse().forEach(prepend.bind(this));
+                forEach.call(elements.reverse(), prepend.bind(this));
             }
         }
     } else {
@@ -130,6 +161,17 @@ function prepend(element) {
     }
     return this;
 }
+
+/**
+ * Place element(s) before each element in the collection.
+ *
+ * @param {String|Node|NodeList|Object} element What to place as sibling(s) before to the element(s).
+ * Clones elements as necessary.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).before(&#039;&lt;p&gt;prefix&lt;/p&gt;&#039;);
+ */
 
 function before(element) {
     if (this instanceof Node) {
@@ -140,7 +182,7 @@ function before(element) {
                 this.parentNode.insertBefore(element, this);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.forEach(before.bind(this));
+                forEach.call(elements, before.bind(this));
             }
         }
     } else {
@@ -148,6 +190,16 @@ function before(element) {
     }
     return this;
 }
+
+/**
+ * Place element(s) after each element in the collection.
+ *
+ * @param {String|Node|NodeList|Object} element What to place as sibling(s) after to the element(s). Clones elements as necessary.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).after(&#039;&lt;span&gt;suf&lt;/span&gt;&lt;span&gt;fix&lt;/span&gt;&#039;);
+ */
 
 function after(element) {
     if (this instanceof Node) {
@@ -158,7 +210,7 @@ function after(element) {
                 this.parentNode.insertBefore(element, this.nextSibling);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.reverse().forEach(after.bind(this));
+                forEach.call(elements.reverse(), after.bind(this));
             }
         }
     } else {
@@ -167,9 +219,25 @@ function after(element) {
     return this;
 }
 
+/**
+ * Clone a wrapped object.
+ *
+ * @return {Object} Wrapped collection of cloned nodes.
+ * @example
+ *     $(element).clone();
+ */
+
 function clone() {
     return $(_clone(this));
 }
+
+/**
+ * Clone an object
+ *
+ * @param {String|Node|NodeList|Array} element The element(s) to clone.
+ * @return {String|Node|NodeList|Array} The cloned element(s)
+ * @private
+ */
 
 function _clone(element) {
     if (typeof element === &quot;string&quot;) {
@@ -184,6 +252,15 @@ function _clone(element) {
     return element;
 }
 
+/**
+ * Specialized iteration, applying `fn` in reversed manner to a clone of each element, but the provided one.
+ *
+ * @param {NodeList|Array} collection
+ * @param {Function} fn
+ * @param {Node} element
+ * @private
+ */
+
 function _each(collection, fn, element) {
     var l = collection.length;
     while (l--) {
@@ -192,14 +269,15 @@ function _each(collection, fn, element) {
     }
 }
 
+/*
+ * Export interface
+ */
+
 exports.append = append;
 exports.prepend = prepend;
 exports.before = before;
 exports.after = after;
-exports.clone = clone;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+exports.clone = clone;</textarea>
   </div>
 </div>
 

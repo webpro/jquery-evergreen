@@ -1,17 +1,37 @@
-define(["exports", "../util", "../util/each", "../dom/contains"], function (exports, _util, _utilEach, _domContains) {
+define(["exports", "../util", "../dom/contains"], function (exports, _util, _domContains) {
     "use strict";
 
-    var global = _util.global;
-    var each = _utilEach.each;
-    var contains = _domContains.contains;
+    Object.defineProperty(exports, "__esModule", {
+        value: true
+    });
+    /**
+     * @module trigger
+     */
 
+    var global = _util.global;
+    var each = _util.each;
+    var contains = _domContains.contains;
 
     var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
         reKeyEvent = /^key/;
 
+    /**
+     * Trigger event at element(s)
+     *
+     * @param {String} type Type of the event
+     * @param {Object} data Data to be sent with the event (`params.detail` will be set to this).
+     * @param {Object} [params] Event parameters (optional)
+     * @param {Boolean} params.bubbles=true Does the event bubble up through the DOM or not.
+     * @param {Boolean} params.cancelable=true Is the event cancelable or not.
+     * @param {Mixed} params.detail=undefined Additional information about the event.
+     * @return {Object} The wrapped collection
+     * @chainable
+     * @example
+     *     $('.item').trigger('anyEventType');
+     */
+
     function trigger(type, data) {
         var params = arguments[2] === undefined ? {} : arguments[2];
-
 
         params.bubbles = typeof params.bubbles === "boolean" ? params.bubbles : true;
         params.cancelable = typeof params.cancelable === "boolean" ? params.cancelable : true;
@@ -37,11 +57,32 @@ define(["exports", "../util", "../util/each", "../dom/contains"], function (expo
         return supportsOtherEventConstructors ? reMouseEvent.test(type) ? MouseEvent : reKeyEvent.test(type) ? KeyboardEvent : CustomEvent : CustomEvent;
     }
 
+    /**
+     * Trigger event at first element in the collection. Similar to `trigger()`, except:
+     *
+     * - Event does not bubble
+     * - Default event behavior is prevented
+     * - Only triggers handler for first matching element
+     *
+     * @param {String} type Type of the event
+     * @param {Object} data Data to be sent with the event
+     * @example
+     *     $('form').triggerHandler('submit');
+     */
+
     function triggerHandler(type, data) {
         if (this[0]) {
             trigger.call(this[0], type, data, { bubbles: false, preventDefault: true });
         }
     }
+
+    /**
+     * Check whether the element is attached to (or detached from) the document
+     *
+     * @private
+     * @param {Node} element Element to test
+     * @return {Boolean}
+     */
 
     function isAttachedToDocument(element) {
         if (element === window || element === document) {
@@ -50,8 +91,23 @@ define(["exports", "../util", "../util/each", "../dom/contains"], function (expo
         return contains(element.ownerDocument.documentElement, element);
     }
 
+    /**
+     * Dispatch the event at the element and its ancestors.
+     * Required to support delegated events in browsers that don't bubble events in detached DOM trees.
+     *
+     * @private
+     * @param {Node} element First element to dispatch the event at
+     * @param {String} type Type of the event
+     * @param {Object} [params] Event parameters (optional)
+     * @param {Boolean} params.bubbles=true Does the event bubble up through the DOM or not.
+     * Will be set to false (but shouldn't matter since events don't bubble anyway).
+     * @param {Boolean} params.cancelable=true Is the event cancelable or not.
+     * @param {Mixed} params.detail=undefined Additional information about the event.
+     */
+
     function triggerForPath(element, type) {
         var params = arguments[2] === undefined ? {} : arguments[2];
+
         params.bubbles = false;
         var event = new CustomEvent(type, params);
         event._target = element;
@@ -59,6 +115,15 @@ define(["exports", "../util", "../util/each", "../dom/contains"], function (expo
             dispatchEvent(element, event);
         } while (element = element.parentNode);
     }
+
+    /**
+     * Dispatch event to element, but call direct event methods instead if available
+     * (e.g. "blur()", "submit()") and if the event is non-cancelable.
+     *
+     * @private
+     * @param {Node} element Element to dispatch the event at
+     * @param {Object} event Event to dispatch
+     */
 
     var directEventMethods = ["blur", "focus", "select", "submit"];
 
@@ -70,9 +135,15 @@ define(["exports", "../util", "../util/each", "../dom/contains"], function (expo
         }
     }
 
+    /**
+     * Polyfill for CustomEvent, borrowed from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent#Polyfill).
+     * Needed to support IE (9, 10, 11) & PhantomJS
+     */
+
     (function () {
         function CustomEvent(event) {
             var params = arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
+
             var customEvent = document.createEvent("CustomEvent");
             customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
             return customEvent;
@@ -81,6 +152,11 @@ define(["exports", "../util", "../util/each", "../dom/contains"], function (expo
         CustomEvent.prototype = global.CustomEvent && global.CustomEvent.prototype;
         global.CustomEvent = CustomEvent;
     })();
+
+    /*
+     * Are events bubbling in detached DOM trees?
+     * @private
+     */
 
     var isEventBubblingInDetachedTree = (function () {
         var isBubbling = false,
@@ -106,9 +182,10 @@ define(["exports", "../util", "../util/each", "../dom/contains"], function (expo
         return true;
     })();
 
+    /*
+     * Export interface
+     */
+
     exports.trigger = trigger;
     exports.triggerHandler = triggerHandler;
-    Object.defineProperty(exports, "__esModule", {
-        value: true
-    });
 });

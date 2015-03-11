@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">159</p>
+      <p class="stat">244</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,11 +91,33 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var each = require(&quot;../util/each&quot;).each;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/**
+ * @module Events
+ */
+
+var each = require(&quot;../util&quot;).each;
+
 var closest = require(&quot;../selector/closest&quot;).closest;
 
+/**
+ * Shorthand for `addEventListener`. Supports event delegation if a filter (`selector`) is provided.
+ *
+ * @param {String} eventNames List of space-separated event types to be added to the element(s)
+ * @param {String} [selector] Selector to filter descendants that delegate the event to this element.
+ * @param {Function} handler Event handler
+ * @param {Boolean} useCapture=false
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).on(&#039;click&#039;, callback);
+ *     $(&#039;.container&#039;).on(&#039;click focus&#039;, &#039;.item&#039;, handler);
+ */
 
 function on(eventNames, selector, handler, useCapture) {
+
     if (typeof selector === &quot;function&quot;) {
         handler = selector;
         selector = null;
@@ -104,6 +126,7 @@ function on(eventNames, selector, handler, useCapture) {
     var parts, namespace, eventListener;
 
     eventNames.split(&quot; &quot;).forEach(function (eventName) {
+
         parts = eventName.split(&quot;.&quot;);
         eventName = parts[0] || null;
         namespace = parts[1] || null;
@@ -111,6 +134,7 @@ function on(eventNames, selector, handler, useCapture) {
         eventListener = proxyHandler(handler);
 
         each(this, function (element) {
+
             if (selector) {
                 eventListener = delegateHandler.bind(element, selector, eventListener);
             }
@@ -130,9 +154,23 @@ function on(eventNames, selector, handler, useCapture) {
     return this;
 }
 
+/**
+ * Shorthand for `removeEventListener`.
+ *
+ * @param {String} eventNames List of space-separated event types to be removed from the element(s)
+ * @param {String} [selector] Selector to filter descendants that undelegate the event to this element.
+ * @param {Function} handler Event handler
+ * @param {Boolean} useCapture=false
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).off(&#039;click&#039;, callback);
+ *     $(&#039;#my-element&#039;).off(&#039;myEvent myOtherEvent&#039;);
+ *     $(&#039;.item&#039;).off();
+ */
+
 function off(_x, selector, handler, useCapture) {
     var eventNames = arguments[0] === undefined ? &quot;&quot; : arguments[0];
-
 
     if (typeof selector === &quot;function&quot;) {
         handler = selector;
@@ -142,11 +180,13 @@ function off(_x, selector, handler, useCapture) {
     var parts, namespace, handlers;
 
     eventNames.split(&quot; &quot;).forEach(function (eventName) {
+
         parts = eventName.split(&quot;.&quot;);
         eventName = parts[0] || null;
         namespace = parts[1] || null;
 
         each(this, function (element) {
+
             handlers = getHandlers(element);
 
             each(handlers.filter(function (item) {
@@ -167,6 +207,14 @@ function off(_x, selector, handler, useCapture) {
     return this;
 }
 
+/**
+ * Get event handlers from an element
+ *
+ * @private
+ * @param {Node} element
+ * @return {Array}
+ */
+
 var eventKeyProp = &quot;__domtastic_event__&quot;;
 var id = 1;
 var handlers = {};
@@ -180,6 +228,13 @@ function getHandlers(element) {
     return handlers[key] || (handlers[key] = []);
 }
 
+/**
+ * Clear event handlers for an element
+ *
+ * @private
+ * @param {Node} element
+ */
+
 function clearHandlers(element) {
     var key = element[eventKeyProp];
     if (handlers[key]) {
@@ -189,13 +244,31 @@ function clearHandlers(element) {
     }
 }
 
+/**
+ * Function to create a handler that augments the event object with some extra methods,
+ * and executes the callback with the event and the event data (i.e. `event.detail`).
+ *
+ * @private
+ * @param handler Callback to execute as `handler(event, data)`
+ * @return {Function}
+ */
+
 function proxyHandler(handler) {
     return function (event) {
         handler.call(this, augmentEvent(event), event.detail);
     };
 }
 
+/**
+ * Attempt to augment events and implement something closer to DOM Level 3 Events.
+ *
+ * @private
+ * @param {Object} event
+ * @return {Function}
+ */
+
 var augmentEvent = (function () {
+
     var methodName,
         eventMethods = {
         preventDefault: &quot;isDefaultPrevented&quot;,
@@ -228,6 +301,17 @@ var augmentEvent = (function () {
     };
 })();
 
+/**
+ * Function to test whether delegated events match the provided `selector` (filter),
+ * if the event propagation was stopped, and then actually call the provided event handler.
+ * Use `this` instead of `event.currentTarget` on the event object.
+ *
+ * @private
+ * @param {String} selector Selector to filter descendants that undelegate the event to this element.
+ * @param {Function} handler Event handler
+ * @param {Event} event
+ */
+
 function delegateHandler(selector, handler, event) {
     var eventTarget = event._target || event.target,
         currentTarget = closest.call([eventTarget], selector, this)[0];
@@ -241,13 +325,14 @@ function delegateHandler(selector, handler, event) {
 var bind = on,
     unbind = off;
 
+/*
+ * Export interface
+ */
+
 exports.on = on;
 exports.off = off;
 exports.bind = bind;
-exports.unbind = unbind;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+exports.unbind = unbind;</textarea>
   </div>
 </div>
 

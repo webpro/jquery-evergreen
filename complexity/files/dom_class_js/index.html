@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">45</p>
+      <p class="stat">103</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,8 +91,25 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var each = require(&quot;../util/each&quot;).each;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/**
+ * @module Class
+ */
 
+var each = require(&quot;../util&quot;).each;
+
+/**
+ * Add a class to the element(s)
+ *
+ * @param {String} value Space-separated class name(s) to add to the element(s).
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).addClass(&#039;bar&#039;);
+ *     $(&#039;.item&#039;).addClass(&#039;bar foo&#039;);
+ */
 
 function addClass(value) {
     if (value &amp;&amp; value.length) {
@@ -101,12 +118,34 @@ function addClass(value) {
     return this;
 }
 
+/**
+ * Remove a class from the element(s)
+ *
+ * @param {String} value Space-separated class name(s) to remove from the element(s).
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.items&#039;).removeClass(&#039;bar&#039;);
+ *     $(&#039;.items&#039;).removeClass(&#039;bar foo&#039;);
+ */
+
 function removeClass(value) {
     if (value &amp;&amp; value.length) {
         each(value.split(&quot; &quot;), _each.bind(this, &quot;remove&quot;));
     }
     return this;
 }
+
+/**
+ * Toggle a class at the element(s)
+ *
+ * @param {String} value Space-separated class name(s) to toggle at the element(s).
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).toggleClass(&#039;bar&#039;);
+ *     $(&#039;.item&#039;).toggleClass(&#039;bar foo&#039;);
+ */
 
 function toggleClass(value) {
     if (value &amp;&amp; value.length) {
@@ -115,11 +154,29 @@ function toggleClass(value) {
     return this;
 }
 
+/**
+ * Check if the element(s) have a class.
+ *
+ * @param {String} value Check if the DOM element contains the class name. When applied to multiple elements,
+ * returns `true` if _any_ of them contains the class name.
+ * @return {Boolean} Whether the element&#039;s class attribute contains the class name.
+ * @example
+ *     $(&#039;.item&#039;).hasClass(&#039;bar&#039;);
+ */
+
 function hasClass(value) {
     return (this.nodeType ? [this] : this).some(function (element) {
         return element.classList.contains(value);
     });
 }
+
+/**
+ * Specialized iteration, applying `fn` of the classList API to each element.
+ *
+ * @param {String} fnName
+ * @param {String} className
+ * @private
+ */
 
 function _each(fnName, className) {
     each(this, function (element) {
@@ -127,13 +184,14 @@ function _each(fnName, className) {
     });
 }
 
+/*
+ * Export interface
+ */
+
 exports.addClass = addClass;
 exports.removeClass = removeClass;
 exports.toggleClass = toggleClass;
-exports.hasClass = hasClass;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+exports.hasClass = hasClass;</textarea>
   </div>
 </div>
 

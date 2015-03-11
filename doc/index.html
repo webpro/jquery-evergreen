@@ -261,9 +261,9 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#util/index"><strong>Util</strong></a>
+                        <a href="#util"><strong>Util</strong></a>
                         <ul class="">
-                                <li><a href="#util/index-extend">extend</a></li>
+                                <li><a href="#util-extend">extend</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -1286,7 +1286,7 @@ var each = forEach;</code></pre>
                 this.appendChild(element);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.forEach(this.appendChild.bind(this));
+                forEach.call(elements, this.appendChild.bind(this));
             }
         }
     } else {
@@ -1364,7 +1364,7 @@ var each = forEach;</code></pre>
                 this.insertBefore(element, this.firstChild);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.reverse().forEach(prepend.bind(this));
+                forEach.call(elements.reverse(), prepend.bind(this));
             }
         }
     } else {
@@ -1442,7 +1442,7 @@ var each = forEach;</code></pre>
                 this.parentNode.insertBefore(element, this);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.forEach(before.bind(this));
+                forEach.call(elements, before.bind(this));
             }
         }
     } else {
@@ -1520,7 +1520,7 @@ var each = forEach;</code></pre>
                 this.parentNode.insertBefore(element, this.nextSibling);
             } else {
                 var elements = element instanceof NodeList ? toArray(element) : element;
-                elements.reverse().forEach(after.bind(this));
+                forEach.call(elements.reverse(), after.bind(this));
             }
         }
     } else {
@@ -4330,12 +4330,12 @@ function getEventConstructor(type) {
                                 </div>
                             </section>
                     </section>
-                    <section id="util/index">
+                    <section id="util">
 
                         <h2>Util</h2>
 
 
-                            <section id="util/index-extend">
+                            <section id="util-extend">
 
 
                                 <h3>

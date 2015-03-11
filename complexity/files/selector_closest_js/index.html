@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">42</p>
+      <p class="stat">64</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,7 +62,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">23.98</p>
+      <p class="stat">24.29</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
@@ -91,12 +91,33 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var matches = require(&quot;.&quot;).matches;
-var uniq = require(&quot;../util&quot;).uniq;
-var each = require(&quot;../util/each&quot;).each;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/**
+ * @module closest
+ */
 
+var matches = require(&quot;.&quot;).matches;
+
+var _util = require(&quot;../util&quot;);
+
+var each = _util.each;
+var uniq = _util.uniq;
+
+/**
+ * Return the closest element matching the selector (starting by itself) for each element in the collection.
+ *
+ * @param {String} selector Filter
+ * @param {Object} [context] If provided, matching elements must be a descendant of this element
+ * @return {Object} New wrapped collection (containing zero or one element)
+ * @chainable
+ * @example
+ *     $(&#039;.selector&#039;).closest(&#039;.container&#039;);
+ */
 
 var closest = (function () {
+
     function closest(selector, context) {
         var nodes = [];
         each(this, function (node) {
@@ -127,10 +148,11 @@ var closest = (function () {
     };
 })();
 
-exports.closest = closest;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+/*
+ * Export interface
+ */
+
+exports.closest = closest;</textarea>
   </div>
 </div>
 

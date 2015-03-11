@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">68</p>
+      <p class="stat">132</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,14 +91,32 @@
   <div class="row">
     <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
 
-var each = require(&quot;../util/each&quot;).each;
+Object.defineProperty(exports, &quot;__esModule&quot;, {
+    value: true
+});
+/**
+ * @module DOM (extra)
+ */
+
+var each = require(&quot;../util&quot;).each;
+
 var _ = require(&quot;.&quot;);
 
 var append = _.append;
 var before = _.before;
 var after = _.after;
+
 var $ = require(&quot;../selector&quot;).$;
 
+/**
+ * Append each element in the collection to the specified element(s).
+ *
+ * @param {Node|NodeList|Object} element What to append the element(s) to. Clones elements as necessary.
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).appendTo(container);
+ */
 
 function appendTo(element) {
     var context = typeof element === &quot;string&quot; ? $(element) : element;
@@ -106,11 +124,28 @@ function appendTo(element) {
     return this;
 }
 
+/*
+ * Empty each element in the collection.
+ *
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).empty();
+ */
+
 function empty() {
     return each(this, function (element) {
         element.innerHTML = &quot;&quot;;
     });
 }
+
+/**
+ * Remove the collection from the DOM.
+ *
+ * @return {Array} Array containing the removed elements
+ * @example
+ *     $(&#039;.item&#039;).remove();
+ */
 
 function remove() {
     return each(this, function (element) {
@@ -120,11 +155,28 @@ function remove() {
     });
 }
 
+/**
+ * Replace each element in the collection with the provided new content, and return the array of elements that were replaced.
+ *
+ * @return {Array} Array containing the replaced elements
+ */
+
 function replaceWith() {
     return before.apply(this, arguments).remove();
 }
 
+/**
+ * Get the `textContent` from the first, or set the `textContent` of each element in the collection.
+ *
+ * @param {String} [value]
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;.item&#039;).text(&#039;New content&#039;);
+ */
+
 function text(value) {
+
     if (value === undefined) {
         return this[0].textContent;
     }
@@ -136,7 +188,18 @@ function text(value) {
     return this;
 }
 
+/**
+ * Get the `value` from the first, or set the `value` of each element in the collection.
+ *
+ * @param {String} [value]
+ * @return {Object} The wrapped collection
+ * @chainable
+ * @example
+ *     $(&#039;input.firstName&#039;).value(&#039;New value&#039;);
+ */
+
 function val(value) {
+
     if (value === undefined) {
         return this[0].value;
     }
@@ -148,15 +211,16 @@ function val(value) {
     return this;
 }
 
+/*
+ * Export interface
+ */
+
 exports.appendTo = appendTo;
 exports.empty = empty;
 exports.remove = remove;
 exports.replaceWith = replaceWith;
 exports.text = text;
-exports.val = val;
-Object.defineProperty(exports, &quot;__esModule&quot;, {
-    value: true
-});</textarea>
+exports.val = val;</textarea>
   </div>
 </div>
 
