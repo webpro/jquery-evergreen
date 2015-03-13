@@ -1199,7 +1199,7 @@ extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html
 
 $.fn = api;
 
-$.version = "0.9.3";
+$.version = "0.10.0";
 
 $.extend = extend;
 
