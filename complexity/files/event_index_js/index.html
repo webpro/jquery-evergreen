@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">72.69</p>
+      <p class="stat">72.67</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">40.48</p>
+      <p class="stat">39.76</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.34</p>
+      <p class="stat">1.35</p>
     </div>
   </div>
 </div>
@@ -89,18 +89,18 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
 
-Object.defineProperty(exports, &quot;__esModule&quot;, {
+Object.defineProperty(exports, &#039;__esModule&#039;, {
     value: true
 });
 /**
  * @module Events
  */
 
-var each = require(&quot;../util&quot;).each;
+var _each = require(&#039;../util&#039;);
 
-var closest = require(&quot;../selector/closest&quot;).closest;
+var _closest = require(&#039;../selector/closest&#039;);
 
 /**
  * Shorthand for `addEventListener`. Supports event delegation if a filter (`selector`) is provided.
@@ -118,22 +118,22 @@ var closest = require(&quot;../selector/closest&quot;).closest;
 
 function on(eventNames, selector, handler, useCapture) {
 
-    if (typeof selector === &quot;function&quot;) {
+    if (typeof selector === &#039;function&#039;) {
         handler = selector;
         selector = null;
     }
 
     var parts, namespace, eventListener;
 
-    eventNames.split(&quot; &quot;).forEach(function (eventName) {
+    eventNames.split(&#039; &#039;).forEach(function (eventName) {
 
-        parts = eventName.split(&quot;.&quot;);
+        parts = eventName.split(&#039;.&#039;);
         eventName = parts[0] || null;
         namespace = parts[1] || null;
 
         eventListener = proxyHandler(handler);
 
-        each(this, function (element) {
+        _each.each(this, function (element) {
 
             if (selector) {
                 eventListener = delegateHandler.bind(element, selector, eventListener);
@@ -170,26 +170,26 @@ function on(eventNames, selector, handler, useCapture) {
  */
 
 function off(_x, selector, handler, useCapture) {
-    var eventNames = arguments[0] === undefined ? &quot;&quot; : arguments[0];
+    var eventNames = arguments[0] === undefined ? &#039;&#039; : arguments[0];
 
-    if (typeof selector === &quot;function&quot;) {
+    if (typeof selector === &#039;function&#039;) {
         handler = selector;
         selector = null;
     }
 
     var parts, namespace, handlers;
 
-    eventNames.split(&quot; &quot;).forEach(function (eventName) {
+    eventNames.split(&#039; &#039;).forEach(function (eventName) {
 
-        parts = eventName.split(&quot;.&quot;);
+        parts = eventName.split(&#039;.&#039;);
         eventName = parts[0] || null;
         namespace = parts[1] || null;
 
-        each(this, function (element) {
+        _each.each(this, function (element) {
 
             handlers = getHandlers(element);
 
-            each(handlers.filter(function (item) {
+            _each.each(handlers.filter(function (item) {
                 return (!eventName || item.eventName === eventName) &amp;&amp; (!namespace || item.namespace === namespace) &amp;&amp; (!handler || item.handler === handler) &amp;&amp; (!selector || item.selector === selector);
             }), function (item) {
                 element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
@@ -215,7 +215,7 @@ function off(_x, selector, handler, useCapture) {
  * @return {Array}
  */
 
-var eventKeyProp = &quot;__domtastic_event__&quot;;
+var eventKeyProp = &#039;__domtastic_event__&#039;;
 var id = 1;
 var handlers = {};
 var unusedKeys = [];
@@ -271,14 +271,14 @@ var augmentEvent = (function () {
 
     var methodName,
         eventMethods = {
-        preventDefault: &quot;isDefaultPrevented&quot;,
-        stopImmediatePropagation: &quot;isImmediatePropagationStopped&quot;,
-        stopPropagation: &quot;isPropagationStopped&quot;
+        preventDefault: &#039;isDefaultPrevented&#039;,
+        stopImmediatePropagation: &#039;isImmediatePropagationStopped&#039;,
+        stopPropagation: &#039;isPropagationStopped&#039;
     },
-        returnTrue = function () {
+        returnTrue = function returnTrue() {
         return true;
     },
-        returnFalse = function () {
+        returnFalse = function returnFalse() {
         return false;
     };
 
@@ -314,7 +314,7 @@ var augmentEvent = (function () {
 
 function delegateHandler(selector, handler, event) {
     var eventTarget = event._target || event.target,
-        currentTarget = closest.call([eventTarget], selector, this)[0];
+        currentTarget = _closest.closest.call([eventTarget], selector, this)[0];
     if (currentTarget &amp;&amp; currentTarget !== this) {
         if (currentTarget === eventTarget || !(event.isPropagationStopped &amp;&amp; event.isPropagationStopped())) {
             handler.call(currentTarget, event);

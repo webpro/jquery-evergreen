@@ -44,7 +44,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">64.96</p>
+      <p class="stat">64.94</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">37.73</p>
+      <p class="stat">36.83</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.82</p>
+      <p class="stat">0.83</p>
     </div>
   </div>
 </div>
@@ -89,18 +89,18 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
 
-Object.defineProperty(exports, &quot;__esModule&quot;, {
+Object.defineProperty(exports, &#039;__esModule&#039;, {
     value: true
 });
 /**
  * @module DOM
  */
 
-var toArray = require(&quot;../util&quot;).toArray;
+var _toArray = require(&#039;../util&#039;);
 
-var $ = require(&quot;../selector/index&quot;).$;
+var _$ = require(&#039;../selector/index&#039;);
 
 var forEach = Array.prototype.forEach;
 
@@ -117,13 +117,13 @@ var forEach = Array.prototype.forEach;
 
 function append(element) {
     if (this instanceof Node) {
-        if (typeof element === &quot;string&quot;) {
-            this.insertAdjacentHTML(&quot;beforeend&quot;, element);
+        if (typeof element === &#039;string&#039;) {
+            this.insertAdjacentHTML(&#039;beforeend&#039;, element);
         } else {
             if (element instanceof Node) {
                 this.appendChild(element);
             } else {
-                var elements = element instanceof NodeList ? toArray(element) : element;
+                var elements = element instanceof NodeList ? _toArray.toArray(element) : element;
                 forEach.call(elements, this.appendChild.bind(this));
             }
         }
@@ -146,13 +146,13 @@ function append(element) {
 
 function prepend(element) {
     if (this instanceof Node) {
-        if (typeof element === &quot;string&quot;) {
-            this.insertAdjacentHTML(&quot;afterbegin&quot;, element);
+        if (typeof element === &#039;string&#039;) {
+            this.insertAdjacentHTML(&#039;afterbegin&#039;, element);
         } else {
             if (element instanceof Node) {
                 this.insertBefore(element, this.firstChild);
             } else {
-                var elements = element instanceof NodeList ? toArray(element) : element;
+                var elements = element instanceof NodeList ? _toArray.toArray(element) : element;
                 forEach.call(elements.reverse(), prepend.bind(this));
             }
         }
@@ -175,13 +175,13 @@ function prepend(element) {
 
 function before(element) {
     if (this instanceof Node) {
-        if (typeof element === &quot;string&quot;) {
-            this.insertAdjacentHTML(&quot;beforebegin&quot;, element);
+        if (typeof element === &#039;string&#039;) {
+            this.insertAdjacentHTML(&#039;beforebegin&#039;, element);
         } else {
             if (element instanceof Node) {
                 this.parentNode.insertBefore(element, this);
             } else {
-                var elements = element instanceof NodeList ? toArray(element) : element;
+                var elements = element instanceof NodeList ? _toArray.toArray(element) : element;
                 forEach.call(elements, before.bind(this));
             }
         }
@@ -203,13 +203,13 @@ function before(element) {
 
 function after(element) {
     if (this instanceof Node) {
-        if (typeof element === &quot;string&quot;) {
-            this.insertAdjacentHTML(&quot;afterend&quot;, element);
+        if (typeof element === &#039;string&#039;) {
+            this.insertAdjacentHTML(&#039;afterend&#039;, element);
         } else {
             if (element instanceof Node) {
                 this.parentNode.insertBefore(element, this.nextSibling);
             } else {
-                var elements = element instanceof NodeList ? toArray(element) : element;
+                var elements = element instanceof NodeList ? _toArray.toArray(element) : element;
                 forEach.call(elements.reverse(), after.bind(this));
             }
         }
@@ -228,7 +228,7 @@ function after(element) {
  */
 
 function clone() {
-    return $(_clone(this));
+    return _$.$(_clone(this));
 }
 
 /**
@@ -240,11 +240,11 @@ function clone() {
  */
 
 function _clone(element) {
-    if (typeof element === &quot;string&quot;) {
+    if (typeof element === &#039;string&#039;) {
         return element;
     } else if (element instanceof Node) {
         return element.cloneNode(true);
-    } else if (&quot;length&quot; in element) {
+    } else if (&#039;length&#039; in element) {
         return [].map.call(element, function (el) {
             return el.cloneNode(true);
         });

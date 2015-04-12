@@ -89,9 +89,9 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
 
-Object.defineProperty(exports, &quot;__esModule&quot;, {
+Object.defineProperty(exports, &#039;__esModule&#039;, {
   value: true
 });
 /**
@@ -112,7 +112,7 @@ function ready(handler) {
   if (/complete|loaded|interactive/.test(document.readyState) &amp;&amp; document.body) {
     handler();
   } else {
-    document.addEventListener(&quot;DOMContentLoaded&quot;, handler, false);
+    document.addEventListener(&#039;DOMContentLoaded&#039;, handler, false);
   }
   return this;
 }

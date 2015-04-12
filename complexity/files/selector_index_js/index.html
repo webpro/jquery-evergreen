@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">68.36</p>
+      <p class="stat">68.34</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">200</p>
+      <p class="stat">197</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">34.07</p>
+      <p class="stat">33.65</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">1.00</p>
+      <p class="stat">0.98</p>
     </div>
   </div>
 </div>
@@ -89,19 +89,16 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
 
-Object.defineProperty(exports, &quot;__esModule&quot;, {
+Object.defineProperty(exports, &#039;__esModule&#039;, {
     value: true
 });
 /**
  * @module Selector
  */
 
-var _util = require(&quot;../util&quot;);
-
-var global = _util.global;
-var each = _util.each;
+var _global$each = require(&#039;../util&#039;);
 
 var isPrototypeSet = false,
     reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/,
@@ -136,7 +133,7 @@ function $(selector) {
     } else if (selector instanceof Wrapper) {
 
         return selector;
-    } else if (typeof selector !== &quot;string&quot;) {
+    } else if (typeof selector !== &#039;string&#039;) {
 
         collection = selector.nodeType || selector === window ? [selector] : selector;
     } else if (reFragment.test(selector)) {
@@ -144,7 +141,7 @@ function $(selector) {
         collection = createFragment(selector);
     } else {
 
-        context = typeof context === &quot;string&quot; ? document.querySelector(context) : context.length ? context[0] : context;
+        context = typeof context === &#039;string&#039; ? document.querySelector(context) : context.length ? context[0] : context;
 
         collection = querySelector(selector, context);
     }
@@ -163,8 +160,8 @@ function $(selector) {
 
 function find(selector) {
     var nodes = [];
-    each(this, function (node) {
-        each(querySelector(selector, node), function (child) {
+    _global$each.each(this, function (node) {
+        _global$each.each(querySelector(selector, node), function (child) {
             if (nodes.indexOf(child) === -1) {
                 nodes.push(child);
             }
@@ -185,7 +182,7 @@ function find(selector) {
  */
 
 var matches = (function () {
-    var context = typeof Element !== &quot;undefined&quot; ? Element.prototype : global,
+    var context = typeof Element !== &#039;undefined&#039; ? Element.prototype : _global$each.global,
         _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
     return function (element, selector) {
         return _matches.call(element, selector);
@@ -206,11 +203,11 @@ function querySelector(selector, context) {
     var isSimpleSelector = reSimpleSelector.test(selector);
 
     if (isSimpleSelector) {
-        if (selector[0] === &quot;#&quot;) {
+        if (selector[0] === &#039;#&#039;) {
             var element = (context.getElementById ? context : document).getElementById(selector.slice(1));
             return element ? [element] : [];
         }
-        if (selector[0] === &quot;.&quot;) {
+        if (selector[0] === &#039;.&#039;) {
             return context.getElementsByClassName(selector.slice(1));
         }
         return context.getElementsByTagName(selector);
@@ -234,7 +231,7 @@ function createFragment(html) {
     }
 
     var elements = [],
-        container = document.createElement(&quot;div&quot;),
+        container = document.createElement(&#039;div&#039;),
         children = container.childNodes;
 
     container.innerHTML = html;

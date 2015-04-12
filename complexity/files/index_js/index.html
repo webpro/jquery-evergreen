@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">71</p>
+      <p class="stat">109</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">16.19</p>
+      <p class="stat">15.31</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.48</p>
+      <p class="stat">0.71</p>
     </div>
   </div>
 </div>
@@ -89,77 +89,115 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&quot;use strict&quot;;
+    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
 
-var _interopRequireWildcard = function (obj) { return obj &amp;&amp; obj.__esModule ? obj : { &quot;default&quot;: obj }; };
+var _interopRequireWildcard = function (obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#039;default&#039;: obj }; };
 
+Object.defineProperty(exports, &#039;__esModule&#039;, {
+    value: true
+});
 /**
  * @module API
  */
 
-var extend = require(&quot;./util&quot;).extend;
+var _extend = require(&#039;./util&#039;);
+
+// Import modules to build up the API
+
+var _import = require(&#039;./array&#039;);
+
+var array = _interopRequireWildcard(_import);
+
+var _import2 = require(&#039;./dom/attr&#039;);
+
+var attr = _interopRequireWildcard(_import2);
+
+var _import3 = require(&#039;./dom/class&#039;);
+
+var class_ = _interopRequireWildcard(_import3);
+
+var _import4 = require(&#039;./dom/contains&#039;);
+
+var contains = _interopRequireWildcard(_import4);
+
+var _import5 = require(&#039;./css&#039;);
+
+var css = _interopRequireWildcard(_import5);
+
+var _import6 = require(&#039;./dom/data&#039;);
+
+var data = _interopRequireWildcard(_import6);
+
+var _import7 = require(&#039;./dom/index&#039;);
+
+var dom = _interopRequireWildcard(_import7);
+
+var _import8 = require(&#039;./dom/extra&#039;);
+
+var dom_extra = _interopRequireWildcard(_import8);
+
+var _import9 = require(&#039;./event/index&#039;);
+
+var event = _interopRequireWildcard(_import9);
+
+var _import10 = require(&#039;./dom/html&#039;);
+
+var html = _interopRequireWildcard(_import10);
+
+var _import11 = require(&#039;./noconflict&#039;);
+
+var noconflict = _interopRequireWildcard(_import11);
+
+var _import12 = require(&#039;./event/ready&#039;);
+
+var ready = _interopRequireWildcard(_import12);
+
+var _import13 = require(&#039;./selector/index&#039;);
+
+var selector = _interopRequireWildcard(_import13);
+
+var _import14 = require(&#039;./selector/closest&#039;);
+
+var closest = _interopRequireWildcard(_import14);
+
+var _import15 = require(&#039;./selector/extra&#039;);
+
+var selector_extra = _interopRequireWildcard(_import15);
+
+var _import16 = require(&#039;./event/trigger&#039;);
+
+var trigger = _interopRequireWildcard(_import16);
+
+var _import17 = require(&#039;./type&#039;);
+
+var type = _interopRequireWildcard(_import17);
 
 var api = {},
     $ = {};
 
-// Import modules to build up the API
-
-var array = _interopRequireWildcard(require(&quot;./array&quot;));
-
-var attr = _interopRequireWildcard(require(&quot;./dom/attr&quot;));
-
-var class_ = _interopRequireWildcard(require(&quot;./dom/class&quot;));
-
-var contains = _interopRequireWildcard(require(&quot;./dom/contains&quot;));
-
-var css = _interopRequireWildcard(require(&quot;./css&quot;));
-
-var data = _interopRequireWildcard(require(&quot;./dom/data&quot;));
-
-var dom = _interopRequireWildcard(require(&quot;./dom/index&quot;));
-
-var dom_extra = _interopRequireWildcard(require(&quot;./dom/extra&quot;));
-
-var event = _interopRequireWildcard(require(&quot;./event/index&quot;));
-
-var html = _interopRequireWildcard(require(&quot;./dom/html&quot;));
-
-var noconflict = _interopRequireWildcard(require(&quot;./noconflict&quot;));
-
-var ready = _interopRequireWildcard(require(&quot;./event/ready&quot;));
-
-var selector = _interopRequireWildcard(require(&quot;./selector/index&quot;));
-
-var closest = _interopRequireWildcard(require(&quot;./selector/closest&quot;));
-
-var selector_extra = _interopRequireWildcard(require(&quot;./selector/extra&quot;));
-
-var trigger = _interopRequireWildcard(require(&quot;./event/trigger&quot;));
-
-var type = _interopRequireWildcard(require(&quot;./type&quot;));
-
-if (typeof selector !== &quot;undefined&quot;) {
+if (typeof selector !== &#039;undefined&#039;) {
     $ = selector.$;
     $.matches = selector.matches;
     api.find = selector.find;
 }
 
-extend($, contains, noconflict, type);
-extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+_extend.extend($, contains, noconflict, type);
+_extend.extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 
 // Version
 
-$.version = &quot;0.10.1&quot;;
+$.version = &#039;0.10.2&#039;;
 
 // Util
 
-$.extend = extend;
+$.extend = _extend.extend;
 
 // Export interface
 
-module.exports = $;</textarea>
+exports[&#039;default&#039;] = $;
+module.exports = exports[&#039;default&#039;];</textarea>
   </div>
 </div>
 
