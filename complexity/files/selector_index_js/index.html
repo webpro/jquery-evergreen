@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">197</p>
+      <p class="stat">194</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">33.65</p>
+      <p class="stat">33.93</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.98</p>
+      <p class="stat">0.99</p>
     </div>
   </div>
 </div>
@@ -89,16 +89,17 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module Selector
+ */
+
+&#039;use strict&#039;;
 
 Object.defineProperty(exports, &#039;__esModule&#039;, {
     value: true
 });
-/**
- * @module Selector
- */
 
-var _global$each = require(&#039;../util&#039;);
+var _util = require(&#039;../util&#039;);
 
 var isPrototypeSet = false,
     reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/,
@@ -160,8 +161,8 @@ function $(selector) {
 
 function find(selector) {
     var nodes = [];
-    _global$each.each(this, function (node) {
-        _global$each.each(querySelector(selector, node), function (child) {
+    (0, _util.each)(this, function (node) {
+        (0, _util.each)(querySelector(selector, node), function (child) {
             if (nodes.indexOf(child) === -1) {
                 nodes.push(child);
             }
@@ -182,7 +183,7 @@ function find(selector) {
  */
 
 var matches = (function () {
-    var context = typeof Element !== &#039;undefined&#039; ? Element.prototype : _global$each.global,
+    var context = typeof Element !== &#039;undefined&#039; ? Element.prototype : _util.global,
         _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
     return function (element, selector) {
         return _matches.call(element, selector);

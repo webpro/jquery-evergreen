@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">82.08</p>
+      <p class="stat">61.31</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">109</p>
+      <p class="stat">106</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">15.31</p>
+      <p class="stat">17.80</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.71</p>
+      <p class="stat">0.80</p>
     </div>
   </div>
 </div>
@@ -89,88 +89,89 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">&#039;use strict&#039;;
+    <textarea id="file-source" class="col-md-12">/**
+ * @module API
+ */
 
-var _interopRequireWildcard = function (obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#039;default&#039;: obj }; };
+&#039;use strict&#039;;
 
 Object.defineProperty(exports, &#039;__esModule&#039;, {
     value: true
 });
-/**
- * @module API
- */
 
-var _extend = require(&#039;./util&#039;);
+function _interopRequireWildcard(obj) { if (obj &amp;&amp; obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj[&#039;default&#039;] = obj; return newObj; } }
+
+var _util = require(&#039;./util&#039;);
 
 // Import modules to build up the API
 
-var _import = require(&#039;./array&#039;);
+var _array = require(&#039;./array&#039;);
 
-var array = _interopRequireWildcard(_import);
+var array = _interopRequireWildcard(_array);
 
-var _import2 = require(&#039;./dom/attr&#039;);
+var _domAttr = require(&#039;./dom/attr&#039;);
 
-var attr = _interopRequireWildcard(_import2);
+var attr = _interopRequireWildcard(_domAttr);
 
-var _import3 = require(&#039;./dom/class&#039;);
+var _domClass = require(&#039;./dom/class&#039;);
 
-var class_ = _interopRequireWildcard(_import3);
+var class_ = _interopRequireWildcard(_domClass);
 
-var _import4 = require(&#039;./dom/contains&#039;);
+var _domContains = require(&#039;./dom/contains&#039;);
 
-var contains = _interopRequireWildcard(_import4);
+var contains = _interopRequireWildcard(_domContains);
 
-var _import5 = require(&#039;./css&#039;);
+var _css = require(&#039;./css&#039;);
 
-var css = _interopRequireWildcard(_import5);
+var css = _interopRequireWildcard(_css);
 
-var _import6 = require(&#039;./dom/data&#039;);
+var _domData = require(&#039;./dom/data&#039;);
 
-var data = _interopRequireWildcard(_import6);
+var data = _interopRequireWildcard(_domData);
 
-var _import7 = require(&#039;./dom/index&#039;);
+var _domIndex = require(&#039;./dom/index&#039;);
 
-var dom = _interopRequireWildcard(_import7);
+var dom = _interopRequireWildcard(_domIndex);
 
-var _import8 = require(&#039;./dom/extra&#039;);
+var _domExtra = require(&#039;./dom/extra&#039;);
 
-var dom_extra = _interopRequireWildcard(_import8);
+var dom_extra = _interopRequireWildcard(_domExtra);
 
-var _import9 = require(&#039;./event/index&#039;);
+var _eventIndex = require(&#039;./event/index&#039;);
 
-var event = _interopRequireWildcard(_import9);
+var event = _interopRequireWildcard(_eventIndex);
 
-var _import10 = require(&#039;./dom/html&#039;);
+var _domHtml = require(&#039;./dom/html&#039;);
 
-var html = _interopRequireWildcard(_import10);
+var html = _interopRequireWildcard(_domHtml);
 
-var _import11 = require(&#039;./noconflict&#039;);
+var _noconflict = require(&#039;./noconflict&#039;);
 
-var noconflict = _interopRequireWildcard(_import11);
+var noconflict = _interopRequireWildcard(_noconflict);
 
-var _import12 = require(&#039;./event/ready&#039;);
+var _eventReady = require(&#039;./event/ready&#039;);
 
-var ready = _interopRequireWildcard(_import12);
+var ready = _interopRequireWildcard(_eventReady);
 
-var _import13 = require(&#039;./selector/index&#039;);
+var _selectorIndex = require(&#039;./selector/index&#039;);
 
-var selector = _interopRequireWildcard(_import13);
+var selector = _interopRequireWildcard(_selectorIndex);
 
-var _import14 = require(&#039;./selector/closest&#039;);
+var _selectorClosest = require(&#039;./selector/closest&#039;);
 
-var closest = _interopRequireWildcard(_import14);
+var closest = _interopRequireWildcard(_selectorClosest);
 
-var _import15 = require(&#039;./selector/extra&#039;);
+var _selectorExtra = require(&#039;./selector/extra&#039;);
 
-var selector_extra = _interopRequireWildcard(_import15);
+var selector_extra = _interopRequireWildcard(_selectorExtra);
 
-var _import16 = require(&#039;./event/trigger&#039;);
+var _eventTrigger = require(&#039;./event/trigger&#039;);
 
-var trigger = _interopRequireWildcard(_import16);
+var trigger = _interopRequireWildcard(_eventTrigger);
 
-var _import17 = require(&#039;./type&#039;);
+var _type = require(&#039;./type&#039;);
 
-var type = _interopRequireWildcard(_import17);
+var type = _interopRequireWildcard(_type);
 
 var api = {},
     $ = {};
@@ -181,18 +182,18 @@ if (typeof selector !== &#039;undefined&#039;) {
     api.find = selector.find;
 }
 
-_extend.extend($, contains, noconflict, type);
-_extend.extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+(0, _util.extend)($, contains, noconflict, type);
+(0, _util.extend)(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 
 // Version
 
-$.version = &#039;0.10.2&#039;;
+$.version = &#039;0.10.3&#039;;
 
 // Util
 
-$.extend = _extend.extend;
+$.extend = _util.extend;
 
 // Export interface
 
