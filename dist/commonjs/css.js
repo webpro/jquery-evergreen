@@ -39,7 +39,9 @@ function dasherize(value) {
 
 function css(key, value) {
 
-    var styleProps, prop, val;
+    var styleProps = undefined,
+        prop = undefined,
+        val = undefined;
 
     if (typeof key === 'string') {
         key = camelize(key);

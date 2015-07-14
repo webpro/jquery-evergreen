@@ -88,7 +88,9 @@ function dasherize(value) {
 
 function css(key, value) {
 
-    var styleProps, prop, val;
+    var styleProps = undefined,
+        prop = undefined,
+        val = undefined;
 
     if (typeof key === 'string') {
         key = camelize(key);
@@ -146,8 +148,8 @@ function attr(key, value) {
 
     (0, _util.each)(this, function (element) {
         if (typeof key === 'object') {
-            for (var attr in key) {
-                element.setAttribute(attr, key[attr]);
+            for (var _attr in key) {
+                element.setAttribute(_attr, key[_attr]);
             }
         } else {
             element.setAttribute(key, value);
@@ -159,7 +161,7 @@ function attr(key, value) {
 
 function removeAttr(key) {
     (0, _util.each)(this, function (element) {
-        element.removeAttribute(key);
+        return element.removeAttribute(key);
     });
     return this;
 }
@@ -205,7 +207,7 @@ function hasClass(value) {
 
 function _each(fnName, className) {
     (0, _util.each)(this, function (element) {
-        element.classList[fnName](className);
+        return element.classList[fnName](className);
     });
 }
 
@@ -268,7 +270,7 @@ function prop(key, value) {
     }
 
     (0, _util.each)(this, function (element) {
-        element[key] = value;
+        return element[key] = value;
     });
 
     return this;
@@ -298,7 +300,7 @@ function appendTo(element) {
 
 function empty() {
     return (0, _util.each)(this, function (element) {
-        element.innerHTML = '';
+        return element.innerHTML = '';
     });
 }
 
@@ -321,7 +323,7 @@ function text(value) {
     }
 
     (0, _util.each)(this, function (element) {
-        element.textContent = '' + value;
+        return element.textContent = '' + value;
     });
 
     return this;
@@ -334,7 +336,7 @@ function val(value) {
     }
 
     (0, _util.each)(this, function (element) {
-        element.value = value;
+        return element.value = value;
     });
 
     return this;
@@ -364,7 +366,7 @@ function html(fragment) {
   }
 
   (0, _util.each)(this, function (element) {
-    element.innerHTML = fragment;
+    return element.innerHTML = fragment;
   });
 
   return this;
@@ -500,13 +502,16 @@ var _util = require(18);
 var _selectorClosest = require(14);
 
 function on(eventNames, selector, handler, useCapture) {
+    var _this = this;
 
     if (typeof selector === 'function') {
         handler = selector;
         selector = null;
     }
 
-    var parts, namespace, eventListener;
+    var parts = undefined,
+        namespace = undefined,
+        eventListener = undefined;
 
     eventNames.split(' ').forEach(function (eventName) {
 
@@ -516,7 +521,7 @@ function on(eventNames, selector, handler, useCapture) {
 
         eventListener = proxyHandler(handler);
 
-        (0, _util.each)(this, function (element) {
+        (0, _util.each)(_this, function (element) {
 
             if (selector) {
                 eventListener = delegateHandler.bind(element, selector, eventListener);
@@ -540,12 +545,16 @@ function on(eventNames, selector, handler, useCapture) {
 function off(eventNames, selector, handler, useCapture) {
     if (eventNames === undefined) eventNames = '';
 
+    var _this2 = this;
+
     if (typeof selector === 'function') {
         handler = selector;
         selector = null;
     }
 
-    var parts, namespace, handlers;
+    var parts = undefined,
+        namespace = undefined,
+        handlers = undefined;
 
     eventNames.split(' ').forEach(function (eventName) {
 
@@ -553,7 +562,7 @@ function off(eventNames, selector, handler, useCapture) {
         eventName = parts[0] || null;
         namespace = parts[1] || null;
 
-        (0, _util.each)(this, function (element) {
+        (0, _util.each)(_this2, function (element) {
 
             handlers = getHandlers(element);
 
@@ -605,7 +614,7 @@ function proxyHandler(handler) {
 
 var augmentEvent = (function () {
 
-    var methodName,
+    var methodName = undefined,
         eventMethods = {
         preventDefault: 'isDefaultPrevented',
         stopImmediatePropagation: 'isImmediatePropagationStopped',
@@ -688,7 +697,7 @@ var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
     reKeyEvent = /^key/;
 
 function trigger(type, data) {
-    var params = arguments[2] === undefined ? {} : arguments[2];
+    var params = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
     params.bubbles = typeof params.bubbles === 'boolean' ? params.bubbles : true;
     params.cancelable = typeof params.cancelable === 'boolean' ? params.cancelable : true;
@@ -728,7 +737,7 @@ function isAttachedToDocument(element) {
 }
 
 function triggerForPath(element, type) {
-    var params = arguments[2] === undefined ? {} : arguments[2];
+    var params = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
     params.bubbles = false;
     var event = new CustomEvent(type, params);
@@ -750,7 +759,7 @@ function dispatchEvent(element, event) {
 
 (function () {
     function CustomEvent(event) {
-        var params = arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
+        var params = arguments.length <= 1 || arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
 
         var customEvent = document.createEvent('CustomEvent');
         customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
@@ -765,10 +774,10 @@ var isEventBubblingInDetachedTree = (function () {
     var isBubbling = false,
         doc = _util.global.document;
     if (doc) {
-        var parent = doc.createElement('div'),
-            child = parent.cloneNode();
-        parent.appendChild(child);
-        parent.addEventListener('e', function () {
+        var _parent = doc.createElement('div'),
+            child = _parent.cloneNode();
+        _parent.appendChild(child);
+        _parent.addEventListener('e', function () {
             isBubbling = true;
         });
         child.dispatchEvent(new CustomEvent('e', { bubbles: true }));
@@ -834,15 +843,23 @@ var closest = (function () {
     }
 
     return !Element.prototype.closest ? closest : function (selector, context) {
+        var _this = this;
+
         if (!context) {
-            var nodes = [];
-            (0, _util.each)(this, function (node) {
-                var n = node.closest(selector);
-                if (n) {
-                    nodes.push(n);
-                }
-            });
-            return (0, _index.$)((0, _util.uniq)(nodes));
+            var _ret = (function () {
+                var nodes = [];
+                (0, _util.each)(_this, function (node) {
+                    var n = node.closest(selector);
+                    if (n) {
+                        nodes.push(n);
+                    }
+                });
+                return {
+                    v: (0, _index.$)((0, _util.uniq)(nodes))
+                };
+            })();
+
+            if (typeof _ret === 'object') return _ret.v;
         } else {
             return closest.call(this, selector, context);
         }
@@ -935,15 +952,16 @@ Object.defineProperty(exports, '__esModule', {
 
 var _util = require(18);
 
-var isPrototypeSet = false,
-    reFragment = /^\s*<(\w+|!)[^>]*>/,
+var isPrototypeSet = false;
+
+var reFragment = /^\s*<(\w+|!)[^>]*>/,
     reSingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
     reSimpleSelector = /^[\.#]?[\w-]*$/;
 
 function $(selector) {
-    var context = arguments[1] === undefined ? document : arguments[1];
+    var context = arguments.length <= 1 || arguments[1] === undefined ? document : arguments[1];
 
-    var collection;
+    var collection = undefined;
 
     if (!selector) {
 

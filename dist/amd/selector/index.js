@@ -9,8 +9,9 @@ define(['exports', '../util'], function (exports, _util) {
         value: true
     });
 
-    var isPrototypeSet = false,
-        reFragment = /^\s*<(\w+|!)[^>]*>/,
+    var isPrototypeSet = false;
+
+    var reFragment = /^\s*<(\w+|!)[^>]*>/,
         reSingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
         reSimpleSelector = /^[\.#]?[\w-]*$/;
 
@@ -32,9 +33,9 @@ define(['exports', '../util'], function (exports, _util) {
      */
 
     function $(selector) {
-        var context = arguments[1] === undefined ? document : arguments[1];
+        var context = arguments.length <= 1 || arguments[1] === undefined ? document : arguments[1];
 
-        var collection;
+        var collection = undefined;
 
         if (!selector) {
 

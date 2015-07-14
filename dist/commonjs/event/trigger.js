@@ -31,7 +31,7 @@ var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
  */
 
 function trigger(type, data) {
-    var params = arguments[2] === undefined ? {} : arguments[2];
+    var params = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
     params.bubbles = typeof params.bubbles === 'boolean' ? params.bubbles : true;
     params.cancelable = typeof params.cancelable === 'boolean' ? params.cancelable : true;
@@ -106,7 +106,7 @@ function isAttachedToDocument(element) {
  */
 
 function triggerForPath(element, type) {
-    var params = arguments[2] === undefined ? {} : arguments[2];
+    var params = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
     params.bubbles = false;
     var event = new CustomEvent(type, params);
@@ -142,7 +142,7 @@ function dispatchEvent(element, event) {
 
 (function () {
     function CustomEvent(event) {
-        var params = arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
+        var params = arguments.length <= 1 || arguments[1] === undefined ? { bubbles: false, cancelable: false, detail: undefined } : arguments[1];
 
         var customEvent = document.createEvent('CustomEvent');
         customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
@@ -162,10 +162,10 @@ var isEventBubblingInDetachedTree = (function () {
     var isBubbling = false,
         doc = _util.global.document;
     if (doc) {
-        var parent = doc.createElement('div'),
-            child = parent.cloneNode();
-        parent.appendChild(child);
-        parent.addEventListener('e', function () {
+        var _parent = doc.createElement('div'),
+            child = _parent.cloneNode();
+        _parent.appendChild(child);
+        _parent.addEventListener('e', function () {
             isBubbling = true;
         });
         child.dispatchEvent(new CustomEvent('e', { bubbles: true }));

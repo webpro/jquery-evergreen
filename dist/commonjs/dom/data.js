@@ -59,7 +59,7 @@ function prop(key, value) {
     }
 
     (0, _util.each)(this, function (element) {
-        element[key] = value;
+        return element[key] = value;
     });
 
     return this;

@@ -36,7 +36,7 @@ define(['exports', '../util', './index', '../selector/index'], function (exports
 
     function empty() {
         return (0, _util.each)(this, function (element) {
-            element.innerHTML = '';
+            return element.innerHTML = '';
         });
     }
 
@@ -83,7 +83,7 @@ define(['exports', '../util', './index', '../selector/index'], function (exports
         }
 
         (0, _util.each)(this, function (element) {
-            element.textContent = '' + value;
+            return element.textContent = '' + value;
         });
 
         return this;
@@ -106,7 +106,7 @@ define(['exports', '../util', './index', '../selector/index'], function (exports
         }
 
         (0, _util.each)(this, function (element) {
-            element.value = value;
+            return element.value = value;
         });
 
         return this;

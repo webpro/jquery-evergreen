@@ -10,8 +10,9 @@ Object.defineProperty(exports, '__esModule', {
 
 var _util = require('../util');
 
-var isPrototypeSet = false,
-    reFragment = /^\s*<(\w+|!)[^>]*>/,
+var isPrototypeSet = false;
+
+var reFragment = /^\s*<(\w+|!)[^>]*>/,
     reSingleTag = /^<(\w+)\s*\/?>(?:<\/\1>|)$/,
     reSimpleSelector = /^[\.#]?[\w-]*$/;
 
@@ -33,9 +34,9 @@ var isPrototypeSet = false,
  */
 
 function $(selector) {
-    var context = arguments[1] === undefined ? document : arguments[1];
+    var context = arguments.length <= 1 || arguments[1] === undefined ? document : arguments[1];
 
-    var collection;
+    var collection = undefined;
 
     if (!selector) {
 

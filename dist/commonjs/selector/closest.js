@@ -40,15 +40,23 @@ var closest = (function () {
     }
 
     return !Element.prototype.closest ? closest : function (selector, context) {
+        var _this = this;
+
         if (!context) {
-            var nodes = [];
-            (0, _util.each)(this, function (node) {
-                var n = node.closest(selector);
-                if (n) {
-                    nodes.push(n);
-                }
-            });
-            return (0, _index.$)((0, _util.uniq)(nodes));
+            var _ret = (function () {
+                var nodes = [];
+                (0, _util.each)(_this, function (node) {
+                    var n = node.closest(selector);
+                    if (n) {
+                        nodes.push(n);
+                    }
+                });
+                return {
+                    v: (0, _index.$)((0, _util.uniq)(nodes))
+                };
+            })();
+
+            if (typeof _ret === 'object') return _ret.v;
         } else {
             return closest.call(this, selector, context);
         }

@@ -38,7 +38,9 @@ define(['exports', './util'], function (exports, _util) {
 
     function css(key, value) {
 
-        var styleProps, prop, val;
+        var styleProps = undefined,
+            prop = undefined,
+            val = undefined;
 
         if (typeof key === 'string') {
             key = camelize(key);

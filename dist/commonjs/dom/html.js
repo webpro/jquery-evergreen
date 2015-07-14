@@ -29,7 +29,7 @@ function html(fragment) {
   }
 
   (0, _util.each)(this, function (element) {
-    element.innerHTML = fragment;
+    return element.innerHTML = fragment;
   });
 
   return this;

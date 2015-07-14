@@ -27,13 +27,16 @@ var _selectorClosest = require('../selector/closest');
  */
 
 function on(eventNames, selector, handler, useCapture) {
+    var _this = this;
 
     if (typeof selector === 'function') {
         handler = selector;
         selector = null;
     }
 
-    var parts, namespace, eventListener;
+    var parts = undefined,
+        namespace = undefined,
+        eventListener = undefined;
 
     eventNames.split(' ').forEach(function (eventName) {
 
@@ -43,7 +46,7 @@ function on(eventNames, selector, handler, useCapture) {
 
         eventListener = proxyHandler(handler);
 
-        (0, _util.each)(this, function (element) {
+        (0, _util.each)(_this, function (element) {
 
             if (selector) {
                 eventListener = delegateHandler.bind(element, selector, eventListener);
@@ -82,12 +85,16 @@ function on(eventNames, selector, handler, useCapture) {
 function off(eventNames, selector, handler, useCapture) {
     if (eventNames === undefined) eventNames = '';
 
+    var _this2 = this;
+
     if (typeof selector === 'function') {
         handler = selector;
         selector = null;
     }
 
-    var parts, namespace, handlers;
+    var parts = undefined,
+        namespace = undefined,
+        handlers = undefined;
 
     eventNames.split(' ').forEach(function (eventName) {
 
@@ -95,7 +102,7 @@ function off(eventNames, selector, handler, useCapture) {
         eventName = parts[0] || null;
         namespace = parts[1] || null;
 
-        (0, _util.each)(this, function (element) {
+        (0, _util.each)(_this2, function (element) {
 
             handlers = getHandlers(element);
 
@@ -179,7 +186,7 @@ function proxyHandler(handler) {
 
 var augmentEvent = (function () {
 
-    var methodName,
+    var methodName = undefined,
         eventMethods = {
         preventDefault: 'isDefaultPrevented',
         stopImmediatePropagation: 'isImmediatePropagationStopped',

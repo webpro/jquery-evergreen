@@ -41,7 +41,7 @@ function appendTo(element) {
 
 function empty() {
     return (0, _util.each)(this, function (element) {
-        element.innerHTML = '';
+        return element.innerHTML = '';
     });
 }
 
@@ -88,7 +88,7 @@ function text(value) {
     }
 
     (0, _util.each)(this, function (element) {
-        element.textContent = '' + value;
+        return element.textContent = '' + value;
     });
 
     return this;
@@ -111,7 +111,7 @@ function val(value) {
     }
 
     (0, _util.each)(this, function (element) {
-        element.value = value;
+        return element.value = value;
     });
 
     return this;

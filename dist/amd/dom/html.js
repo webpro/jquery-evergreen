@@ -28,7 +28,7 @@ define(['exports', '../util'], function (exports, _util) {
     }
 
     (0, _util.each)(this, function (element) {
-      element.innerHTML = fragment;
+      return element.innerHTML = fragment;
     });
 
     return this;

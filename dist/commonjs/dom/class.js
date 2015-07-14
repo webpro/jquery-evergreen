@@ -90,7 +90,7 @@ function hasClass(value) {
 
 function _each(fnName, className) {
     (0, _util.each)(this, function (element) {
-        element.classList[fnName](className);
+        return element.classList[fnName](className);
     });
 }
 

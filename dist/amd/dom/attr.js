@@ -31,8 +31,8 @@ define(['exports', '../util'], function (exports, _util) {
 
         (0, _util.each)(this, function (element) {
             if (typeof key === 'object') {
-                for (var attr in key) {
-                    element.setAttribute(attr, key[attr]);
+                for (var _attr in key) {
+                    element.setAttribute(_attr, key[_attr]);
                 }
             } else {
                 element.setAttribute(key, value);
@@ -54,7 +54,7 @@ define(['exports', '../util'], function (exports, _util) {
 
     function removeAttr(key) {
         (0, _util.each)(this, function (element) {
-            element.removeAttribute(key);
+            return element.removeAttribute(key);
         });
         return this;
     }
