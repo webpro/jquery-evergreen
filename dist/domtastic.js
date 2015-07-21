@@ -5,9 +5,9 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
-var _selectorIndex = require(16);
+var _selectorIndex = require(17);
 
 var ArrayProto = Array.prototype;
 
@@ -63,14 +63,40 @@ exports.shift = shift;
 exports.some = some;
 exports.unshift = unshift;
 
-},{"16":16,"18":18}],2:[function(require,module,exports){
+},{"17":17,"19":19}],2:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var _selectorIndex = require(17);
+
+var _util = require(19);
+
+exports['default'] = function (api) {
+    var Base = function Base() {
+        _classCallCheck(this, Base);
+
+        _selectorIndex.Wrapper.call(this, _selectorIndex.$.apply(undefined, arguments));
+    };
+
+    (0, _util.extend)(Base.prototype, api);
+    return Base;
+};
+
+module.exports = exports['default'];
+
+},{"17":17,"19":19}],3:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _util = require(19);
 
 function isNumeric(value) {
     return !isNaN(parseFloat(value)) && isFinite(value);
@@ -130,14 +156,14 @@ function css(key, value) {
 
 exports.css = css;
 
-},{"18":18}],3:[function(require,module,exports){
+},{"19":19}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
 function attr(key, value) {
 
@@ -169,14 +195,14 @@ function removeAttr(key) {
 exports.attr = attr;
 exports.removeAttr = removeAttr;
 
-},{"18":18}],4:[function(require,module,exports){
+},{"19":19}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
 function addClass(value) {
     if (value && value.length) {
@@ -216,7 +242,7 @@ exports.removeClass = removeClass;
 exports.toggleClass = toggleClass;
 exports.hasClass = hasClass;
 
-},{"18":18}],5:[function(require,module,exports){
+},{"19":19}],6:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -236,14 +262,14 @@ function contains(container, element) {
 
 exports.contains = contains;
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
 var dataKeyProp = '__domtastic_data__';
 
@@ -279,18 +305,18 @@ function prop(key, value) {
 exports.data = data;
 exports.prop = prop;
 
-},{"18":18}],7:[function(require,module,exports){
+},{"19":19}],8:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
-var _index = require(9);
+var _index = require(10);
 
-var _selectorIndex = require(16);
+var _selectorIndex = require(17);
 
 function appendTo(element) {
     var context = typeof element === 'string' ? (0, _selectorIndex.$)(element) : element;
@@ -349,14 +375,14 @@ exports.replaceWith = replaceWith;
 exports.text = text;
 exports.val = val;
 
-},{"16":16,"18":18,"9":9}],8:[function(require,module,exports){
+},{"10":10,"17":17,"19":19}],9:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
 function html(fragment) {
 
@@ -374,16 +400,16 @@ function html(fragment) {
 
 exports.html = html;
 
-},{"18":18}],9:[function(require,module,exports){
+},{"19":19}],10:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
-var _selectorIndex = require(16);
+var _selectorIndex = require(17);
 
 var forEach = Array.prototype.forEach;
 
@@ -490,16 +516,16 @@ exports.before = before;
 exports.after = after;
 exports.clone = clone;
 
-},{"16":16,"18":18}],10:[function(require,module,exports){
+},{"17":17,"19":19}],11:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
-var _selectorClosest = require(14);
+var _selectorClosest = require(15);
 
 function on(eventNames, selector, handler, useCapture) {
     var _this = this;
@@ -664,7 +690,7 @@ exports.off = off;
 exports.bind = bind;
 exports.unbind = unbind;
 
-},{"14":14,"18":18}],11:[function(require,module,exports){
+},{"15":15,"19":19}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -682,16 +708,16 @@ function ready(handler) {
 
 exports.ready = ready;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
-var _domContains = require(5);
+var _domContains = require(6);
 
 var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
     reKeyEvent = /^key/;
@@ -797,14 +823,14 @@ var supportsOtherEventConstructors = (function () {
 exports.trigger = trigger;
 exports.triggerHandler = triggerHandler;
 
-},{"18":18,"5":5}],13:[function(require,module,exports){
+},{"19":19,"6":6}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
 var previousLib = _util.global.$;
 
@@ -815,16 +841,16 @@ function noConflict() {
 
 exports.noConflict = noConflict;
 
-},{"18":18}],14:[function(require,module,exports){
+},{"19":19}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _index = require(16);
+var _index = require(17);
 
-var _util = require(18);
+var _util = require(19);
 
 var closest = (function () {
 
@@ -868,16 +894,16 @@ var closest = (function () {
 
 exports.closest = closest;
 
-},{"16":16,"18":18}],15:[function(require,module,exports){
+},{"17":17,"19":19}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
-var _index = require(16);
+var _index = require(17);
 
 function children(selector) {
     var nodes = [];
@@ -943,14 +969,14 @@ exports.parent = parent;
 exports.siblings = siblings;
 exports.slice = slice;
 
-},{"16":16,"18":18}],16:[function(require,module,exports){
+},{"17":17,"19":19}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
-var _util = require(18);
+var _util = require(19);
 
 var isPrototypeSet = false;
 
@@ -1065,8 +1091,9 @@ function Wrapper(collection) {
 exports.$ = $;
 exports.find = find;
 exports.matches = matches;
+exports.Wrapper = Wrapper;
 
-},{"18":18}],17:[function(require,module,exports){
+},{"19":19}],18:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -1082,7 +1109,7 @@ var isArray = Array.isArray;
 exports.isArray = isArray;
 exports.isFunction = isFunction;
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1137,82 +1164,88 @@ exports.each = each;
 exports.extend = extend;
 exports.uniq = uniq;
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
-var _util = require(18);
+var _util = require(19);
 
 var _array = require(1);
 
 var array = _interopRequireWildcard(_array);
 
-var _domAttr = require(3);
+var _baseClass = require(2);
+
+var _baseClass2 = _interopRequireDefault(_baseClass);
+
+var _domAttr = require(4);
 
 var attr = _interopRequireWildcard(_domAttr);
 
-var _domClass = require(4);
+var _domClass = require(5);
 
 var class_ = _interopRequireWildcard(_domClass);
 
-var _domContains = require(5);
+var _domContains = require(6);
 
 var contains = _interopRequireWildcard(_domContains);
 
-var _css = require(2);
+var _css = require(3);
 
 var css = _interopRequireWildcard(_css);
 
-var _domData = require(6);
+var _domData = require(7);
 
 var data = _interopRequireWildcard(_domData);
 
-var _domIndex = require(9);
+var _domIndex = require(10);
 
 var dom = _interopRequireWildcard(_domIndex);
 
-var _domExtra = require(7);
+var _domExtra = require(8);
 
 var dom_extra = _interopRequireWildcard(_domExtra);
 
-var _eventIndex = require(10);
+var _eventIndex = require(11);
 
 var event = _interopRequireWildcard(_eventIndex);
 
-var _domHtml = require(8);
+var _domHtml = require(9);
 
 var html = _interopRequireWildcard(_domHtml);
 
-var _noconflict = require(13);
+var _noconflict = require(14);
 
 var noconflict = _interopRequireWildcard(_noconflict);
 
-var _eventReady = require(11);
+var _eventReady = require(12);
 
 var ready = _interopRequireWildcard(_eventReady);
 
-var _selectorIndex = require(16);
+var _selectorIndex = require(17);
 
 var selector = _interopRequireWildcard(_selectorIndex);
 
-var _selectorClosest = require(14);
+var _selectorClosest = require(15);
 
 var closest = _interopRequireWildcard(_selectorClosest);
 
-var _selectorExtra = require(15);
+var _selectorExtra = require(16);
 
 var selector_extra = _interopRequireWildcard(_selectorExtra);
 
-var _eventTrigger = require(12);
+var _eventTrigger = require(13);
 
 var trigger = _interopRequireWildcard(_eventTrigger);
 
-var _type = require(17);
+var _type = require(18);
 
 var type = _interopRequireWildcard(_type);
 
@@ -1234,9 +1267,13 @@ $.version = '0.10.3';
 
 $.extend = _util.extend;
 
+if (typeof _baseClass2['default'] !== 'undefined') {
+    $.BaseClass = (0, _baseClass2['default'])($.fn);
+}
+
 exports['default'] = $;
 module.exports = exports['default'];
 
-},{"1":1,"10":10,"11":11,"12":12,"13":13,"14":14,"15":15,"16":16,"17":17,"18":18,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9}]},{},[19])(19)
+},{"1":1,"10":10,"11":11,"12":12,"13":13,"14":14,"15":15,"16":16,"17":17,"18":18,"19":19,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9}]},{},[20])(20)
 });
 //# sourceMappingURL=domtastic.js.map

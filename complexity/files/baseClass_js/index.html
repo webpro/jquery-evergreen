@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Plato - index.js</title>
+  <title>Plato - baseClass.js</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
@@ -36,7 +36,7 @@
 
 <div class="jumbotron">
   <div class="container">
-    <h1>index.js</h1>
+    <h1>baseClass.js</h1>
   </div>
 </div>
 
@@ -44,11 +44,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"  data-container="body"></i></a></h2>
-      <p class="stat">67.52</p>
+      <p class="stat">81.63</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">118</p>
+      <p class="stat">24</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">20.18</p>
+      <p class="stat">10.16</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.91</p>
+      <p class="stat">0.16</p>
     </div>
   </div>
 </div>
@@ -90,7 +90,7 @@
 <div class="container">
   <div class="row">
     <textarea id="file-source" class="col-md-12">/**
- * @module API
+ * @module BaseClass
  */
 
 &#039;use strict&#039;;
@@ -99,117 +99,23 @@ Object.defineProperty(exports, &#039;__esModule&#039;, {
     value: true
 });
 
-function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#039;default&#039;: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj &amp;&amp; obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj[&#039;default&#039;] = obj; return newObj; } }
-
-var _util = require(&#039;./util&#039;);
-
-// Import modules to build up the API
-
-var _array = require(&#039;./array&#039;);
-
-var array = _interopRequireWildcard(_array);
-
-var _baseClass = require(&#039;./baseClass&#039;);
-
-var _baseClass2 = _interopRequireDefault(_baseClass);
-
-var _domAttr = require(&#039;./dom/attr&#039;);
-
-var attr = _interopRequireWildcard(_domAttr);
-
-var _domClass = require(&#039;./dom/class&#039;);
-
-var class_ = _interopRequireWildcard(_domClass);
-
-var _domContains = require(&#039;./dom/contains&#039;);
-
-var contains = _interopRequireWildcard(_domContains);
-
-var _css = require(&#039;./css&#039;);
-
-var css = _interopRequireWildcard(_css);
-
-var _domData = require(&#039;./dom/data&#039;);
-
-var data = _interopRequireWildcard(_domData);
-
-var _domIndex = require(&#039;./dom/index&#039;);
-
-var dom = _interopRequireWildcard(_domIndex);
-
-var _domExtra = require(&#039;./dom/extra&#039;);
-
-var dom_extra = _interopRequireWildcard(_domExtra);
-
-var _eventIndex = require(&#039;./event/index&#039;);
-
-var event = _interopRequireWildcard(_eventIndex);
-
-var _domHtml = require(&#039;./dom/html&#039;);
-
-var html = _interopRequireWildcard(_domHtml);
-
-var _noconflict = require(&#039;./noconflict&#039;);
-
-var noconflict = _interopRequireWildcard(_noconflict);
-
-var _eventReady = require(&#039;./event/ready&#039;);
-
-var ready = _interopRequireWildcard(_eventReady);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(&#039;Cannot call a class as a function&#039;); } }
 
 var _selectorIndex = require(&#039;./selector/index&#039;);
 
-var selector = _interopRequireWildcard(_selectorIndex);
+var _util = require(&#039;./util&#039;);
 
-var _selectorClosest = require(&#039;./selector/closest&#039;);
+exports[&#039;default&#039;] = function (api) {
+    var Base = function Base() {
+        _classCallCheck(this, Base);
 
-var closest = _interopRequireWildcard(_selectorClosest);
+        _selectorIndex.Wrapper.call(this, _selectorIndex.$.apply(undefined, arguments));
+    };
 
-var _selectorExtra = require(&#039;./selector/extra&#039;);
+    (0, _util.extend)(Base.prototype, api);
+    return Base;
+};
 
-var selector_extra = _interopRequireWildcard(_selectorExtra);
-
-var _eventTrigger = require(&#039;./event/trigger&#039;);
-
-var trigger = _interopRequireWildcard(_eventTrigger);
-
-var _type = require(&#039;./type&#039;);
-
-var type = _interopRequireWildcard(_type);
-
-var api = {},
-    $ = {};
-
-if (typeof selector !== &#039;undefined&#039;) {
-    $ = selector.$;
-    $.matches = selector.matches;
-    api.find = selector.find;
-}
-
-(0, _util.extend)($, contains, noconflict, type);
-(0, _util.extend)(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
-
-$.fn = api;
-
-// Version
-
-$.version = &#039;0.10.3&#039;;
-
-// Util
-
-$.extend = _util.extend;
-
-// Provide base class to extend from
-
-if (typeof _baseClass2[&#039;default&#039;] !== &#039;undefined&#039;) {
-    $.BaseClass = (0, _baseClass2[&#039;default&#039;])($.fn);
-}
-
-// Export interface
-
-exports[&#039;default&#039;] = $;
 module.exports = exports[&#039;default&#039;];</textarea>
   </div>
 </div>

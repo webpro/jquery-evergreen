@@ -197,3 +197,4 @@ function Wrapper(collection) {
 exports.$ = $;
 exports.find = find;
 exports.matches = matches;
+exports.Wrapper = Wrapper;

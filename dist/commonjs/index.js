@@ -8,6 +8,8 @@ Object.defineProperty(exports, '__esModule', {
     value: true
 });
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
 
 var _util = require('./util');
@@ -17,6 +19,10 @@ var _util = require('./util');
 var _array = require('./array');
 
 var array = _interopRequireWildcard(_array);
+
+var _baseClass = require('./baseClass');
+
+var _baseClass2 = _interopRequireDefault(_baseClass);
 
 var _domAttr = require('./dom/attr');
 
@@ -103,6 +109,12 @@ $.version = '0.10.3';
 // Util
 
 $.extend = _util.extend;
+
+// Provide base class to extend from
+
+if (typeof _baseClass2['default'] !== 'undefined') {
+    $.BaseClass = (0, _baseClass2['default'])($.fn);
+}
 
 // Export interface
 

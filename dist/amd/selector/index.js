@@ -196,4 +196,5 @@ define(['exports', '../util'], function (exports, _util) {
     exports.$ = $;
     exports.find = find;
     exports.matches = matches;
+    exports.Wrapper = Wrapper;
 });
