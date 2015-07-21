@@ -124,9 +124,19 @@
                     <li>
                         <a href="#array"><strong>Array</strong></a>
                         <ul class="">
+                                <li><a href="#array-every">every</a></li>
                                 <li><a href="#array-filter">filter</a></li>
                                 <li><a href="#array-forEach">forEach</a></li>
+                                <li><a href="#array-indexOf">indexOf</a></li>
+                                <li><a href="#array-map">map</a></li>
+                                <li><a href="#array-pop">pop</a></li>
+                                <li><a href="#array-push">push</a></li>
+                                <li><a href="#array-reduce">reduce</a></li>
+                                <li><a href="#array-reduceRight">reduceRight</a></li>
                                 <li><a href="#array-reverse">reverse</a></li>
+                                <li><a href="#array-shift">shift</a></li>
+                                <li><a href="#array-some">some</a></li>
+                                <li><a href="#array-unshift">unshift</a></li>
                         </ul>
                     </li>
                     <li>
@@ -222,6 +232,13 @@
                         <ul class="">
                                 <li><a href="#selector/index-dollar">$</a></li>
                                 <li><a href="#selector/index-find">find</a></li>
+                                <li><a href="#selector/index-matches">matches</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#selector/closest"><strong>Selector/closest</strong></a>
+                        <ul class="">
+                                <li><a href="#selector/closest-closest">closest</a></li>
                         </ul>
                     </li>
                     <li>
@@ -240,6 +257,7 @@
                         <a href="#type"><strong>Type</strong></a>
                         <ul class="">
                                 <li><a href="#type-isFunction">isFunction</a></li>
+                                <li><a href="#type-isArray">isArray</a></li>
                         </ul>
                     </li>
                     <li>
@@ -257,6 +275,81 @@
 
                         <h2>Array</h2>
 
+
+                            <section id="array-every">
+
+
+                                <h3>
+                                    every
+                                    <em> (callback, thisArg)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Checks if the given callback returns a true(-ish) value for each element in the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    <p>Function to execute for each element, invoked with <code>element</code> as argument.</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>thisArg</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    <p>Value to use as <code>this</code> when executing <code>callback</code>.</p>
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Boolean</span>
+                                        &nbsp;
+                                        <p>Whether each element passed the callback check.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#every-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#every-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="every-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).every(function(element) {
+        return element.hasAttribute(&#x27;active&#x27;)
+    });
+    // true/false</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="every-source">
+                                            <pre><code class="language-javascript">const every = ArrayProto.every;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
 
                             <section id="array-filter">
 
@@ -281,7 +374,7 @@
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Function</span></td>
                                                 <td>
-                                                    Selector or function to filter the collection.
+                                                    <p>Selector or function to filter the collection.</p>
                                                     
                                                     
 
@@ -291,7 +384,7 @@
                                                 <td><em>thisArg</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Value to use as `this` when executing `callback`.
+                                                    <p>Value to use as <code>this</code> when executing <code>callback</code>.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -303,7 +396,7 @@
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        A new wrapped collection
+                                        <p>A new wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -364,7 +457,7 @@
                                                 <td><em>callback</em></td>
                                                 <td><span class="label label-primary">Function</span></td>
                                                 <td>
-                                                    Function to execute for each element, invoked with `element` as argument.
+                                                    <p>Function to execute for each element, invoked with <code>element</code> as argument.</p>
                                                     
                                                     
 
@@ -374,7 +467,7 @@
                                                 <td><em>thisArg</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Value to use as `this` when executing `callback`.
+                                                    <p>Value to use as <code>this</code> when executing <code>callback</code>.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -386,7 +479,7 @@
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -419,6 +512,379 @@ const each = forEach;</code></pre>
                                 </div>
                             </section>
 
+                            <section id="array-indexOf">
+
+
+                                <h3>
+                                    indexOf
+                                    <em> (element)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Returns the index of an element in the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>element</em></td>
+                                                <td><span class="label label-primary">Node</span></td>
+                                                <td>
+                                                    
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Number</span>
+                                        &nbsp;
+                                        <p>The zero-based index, -1 if not found.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#indexOf-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#indexOf-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="indexOf-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).indexOf(element);
+    // 2</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="indexOf-source">
+                                            <pre><code class="language-javascript">const indexOf = ArrayProto.indexOf;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-map">
+
+
+                                <h3>
+                                    map
+                                    <em> (callback, thisArg)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Create a new collection by executing the callback for each element in the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    <p>Function to execute for each element, invoked with <code>element</code> as argument.</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>thisArg</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    <p>Value to use as <code>this</code> when executing <code>callback</code>.</p>
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Array</span>
+                                        &nbsp;
+                                        <p>Collection with the return value of the executed callback for each element.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#map-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#map-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="map-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).map(function(element) {
+        return element.getAttribute(&#x27;name&#x27;)
+    });
+    // [&#x27;ever&#x27;, &#x27;green&#x27;]</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="map-source">
+                                            <pre><code class="language-javascript">const map = ArrayProto.map;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-pop">
+
+
+                                <h3>
+                                    pop
+                                    <em> ()</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Removes the last element from the collection, and returns that element.</p>
+
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        <p>The last element from the collection.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#pop-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#pop-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="pop-example-0">
+                                            <pre><code class="language-javascript">    var lastElement = $(&#x27;.items&#x27;).pop();</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="pop-source">
+                                            <pre><code class="language-javascript">const pop = ArrayProto.pop;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-push">
+
+
+                                <h3>
+                                    push
+                                    <em> (element)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Adds one or more elements to the end of the collection, and returns the new length of the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>element</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    <p>Element(s) to add to the collection</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Number</span>
+                                        &nbsp;
+                                        <p>The new length of the collection</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#push-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#push-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="push-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).push(element);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="push-source">
+                                            <pre><code class="language-javascript">const push = ArrayProto.push;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-reduce">
+
+
+                                <h3>
+                                    reduce
+                                    <em> (callback, initialValue)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Apply a function against each element in the collection, and this accumulator function has to reduce it<br />to a single value.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    <p>Function to execute on each value in the array, taking four arguments (see example).</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>initialValue</em></td>
+                                                <td><span class="label label-primary">Mixed</span></td>
+                                                <td>
+                                                    <p>Object to use as the first argument to the first call of the callback.</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#reduce-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#reduce-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="reduce-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).reduce(function(previousValue, element, index, collection) {
+        return previousValue + element.clientHeight;
+    }, 0);
+    // [total height of elements]</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="reduce-source">
+                                            <pre><code class="language-javascript">const reduce = ArrayProto.reduce;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-reduceRight">
+
+
+                                <h3>
+                                    reduceRight
+                                    <em> (callback, initialValue)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Apply a function against each element in the collection (from right-to-left), and this accumulator function has<br />to reduce it to a single value.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    <p>Function to execute on each value in the array, taking four arguments (see example).</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>initialValue</em></td>
+                                                <td><span class="label label-primary">Mixed</span></td>
+                                                <td>
+                                                    <p>Object to use as the first argument to the first call of the callback.</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#reduceRight-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#reduceRight-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="reduceRight-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).reduceRight(function(previousValue, element, index, collection) {
+        return previousValue + element.textContent;
+    }, &#x27;&#x27;)
+    // [reversed text of elements]</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="reduceRight-source">
+                                            <pre><code class="language-javascript">const reduceRight = ArrayProto.reduceRight;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
                             <section id="array-reverse">
 
 
@@ -435,7 +901,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection, reversed
+                                        <p>The wrapped collection, reversed</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -458,6 +924,176 @@ const each = forEach;</code></pre>
                                             <pre><code class="language-javascript">function reverse() {
     return $(toArray(this).reverse());
 }</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-shift">
+
+
+                                <h3>
+                                    shift
+                                    <em> ()</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Removes the first element from the collection, and returns that element.</p>
+
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        <p>The first element from the collection.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#shift-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#shift-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="shift-example-0">
+                                            <pre><code class="language-javascript">    var firstElement = $(&#x27;.items&#x27;).shift();</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="shift-source">
+                                            <pre><code class="language-javascript">const shift = ArrayProto.shift;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-some">
+
+
+                                <h3>
+                                    some
+                                    <em> (callback)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Checks if the given callback returns a true(-ish) value for any of the elements in the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>callback</em></td>
+                                                <td><span class="label label-primary">Function</span></td>
+                                                <td>
+                                                    <p>Function to execute for each element, invoked with <code>element</code> as argument.</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Boolean</span>
+                                        &nbsp;
+                                        <p>Whether any element passed the callback check.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#some-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#some-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="some-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).some(function(element) {
+        return element.hasAttribute(&#x27;active&#x27;)
+    });
+    // true/false</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="some-source">
+                                            <pre><code class="language-javascript">const some = ArrayProto.some;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="array-unshift">
+
+
+                                <h3>
+                                    unshift
+                                    <em> (element)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Adds one or more elements to the beginning of the collection, and returns the new length of the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>element</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    <p>Element(s) to add to the collection</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Number</span>
+                                        &nbsp;
+                                        <p>The new length of the collection</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#unshift-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#unshift-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="unshift-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).unshift(element);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="unshift-source">
+                                            <pre><code class="language-javascript">const unshift = ArrayProto.unshift;</code></pre>
                                         </div>
                                     </div>
 
@@ -492,7 +1128,7 @@ const each = forEach;</code></pre>
                                                 <td><em>key</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    The name of the style property to get or set. Or an object containing key-value pairs to set as style properties.
+                                                    <p>The name of the style property to get or set. Or an object containing key-value pairs to set as style properties.</p>
                                                     
                                                     
 
@@ -502,7 +1138,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The value of the style property to set.
+                                                    <p>The value of the style property to set.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -514,7 +1150,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -609,7 +1245,7 @@ const each = forEach;</code></pre>
                                                 <td><em>element</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    What to append to the element(s). Clones elements as necessary.
+                                                    <p>What to append to the element(s). Clones elements as necessary.</p>
                                                     
                                                     
 
@@ -621,7 +1257,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -687,7 +1323,7 @@ const each = forEach;</code></pre>
                                                 <td><em>element</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    What to place at the beginning of the element(s). Clones elements as necessary.
+                                                    <p>What to place at the beginning of the element(s). Clones elements as necessary.</p>
                                                     
                                                     
 
@@ -699,7 +1335,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -765,7 +1401,7 @@ const each = forEach;</code></pre>
                                                 <td><em>element</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    What to place as sibling(s) before to the element(s). Clones elements as necessary.
+                                                    <p>What to place as sibling(s) before to the element(s). Clones elements as necessary.</p>
                                                     
                                                     
 
@@ -777,7 +1413,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -843,7 +1479,7 @@ const each = forEach;</code></pre>
                                                 <td><em>element</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    What to place as sibling(s) after to the element(s). Clones elements as necessary.
+                                                    <p>What to place as sibling(s) after to the element(s). Clones elements as necessary.</p>
                                                     
                                                     
 
@@ -855,7 +1491,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -914,7 +1550,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        Wrapped collection of cloned nodes.
+                                        <p>Wrapped collection of cloned nodes.</p>
                                         
                                         <!--
                                         &nbsp;
@@ -971,7 +1607,7 @@ const each = forEach;</code></pre>
                                                 <td><em>key</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    The name of the attribute to get or set. Or an object containing key-value pairs to set as attributes.
+                                                    <p>The name of the attribute to get or set. Or an object containing key-value pairs to set as attributes.</p>
                                                     
                                                     
 
@@ -981,7 +1617,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The value of the attribute to set.
+                                                    <p>The value of the attribute to set.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -993,7 +1629,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1063,7 +1699,7 @@ const each = forEach;</code></pre>
                                                 <td><em>key</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Attribute name
+                                                    <p>Attribute name</p>
                                                     
                                                     
 
@@ -1075,7 +1711,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1133,7 +1769,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Space-separated class name(s) to add to the element(s).
+                                                    <p>Space-separated class name(s) to add to the element(s).</p>
                                                     
                                                     
 
@@ -1145,7 +1781,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1201,7 +1837,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Space-separated class name(s) to remove from the element(s).
+                                                    <p>Space-separated class name(s) to remove from the element(s).</p>
                                                     
                                                     
 
@@ -1213,7 +1849,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1269,7 +1905,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Space-separated class name(s) to toggle at the element(s).
+                                                    <p>Space-separated class name(s) to toggle at the element(s).</p>
                                                     
                                                     
 
@@ -1281,7 +1917,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1337,7 +1973,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Check if the DOM element contains the class name. When applied to multiple elements, returns `true` if _any_ of them contains the class name.
+                                                    <p>Check if the DOM element contains the class name. When applied to multiple elements, returns <code>true</code> if <em>any</em> of them contains the class name.</p>
                                                     
                                                     
 
@@ -1349,7 +1985,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Boolean</span>
                                         &nbsp;
-                                        Whether the element's class attribute contains the class name.
+                                        <p>Whether the element&#39;s class attribute contains the class name.</p>
                                         
                                         <!--
                                         &nbsp;
@@ -1408,7 +2044,7 @@ const each = forEach;</code></pre>
                                                 <td><em>container</em></td>
                                                 <td><span class="label label-primary">Element</span></td>
                                                 <td>
-                                                    The element that may contain the other element.
+                                                    <p>The element that may contain the other element.</p>
                                                     
                                                     
 
@@ -1418,7 +2054,7 @@ const each = forEach;</code></pre>
                                                 <td><em>element</em></td>
                                                 <td><span class="label label-primary">Element</span></td>
                                                 <td>
-                                                    The element that may be a descendant of the other element.
+                                                    <p>The element that may be a descendant of the other element.</p>
                                                     
                                                     
 
@@ -1430,7 +2066,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Boolean</span>
                                         &nbsp;
-                                        Whether the `container` element contains the `element`.
+                                        <p>Whether the <code>container</code> element contains the <code>element</code>.</p>
                                         
                                         <!--
                                         &nbsp;
@@ -1495,7 +2131,7 @@ const each = forEach;</code></pre>
                                                 <td><em>key</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The key for the data to get or set.
+                                                    <p>The key for the data to get or set.</p>
                                                     
                                                     
 
@@ -1505,7 +2141,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The data to set.
+                                                    <p>The data to set.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -1517,7 +2153,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1582,7 +2218,7 @@ const each = forEach;</code></pre>
                                                 <td><em>key</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The name of the property to get or set.
+                                                    <p>The name of the property to get or set.</p>
                                                     
                                                     
 
@@ -1592,7 +2228,7 @@ const each = forEach;</code></pre>
                                                 <td><em>value</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    The value of the property to set.
+                                                    <p>The value of the property to set.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -1604,7 +2240,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1671,7 +2307,7 @@ const each = forEach;</code></pre>
                                                 <td><em>element</em></td>
                                                 <td><span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    What to append the element(s) to. Clones elements as necessary.
+                                                    <p>What to append the element(s) to. Clones elements as necessary.</p>
                                                     
                                                     
 
@@ -1683,7 +2319,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1730,7 +2366,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1775,7 +2411,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Array</span>
                                         &nbsp;
-                                        Array containing the removed elements
+                                        <p>Array containing the removed elements</p>
                                         
                                         <!--
                                         &nbsp;
@@ -1824,7 +2460,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Array</span>
                                         &nbsp;
-                                        Array containing the replaced elements
+                                        <p>Array containing the replaced elements</p>
                                         
                                         <!--
                                         &nbsp;
@@ -1888,7 +2524,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -1959,7 +2595,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2023,7 +2659,7 @@ const each = forEach;</code></pre>
                                                 <td><em>fragment</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    HTML fragment to set for the element. If this argument is omitted, the HTML contents are returned.
+                                                    <p>HTML fragment to set for the element. If this argument is omitted, the HTML contents are returned.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -2035,7 +2671,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2102,7 +2738,7 @@ const each = forEach;</code></pre>
                                                 <td><em>eventNames</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    List of space-separated event types to be added to the element(s)
+                                                    <p>List of space-separated event types to be added to the element(s)</p>
                                                     
                                                     
 
@@ -2112,7 +2748,7 @@ const each = forEach;</code></pre>
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Selector to filter descendants that delegate the event to this element.
+                                                    <p>Selector to filter descendants that delegate the event to this element.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -2122,7 +2758,7 @@ const each = forEach;</code></pre>
                                                 <td><em>handler</em></td>
                                                 <td><span class="label label-primary">Function</span></td>
                                                 <td>
-                                                    Event handler
+                                                    <p>Event handler</p>
                                                     
                                                     
 
@@ -2144,7 +2780,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2234,7 +2870,7 @@ const each = forEach;</code></pre>
                                                 <td><em>eventNames</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    List of space-separated event types to be removed from the element(s)
+                                                    <p>List of space-separated event types to be removed from the element(s)</p>
                                                     
                                                     
 
@@ -2244,7 +2880,7 @@ const each = forEach;</code></pre>
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Selector to filter descendants that undelegate the event to this element.
+                                                    <p>Selector to filter descendants that undelegate the event to this element.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -2254,7 +2890,7 @@ const each = forEach;</code></pre>
                                                 <td><em>handler</em></td>
                                                 <td><span class="label label-primary">Function</span></td>
                                                 <td>
-                                                    Event handler
+                                                    <p>Event handler</p>
                                                     
                                                     
 
@@ -2276,7 +2912,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2358,7 +2994,7 @@ const each = forEach;</code></pre>
 
                                 <h3>
                                     ready
-                                    <em> (Callback)</em>
+                                    <em> (handler)</em>
                                 </h3>
 
                                 <div class="block">
@@ -2373,10 +3009,10 @@ const each = forEach;</code></pre>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td><em>Callback</em></td>
-                                                <td><span class="label label-primary">handler</span></td>
+                                                <td><em>handler</em></td>
+                                                <td></td>
                                                 <td>
-                                                    to execute when initial DOM content is loaded.
+                                                    <p>Callback to execute when initial DOM content is loaded.</p>
                                                     
                                                     
 
@@ -2388,7 +3024,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2450,7 +3086,7 @@ const each = forEach;</code></pre>
                                                 <td><em>type</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Type of the event
+                                                    <p>Type of the event</p>
                                                     
                                                     
 
@@ -2460,7 +3096,7 @@ const each = forEach;</code></pre>
                                                 <td><em>data</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Data to be sent with the event (`params.detail` will be set to this).
+                                                    <p>Data to be sent with the event (<code>params.detail</code> will be set to this).</p>
                                                     
                                                     
 
@@ -2470,7 +3106,7 @@ const each = forEach;</code></pre>
                                                 <td><em>params</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Event parameters (optional)
+                                                    <p>Event parameters (optional)</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -2480,7 +3116,7 @@ const each = forEach;</code></pre>
                                                 <td><em>params.bubbles</em></td>
                                                 <td><span class="label label-primary">Boolean</span></td>
                                                 <td>
-                                                    Does the event bubble up through the DOM or not.
+                                                    <p>Does the event bubble up through the DOM or not.</p>
                                                     
                                                     (default: <code>true</code>)
 
@@ -2490,7 +3126,7 @@ const each = forEach;</code></pre>
                                                 <td><em>params.cancelable</em></td>
                                                 <td><span class="label label-primary">Boolean</span></td>
                                                 <td>
-                                                    Is the event cancelable or not.
+                                                    <p>Is the event cancelable or not.</p>
                                                     
                                                     (default: <code>true</code>)
 
@@ -2500,7 +3136,7 @@ const each = forEach;</code></pre>
                                                 <td><em>params.detail</em></td>
                                                 <td><span class="label label-primary">Mixed</span></td>
                                                 <td>
-                                                    Additional information about the event.
+                                                    <p>Additional information about the event.</p>
                                                     
                                                     (default: <code>undefined</code>)
 
@@ -2512,7 +3148,7 @@ const each = forEach;</code></pre>
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2591,7 +3227,7 @@ function getEventConstructor(type) {
                                                 <td><em>type</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Type of the event
+                                                    <p>Type of the event</p>
                                                     
                                                     
 
@@ -2601,7 +3237,7 @@ function getEventConstructor(type) {
                                                 <td><em>data</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Data to be sent with the event
+                                                    <p>Data to be sent with the event</p>
                                                     
                                                     
 
@@ -2655,7 +3291,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        Reference to DOMtastic.
+                                        <p>Reference to DOMtastic.</p>
                                         
                                         <!--
                                         &nbsp;
@@ -2713,7 +3349,7 @@ function getEventConstructor(type) {
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Array</span></td>
                                                 <td>
-                                                    Query selector, `Node`, `NodeList`, array of elements, or HTML fragment string.
+                                                    <p>Query selector, <code>Node</code>, <code>NodeList</code>, array of elements, or HTML fragment string.</p>
                                                     
                                                     
 
@@ -2723,7 +3359,7 @@ function getEventConstructor(type) {
                                                 <td><em>context</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span></td>
                                                 <td>
-                                                    The context for the selector to query elements.
+                                                    <p>The context for the selector to query elements.</p>
                                                     
                                                     (default: <code>document</code>)
 
@@ -2735,7 +3371,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2827,7 +3463,7 @@ function getEventConstructor(type) {
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Array</span></td>
                                                 <td>
-                                                    Query selector, `Node`, `NodeList`, array of elements, or HTML fragment string.
+                                                    <p>Query selector, <code>Node</code>, <code>NodeList</code>, array of elements, or HTML fragment string.</p>
                                                     
                                                     
 
@@ -2839,7 +3475,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        The wrapped collection
+                                        <p>The wrapped collection</p>
                                         
                                         <!--
                                         &nbsp;
@@ -2875,6 +3511,191 @@ function getEventConstructor(type) {
 
                                 </div>
                             </section>
+
+                            <section id="selector/index-matches">
+
+
+                                <h3>
+                                    matches
+                                    <em> (element, selector)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Returns <code>true</code> if the element would be selected by the specified selector string; otherwise, returns <code>false</code>.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>element</em></td>
+                                                <td><span class="label label-primary">Node</span></td>
+                                                <td>
+                                                    <p>Element to test</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>selector</em></td>
+                                                <td><span class="label label-primary">String</span></td>
+                                                <td>
+                                                    <p>Selector to match against element</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Boolean</span>
+                                        &nbsp;
+                                        
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#matches-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#matches-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="matches-example-0">
+                                            <pre><code class="language-javascript">    $.matches(element, &#x27;.match&#x27;);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="matches-source">
+                                            <pre><code class="language-javascript">let matches = (function() {
+    let context = typeof Element !== &#x27;undefined&#x27; ? Element.prototype : global,
+        _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
+    return (element, selector) =&gt; {
+        return _matches.call(element, selector);
+    };
+})();</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                    </section>
+                    <section id="selector/closest">
+
+                        <h2>Selector/closest</h2>
+
+
+                            <section id="selector/closest-closest">
+
+
+                                <h3>
+                                    closest
+                                    <em> (selector, context)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Return the closest element matching the selector (starting by itself) for each element in the collection.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>selector</em></td>
+                                                <td><span class="label label-primary">String</span></td>
+                                                <td>
+                                                    <p>Filter</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>context</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    <p>If provided, matching elements must be a descendant of this element</p>
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        <p>New wrapped collection (containing zero or one element)</p>
+                                        <span class="label label-default">chainable</span>
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#closest-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#closest-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="closest-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.selector&#x27;).closest(&#x27;.container&#x27;);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="closest-source">
+                                            <pre><code class="language-javascript">let closest = (function() {
+
+    function closest(selector, context) {
+        let nodes = [];
+        each(this, node =&gt; {
+            while (node &amp;&amp; node !== context) {
+                if (matches(node, selector)) {
+                    nodes.push(node);
+                    break;
+                }
+                node = node.parentElement;
+            }
+        });
+        return $(uniq(nodes));
+    }
+
+    return !Element.prototype.closest ? closest : function(selector, context) {
+        if(!context) {
+            let nodes = [];
+            each(this, function(node) {
+                let n = node.closest(selector);
+                if(n) {
+                    nodes.push(n);
+                }
+            });
+            return $(uniq(nodes));
+        } else {
+            return closest.call(this, selector, context)
+        }
+    }
+})();</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
                     </section>
                     <section id="selector/extra">
 
@@ -2904,7 +3725,7 @@ function getEventConstructor(type) {
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Filter
+                                                    <p>Filter</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -2916,7 +3737,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        New wrapped collection
+                                        <p>New wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -2972,7 +3793,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        New wrapped collection
+                                        <p>New wrapped collection</p>
                                         
                                         <!--
                                         &nbsp;
@@ -3040,7 +3861,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        New wrapped collection
+                                        <p>New wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -3105,7 +3926,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Node</span>
                                         &nbsp;
-                                        Element at the specified index
+                                        <p>Element at the specified index</p>
                                         
                                         <!--
                                         &nbsp;
@@ -3158,7 +3979,7 @@ function getEventConstructor(type) {
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Filter
+                                                    <p>Filter</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -3170,7 +3991,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        New wrapped collection
+                                        <p>New wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -3229,7 +4050,7 @@ function getEventConstructor(type) {
                                                 <td><em>selector</em></td>
                                                 <td><span class="label label-primary">String</span></td>
                                                 <td>
-                                                    Filter
+                                                    <p>Filter</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -3241,7 +4062,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        New wrapped collection
+                                        <p>New wrapped collection</p>
                                         <span class="label label-default">chainable</span>
                                         <!--
                                         &nbsp;
@@ -3324,7 +4145,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        New wrapped collection
+                                        <p>New wrapped collection</p>
                                         
                                         <!--
                                         &nbsp;
@@ -3382,7 +4203,7 @@ function getEventConstructor(type) {
                                                 <td><em>obj</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Object to test whether or not it is a function.
+                                                    <p>Object to test whether or not it is a function.</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -3428,6 +4249,74 @@ function getEventConstructor(type) {
 
                                 </div>
                             </section>
+
+                            <section id="type-isArray">
+
+
+                                <h3>
+                                    isArray
+                                    <em> (obj)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Determine whether the argument is an array.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>obj</em></td>
+                                                <td><span class="label label-primary">Object</span></td>
+                                                <td>
+                                                    <p>Object to test whether or not it is an array.</p>
+                                                    <span class="label label-default">optional</span>
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">boolean</span>
+                                        &nbsp;
+                                        
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#isArray-example-0" data-toggle="tab">Example</a></li>
+                                        <li ><a href="#isArray-example-1" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#isArray-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="isArray-example-0">
+                                            <pre><code class="language-javascript">    $.isArray([]);
+    // true</code></pre>
+                                        </div>
+                                        <div class=" tab-pane" id="isArray-example-1">
+                                            <pre><code class="language-javascript">    $.isArray({});
+    // false</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="isArray-source">
+                                            <pre><code class="language-javascript">const isArray = Array.isArray;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
                     </section>
                     <section id="util">
 
@@ -3457,7 +4346,7 @@ function getEventConstructor(type) {
                                                 <td><em>target</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Object to extend
+                                                    <p>Object to extend</p>
                                                     
                                                     
 
@@ -3467,7 +4356,7 @@ function getEventConstructor(type) {
                                                 <td><em>source</em></td>
                                                 <td><span class="label label-primary">Object</span></td>
                                                 <td>
-                                                    Object to extend from
+                                                    <p>Object to extend from</p>
                                                     <span class="label label-default">optional</span>
                                                     
 
@@ -3479,7 +4368,7 @@ function getEventConstructor(type) {
                                     <p><strong>Returns</strong><br>
                                         <span class="label label-primary">Object</span>
                                         &nbsp;
-                                        Extended object
+                                        <p>Extended object</p>
                                         
                                         <!--
                                         &nbsp;
