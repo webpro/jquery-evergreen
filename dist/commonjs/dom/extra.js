@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -25,7 +23,7 @@ var _selectorIndex = require('../selector/index');
  */
 
 function appendTo(element) {
-    var context = typeof element === 'string' ? (0, _selectorIndex.$)(element) : element;
+    var context = typeof element === 'string' ? _selectorIndex.$(element) : element;
     _index.append.call(context, this);
     return this;
 }
@@ -40,7 +38,7 @@ function appendTo(element) {
  */
 
 function empty() {
-    return (0, _util.each)(this, function (element) {
+    return _util.each(this, function (element) {
         return element.innerHTML = '';
     });
 }
@@ -54,7 +52,7 @@ function empty() {
  */
 
 function remove() {
-    return (0, _util.each)(this, function (element) {
+    return _util.each(this, function (element) {
         if (element.parentNode) {
             element.parentNode.removeChild(element);
         }
@@ -87,7 +85,7 @@ function text(value) {
         return this[0].textContent;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.textContent = '' + value;
     });
 
@@ -110,7 +108,7 @@ function val(value) {
         return this[0].value;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.value = value;
     });
 

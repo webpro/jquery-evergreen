@@ -14,7 +14,7 @@ define(['exports', 'module', './selector/index', './util'], function (exports, m
             _selectorIndex.Wrapper.call(this, _selectorIndex.$.apply(undefined, arguments));
         };
 
-        (0, _util.extend)(Base.prototype, api);
+        _util.extend(Base.prototype, api);
         return Base;
     };
 });

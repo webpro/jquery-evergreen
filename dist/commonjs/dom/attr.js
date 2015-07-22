@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -30,7 +28,7 @@ function attr(key, value) {
         return element ? element.getAttribute(key) : undefined;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         if (typeof key === 'object') {
             for (var _attr in key) {
                 element.setAttribute(_attr, key[_attr]);
@@ -54,7 +52,7 @@ function attr(key, value) {
  */
 
 function removeAttr(key) {
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.removeAttribute(key);
     });
     return this;

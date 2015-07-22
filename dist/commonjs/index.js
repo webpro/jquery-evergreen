@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -97,8 +95,8 @@ if (typeof selector !== 'undefined') {
     api.find = selector.find;
 }
 
-(0, _util.extend)($, contains, noconflict, type);
-(0, _util.extend)(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+_util.extend($, contains, noconflict, type);
+_util.extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 
@@ -113,7 +111,7 @@ $.extend = _util.extend;
 // Provide base class to extend from
 
 if (typeof _baseClass2['default'] !== 'undefined') {
-    $.BaseClass = (0, _baseClass2['default'])($.fn);
+    $.BaseClass = _baseClass2['default']($.fn);
 }
 
 // Export interface

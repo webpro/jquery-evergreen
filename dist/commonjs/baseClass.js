@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -21,7 +19,7 @@ exports['default'] = function (api) {
         _selectorIndex.Wrapper.call(this, _selectorIndex.$.apply(undefined, arguments));
     };
 
-    (0, _util.extend)(Base.prototype, api);
+    _util.extend(Base.prototype, api);
     return Base;
 };
 

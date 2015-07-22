@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _index = require('./index');
 
@@ -27,16 +25,16 @@ var closest = (function () {
 
     function closest(selector, context) {
         var nodes = [];
-        (0, _util.each)(this, function (node) {
+        _util.each(this, function (node) {
             while (node && node !== context) {
-                if ((0, _index.matches)(node, selector)) {
+                if (_index.matches(node, selector)) {
                     nodes.push(node);
                     break;
                 }
                 node = node.parentElement;
             }
         });
-        return (0, _index.$)((0, _util.uniq)(nodes));
+        return _index.$(_util.uniq(nodes));
     }
 
     return !Element.prototype.closest ? closest : function (selector, context) {
@@ -45,14 +43,14 @@ var closest = (function () {
         if (!context) {
             var _ret = (function () {
                 var nodes = [];
-                (0, _util.each)(_this, function (node) {
+                _util.each(_this, function (node) {
                     var n = node.closest(selector);
                     if (n) {
                         nodes.push(n);
                     }
                 });
                 return {
-                    v: (0, _index.$)((0, _util.uniq)(nodes))
+                    v: _index.$(_util.uniq(nodes))
                 };
             })();
 

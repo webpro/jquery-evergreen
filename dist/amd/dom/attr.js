@@ -5,9 +5,7 @@ define(['exports', '../util'], function (exports, _util) {
 
     'use strict';
 
-    Object.defineProperty(exports, '__esModule', {
-        value: true
-    });
+    exports.__esModule = true;
 
     /**
      * Get the value of an attribute for the first element, or set one or more attributes for each element in the collection.
@@ -29,7 +27,7 @@ define(['exports', '../util'], function (exports, _util) {
             return element ? element.getAttribute(key) : undefined;
         }
 
-        (0, _util.each)(this, function (element) {
+        _util.each(this, function (element) {
             if (typeof key === 'object') {
                 for (var _attr in key) {
                     element.setAttribute(_attr, key[_attr]);
@@ -53,7 +51,7 @@ define(['exports', '../util'], function (exports, _util) {
      */
 
     function removeAttr(key) {
-        (0, _util.each)(this, function (element) {
+        _util.each(this, function (element) {
             return element.removeAttribute(key);
         });
         return this;

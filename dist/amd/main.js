@@ -20,8 +20,8 @@ define(['exports', 'module', './util', './array', './baseClass', './dom/attr', '
         api.find = _selectorIndex.find;
     }
 
-    (0, _util.extend)($, _domContains, _noconflict, _type);
-    (0, _util.extend)(api, _array, _domAttr, _domClass, _selectorClosest, _css, _domData, _domIndex, _domExtra, _eventIndex, _domHtml, _eventReady, _selectorExtra, _eventTrigger);
+    _util.extend($, _domContains, _noconflict, _type);
+    _util.extend(api, _array, _domAttr, _domClass, _selectorClosest, _css, _domData, _domIndex, _domExtra, _eventIndex, _domHtml, _eventReady, _selectorExtra, _eventTrigger);
 
     $.fn = api;
 
@@ -36,7 +36,7 @@ define(['exports', 'module', './util', './array', './baseClass', './dom/attr', '
     // Provide base class to extend from
 
     if (typeof _BaseClass['default'] !== 'undefined') {
-        $.BaseClass = (0, _BaseClass['default'])($.fn);
+        $.BaseClass = _BaseClass['default']($.fn);
     }
 
     // Export interface

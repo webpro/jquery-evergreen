@@ -17,9 +17,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 function isFunction(obj) {
   return typeof obj === 'function';
 }

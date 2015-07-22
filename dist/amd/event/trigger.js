@@ -5,9 +5,7 @@ define(['exports', '../util', '../dom/contains'], function (exports, _util, _dom
 
     'use strict';
 
-    Object.defineProperty(exports, '__esModule', {
-        value: true
-    });
+    exports.__esModule = true;
 
     var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
         reKeyEvent = /^key/;
@@ -40,7 +38,7 @@ define(['exports', '../util', '../dom/contains'], function (exports, _util, _dom
 
         event._preventDefault = params.preventDefault;
 
-        (0, _util.each)(this, function (element) {
+        _util.each(this, function (element) {
             if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
                 dispatchEvent(element, event);
             } else {
@@ -85,7 +83,7 @@ define(['exports', '../util', '../dom/contains'], function (exports, _util, _dom
         if (element === window || element === document) {
             return true;
         }
-        return (0, _domContains.contains)(element.ownerDocument.documentElement, element);
+        return _domContains.contains(element.ownerDocument.documentElement, element);
     }
 
     /**

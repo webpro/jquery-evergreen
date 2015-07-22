@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -71,8 +69,8 @@ function $(selector) {
 
 function find(selector) {
     var nodes = [];
-    (0, _util.each)(this, function (node) {
-        (0, _util.each)(querySelector(selector, node), function (child) {
+    _util.each(this, function (node) {
+        _util.each(querySelector(selector, node), function (child) {
             if (nodes.indexOf(child) === -1) {
                 nodes.push(child);
             }

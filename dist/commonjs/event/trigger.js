@@ -4,9 +4,7 @@
 
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require('../util');
 
@@ -43,7 +41,7 @@ function trigger(type, data) {
 
     event._preventDefault = params.preventDefault;
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
             dispatchEvent(element, event);
         } else {
@@ -88,7 +86,7 @@ function isAttachedToDocument(element) {
     if (element === window || element === document) {
         return true;
     }
-    return (0, _domContains.contains)(element.ownerDocument.documentElement, element);
+    return _domContains.contains(element.ownerDocument.documentElement, element);
 }
 
 /**

@@ -5,9 +5,7 @@ define(['exports', './util'], function (exports, _util) {
 
     'use strict';
 
-    Object.defineProperty(exports, '__esModule', {
-        value: true
-    });
+    exports.__esModule = true;
 
     function isNumeric(value) {
         return !isNaN(parseFloat(value)) && isFinite(value);
@@ -65,7 +63,7 @@ define(['exports', './util'], function (exports, _util) {
             }
         }
 
-        (0, _util.each)(this, function (element) {
+        _util.each(this, function (element) {
             for (prop in styleProps) {
                 if (styleProps[prop] || styleProps[prop] === 0) {
                     element.style[prop] = styleProps[prop];

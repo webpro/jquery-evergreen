@@ -5,9 +5,7 @@ define(['exports', '../util', '../selector/closest'], function (exports, _util, 
 
     'use strict';
 
-    Object.defineProperty(exports, '__esModule', {
-        value: true
-    });
+    exports.__esModule = true;
 
     /**
      * Shorthand for `addEventListener`. Supports event delegation if a filter (`selector`) is provided.
@@ -43,7 +41,7 @@ define(['exports', '../util', '../selector/closest'], function (exports, _util, 
 
             eventListener = proxyHandler(handler);
 
-            (0, _util.each)(_this, function (element) {
+            _util.each(_this, function (element) {
 
                 if (selector) {
                     eventListener = delegateHandler.bind(element, selector, eventListener);
@@ -99,11 +97,11 @@ define(['exports', '../util', '../selector/closest'], function (exports, _util, 
             eventName = parts[0] || null;
             namespace = parts[1] || null;
 
-            (0, _util.each)(_this2, function (element) {
+            _util.each(_this2, function (element) {
 
                 handlers = getHandlers(element);
 
-                (0, _util.each)(handlers.filter(function (item) {
+                _util.each(handlers.filter(function (item) {
                     return (!eventName || item.eventName === eventName) && (!namespace || item.namespace === namespace) && (!handler || item.handler === handler) && (!selector || item.selector === selector);
                 }), function (item) {
                     element.removeEventListener(item.eventName, item.eventListener, useCapture || false);

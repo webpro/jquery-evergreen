@@ -5,9 +5,7 @@ define(['exports', '../util'], function (exports, _util) {
 
     'use strict';
 
-    Object.defineProperty(exports, '__esModule', {
-        value: true
-    });
+    exports.__esModule = true;
 
     var isPrototypeSet = false;
 
@@ -70,8 +68,8 @@ define(['exports', '../util'], function (exports, _util) {
 
     function find(selector) {
         var nodes = [];
-        (0, _util.each)(this, function (node) {
-            (0, _util.each)(querySelector(selector, node), function (child) {
+        _util.each(this, function (node) {
+            _util.each(querySelector(selector, node), function (child) {
                 if (nodes.indexOf(child) === -1) {
                     nodes.push(child);
                 }

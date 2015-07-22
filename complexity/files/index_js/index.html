@@ -48,7 +48,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC" data-container="body"></i></h2>
-      <p class="stat">118</p>
+      <p class="stat">116</p>
     </div>
   </div>
   <div class="row historical">
@@ -62,11 +62,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty" data-container="body"></i></a></h2>
-      <p class="stat">20.18</p>
+      <p class="stat">20.48</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs" data-container="body"></i></a></h2>
-      <p class="stat">0.91</p>
+      <p class="stat">0.89</p>
     </div>
   </div>
 </div>
@@ -95,9 +95,7 @@
 
 &#039;use strict&#039;;
 
-Object.defineProperty(exports, &#039;__esModule&#039;, {
-    value: true
-});
+exports.__esModule = true;
 
 function _interopRequireDefault(obj) { return obj &amp;&amp; obj.__esModule ? obj : { &#039;default&#039;: obj }; }
 
@@ -188,8 +186,8 @@ if (typeof selector !== &#039;undefined&#039;) {
     api.find = selector.find;
 }
 
-(0, _util.extend)($, contains, noconflict, type);
-(0, _util.extend)(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+_util.extend($, contains, noconflict, type);
+_util.extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 
@@ -204,7 +202,7 @@ $.extend = _util.extend;
 // Provide base class to extend from
 
 if (typeof _baseClass2[&#039;default&#039;] !== &#039;undefined&#039;) {
-    $.BaseClass = (0, _baseClass2[&#039;default&#039;])($.fn);
+    $.BaseClass = _baseClass2[&#039;default&#039;]($.fn);
 }
 
 // Export interface
