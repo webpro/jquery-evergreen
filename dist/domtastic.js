@@ -1,9 +1,7 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.$ = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -15,13 +13,13 @@ var every = ArrayProto.every;
 
 function filter(selector, thisArg) {
   var callback = typeof selector === 'function' ? selector : function (element) {
-    return (0, _selectorIndex.matches)(element, selector);
+    return _selectorIndex.matches(element, selector);
   };
-  return (0, _selectorIndex.$)(ArrayProto.filter.call(this, callback, thisArg));
+  return _selectorIndex.$(ArrayProto.filter.call(this, callback, thisArg));
 }
 
 function forEach(callback, thisArg) {
-  return (0, _util.each)(this, callback, thisArg);
+  return _util.each(this, callback, thisArg);
 }
 
 var each = forEach;
@@ -39,7 +37,7 @@ var reduce = ArrayProto.reduce;
 var reduceRight = ArrayProto.reduceRight;
 
 function reverse() {
-  return (0, _selectorIndex.$)((0, _util.toArray)(this).reverse());
+  return _selectorIndex.$(_util.toArray(this).reverse());
 }
 
 var shift = ArrayProto.shift;
@@ -66,9 +64,7 @@ exports.unshift = unshift;
 },{"17":17,"19":19}],2:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -83,7 +79,7 @@ exports['default'] = function (api) {
         _selectorIndex.Wrapper.call(this, _selectorIndex.$.apply(undefined, arguments));
     };
 
-    (0, _util.extend)(Base.prototype, api);
+    _util.extend(Base.prototype, api);
     return Base;
 };
 
@@ -92,9 +88,7 @@ module.exports = exports['default'];
 },{"17":17,"19":19}],3:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -141,7 +135,7 @@ function css(key, value) {
         }
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         for (prop in styleProps) {
             if (styleProps[prop] || styleProps[prop] === 0) {
                 element.style[prop] = styleProps[prop];
@@ -159,9 +153,7 @@ exports.css = css;
 },{"19":19}],4:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -172,7 +164,7 @@ function attr(key, value) {
         return element ? element.getAttribute(key) : undefined;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         if (typeof key === 'object') {
             for (var _attr in key) {
                 element.setAttribute(_attr, key[_attr]);
@@ -186,7 +178,7 @@ function attr(key, value) {
 }
 
 function removeAttr(key) {
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.removeAttribute(key);
     });
     return this;
@@ -198,29 +190,27 @@ exports.removeAttr = removeAttr;
 },{"19":19}],5:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
 function addClass(value) {
     if (value && value.length) {
-        (0, _util.each)(value.split(' '), _each.bind(this, 'add'));
+        _util.each(value.split(' '), _each.bind(this, 'add'));
     }
     return this;
 }
 
 function removeClass(value) {
     if (value && value.length) {
-        (0, _util.each)(value.split(' '), _each.bind(this, 'remove'));
+        _util.each(value.split(' '), _each.bind(this, 'remove'));
     }
     return this;
 }
 
 function toggleClass(value) {
     if (value && value.length) {
-        (0, _util.each)(value.split(' '), _each.bind(this, 'toggle'));
+        _util.each(value.split(' '), _each.bind(this, 'toggle'));
     }
     return this;
 }
@@ -232,7 +222,7 @@ function hasClass(value) {
 }
 
 function _each(fnName, className) {
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.classList[fnName](className);
     });
 }
@@ -245,9 +235,7 @@ exports.hasClass = hasClass;
 },{"19":19}],6:[function(require,module,exports){
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+exports.__esModule = true;
 
 function contains(container, element) {
     if (!container || !element || container === element) {
@@ -265,9 +253,7 @@ exports.contains = contains;
 },{}],7:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -280,7 +266,7 @@ function data(key, value) {
         return element && element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         element[dataKeyProp] = element[dataKeyProp] || {};
         element[dataKeyProp][key] = value;
     });
@@ -295,7 +281,7 @@ function prop(key, value) {
         return element && element ? element[key] : undefined;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element[key] = value;
     });
 
@@ -308,9 +294,7 @@ exports.prop = prop;
 },{"19":19}],8:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -319,19 +303,19 @@ var _index = require(10);
 var _selectorIndex = require(17);
 
 function appendTo(element) {
-    var context = typeof element === 'string' ? (0, _selectorIndex.$)(element) : element;
+    var context = typeof element === 'string' ? _selectorIndex.$(element) : element;
     _index.append.call(context, this);
     return this;
 }
 
 function empty() {
-    return (0, _util.each)(this, function (element) {
+    return _util.each(this, function (element) {
         return element.innerHTML = '';
     });
 }
 
 function remove() {
-    return (0, _util.each)(this, function (element) {
+    return _util.each(this, function (element) {
         if (element.parentNode) {
             element.parentNode.removeChild(element);
         }
@@ -348,7 +332,7 @@ function text(value) {
         return this[0].textContent;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.textContent = '' + value;
     });
 
@@ -361,7 +345,7 @@ function val(value) {
         return this[0].value;
     }
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         return element.value = value;
     });
 
@@ -378,9 +362,7 @@ exports.val = val;
 },{"10":10,"17":17,"19":19}],9:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -391,7 +373,7 @@ function html(fragment) {
     return element ? element.innerHTML : undefined;
   }
 
-  (0, _util.each)(this, function (element) {
+  _util.each(this, function (element) {
     return element.innerHTML = fragment;
   });
 
@@ -403,9 +385,7 @@ exports.html = html;
 },{"19":19}],10:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -421,7 +401,7 @@ function append(element) {
             if (element instanceof Node) {
                 this.appendChild(element);
             } else {
-                var elements = element instanceof NodeList ? (0, _util.toArray)(element) : element;
+                var elements = element instanceof NodeList ? _util.toArray(element) : element;
                 forEach.call(elements, this.appendChild.bind(this));
             }
         }
@@ -439,7 +419,7 @@ function prepend(element) {
             if (element instanceof Node) {
                 this.insertBefore(element, this.firstChild);
             } else {
-                var elements = element instanceof NodeList ? (0, _util.toArray)(element) : element;
+                var elements = element instanceof NodeList ? _util.toArray(element) : element;
                 forEach.call(elements.reverse(), prepend.bind(this));
             }
         }
@@ -457,7 +437,7 @@ function before(element) {
             if (element instanceof Node) {
                 this.parentNode.insertBefore(element, this);
             } else {
-                var elements = element instanceof NodeList ? (0, _util.toArray)(element) : element;
+                var elements = element instanceof NodeList ? _util.toArray(element) : element;
                 forEach.call(elements, before.bind(this));
             }
         }
@@ -475,7 +455,7 @@ function after(element) {
             if (element instanceof Node) {
                 this.parentNode.insertBefore(element, this.nextSibling);
             } else {
-                var elements = element instanceof NodeList ? (0, _util.toArray)(element) : element;
+                var elements = element instanceof NodeList ? _util.toArray(element) : element;
                 forEach.call(elements.reverse(), after.bind(this));
             }
         }
@@ -486,7 +466,7 @@ function after(element) {
 }
 
 function clone() {
-    return (0, _selectorIndex.$)(_clone(this));
+    return _selectorIndex.$(_clone(this));
 }
 
 function _clone(element) {
@@ -519,9 +499,7 @@ exports.clone = clone;
 },{"17":17,"19":19}],11:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -547,7 +525,7 @@ function on(eventNames, selector, handler, useCapture) {
 
         eventListener = proxyHandler(handler);
 
-        (0, _util.each)(_this, function (element) {
+        _util.each(_this, function (element) {
 
             if (selector) {
                 eventListener = delegateHandler.bind(element, selector, eventListener);
@@ -588,11 +566,11 @@ function off(eventNames, selector, handler, useCapture) {
         eventName = parts[0] || null;
         namespace = parts[1] || null;
 
-        (0, _util.each)(_this2, function (element) {
+        _util.each(_this2, function (element) {
 
             handlers = getHandlers(element);
 
-            (0, _util.each)(handlers.filter(function (item) {
+            _util.each(handlers.filter(function (item) {
                 return (!eventName || item.eventName === eventName) && (!namespace || item.namespace === namespace) && (!handler || item.handler === handler) && (!selector || item.selector === selector);
             }), function (item) {
                 element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
@@ -693,9 +671,7 @@ exports.unbind = unbind;
 },{"15":15,"19":19}],12:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 function ready(handler) {
   if (/complete|loaded|interactive/.test(document.readyState) && document.body) {
@@ -711,9 +687,7 @@ exports.ready = ready;
 },{}],13:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -735,7 +709,7 @@ function trigger(type, data) {
 
     event._preventDefault = params.preventDefault;
 
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
             dispatchEvent(element, event);
         } else {
@@ -759,7 +733,7 @@ function isAttachedToDocument(element) {
     if (element === window || element === document) {
         return true;
     }
-    return (0, _domContains.contains)(element.ownerDocument.documentElement, element);
+    return _domContains.contains(element.ownerDocument.documentElement, element);
 }
 
 function triggerForPath(element, type) {
@@ -826,9 +800,7 @@ exports.triggerHandler = triggerHandler;
 },{"19":19,"6":6}],14:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -844,9 +816,7 @@ exports.noConflict = noConflict;
 },{"19":19}],15:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _index = require(17);
 
@@ -856,16 +826,16 @@ var closest = (function () {
 
     function closest(selector, context) {
         var nodes = [];
-        (0, _util.each)(this, function (node) {
+        _util.each(this, function (node) {
             while (node && node !== context) {
-                if ((0, _index.matches)(node, selector)) {
+                if (_index.matches(node, selector)) {
                     nodes.push(node);
                     break;
                 }
                 node = node.parentElement;
             }
         });
-        return (0, _index.$)((0, _util.uniq)(nodes));
+        return _index.$(_util.uniq(nodes));
     }
 
     return !Element.prototype.closest ? closest : function (selector, context) {
@@ -874,14 +844,14 @@ var closest = (function () {
         if (!context) {
             var _ret = (function () {
                 var nodes = [];
-                (0, _util.each)(_this, function (node) {
+                _util.each(_this, function (node) {
                     var n = node.closest(selector);
                     if (n) {
                         nodes.push(n);
                     }
                 });
                 return {
-                    v: (0, _index.$)((0, _util.uniq)(nodes))
+                    v: _index.$(_util.uniq(nodes))
                 };
             })();
 
@@ -897,9 +867,7 @@ exports.closest = closest;
 },{"17":17,"19":19}],16:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -907,24 +875,24 @@ var _index = require(17);
 
 function children(selector) {
     var nodes = [];
-    (0, _util.each)(this, function (element) {
+    _util.each(this, function (element) {
         if (element.children) {
-            (0, _util.each)(element.children, function (child) {
-                if (!selector || selector && (0, _index.matches)(child, selector)) {
+            _util.each(element.children, function (child) {
+                if (!selector || selector && _index.matches(child, selector)) {
                     nodes.push(child);
                 }
             });
         }
     });
-    return (0, _index.$)(nodes);
+    return _index.$(nodes);
 }
 
 function contents() {
     var nodes = [];
-    (0, _util.each)(this, function (element) {
-        nodes.push.apply(nodes, (0, _util.toArray)(element.childNodes));
+    _util.each(this, function (element) {
+        nodes.push.apply(nodes, _util.toArray(element.childNodes));
     });
-    return (0, _index.$)(nodes);
+    return _index.$(nodes);
 }
 
 function eq(index) {
@@ -937,28 +905,28 @@ function get(index) {
 
 function parent(selector) {
     var nodes = [];
-    (0, _util.each)(this, function (element) {
-        if (!selector || selector && (0, _index.matches)(element.parentNode, selector)) {
+    _util.each(this, function (element) {
+        if (!selector || selector && _index.matches(element.parentNode, selector)) {
             nodes.push(element.parentNode);
         }
     });
-    return (0, _index.$)(nodes);
+    return _index.$(nodes);
 }
 
 function siblings(selector) {
     var nodes = [];
-    (0, _util.each)(this, function (element) {
-        (0, _util.each)(element.parentNode.children, function (sibling) {
-            if (sibling !== element && (!selector || selector && (0, _index.matches)(sibling, selector))) {
+    _util.each(this, function (element) {
+        _util.each(element.parentNode.children, function (sibling) {
+            if (sibling !== element && (!selector || selector && _index.matches(sibling, selector))) {
                 nodes.push(sibling);
             }
         });
     });
-    return (0, _index.$)(nodes);
+    return _index.$(nodes);
 }
 
 function slice(start, end) {
-    return (0, _index.$)([].slice.apply(this, arguments));
+    return _index.$([].slice.apply(this, arguments));
 }
 
 exports.children = children;
@@ -972,9 +940,7 @@ exports.slice = slice;
 },{"17":17,"19":19}],17:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 var _util = require(19);
 
@@ -1013,8 +979,8 @@ function $(selector) {
 
 function find(selector) {
     var nodes = [];
-    (0, _util.each)(this, function (node) {
-        (0, _util.each)(querySelector(selector, node), function (child) {
+    _util.each(this, function (node) {
+        _util.each(querySelector(selector, node), function (child) {
             if (nodes.indexOf(child) === -1) {
                 nodes.push(child);
             }
@@ -1096,9 +1062,7 @@ exports.Wrapper = Wrapper;
 },{"19":19}],18:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
+exports.__esModule = true;
 
 function isFunction(obj) {
   return typeof obj === 'function';
@@ -1112,9 +1076,7 @@ exports.isFunction = isFunction;
 },{}],19:[function(require,module,exports){
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
+exports.__esModule = true;
 
 var global = new Function("return this")();
 
@@ -1167,9 +1129,7 @@ exports.uniq = uniq;
 },{}],20:[function(require,module,exports){
 'use strict';
 
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
+exports.__esModule = true;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -1258,17 +1218,17 @@ if (typeof selector !== 'undefined') {
     api.find = selector.find;
 }
 
-(0, _util.extend)($, contains, noconflict, type);
-(0, _util.extend)(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
+_util.extend($, contains, noconflict, type);
+_util.extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event, html, ready, selector_extra, trigger);
 
 $.fn = api;
 
-$.version = '0.10.3';
+$.version = '0.11.0';
 
 $.extend = _util.extend;
 
 if (typeof _baseClass2['default'] !== 'undefined') {
-    $.BaseClass = (0, _baseClass2['default'])($.fn);
+    $.BaseClass = _baseClass2['default']($.fn);
 }
 
 exports['default'] = $;
