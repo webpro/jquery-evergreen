@@ -12,6 +12,8 @@ define(['exports', 'module', './util', './array', './baseClass', './dom/attr', '
     var api = {},
         $ = {};
 
+    // Import modules to build up the API
+
     if (typeof _selectorIndex !== 'undefined') {
         $ = _selectorIndex.$;
         $.matches = _selectorIndex.matches;
@@ -41,4 +43,3 @@ define(['exports', 'module', './util', './array', './baseClass', './dom/attr', '
 
     module.exports = $;
 });
-// Import modules to build up the API
