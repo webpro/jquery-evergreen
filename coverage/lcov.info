@@ -13,7 +13,7 @@ FN:39,reverse
 FN:64,(anonymous_11)
 FN:69,_classCallCheck
 FN:75,(anonymous_13)
-FN:76,Base
+FN:76,BaseClass
 FN:88,(anonymous_15)
 FN:95,isNumeric
 FN:99,camelize
@@ -160,7 +160,7 @@ FNDA:11,reverse
 FNDA:1,(anonymous_11)
 FNDA:4,_classCallCheck
 FNDA:1,(anonymous_13)
-FNDA:4,Base
+FNDA:4,BaseClass
 FNDA:1,(anonymous_15)
 FNDA:2,isNumeric
 FNDA:14,camelize
@@ -935,9 +935,10 @@ DA:1228,1
 DA:1230,1
 DA:1231,1
 DA:1234,1
-DA:1235,1
-LF:644
-LH:627
+DA:1236,1
+DA:1237,1
+LF:645
+LH:628
 BRDA:1,1,0,0
 BRDA:1,1,1,1
 BRDA:1,2,0,1
@@ -1102,7 +1103,7 @@ BRDA:511,80,1,18
 BRDA:523,81,0,57
 BRDA:523,81,1,2
 BRDA:524,82,0,57
-BRDA:524,82,1,53
+BRDA:524,82,1,52
 BRDA:530,83,0,24
 BRDA:530,83,1,49
 BRDA:534,84,0,73

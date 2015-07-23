@@ -140,6 +140,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a href="#baseClass"><strong>BaseClass</strong></a>
+                        <ul class="">
+                                <li><a href="#baseClass-BaseClass">BaseClass</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="#css"><strong>CSS</strong></a>
                         <ul class="">
                                 <li><a href="#css-css">css</a></li>
@@ -1094,6 +1100,83 @@ const each = forEach;</code></pre>
                                         </div>
                                         <div class="tab-pane" id="unshift-source">
                                             <pre><code class="language-javascript">const unshift = ArrayProto.unshift;</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+                    </section>
+                    <section id="baseClass">
+
+                        <h2>BaseClass</h2>
+
+
+                            <section id="baseClass-BaseClass">
+
+
+                                <h3>
+                                    BaseClass
+                                    <em> ()</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Provide subclass for classes or components to extend from.<br />The opposite and successor of plugins (no need to extend <code>$.fn</code> anymore, complete control).</p>
+
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Class</span>
+                                        &nbsp;
+                                        <p>The class to extend from, including all <code>$.fn</code> methods.</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#BaseClass-example-0" data-toggle="tab">Example</a></li>
+                                        <li ><a href="#BaseClass-example-1" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#BaseClass-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="BaseClass-example-0">
+                                            <pre><code class="language-javascript">    import { BaseClass } from  &#x27;domtastic&#x27;;
+
+    class MyComponent extends BaseClass {
+        doSomething() {
+            return this.addClass(&#x27;.foo&#x27;);
+        }
+    }
+
+    let component = new MyComponent(&#x27;body&#x27;);
+    component.doSomething();</code></pre>
+                                        </div>
+                                        <div class=" tab-pane" id="BaseClass-example-1">
+                                            <pre><code class="language-javascript">    import $ from  &#x27;domtastic&#x27;;
+
+    class MyComponent extends $.BaseClass {
+        progress(value) {
+            return this.attr(&#x27;data-progress&#x27;, value);
+        }
+    }
+
+    let component = new MyComponent(document.body);
+    component.progress(&#x27;ive&#x27;).append(&#x27;&lt;p&gt;enhancement&lt;/p&gt;&#x27;);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="BaseClass-source">
+                                            <pre><code class="language-javascript">class BaseClass {
+    constructor() {
+        Wrapper.call(this, selector(...arguments));
+    }
+}
+extend(BaseClass.prototype, api);
+return BaseClass;
+}</code></pre>
                                         </div>
                                     </div>
 

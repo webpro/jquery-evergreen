@@ -27,7 +27,7 @@ define(['exports', 'module', './util', './array', './baseClass', './dom/attr', '
 
     // Version
 
-    $.version = '0.11.0';
+    $.version = '0.11.1';
 
     // Util
 
@@ -38,6 +38,10 @@ define(['exports', 'module', './util', './array', './baseClass', './dom/attr', '
     if (typeof _BaseClass['default'] !== 'undefined') {
         $.BaseClass = _BaseClass['default']($.fn);
     }
+
+    // Ugly interoperability hack, to prevent potential ES6 import issues
+
+    $['default'] = $;
 
     // Export interface
 
