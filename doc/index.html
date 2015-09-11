@@ -3131,7 +3131,7 @@ return BaseClass;
     if (/complete|loaded|interactive/.test(document.readyState) &amp;&amp; document.body) {
         handler();
     } else {
-        document.addEventListener(&#x27;DOMContentLoaded&#x27;, handler, false)
+        document.addEventListener(&#x27;DOMContentLoaded&#x27;, handler, false);
     }
     return this;
 }</code></pre>
@@ -3770,9 +3770,9 @@ function getEventConstructor(type) {
             });
             return $(uniq(nodes));
         } else {
-            return closest.call(this, selector, context)
+            return closest.call(this, selector, context);
         }
-    }
+    };
 })();</code></pre>
                                         </div>
                                     </div>
