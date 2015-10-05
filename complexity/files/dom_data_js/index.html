@@ -99,7 +99,7 @@ exports.__esModule = true;
 
 var _util = require(&#039;../util&#039;);
 
-var dataKeyProp = &#039;__domtastic_data__&#039;;
+var DATAKEYPROP = &#039;__DOMTASTIC_DATA__&#039;;
 
 /**
  * Get data from first element, or set data for each element in the collection.
@@ -117,12 +117,12 @@ function data(key, value) {
 
     if (typeof key === &#039;string&#039; &amp;&amp; typeof value === &#039;undefined&#039;) {
         var element = this.nodeType ? this : this[0];
-        return element &amp;&amp; element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
+        return element &amp;&amp; element[DATAKEYPROP] ? element[DATAKEYPROP][key] : undefined;
     }
 
     _util.each(this, function (element) {
-        element[dataKeyProp] = element[dataKeyProp] || {};
-        element[dataKeyProp][key] = value;
+        element[DATAKEYPROP] = element[DATAKEYPROP] || {};
+        element[DATAKEYPROP][key] = value;
     });
 
     return this;

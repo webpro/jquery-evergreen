@@ -15,10 +15,10 @@
 <div class="header high">
     <h1>Code coverage report for <span class="entity">dist/domtastic.js</span></h1>
     <h2>
-        Statements: <span class="metric">94.23% <small>(653 / 693)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">94.27% <small>(658 / 698)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Branches: <span class="metric">82.56% <small>(303 / 367)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Functions: <span class="metric">97.24% <small>(141 / 145)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
-        Lines: <span class="metric">97.36% <small>(628 / 645)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">97.38% <small>(633 / 650)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">dist/</a> &#187; domtastic.js</div>
@@ -1266,7 +1266,9 @@
 1239
 1240
 1241
-1242</td><td class="line-coverage"><span class="cline-any cline-yes">45</span>
+1242
+1243
+1244</td><td class="line-coverage"><span class="cline-any cline-yes">45</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -1962,11 +1964,13 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">15</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15</span>
+<span class="cline-any cline-yes">15</span>
 <span class="cline-any cline-yes">15</span>
 <span class="cline-any cline-yes">15</span>
 <span class="cline-any cline-yes">15</span>
@@ -2215,8 +2219,8 @@
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">393</span>
@@ -2601,19 +2605,19 @@ exports.__esModule = true;
 &nbsp;
 var _util = require(19);
 &nbsp;
-function isNumeric(value) {
+var isNumeric = function isNumeric(value) {
     return !isNaN(parseFloat(value)) &amp;&amp; isFinite(value);
-}
+};
 &nbsp;
-function camelize(value) {
+var camelize = function camelize(value) {
     return value.replace(/-([\da-z])/gi, function (matches, letter) {
         return letter.toUpperCase();
     });
-}
+};
 &nbsp;
-function dasherize(value) {
+var dasherize = function dasherize(value) {
     return value.replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
-}
+};
 &nbsp;
 function css(key, value) {
 &nbsp;
@@ -2766,18 +2770,18 @@ exports.__esModule = true;
 &nbsp;
 var _util = require(19);
 &nbsp;
-var dataKeyProp = '__domtastic_data__';
+var DATAKEYPROP = '__DOMTASTIC_DATA__';
 &nbsp;
 function data(key, value) {
 &nbsp;
     if (typeof key === 'string' &amp;&amp; typeof value === 'undefined') {
         var element = this.nodeType ? <span class="branch-0 cbranch-no" title="branch not covered" >this </span>: this[0];
-        return element &amp;&amp; element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
+        return element &amp;&amp; element[DATAKEYPROP] ? element[DATAKEYPROP][key] : undefined;
     }
 &nbsp;
     _util.each(this, function (element) {
-        element[dataKeyProp] = element[dataKeyProp] || {};
-        element[dataKeyProp][key] = value;
+        element[DATAKEYPROP] = element[DATAKEYPROP] || {};
+        element[DATAKEYPROP][key] = value;
     });
 &nbsp;
     return this;
@@ -3202,27 +3206,29 @@ var _util = require(19);
 &nbsp;
 var _domContains = require(6);
 &nbsp;
-var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/,
-    reKeyEvent = /^key/;
+var reMouseEvent = /^(?:mouse|pointer|contextmenu)|click/;
+var reKeyEvent = /^key/;
 &nbsp;
 function trigger(type, data) {
-    var params = arguments.length &lt;= 2 || arguments[2] === undefined ? {} : arguments[2];
+    var _ref = arguments.length &lt;= 2 || arguments[2] === undefined ? {} : arguments[2];
 &nbsp;
-    params.bubbles = typeof params.bubbles === 'boolean' ? params.bubbles : true;
-    params.cancelable = typeof params.cancelable === 'boolean' ? params.cancelable : true;
-    params.preventDefault = typeof params.preventDefault === 'boolean' ? params.preventDefault : false;
-    params.detail = data;
+    var _ref$bubbles = _ref.bubbles;
+    var bubbles = _ref$bubbles === undefined ? true : _ref$bubbles;
+    var _ref$cancelable = _ref.cancelable;
+    var cancelable = _ref$cancelable === undefined ? true : _ref$cancelable;
+    var _ref$preventDefault = _ref.preventDefault;
+    var preventDefault = _ref$preventDefault === undefined ? false : _ref$preventDefault;
 &nbsp;
     var EventConstructor = getEventConstructor(type),
-        event = new EventConstructor(type, params);
+        event = new EventConstructor(type, { bubbles: bubbles, cancelable: cancelable, preventDefault: preventDefault, detail: data });
 &nbsp;
-    event._preventDefault = params.preventDefault;
+    event._preventDefault = preventDefault;
 &nbsp;
     _util.each(this, function (element) {
-        if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
+        if (!bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
             dispatchEvent(element, event);
         } else {
-            triggerForPath(element, type, params);
+            triggerForPath(element, type, { bubbles: bubbles, cancelable: cancelable, preventDefault: preventDefault, detail: data });
         }
     });
     return this;
@@ -3455,9 +3461,9 @@ var _util = require(19);
 &nbsp;
 var isPrototypeSet = false;
 &nbsp;
-var reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/,
-    reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/,
-    reSimpleSelector = /^[\.#]?[\w-]*$/;
+var reFragment = /^\s*&lt;(\w+|!)[^&gt;]*&gt;/;
+var reSingleTag = /^&lt;(\w+)\s*\/?&gt;(?:&lt;\/\1&gt;|)$/;
+var reSimpleSelector = /^[\.#]?[\w-]*$/;
 &nbsp;
 function $(selector) {
     var context = arguments.length &lt;= 1 || arguments[1] === undefined ? document : arguments[1];
@@ -3573,9 +3579,9 @@ exports.Wrapper = Wrapper;
 &nbsp;
 exports.__esModule = true;
 &nbsp;
-function isFunction(obj) {
+var isFunction = function isFunction(obj) {
   return typeof obj === 'function';
-}
+};
 &nbsp;
 var isArray = Array.isArray;
 &nbsp;
@@ -3623,11 +3629,11 @@ function extend(target) {
     return target;
 }
 &nbsp;
-function uniq(collection) {
+var uniq = function uniq(collection) {
     return collection.filter(function (item, index) {
         return collection.indexOf(item) === index;
     });
-}
+};
 &nbsp;
 exports.global = global;
 exports.toArray = toArray;
@@ -3753,7 +3759,7 @@ module.exports = exports['default'];
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Sep 11 2015 21:38:02 GMT+0000 (UTC)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Oct 05 2015 19:49:32 GMT+0000 (UTC)</div>
 </div>
 <script src="../prettify.js"></script>
 <script>

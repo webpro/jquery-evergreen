@@ -429,9 +429,7 @@
                                         </div>
                                         <div class="tab-pane" id="filter-source">
                                             <pre><code class="language-javascript">function filter(selector, thisArg) {
-    let callback = typeof selector === &#x27;function&#x27; ? selector : element =&gt; {
-        return matches(element, selector);
-    };
+    let callback = typeof selector === &#x27;function&#x27; ? selector : element =&gt; matches(element, selector);
     return $(ArrayProto.filter.call(this, callback, thisArg));
 }</code></pre>
                                         </div>
@@ -2089,9 +2087,7 @@ return BaseClass;
                                         </div>
                                         <div class="tab-pane" id="hasClass-source">
                                             <pre><code class="language-javascript">function hasClass(value) {
-    return (this.nodeType ? [this] : this).some(function(element) {
-        return element.classList.contains(value);
-    });
+    return (this.nodeType ? [this] : this).some(element =&gt; element.classList.contains(value));
 }</code></pre>
                                         </div>
                                     </div>
@@ -2261,12 +2257,12 @@ return BaseClass;
 
     if (typeof key === &#x27;string&#x27; &amp;&amp; typeof value === &#x27;undefined&#x27;) {
         let element = this.nodeType ? this : this[0];
-        return element &amp;&amp; element[dataKeyProp] ? element[dataKeyProp][key] : undefined;
+        return element &amp;&amp; element[DATAKEYPROP] ? element[DATAKEYPROP][key] : undefined;
     }
 
     each(this, element =&gt; {
-        element[dataKeyProp] = element[dataKeyProp] || {};
-        element[dataKeyProp][key] = value;
+        element[DATAKEYPROP] = element[DATAKEYPROP] || {};
+        element[DATAKEYPROP][key] = value;
     });
 
     return this;
@@ -3251,23 +3247,18 @@ return BaseClass;
                                             <pre><code class="language-javascript">    $(&#x27;.item&#x27;).trigger(&#x27;anyEventType&#x27;);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="trigger-source">
-                                            <pre><code class="language-javascript">function trigger(type, data, params = {}) {
-
-    params.bubbles = typeof params.bubbles === &#x27;boolean&#x27; ? params.bubbles : true;
-    params.cancelable = typeof params.cancelable === &#x27;boolean&#x27; ? params.cancelable : true;
-    params.preventDefault = typeof params.preventDefault === &#x27;boolean&#x27; ? params.preventDefault : false;
-    params.detail = data;
+                                            <pre><code class="language-javascript">function trigger(type, data, { bubbles = true, cancelable = true, preventDefault = false } = {}) {
 
     let EventConstructor = getEventConstructor(type),
-        event = new EventConstructor(type, params);
+        event = new EventConstructor(type, { bubbles, cancelable, preventDefault, detail: data});
 
-    event._preventDefault = params.preventDefault;
+    event._preventDefault = preventDefault;
 
     each(this, element =&gt; {
-        if (!params.bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
+        if (!bubbles || isEventBubblingInDetachedTree || isAttachedToDocument(element)) {
             dispatchEvent(element, event);
         } else {
-            triggerForPath(element, type, params);
+            triggerForPath(element, type, { bubbles, cancelable, preventDefault, detail: data});
         }
     });
     return this;
@@ -4324,9 +4315,7 @@ function getEventConstructor(type) {
     // false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="isFunction-source">
-                                            <pre><code class="language-javascript">function isFunction(obj) {
-    return (typeof obj === &#x27;function&#x27;);
-}</code></pre>
+                                            <pre><code class="language-javascript">const isFunction = obj =&gt; typeof obj === &#x27;function&#x27;;</code></pre>
                                         </div>
                                     </div>
 
@@ -4478,7 +4467,7 @@ function getEventConstructor(type) {
                                         </div>
                                         <div class="tab-pane" id="extend-source">
                                             <pre><code class="language-javascript">function extend(target, ...sources) {
-    sources.forEach(function(src) {
+    sources.forEach(src =&gt; {
         for (let prop in src) {
             target[prop] = src[prop];
         }
