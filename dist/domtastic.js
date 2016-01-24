@@ -1240,7 +1240,7 @@ _util.extend(api, array, attr, class_, closest, css, data, dom, dom_extra, event
 
 $.fn = api;
 
-$.version = '0.11.2';
+$.version = '0.12.0';
 
 $.extend = _util.extend;
 
