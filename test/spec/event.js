@@ -365,7 +365,7 @@ describe('events', function() {
 
     });
 
-    describe.only('one', function() {
+    describe('one', function() {
         it('should execute event handler only once', function() {
             var element = $(document.body),
                 eventType = getRndStr(),
