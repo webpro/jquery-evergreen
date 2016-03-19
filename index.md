@@ -157,7 +157,6 @@ Read more in the [baseClass article](https://medium.com/@webprolific/domtastic-s
 
     on (alias: bind)
     off (alias: unbind)
-    one
 
 ### [Event/ready](https://domtastic.js.org/doc#event/ready)
 
