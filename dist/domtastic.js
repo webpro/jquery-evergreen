@@ -1213,7 +1213,7 @@
           return $$2(uniq(nodes));
       }
 
-      return !Element.prototype.closest ? closest : function (selector, context) {
+      return typeof Element === 'undefined' || !Element.prototype.closest ? closest : function (selector, context) {
           var _this = this;
 
           if (!context) {
@@ -1960,10 +1960,6 @@
   if (typeof BaseClass !== 'undefined') {
       $.BaseClass = BaseClass($.fn);
   }
-
-  // Ugly interoperability hack, to prevent potential ES6 import issues
-
-  $.default = $;
 
   // Export interface
 
