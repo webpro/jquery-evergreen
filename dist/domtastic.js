@@ -569,7 +569,7 @@
    * @example
    *     $('.item').css('padding-left'); // get
    *     $('.item').css('color', '#f00'); // set
-   *     $('.item').css({'border-width', '1px'}, {'display', 'inline-block}); // set multiple
+   *     $('.item').css({'border-width': '1px', display: 'inline-block'}); // set multiple
    */
 
   function css(key, value) {
@@ -807,7 +807,7 @@
    * @example
    *     $('.item').attr('attrName'); // get
    *     $('.item').attr('attrName', 'attrValue'); // set
-   *     $('.item').attr({'attr1', 'value1'}, {'attr2', 'value2}); // set multiple
+   *     $('.item').attr({attr1: 'value1', 'attr-2': 'value2'}); // set multiple
    */
 
   function attr(key, value) {
@@ -1257,7 +1257,7 @@
    *     $('.container').on('click focus', '.item', handler);
    */
 
-  function on(eventNames, selector, handler, useCapture) {
+  function on(eventNames, selector, handler, useCapture, once) {
       var _this = this;
 
       if (typeof selector === 'function') {
@@ -1281,6 +1281,16 @@
 
               if (selector) {
                   eventListener = delegateHandler.bind(element, selector, eventListener);
+              }
+
+              if (once) {
+                  (function () {
+                      var listener = eventListener;
+                      eventListener = function eventListener(event) {
+                          off.call(element, eventNames, selector, handler, useCapture);
+                          listener.call(element, event);
+                      };
+                  })();
               }
 
               element.addEventListener(eventName, eventListener, useCapture || false);
@@ -1358,6 +1368,23 @@
       }, this);
 
       return this;
+  }
+
+  /**
+   * Add event listener and execute the handler at most once per element.
+   *
+   * @param eventNames
+   * @param selector
+   * @param handler
+   * @param useCapture
+   * @return {Object} The wrapped collection
+   * @chainable
+   * @example
+   *     $('.item').one('click', callback);
+   */
+
+  function one(eventNames, selector, handler, useCapture) {
+      return on.call(this, eventNames, selector, handler, useCapture, 1);
   }
 
   /**
@@ -1482,6 +1509,7 @@
   var event = Object.freeze({
       on: on,
       off: off,
+      one: one,
       bind: bind,
       unbind: unbind
   });
@@ -1921,7 +1949,7 @@
 
   // Version
 
-  $.version = '0.11.2';
+  $.version = '0.12.0';
 
   // Util
 
