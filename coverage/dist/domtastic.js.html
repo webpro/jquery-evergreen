@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.13% </span>
+        <span class="strong">96.28% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>521/542</span>
+        <span class='fraction'>517/537</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">86.08% </span>
+        <span class="strong">87.61% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>303/352</span>
+        <span class='fraction'>297/339</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">95.24% </span>
+        <span class="strong">95.97% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>120/126</span>
+        <span class='fraction'>119/124</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">96.3% </span>
+        <span class="strong">96.63% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>521/541</span>
+        <span class='fraction'>516/534</span>
       </div>
     </div>
   </div>
@@ -2000,39 +2000,11 @@
 1955
 1956
 1957
-1958
-1959
-1960
-1961
-1962
-1963
-1964
-1965
-1966
-1967
-1968
-1969
-1970
-1971</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+1958</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">15×</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">4×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2517,6 +2489,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -3989,21 +3963,6 @@
   (global.$ = factory());
 }(this, function () { 'use strict';
 &nbsp;
-  var babelHelpers = {};
-  babelHelpers.typeof = typeof Symbol === "function" &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >typeof Symbol.iterator === "symbol" </span>? <span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >function (obj) {</span></span>
-<span class="cstat-no" title="statement not covered" >    return typeof obj;</span>
-  } : function (obj) {
-    return obj &amp;&amp; typeof Symbol === "function" &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >obj.constructor === Symbol </span>? <span class="branch-0 cbranch-no" title="branch not covered" >"symbol" </span>: typeof obj;
-  };
-&nbsp;
-  babelHelpers.classCallCheck = function (instance, Constructor) {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) {
-<span class="cstat-no" title="statement not covered" >      throw new TypeError("Cannot call a class as a function");</span>
-    }
-  };
-&nbsp;
-  babelHelpers;
-&nbsp;
   /*
    * @module Util
    */
@@ -4089,7 +4048,7 @@
    * @private
    */
 &nbsp;
-  var uniq = function uniq(collection) {
+  var uniq = function (collection) {
       return collection.filter(function (item, index) {
           return collection.indexOf(item) === index;
       });
@@ -4488,6 +4447,8 @@
     unshift: unshift
   });
 &nbsp;
+  function _classCallCheck(instance, Constructor) { <span class="missing-if-branch" title="if path not taken" >I</span>if (!(instance instanceof Constructor)) { <span class="cstat-no" title="statement not covered" >throw new TypeError("Cannot call a class as a function"); </span>} }
+&nbsp;
   function BaseClass (api) {
 &nbsp;
       /**
@@ -4521,7 +4482,7 @@
        */
 &nbsp;
       var BaseClass = function BaseClass() {
-          babelHelpers.classCallCheck(this, BaseClass);
+          _classCallCheck(this, BaseClass);
 &nbsp;
           Wrapper.call(this, $$2.apply(undefined, arguments));
       };
@@ -4530,17 +4491,17 @@
       return BaseClass;
   }
 &nbsp;
-  var isNumeric = function isNumeric(value) {
+  var isNumeric = function (value) {
       return !isNaN(parseFloat(value)) &amp;&amp; isFinite(value);
   };
 &nbsp;
-  var camelize = function camelize(value) {
+  var camelize = function (value) {
       return value.replace(/-([\da-z])/gi, function (matches, letter) {
           return letter.toUpperCase();
       });
   };
 &nbsp;
-  var dasherize = function dasherize(value) {
+  var dasherize = function (value) {
       return value.replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
   };
 &nbsp;
@@ -4803,7 +4764,7 @@
       }
 &nbsp;
       each(this, function (element) {
-          if ((typeof key === 'undefined' ? <span class="branch-0 cbranch-no" title="branch not covered" >'undefined' </span>: babelHelpers.typeof(key)) === 'object') {
+          if (typeof key === 'object') {
               for (var _attr in key) {
                   element.setAttribute(_attr, key[_attr]);
               }
@@ -5215,7 +5176,7 @@
                   };
               }();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >              if ((typeof _ret === 'undefined' ? 'undefined' : babelHelpers.typeof(_ret)) === "object") <span class="cstat-no" title="statement not covered" >return _ret.v;</span></span>
+<span class="cstat-no" title="statement not covered" >              if (typeof _ret === "object") <span class="cstat-no" title="statement not covered" >return _ret.v;</span></span>
           } else {
 <span class="cstat-no" title="statement not covered" >              return closest.call(this, selector, context);</span>
           }
@@ -5271,7 +5232,7 @@
               if (once) {
                   (function () {
                       var listener = eventListener;
-                      eventListener = function eventListener(event) {
+                      eventListener = function (event) {
                           off.call(element, eventNames, selector, handler, useCapture);
                           listener.call(element, event);
                       };
@@ -5440,10 +5401,10 @@
           stopImmediatePropagation: 'isImmediatePropagationStopped',
           stopPropagation: 'isPropagationStopped'
       },
-          returnTrue = function returnTrue() {
+          returnTrue = function () {
           return true;
       },
-          returnFalse = function returnFalse() {
+          returnFalse = function () {
           return false;
       };
 &nbsp;
@@ -5893,7 +5854,7 @@
    *     // false
    */
 &nbsp;
-  var isFunction = function isFunction(obj) {
+  var isFunction = function (obj) {
     return typeof obj === 'function';
   };
 &nbsp;
@@ -5959,7 +5920,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Mar 20 2016 12:09:32 GMT+0000 (UTC)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 21 2016 21:48:18 GMT+0000 (UTC)
 </div>
 </div>
 <script src="../prettify.js"></script>
