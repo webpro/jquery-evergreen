@@ -4,21 +4,6 @@
   (global.$ = factory());
 }(this, function () { 'use strict';
 
-  var babelHelpers = {};
-  babelHelpers.typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj;
-  };
-
-  babelHelpers.classCallCheck = function (instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  };
-
-  babelHelpers;
-
   /*
    * @module Util
    */
@@ -104,7 +89,7 @@
    * @private
    */
 
-  var uniq = function uniq(collection) {
+  var uniq = function (collection) {
       return collection.filter(function (item, index) {
           return collection.indexOf(item) === index;
       });
@@ -503,6 +488,8 @@
     unshift: unshift
   });
 
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
   function BaseClass (api) {
 
       /**
@@ -536,7 +523,7 @@
        */
 
       var BaseClass = function BaseClass() {
-          babelHelpers.classCallCheck(this, BaseClass);
+          _classCallCheck(this, BaseClass);
 
           Wrapper.call(this, $$2.apply(undefined, arguments));
       };
@@ -545,17 +532,17 @@
       return BaseClass;
   }
 
-  var isNumeric = function isNumeric(value) {
+  var isNumeric = function (value) {
       return !isNaN(parseFloat(value)) && isFinite(value);
   };
 
-  var camelize = function camelize(value) {
+  var camelize = function (value) {
       return value.replace(/-([\da-z])/gi, function (matches, letter) {
           return letter.toUpperCase();
       });
   };
 
-  var dasherize = function dasherize(value) {
+  var dasherize = function (value) {
       return value.replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
   };
 
@@ -818,7 +805,7 @@
       }
 
       each(this, function (element) {
-          if ((typeof key === 'undefined' ? 'undefined' : babelHelpers.typeof(key)) === 'object') {
+          if (typeof key === 'object') {
               for (var _attr in key) {
                   element.setAttribute(_attr, key[_attr]);
               }
@@ -1230,7 +1217,7 @@
                   };
               }();
 
-              if ((typeof _ret === 'undefined' ? 'undefined' : babelHelpers.typeof(_ret)) === "object") return _ret.v;
+              if (typeof _ret === "object") return _ret.v;
           } else {
               return closest.call(this, selector, context);
           }
@@ -1286,7 +1273,7 @@
               if (once) {
                   (function () {
                       var listener = eventListener;
-                      eventListener = function eventListener(event) {
+                      eventListener = function (event) {
                           off.call(element, eventNames, selector, handler, useCapture);
                           listener.call(element, event);
                       };
@@ -1455,10 +1442,10 @@
           stopImmediatePropagation: 'isImmediatePropagationStopped',
           stopPropagation: 'isPropagationStopped'
       },
-          returnTrue = function returnTrue() {
+          returnTrue = function () {
           return true;
       },
-          returnFalse = function returnFalse() {
+          returnFalse = function () {
           return false;
       };
 
@@ -1908,7 +1895,7 @@
    *     // false
    */
 
-  var isFunction = function isFunction(obj) {
+  var isFunction = function (obj) {
     return typeof obj === 'function';
   };
 
