@@ -1,4 +1,4 @@
-layouts: ./webpro.github.io/_layouts
+layouts_dir: ./webpro.github.io/_layouts
 markdown: kramdown
 kramdown:
   auto_ids: true
