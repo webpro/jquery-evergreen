@@ -8,10 +8,10 @@ title: DOMtastic
 
 * Small, fast, and modular **DOM & Event** library for modern browsers.
 * Same familiar API as jQuery (but without the extra "weight" of modules like `$.ajax`, `$.animate`, and `$.Deferred`).
-* Weighs in at only 1KB to 12KB (minified), depending on included modules. Full bundle is about 4KB gzipped.
+* Weighs in at only 3 to 14KB (minified), depending on included modules. Full bundle is under 5KB gzipped.
 * Works great stand-alone or paired up with e.g. Backbone or Angular.
-* The [source](https://github.com/webpro/DOMtastic) is written in ES6 format.
-* [Rollup](http://rollupjs.org) and [babel](https://babeljs.io) are used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global).
+* The [source](https://github.com/webpro/DOMtastic) is written in ES6 format, and transpiled to AMD and CommonJS with [babel](https://babeljs.io).
+* Browserify is used to create a [UMD](https://github.com/umdjs/umd) bundle (supporting AMD, CommonJS, and fallback to browser global).
 * Supercharge your components and extend from the [base class](#es6-class).
 * Easy to create a [custom build](#custom-build) to include or exclude parts.
 * DOMtastic also serves as a starting point for your own application-specific DOM API ([read more](#build-a-custom-api-for-your-application)).
@@ -22,6 +22,7 @@ title: DOMtastic
 * [API documentation](https://domtastic.js.org/doc/)
 * [Run tests](https://domtastic.js.org/test/)
 * Coverage: [Istanbul](https://domtastic.js.org/coverage/dist/domtastic.js.html), [Coveralls](https://coveralls.io/r/webpro/DOMtastic)
+* Complexity: [Plato](https://domtastic.js.org/complexity/)
 * [Run benchmarks](https://domtastic.js.org/benchmark/) (results: [class](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkvo7WCQw?v=3&layout=simple), [constructor](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkyo2ECQw?v=3&layout=simple), [DOM](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgIDk0Jv_Cgw?v=3&layout=simple), [selector](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkzLXNCAw?v=3&layout=simple))
 
 [![Build Status](https://travis-ci.org/webpro/DOMtastic.png?branch=master)](https://travis-ci.org/webpro/DOMtastic)
@@ -52,7 +53,7 @@ requirejs.config({
     baseUrl: 'bower_components',
     packages: [{
         name: 'domtastic',
-        main: 'domtastic'
+        location: 'domtastic/amd'
     }]
 });
 
@@ -226,13 +227,13 @@ You can build a custom bundle that _excludes_ specific modules that you don't ne
 git clone git@github.com:webpro/DOMtastic.git
 cd DOMtastic
 npm install
-npm run bundle -- --exclude=attr,html,trigger
+bin/custom --exclude=attr,html,trigger
 ```
 
 Alternatively, you can do the opposite and _include_ what you need:
 
 ```bash
-npm run bundle -- --include=selector,class
+bin/custom --include=selector,class
 ```
 
 Find the output in the `dist/` folder.
@@ -242,7 +243,7 @@ Find the output in the `dist/` folder.
 Some iterator method signatures in jQuery are different (i.e. non-standard), most notably the `index` before `element` argument in `each`, `filter` and `map`). However, a custom build that is compatible with jQuery can be created by using the `--jquery-compat` flag:
 
 ```bash
-npm run bundle -- --jquery-compat
+bin/custom --jquery-compat
 ```
 
 ### Build a custom API for your application

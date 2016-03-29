@@ -430,7 +430,7 @@
                                         </div>
                                         <div class="tab-pane" id="filter-source">
                                             <pre><code class="language-javascript">function filter(selector, thisArg) {
-    const callback = typeof selector === &#x27;function&#x27; ? selector : element =&gt; matches(element, selector);
+    let callback = typeof selector === &#x27;function&#x27; ? selector : element =&gt; matches(element, selector);
     return $(ArrayProto.filter.call(this, callback, thisArg));
 }</code></pre>
                                         </div>
@@ -3853,7 +3853,7 @@ function getEventConstructor(type) {
         return $(uniq(nodes));
     }
 
-    return typeof Element === &#x27;undefined&#x27; || !Element.prototype.closest ? closest : function(selector, context) {
+    return !Element.prototype.closest ? closest : function(selector, context) {
         if(!context) {
             let nodes = [];
             each(this, function(node) {
