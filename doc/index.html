@@ -2166,12 +2166,12 @@ return BaseClass;
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const contains &#x3D; (container, element) &#x3D;&gt; {
   if(!container || !element || container &#x3D;&#x3D;&#x3D; element) {
-      return false;
-    } else if (container.contains) {
-      return container.contains(element);
-    } else if (container.compareDocumentPosition) {
-      return !(container.compareDocumentPosition(element) &amp; Node.DOCUMENT_POSITION_DISCONNECTED);
-    }
+    return false;
+  } else if(container.contains) {
+    return container.contains(element);
+  } else if(container.compareDocumentPosition) {
+    return !(container.compareDocumentPosition(element) &amp; Node.DOCUMENT_POSITION_DISCONNECTED);
+  }
   return false;
 };</code></pre>
                                         </div>
@@ -2895,7 +2895,7 @@ return BaseClass;
         eventListener &#x3D; event &#x3D;&gt; {
           off.call(element, eventNames, selector, handler, useCapture);
           listener.call(element, event);
-        }
+        };
       }
 
       element.addEventListener(eventName, eventListener, useCapture || false);
