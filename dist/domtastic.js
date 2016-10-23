@@ -123,7 +123,7 @@ var reSimpleSelector = /^[\.#]?[\w-]*$/;
  */
 
 var $$2 = function (selector) {
-  var context = arguments.length <= 1 || arguments[1] === undefined ? document : arguments[1];
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : document;
 
 
   var collection = void 0;
@@ -1328,7 +1328,7 @@ var on = function (eventNames, selector, handler, useCapture, once) {
  */
 
 var off = function () {
-  var eventNames = arguments.length <= 0 || arguments[0] === undefined ? '' : arguments[0];
+  var eventNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var selector = arguments[1];
 
   var _this2 = this;
@@ -1544,7 +1544,7 @@ var reKeyEvent = /^key/;
  */
 
 var trigger = function (type, data) {
-  var _ref = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   var _ref$bubbles = _ref.bubbles;
   var bubbles = _ref$bubbles === undefined ? true : _ref$bubbles;
@@ -1634,7 +1634,7 @@ var isAttachedToDocument = function (element) {
  */
 
 var triggerForPath = function (element, type) {
-  var params = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+  var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
   params.bubbles = false;
   var event = new CustomEvent(type, params);
@@ -1670,11 +1670,11 @@ var dispatchEvent = function (element, event) {
 
 (function () {
   var CustomEvent = function (event) {
-    var params = arguments.length <= 1 || arguments[1] === undefined ? {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
       bubbles: false,
       cancelable: false,
       detail: undefined
-    } : arguments[1];
+    };
 
     var customEvent = document.createEvent('CustomEvent');
     customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
