@@ -1439,8 +1439,20 @@ var clearHandlers = function (element) {
 
 var proxyHandler = function (handler) {
   return function (event) {
-    return handler.call(this, augmentEvent(event), event.detail);
+    return handler.call(this, augmentEvent(event));
   };
+};
+
+var eventMethods = {
+  preventDefault: 'isDefaultPrevented',
+  stopImmediatePropagation: 'isImmediatePropagationStopped',
+  stopPropagation: 'isPropagationStopped'
+};
+var returnTrue = function () {
+  return true;
+};
+var returnFalse = function () {
+  return false;
 };
 
 /**
@@ -1451,39 +1463,23 @@ var proxyHandler = function (handler) {
  * @return {Function}
  */
 
-var augmentEvent = function () {
-
-  var methodName = void 0,
-      eventMethods = {
-    preventDefault: 'isDefaultPrevented',
-    stopImmediatePropagation: 'isImmediatePropagationStopped',
-    stopPropagation: 'isPropagationStopped'
-  },
-      returnTrue = function () {
-    return true;
-  },
-      returnFalse = function () {
-    return false;
-  };
-
-  return function (event) {
-    if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
-      for (methodName in eventMethods) {
-        (function (methodName, testMethodName, originalMethod) {
-          event[methodName] = function () {
-            this[testMethodName] = returnTrue;
-            return originalMethod && originalMethod.apply(this, arguments);
-          };
-          event[testMethodName] = returnFalse;
-        })(methodName, eventMethods[methodName], event[methodName]);
-      }
-      if (event._preventDefault) {
-        event.preventDefault();
-      }
+var augmentEvent = function (event) {
+  if (!event.isDefaultPrevented || event.stopImmediatePropagation || event.stopPropagation) {
+    for (var methodName in eventMethods) {
+      (function (methodName, testMethodName, originalMethod) {
+        event[methodName] = function () {
+          this[testMethodName] = returnTrue;
+          return originalMethod && originalMethod.apply(this, arguments);
+        };
+        event[testMethodName] = returnFalse;
+      })(methodName, eventMethods[methodName], event[methodName]);
     }
-    return event;
-  };
-}();
+    if (event._preventDefault) {
+      event.preventDefault();
+    }
+  }
+  return event;
+};
 
 /**
  * Function to test whether delegated events match the provided `selector` (filter),
@@ -1544,15 +1540,13 @@ var reKeyEvent = /^key/;
  */
 
 var trigger = function (type, data) {
-  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-
-  var _ref$bubbles = _ref.bubbles;
-  var bubbles = _ref$bubbles === undefined ? true : _ref$bubbles;
-  var _ref$cancelable = _ref.cancelable;
-  var cancelable = _ref$cancelable === undefined ? true : _ref$cancelable;
-  var _ref$preventDefault = _ref.preventDefault;
-  var preventDefault = _ref$preventDefault === undefined ? false : _ref$preventDefault;
-
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
+      _ref$bubbles = _ref.bubbles,
+      bubbles = _ref$bubbles === undefined ? true : _ref$bubbles,
+      _ref$cancelable = _ref.cancelable,
+      cancelable = _ref$cancelable === undefined ? true : _ref$cancelable,
+      _ref$preventDefault = _ref.preventDefault,
+      preventDefault = _ref$preventDefault === undefined ? false : _ref$preventDefault;
 
   var EventConstructor = getEventConstructor(type);
   var event = new EventConstructor(type, {
@@ -1981,7 +1975,7 @@ $$$1.fn = api;
 
 // Version
 
-$$$1.version = '0.12.1';
+$$$1.version = '0.12.2';
 
 // Util
 
