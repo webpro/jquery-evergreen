@@ -1975,7 +1975,7 @@ $$$1.fn = api;
 
 // Version
 
-$$$1.version = '0.12.2';
+$$$1.version = '0.12.3';
 
 // Util
 
