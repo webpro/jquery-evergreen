@@ -1966,7 +1966,7 @@ return BaseClass;
 
                                 <h3>
                                     toggleClass
-                                    <em> (value)</em>
+                                    <em> (value, state)</em>
                                 </h3>
 
                                 <div class="block">
@@ -1986,6 +1986,16 @@ return BaseClass;
                                                 <td>
                                                     <p>Space-separated class name(s) to toggle at the element(s).</p>
                                                     
+                                                    
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>state</em></td>
+                                                <td><span class="label label-primary">Boolean</span></td>
+                                                <td>
+                                                    <p>A Boolean value to determine whether the class should be added or removed.</p>
+                                                    <span class="label label-default">optional</span>
                                                     
 
                                                 </td>
@@ -2014,12 +2024,14 @@ return BaseClass;
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="toggleClass-example-0">
                                             <pre><code class="language-javascript">    $(&#x27;.item&#x27;).toggleClass(&#x27;bar&#x27;);
-    $(&#x27;.item&#x27;).toggleClass(&#x27;bar foo&#x27;);</code></pre>
+    $(&#x27;.item&#x27;).toggleClass(&#x27;bar foo&#x27;);
+    $(&#x27;.item&#x27;).toggleClass(&#x27;bar&#x27;, true);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
-                                            <pre><code class="language-javascript">export const toggleClass &#x3D; function(value) {
+                                            <pre><code class="language-javascript">export const toggleClass &#x3D; function(value, state) {
   if(value &amp;&amp; value.length) {
-    each(value.split(&#x27; &#x27;), _each.bind(this, &#x27;toggle&#x27;));
+    const action &#x3D; typeof state &#x3D;&#x3D;&#x3D; &#x27;boolean&#x27; ? state ? &#x27;add&#x27; : &#x27;remove&#x27; : &#x27;toggle&#x27;;
+    each(value.split(&#x27; &#x27;), _each.bind(this, action));
   }
   return this;
 };</code></pre>
