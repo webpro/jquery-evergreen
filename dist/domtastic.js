@@ -1131,7 +1131,7 @@ var text = function (value) {
  * @return {Object} The wrapped collection
  * @chainable
  * @example
- *     $('input.firstName').value('New value');
+ *     $('input.firstName').val('New value');
  */
 
 var val = function (value) {
@@ -1217,23 +1217,15 @@ var closest = function () {
   };
 
   return typeof Element === 'undefined' || !Element.prototype.closest ? closest : function (selector, context) {
-    var _this = this;
-
     if (!context) {
-      var _ret = function () {
-        var nodes = [];
-        each(_this, function (node) {
-          var n = node.closest(selector);
-          if (n) {
-            nodes.push(n);
-          }
-        });
-        return {
-          v: $$2(uniq(nodes))
-        };
-      }();
-
-      if (typeof _ret === "object") return _ret.v;
+      var nodes = [];
+      each(this, function (node) {
+        var n = node.closest(selector);
+        if (n) {
+          nodes.push(n);
+        }
+      });
+      return $$2(uniq(nodes));
     } else {
       return closest.call(this, selector, context);
     }
@@ -1291,13 +1283,11 @@ var on = function (eventNames, selector, handler, useCapture, once) {
       }
 
       if (once) {
-        (function () {
-          var listener = eventListener;
-          eventListener = function (event) {
-            off.call(element, eventNames, selector, handler, useCapture);
-            listener.call(element, event);
-          };
-        })();
+        var listener = eventListener;
+        eventListener = function (event) {
+          off.call(element, eventNames, selector, handler, useCapture);
+          listener.call(element, event);
+        };
       }
 
       element.addEventListener(eventName, eventListener, useCapture || false);
