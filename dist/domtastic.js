@@ -1,7 +1,7 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.$ = factory());
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.$ = factory());
 }(this, (function () { 'use strict';
 
 /*
@@ -538,7 +538,7 @@ var BaseClass = function (api) {
 
   extend(BaseClass.prototype, api);
   return BaseClass;
-}
+};
 
 /**
  * @module CSS
@@ -986,8 +986,6 @@ var dom_contains = Object.freeze({
  * @module Data
  */
 
-var DATAKEYPROP = '__DOMTASTIC_DATA__';
-
 /**
  * Get data from first element, or set data for each element in the collection.
  *
@@ -1004,12 +1002,11 @@ var data = function (key, value) {
 
   if (typeof key === 'string' && typeof value === 'undefined') {
     var element = this.nodeType ? this : this[0];
-    return element && element[DATAKEYPROP] ? element[DATAKEYPROP][key] : undefined;
+    return element && element.dataset ? element.dataset[key] : undefined;
   }
 
   return each(this, function (element) {
-    element[DATAKEYPROP] = element[DATAKEYPROP] || {};
-    element[DATAKEYPROP][key] = value;
+    element.dataset[key] = value;
   });
 };
 
