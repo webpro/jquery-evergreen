@@ -21,13 +21,13 @@ title: DOMtastic
 * Bundled sources: [domtastic.js](https://cdn.jsdelivr.net/domtastic/0.12/domtastic.js), [domtastic.min.js](https://cdn.jsdelivr.net/domtastic/0.12/domtastic.min.js)
 * [API documentation](https://domtastic.js.org/doc/)
 * [Run tests](https://domtastic.js.org/test/)
-* Coverage: [Istanbul](https://domtastic.js.org/coverage/dist/domtastic.js.html), [Coveralls](https://coveralls.io/r/webpro/DOMtastic)
-* [Run benchmarks](https://domtastic.js.org/benchmark/) (results: [class](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkvo7WCQw?v=3&layout=simple), [constructor](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkyo2ECQw?v=3&layout=simple), [DOM](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgIDk0Jv_Cgw?v=3&layout=simple), [selector](http://www.browserscope.org/user/tests/table/agt1YS1wcm9maWxlcnIRCxIEVGVzdBiAgICkzLXNCAw?v=3&layout=simple))
+* Coverage: [Istanbul](https://domtastic.js.org/coverage/dist/domtastic.js.html), [Coveralls](https://coveralls.io/github/webpro/DOMtastic)
+* [Run benchmarks](https://domtastic.js.org/benchmark/)
 
 [![Build Status](https://travis-ci.org/webpro/DOMtastic.png?branch=master)](https://travis-ci.org/webpro/DOMtastic)
-[![Coverage Status](https://coveralls.io/repos/webpro/DOMtastic/badge.png?branch=master)](https://coveralls.io/r/webpro/DOMtastic?branch=master)
-[![Selenium Test Status](https://saucelabs.com/buildstatus/webpro)](https://saucelabs.com/u/webpro)
-[![Code Climate](https://codeclimate.com/github/webpro/DOMtastic-release/badges/gpa.svg)](https://codeclimate.com/github/webpro/DOMtastic-release)
+[![Coverage Status](https://coveralls.io/repos/github/webpro/DOMtastic/badge.svg)](https://coveralls.io/github/webpro/DOMtastic)
+![BrowserStack Status](https://www.browserstack.com/automate/badge.svg?badge_key=MUcvSm9ES1VaYlpTMnk0NytOVDdML3FxRlJNM0VNR2RQdnBPMGduNUowZz0tLUNHWkJ4V2t0SXNqUkRRQUJjTWVnekE9PQ==--c64c417a0144336c1f174ecbe35b4801f82b74e0)
+[![Code Climate](https://codeclimate.com/github/webpro/DOMtastic/badges/gpa.svg)](https://codeclimate.com/github/webpro/DOMtastic)
 
 ## Usage
 
@@ -220,7 +220,7 @@ Feel free to [open an issue](https://github.com/webpro/DOMtastic/issues) if you 
 
 ## Browser Support
 
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/webpro.svg)](https://saucelabs.com/u/webpro)
+![Selenium Test Status](https://saucelabs.com/browser-matrix/webpro.svg)
 
 Latest versions of Chrome, Firefox, Safari, Opera, Android, Chrome Mobile iOS, and Mobile Safari. Internet Explorer 10 and up. IE9 only needs a polyfill for `classList` to make these tests pass.
 

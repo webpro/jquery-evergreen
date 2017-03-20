@@ -9,11 +9,11 @@
  */
 
 /*
- * Reference to the global scope
+ * Reference to the window object
  * @private
  */
 
-var global = new Function('return this')();
+var win = typeof window !== 'undefined' ? window : {};
 
 /**
  * Convert `NodeList` to `Array`.
@@ -183,7 +183,7 @@ var find = function (selector) {
  */
 
 var matches = function () {
-  var context = typeof Element !== 'undefined' ? Element.prototype : global;
+  var context = typeof Element !== 'undefined' ? Element.prototype : win;
   var _matches = context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
   return function (element, selector) {
     return _matches.call(element, selector);
@@ -986,6 +986,9 @@ var dom_contains = Object.freeze({
  * @module Data
  */
 
+var isSupportsDataSet = typeof document !== 'undefined' && 'dataset' in document.documentElement;
+var DATAKEYPROP = isSupportsDataSet ? 'dataset' : '__DOMTASTIC_DATA__';
+
 /**
  * Get data from first element, or set data for each element in the collection.
  *
@@ -1002,11 +1005,14 @@ var data = function (key, value) {
 
   if (typeof key === 'string' && typeof value === 'undefined') {
     var element = this.nodeType ? this : this[0];
-    return element && element.dataset ? element.dataset[key] : undefined;
+    return element && DATAKEYPROP in element ? element[DATAKEYPROP][key] : undefined;
   }
 
   return each(this, function (element) {
-    element.dataset[key] = value;
+    if (!isSupportsDataSet) {
+      element[DATAKEYPROP] = element[DATAKEYPROP] || {};
+    }
+    element[DATAKEYPROP][key] = value;
   });
 };
 
@@ -1233,8 +1239,6 @@ var selector_closest = Object.freeze({
 	closest: closest
 });
 
-var _this3 = undefined;
-
 /**
  * @module Events
  */
@@ -1246,6 +1250,7 @@ var _this3 = undefined;
  * @param {String} [selector] Selector to filter descendants that delegate the event to this element.
  * @param {Function} handler Event handler
  * @param {Boolean} useCapture=false
+ * @param {Boolean} once=false
  * @return {Object} The wrapped collection
  * @chainable
  * @example
@@ -1484,8 +1489,8 @@ var augmentEvent = function (event) {
 
 var delegateHandler = function (selector, handler, event) {
   var eventTarget = event._target || event.target;
-  var currentTarget = closest.call([eventTarget], selector, _this3)[0];
-  if (currentTarget && currentTarget !== _this3) {
+  var currentTarget = closest.call([eventTarget], selector, this)[0];
+  if (currentTarget && currentTarget !== this) {
     if (currentTarget === eventTarget || !(event.isPropagationStopped && event.isPropagationStopped())) {
       handler.call(currentTarget, event);
     }
@@ -1625,7 +1630,7 @@ var triggerForPath = function (element, type) {
   event._target = element;
   do {
     dispatchEvent(element, event);
-  } while (element = element.parentNode);
+  } while (element = element.parentNode); // eslint-disable-line no-cond-assign
 };
 
 /**
@@ -1648,7 +1653,7 @@ var dispatchEvent = function (element, event) {
 };
 
 /**
- * Polyfill for CustomEvent, borrowed from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent#Polyfill).
+ * Polyfill for CustomEvent, borrowed from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent#Polyfill).
  * Needed to support IE (9, 10, 11) & PhantomJS
  */
 
@@ -1665,8 +1670,8 @@ var dispatchEvent = function (element, event) {
     return customEvent;
   };
 
-  CustomEvent.prototype = global.CustomEvent && global.CustomEvent.prototype;
-  global.CustomEvent = CustomEvent;
+  CustomEvent.prototype = win.CustomEvent && win.CustomEvent.prototype;
+  win.CustomEvent = CustomEvent;
 })();
 
 /*
@@ -1676,7 +1681,7 @@ var dispatchEvent = function (element, event) {
 
 var isEventBubblingInDetachedTree = function () {
   var isBubbling = false;
-  var doc = global.document;
+  var doc = win.document;
   if (doc) {
     var parent = doc.createElement('div');
     var child = parent.cloneNode();
@@ -1691,7 +1696,7 @@ var isEventBubblingInDetachedTree = function () {
 
 var supportsOtherEventConstructors = function () {
   try {
-    new window.MouseEvent('click');
+    new MouseEvent('click');
   } catch (e) {
     return false;
   }
@@ -1739,7 +1744,7 @@ var event_ready = Object.freeze({
  * @private
  */
 
-var previousLib = global.$;
+var previousLib = win.$;
 
 /**
  * In case another library sets the global `$` variable before DOMtastic does,
@@ -1751,7 +1756,7 @@ var previousLib = global.$;
  */
 
 var noConflict = function () {
-  global.$ = previousLib;
+  win.$ = previousLib;
   return this;
 };
 
@@ -1889,6 +1894,7 @@ var siblings = function (selector) {
  */
 
 var slice = function (start, end) {
+  // eslint-disable-line no-unused-vars
   return $$2([].slice.apply(this, arguments));
 };
 
@@ -1965,7 +1971,7 @@ $$$1.fn = api;
 
 // Version
 
-$$$1.version = '0.12.3';
+$$$1.version = '0.13.0';
 
 // Util
 

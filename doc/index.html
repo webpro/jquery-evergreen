@@ -2267,11 +2267,14 @@ return BaseClass;
 
   if(typeof key &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) {
     const element &#x3D; this.nodeType ? this : this[0];
-    return element &amp;&amp; element.dataset ? element.dataset[key] : undefined;
+    return element &amp;&amp; DATAKEYPROP in element ? element[DATAKEYPROP][key] : undefined;
   }
 
   return each(this, element &#x3D;&gt; {
-    element.dataset[key] &#x3D; value;
+    if(!isSupportsDataSet) {
+      element[DATAKEYPROP] &#x3D; element[DATAKEYPROP] || {};
+    }
+    element[DATAKEYPROP][key] &#x3D; value;
   });
 };</code></pre>
                                         </div>
@@ -2795,7 +2798,7 @@ return BaseClass;
 
                                 <h3>
                                     on
-                                    <em> (eventNames, selector, handler, useCapture)</em>
+                                    <em> (eventNames, selector, handler, useCapture, once)</em>
                                 </h3>
 
                                 <div class="block">
@@ -2841,6 +2844,16 @@ return BaseClass;
                                             </tr>
                                             <tr>
                                                 <td><em>useCapture</em></td>
+                                                <td><span class="label label-primary">Boolean</span></td>
+                                                <td>
+                                                    
+                                                    
+                                                    (default: <code>false</code>)
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><em>once</em></td>
                                                 <td><span class="label label-primary">Boolean</span></td>
                                                 <td>
                                                     
@@ -3494,7 +3507,7 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const noConflict &#x3D; function() {
-  global.$ &#x3D; previousLib;
+  win.$ &#x3D; previousLib;
   return this;
 };</code></pre>
                                         </div>
@@ -3758,7 +3771,7 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const matches &#x3D; (() &#x3D;&gt; {
-  const context &#x3D; typeof Element !&#x3D;&#x3D; &#x27;undefined&#x27; ? Element.prototype : global;
+  const context &#x3D; typeof Element !&#x3D;&#x3D; &#x27;undefined&#x27; ? Element.prototype : win;
   const _matches &#x3D; context.matches || context.matchesSelector || context.mozMatchesSelector || context.msMatchesSelector || context.oMatchesSelector || context.webkitMatchesSelector;
   return (element, selector) &#x3D;&gt; _matches.call(element, selector);
 })();</code></pre>
@@ -4340,7 +4353,7 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
     // New wrapped collection containing the second, third, and fourth element.</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
-                                            <pre><code class="language-javascript">export const slice &#x3D; function(start, end) {
+                                            <pre><code class="language-javascript">export const slice &#x3D; function(start, end) { // eslint-disable-line no-unused-vars
   return $([].slice.apply(this, arguments));
 };</code></pre>
                                         </div>
