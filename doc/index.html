@@ -254,6 +254,7 @@
                                 <li><a href="#selector/extra-children">children</a></li>
                                 <li><a href="#selector/extra-contents">contents</a></li>
                                 <li><a href="#selector/extra-eq">eq</a></li>
+                                <li><a href="#selector/extra-first">first</a></li>
                                 <li><a href="#selector/extra-get">get</a></li>
                                 <li><a href="#selector/extra-parent">parent</a></li>
                                 <li><a href="#selector/extra-siblings">siblings</a></li>
@@ -4073,6 +4074,52 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const eq &#x3D; function(index) {
   return slice.call(this, index, index + 1);
+};</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="selector/extra-first">
+
+
+                                <h3>
+                                    first
+                                    <em> ()</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Return a collection containing only the first item.</p>
+
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        <p>New wrapped collection</p>
+                                        <span class="label label-default">chainable</span>
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#first-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="first-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).first()
+    // The first item; result is the same as doing $($(&#x27;.items&#x27;)[0]);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="-source">
+                                            <pre><code class="language-javascript">export const first &#x3D; function() {
+  return slice.call(this, 0, 1);
 };</code></pre>
                                         </div>
                                     </div>

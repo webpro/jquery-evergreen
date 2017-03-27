@@ -196,6 +196,7 @@ Read more in the [baseClass article](https://medium.com/@webprolific/domtastic-s
     children
     contents
     eq
+    first
     get
     parent
     siblings
