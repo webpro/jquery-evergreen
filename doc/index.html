@@ -237,7 +237,7 @@
                     <li>
                         <a href="#selector/index"><strong>Selector</strong></a>
                         <ul class="">
-                                <li><a href="#selector/index-dollar">$</a></li>
+                                <li><a href="#selector/index-domtastic">domtastic</a></li>
                                 <li><a href="#selector/index-find">find</a></li>
                                 <li><a href="#selector/index-matches">matches</a></li>
                         </ul>
@@ -252,6 +252,7 @@
                         <a href="#selector/extra"><strong>Selector/extra</strong></a>
                         <ul class="">
                                 <li><a href="#selector/extra-children">children</a></li>
+                                <li><a href="#selector/extra-concat">concat</a></li>
                                 <li><a href="#selector/extra-contents">contents</a></li>
                                 <li><a href="#selector/extra-eq">eq</a></li>
                                 <li><a href="#selector/extra-first">first</a></li>
@@ -346,10 +347,10 @@
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="every-example-0">
-                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).every(function(element) {
+                                            <pre><code class="language-javascript">    // Test whether every element in the collection has the &quot;active&quot; attribute
+    $(&#x27;.items&#x27;).every(function(element) {
         return element.hasAttribute(&#x27;active&#x27;)
-    });
-    // true/false</code></pre>
+    });</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const every &#x3D; ArrayProto.every;</code></pre>
@@ -570,8 +571,7 @@ export const each &#x3D; forEach;</code></pre>
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="indexOf-example-0">
-                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).indexOf(element);
-    // 2</code></pre>
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).indexOf(element); // 2</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const indexOf &#x3D; ArrayProto.indexOf;</code></pre>
@@ -643,10 +643,9 @@ export const each &#x3D; forEach;</code></pre>
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="map-example-0">
-                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).map(function(element) {
-        return element.getAttribute(&#x27;name&#x27;)
-    });
-    // [&#x27;ever&#x27;, &#x27;green&#x27;]</code></pre>
+                                            <pre><code class="language-javascript">    // Create a new array with the attribute value of each element:
+    $(&#x27;.items&#x27;).map(function(element) {
+        return element.getAttribute(&#x27;name&#x27;)</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const map &#x3D; ArrayProto.map;</code></pre>
@@ -813,10 +812,10 @@ export const each &#x3D; forEach;</code></pre>
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="reduce-example-0">
-                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).reduce(function(previousValue, element, index, collection) {
+                                            <pre><code class="language-javascript">    // Calculate the combined height of elements:
+    $(&#x27;.items&#x27;).reduce(function(previousValue, element, index, collection) {
         return previousValue + element.clientHeight;
-    }, 0);
-    // [total height of elements]</code></pre>
+    }, 0);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const reduce &#x3D; ArrayProto.reduce;</code></pre>
@@ -878,10 +877,10 @@ export const each &#x3D; forEach;</code></pre>
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="reduceRight-example-0">
-                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).reduceRight(function(previousValue, element, index, collection) {
+                                            <pre><code class="language-javascript">    // Concatenate the text of elements in reversed order:
+    $(&#x27;.items&#x27;).reduceRight(function(previousValue, element, index, collection) {
         return previousValue + element.textContent;
-    }, &#x27;&#x27;)
-    // [reversed text of elements]</code></pre>
+    }, &#x27;&#x27;);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const reduceRight &#x3D; ArrayProto.reduceRight;</code></pre>
@@ -1033,8 +1032,7 @@ export const each &#x3D; forEach;</code></pre>
                                         <div class="active tab-pane" id="some-example-0">
                                             <pre><code class="language-javascript">    $(&#x27;.items&#x27;).some(function(element) {
         return element.hasAttribute(&#x27;active&#x27;)
-    });
-    // true/false</code></pre>
+    }); // true/false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const some &#x3D; ArrayProto.some;</code></pre>
@@ -1171,7 +1169,7 @@ export const each &#x3D; forEach;</code></pre>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">class BaseClass {
   constructor() {
-    Wrapper.call(this, selector(...arguments));
+    DOMtastic.call(this, selector(...arguments));
   }
 }
 extend(BaseClass.prototype, api);
@@ -2173,8 +2171,7 @@ return BaseClass;
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="contains-example-0">
-                                            <pre><code class="language-javascript">    $.contains(parentElement, childElement);
-    // true/false</code></pre>
+                                            <pre><code class="language-javascript">    $.contains(parentElement, childElement); // true/false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const contains &#x3D; (container, element) &#x3D;&gt; {
@@ -3522,11 +3519,11 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
                         <h2>Selector</h2>
 
 
-                            <section id="selector/index-dollar">
+                            <section id="selector/index-domtastic">
 
 
                                 <h3>
-                                    $
+                                    domtastic
                                     <em> (selector, context)</em>
                                 </h3>
 
@@ -3576,30 +3573,30 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
                                     </p>
 
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#dollar-example-0" data-toggle="tab">Example</a></li>
-                                        <li ><a href="#dollar-example-1" data-toggle="tab">Example</a></li>
-                                        <li ><a href="#dollar-example-2" data-toggle="tab">Example</a></li>
-                                        <li ><a href="#dollar-example-3" data-toggle="tab">Example</a></li>
+                                        <li class="active"><a href="#domtastic-example-0" data-toggle="tab">Example</a></li>
+                                        <li ><a href="#domtastic-example-1" data-toggle="tab">Example</a></li>
+                                        <li ><a href="#domtastic-example-2" data-toggle="tab">Example</a></li>
+                                        <li ><a href="#domtastic-example-3" data-toggle="tab">Example</a></li>
                                         <li>
                                             <a href="#-source" data-toggle="tab">Source</a>
                                         </li>
                                     </ul>
 
                                     <div class="tab-content">
-                                        <div class="active tab-pane" id="dollar-example-0">
+                                        <div class="active tab-pane" id="domtastic-example-0">
                                             <pre><code class="language-javascript">    var $items &#x3D; $(.items&#x27;);</code></pre>
                                         </div>
-                                        <div class=" tab-pane" id="dollar-example-1">
+                                        <div class=" tab-pane" id="domtastic-example-1">
                                             <pre><code class="language-javascript">    var $element &#x3D; $(domElement);</code></pre>
                                         </div>
-                                        <div class=" tab-pane" id="dollar-example-2">
+                                        <div class=" tab-pane" id="domtastic-example-2">
                                             <pre><code class="language-javascript">    var $list &#x3D; $(nodeList, document.body);</code></pre>
                                         </div>
-                                        <div class=" tab-pane" id="dollar-example-3">
+                                        <div class=" tab-pane" id="domtastic-example-3">
                                             <pre><code class="language-javascript">    var $element &#x3D; $(&#x27;&lt;p&gt;evergreen&lt;/p&gt;&#x27;);</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
-                                            <pre><code class="language-javascript">export const $ &#x3D; (selector, context &#x3D; document) &#x3D;&gt; {
+                                            <pre><code class="language-javascript">const domtastic &#x3D; function domtastic(selector, context &#x3D; document) {
 
   let collection;
 
@@ -3607,7 +3604,7 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
 
     collection &#x3D; document.querySelectorAll(null);
 
-  } else if(selector instanceof Wrapper) {
+  } else if(selector instanceof DOMtastic) {
 
     return selector;
 
@@ -3629,7 +3626,9 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
 
   return wrap(collection);
 
-};</code></pre>
+};
+
+export const $ &#x3D; domtastic;</code></pre>
                                         </div>
                                     </div>
 
@@ -3962,6 +3961,77 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
     }
   });
   return $(nodes);
+};</code></pre>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </section>
+
+                            <section id="selector/extra-concat">
+
+
+                                <h3>
+                                    concat
+                                    <em> (selector)</em>
+                                </h3>
+
+                                <div class="block">
+
+                                    <p>Add the elements of a wrapped collection to another.</p>
+
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="3">Arguments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><em>selector</em></td>
+                                                <td><span class="label label-primary">String</span> or <span class="label label-primary">Node</span> or <span class="label label-primary">NodeList</span> or <span class="label label-primary">Array</span></td>
+                                                <td>
+                                                    <p>Query selector, <code>Node</code>, <code>NodeList</code>, array of elements, or HTML fragment string.</p>
+                                                    
+                                                    
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <p><strong>Returns</strong><br>
+                                        <span class="label label-primary">Object</span>
+                                        &nbsp;
+                                        <p>The extended wrapped collection</p>
+                                        
+                                        <!--
+                                        &nbsp;
+
+                                        -->
+                                    </p>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#concat-example-0" data-toggle="tab">Example</a></li>
+                                        <li>
+                                            <a href="#-source" data-toggle="tab">Source</a>
+                                        </li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div class="active tab-pane" id="concat-example-0">
+                                            <pre><code class="language-javascript">    $(&#x27;.items&#x27;).concat($(&#x27;.more-items));
+    $(&#x27;.items&#x27;).concat(&#x27;.more-items);
+    $(&#x27;.items&#x27;).concat(&#x27;&lt;div&gt;more&lt;/div&gt;&#x27;);</code></pre>
+                                        </div>
+                                        <div class="tab-pane" id="-source">
+                                            <pre><code class="language-javascript">export const concat &#x3D; function(selector) {
+  each($(selector), element &#x3D;&gt; {
+    if([].indexOf.call(this, element) &#x3D;&#x3D;&#x3D; -1) {
+      [].push.call(this, element);
+    }
+  });
+  return this;
 };</code></pre>
                                         </div>
                                     </div>
@@ -4467,12 +4537,10 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="isFunction-example-0">
-                                            <pre><code class="language-javascript">    $.isFunction(function(){});
-    // true</code></pre>
+                                            <pre><code class="language-javascript">    $.isFunction(function(){}); // true</code></pre>
                                         </div>
                                         <div class=" tab-pane" id="isFunction-example-1">
-                                            <pre><code class="language-javascript">    $.isFunction({});
-    // false</code></pre>
+                                            <pre><code class="language-javascript">    $.isFunction({}); // false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const isFunction &#x3D; obj &#x3D;&gt; typeof obj &#x3D;&#x3D;&#x3D; &#x27;function&#x27;;</code></pre>
@@ -4535,12 +4603,10 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="isArray-example-0">
-                                            <pre><code class="language-javascript">    $.isArray([]);
-    // true</code></pre>
+                                            <pre><code class="language-javascript">    $.isArray([]); // true</code></pre>
                                         </div>
                                         <div class=" tab-pane" id="isArray-example-1">
-                                            <pre><code class="language-javascript">    $.isArray({});
-    // false</code></pre>
+                                            <pre><code class="language-javascript">    $.isArray({}); // false</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const isArray &#x3D; Array.isArray;</code></pre>
@@ -4618,12 +4684,10 @@ const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors 
 
                                     <div class="tab-content">
                                         <div class="active tab-pane" id="extend-example-0">
-                                            <pre><code class="language-javascript">    $.extend({a: 1}, {b: 2});
-    // {a: 1, b: 2}</code></pre>
+                                            <pre><code class="language-javascript">    $.extend({a: 1}, {b: 2}); // {a: 1, b: 2}</code></pre>
                                         </div>
                                         <div class=" tab-pane" id="extend-example-1">
-                                            <pre><code class="language-javascript">    $.extend({a: 1}, {b: 2}, {a: 3});
-    // {a: 3, b: 2}</code></pre>
+                                            <pre><code class="language-javascript">    $.extend({a: 1}, {b: 2}, {a: 3}); // {a: 3, b: 2}</code></pre>
                                         </div>
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const extend &#x3D; (target, ...sources) &#x3D;&gt; {
