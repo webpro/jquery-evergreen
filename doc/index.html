@@ -3051,10 +3051,11 @@ return BaseClass;
 
       each(handlers.filter(item &#x3D;&gt; {
         return (
-        (!eventName || item.eventName &#x3D;&#x3D;&#x3D; eventName) &amp;&amp;
-        (!namespace || item.namespace &#x3D;&#x3D;&#x3D; namespace) &amp;&amp;
-        (!handler || item.handler &#x3D;&#x3D;&#x3D; handler) &amp;&amp;
-        (!selector || item.selector &#x3D;&#x3D;&#x3D; selector));
+          (!eventName || item.eventName &#x3D;&#x3D;&#x3D; eventName) &amp;&amp;
+          (!namespace || item.namespace &#x3D;&#x3D;&#x3D; namespace) &amp;&amp;
+          (!handler || item.handler &#x3D;&#x3D;&#x3D; handler) &amp;&amp;
+          (!selector || item.selector &#x3D;&#x3D;&#x3D; selector)
+        );
       }), item &#x3D;&gt; {
         element.removeEventListener(item.eventName, item.eventListener, useCapture || false);
         handlers.splice(handlers.indexOf(item), 1);
