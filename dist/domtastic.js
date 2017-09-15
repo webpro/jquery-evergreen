@@ -8664,7 +8664,7 @@ var dom_data = Object.freeze({
 
 var cov_1q4gut97cw = function () {
   var path = '/Users/lars/Projects/DOMtastic/src/dom/extra.js',
-      hash = '3852803524fcba5c0e12e219dfc60dc3fca3acf2',
+      hash = '26c427db9d66c56ad36b961f5049057d31dfc532',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
@@ -8877,7 +8877,7 @@ var cov_1q4gut97cw = function () {
         },
         end: {
           line: 96,
-          column: 25
+          column: 55
         }
       },
       '21': {
@@ -9275,6 +9275,39 @@ var cov_1q4gut97cw = function () {
           }
         }],
         line: 95
+      },
+      '4': {
+        loc: {
+          start: {
+            line: 96,
+            column: 11
+          },
+          end: {
+            line: 96,
+            column: 54
+          }
+        },
+        type: 'cond-expr',
+        locations: [{
+          start: {
+            line: 96,
+            column: 29
+          },
+          end: {
+            line: 96,
+            column: 42
+          }
+        }, {
+          start: {
+            line: 96,
+            column: 45
+          },
+          end: {
+            line: 96,
+            column: 54
+          }
+        }],
+        line: 96
       }
     },
     s: {
@@ -9318,7 +9351,8 @@ var cov_1q4gut97cw = function () {
       '0': [0, 0],
       '1': [0, 0],
       '2': [0, 0],
-      '3': [0, 0]
+      '3': [0, 0],
+      '4': [0, 0]
     },
     _coverageSchema: '332fd63041d2c1bcb487cc26dd0d5f7d97098a6c'
   },
@@ -9467,7 +9501,7 @@ var val = (++cov_1q4gut97cw.s[18], function (value) {
     ++cov_1q4gut97cw.b[3][0];
     ++cov_1q4gut97cw.s[20];
 
-    return this[0].value;
+    return this.length > 0 ? (++cov_1q4gut97cw.b[4][0], this[0].value) : (++cov_1q4gut97cw.b[4][1], undefined);
   } else {
     ++cov_1q4gut97cw.b[3][1];
   }
@@ -9758,7 +9792,7 @@ var html = (++cov_38akzeiz.s[0], function (fragment) {
   ++cov_38akzeiz.s[1];
 
 
-  if (typeof fragment !== 'string') {
+  if (fragment === undefined) {
     ++cov_38akzeiz.b[0][0];
 
     var element = (++cov_38akzeiz.s[2], this.nodeType ? (++cov_38akzeiz.b[1][0], this) : (++cov_38akzeiz.b[1][1], this[0]));
@@ -17314,7 +17348,7 @@ $.fn = api;
 // Version
 
 ++cov_190ie3wknt.s[9];
-$.version = '0.15.1';
+$.version = '0.15.2';
 
 // Util
 

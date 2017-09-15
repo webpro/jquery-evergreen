@@ -2699,7 +2699,7 @@ return BaseClass;
                                             <pre><code class="language-javascript">export const val &#x3D; function(value) {
 
   if(value &#x3D;&#x3D;&#x3D; undefined) {
-    return this[0].value;
+    return this.length &gt; 0 ? this[0].value : undefined;
   }
 
   return each(this, element &#x3D;&gt; element.value &#x3D; value);
@@ -2773,7 +2773,7 @@ return BaseClass;
                                         <div class="tab-pane" id="-source">
                                             <pre><code class="language-javascript">export const html &#x3D; function(fragment) {
 
-  if(typeof fragment !&#x3D;&#x3D; &#x27;string&#x27;) {
+  if(fragment &#x3D;&#x3D;&#x3D; undefined) {
     const element &#x3D; this.nodeType ? this : this[0];
     return element ? element.innerHTML : undefined;
   }
