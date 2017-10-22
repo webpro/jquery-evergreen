@@ -3383,7 +3383,7 @@ return BaseClass;
   });
 };
 
-const getEventConstructor &#x3D; type &#x3D;&gt; supportsOtherEventConstructors ? (reMouseEvent.test(type) ? MouseEvent : (reKeyEvent.test(type) ? KeyboardEvent : CustomEvent)) : CustomEvent;</code></pre>
+const getEventConstructor &#x3D; type &#x3D;&gt; isSupportsOtherEventConstructors ? (reMouseEvent.test(type) ? MouseEvent : (reKeyEvent.test(type) ? KeyboardEvent : CustomEvent)) : CustomEvent;</code></pre>
                                         </div>
                                     </div>
 

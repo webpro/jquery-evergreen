@@ -4,13 +4,13 @@
 	(global.$ = factory());
 }(this, (function () { 'use strict';
 
-var cov_2m5q842xlx = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/util.js',
-      hash = '8240c4bb83fabf03b3315e00d3aed59959ea203d',
+var cov_2bm0mo2gk5 = function () {
+  var path = '/Users/lars/Projects/domtastic/src/util.js',
+      hash = '5c35ab1f4f5334fc8747ab003cadaf22763cb6b6',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/util.js',
+    path: '/Users/lars/Projects/domtastic/src/util.js',
     statementMap: {
       '0': {
         start: {
@@ -538,7 +538,7 @@ var cov_2m5q842xlx = function () {
  * @private
  */
 
-var win = (++cov_2m5q842xlx.s[0], typeof window !== 'undefined' ? (++cov_2m5q842xlx.b[0][0], window) : (++cov_2m5q842xlx.b[0][1], {}));
+var win = (cov_2bm0mo2gk5.s[0]++, typeof window !== 'undefined' ? (cov_2bm0mo2gk5.b[0][0]++, window) : (cov_2bm0mo2gk5.b[0][1]++, {}));
 
 /**
  * Convert `NodeList` to `Array`.
@@ -548,20 +548,21 @@ var win = (++cov_2m5q842xlx.s[0], typeof window !== 'undefined' ? (++cov_2m5q842
  * @private
  */
 
-var toArray = (++cov_2m5q842xlx.s[1], function (collection) {
-  ++cov_2m5q842xlx.f[0];
+cov_2bm0mo2gk5.s[1]++;
+var toArray = function toArray(collection) {
+  cov_2bm0mo2gk5.f[0]++;
 
-  var length = (++cov_2m5q842xlx.s[2], collection.length);
-  var result = (++cov_2m5q842xlx.s[3], new Array(length));
-  ++cov_2m5q842xlx.s[4];
+  var length = (cov_2bm0mo2gk5.s[2]++, collection.length);
+  var result = (cov_2bm0mo2gk5.s[3]++, new Array(length));
+  cov_2bm0mo2gk5.s[4]++;
   for (var i = 0; i < length; i++) {
-    ++cov_2m5q842xlx.s[5];
+    cov_2bm0mo2gk5.s[5]++;
 
     result[i] = collection[i];
   }
-  ++cov_2m5q842xlx.s[6];
+  cov_2bm0mo2gk5.s[6]++;
   return result;
-});
+};
 
 /**
  * Faster alternative to [].forEach method
@@ -572,29 +573,30 @@ var toArray = (++cov_2m5q842xlx.s[1], function (collection) {
  * @private
  */
 
-var each = (++cov_2m5q842xlx.s[7], function (collection, callback, thisArg) {
-  ++cov_2m5q842xlx.f[1];
+cov_2bm0mo2gk5.s[7]++;
+var each = function each(collection, callback, thisArg) {
+  cov_2bm0mo2gk5.f[1]++;
 
-  var length = (++cov_2m5q842xlx.s[8], collection.length);
-  ++cov_2m5q842xlx.s[9];
-  if ((++cov_2m5q842xlx.b[2][0], length !== undefined) && (++cov_2m5q842xlx.b[2][1], collection.nodeType === undefined)) {
-    ++cov_2m5q842xlx.b[1][0];
-    ++cov_2m5q842xlx.s[10];
+  var length = (cov_2bm0mo2gk5.s[8]++, collection.length);
+  cov_2bm0mo2gk5.s[9]++;
+  if ((cov_2bm0mo2gk5.b[2][0]++, length !== undefined) && (cov_2bm0mo2gk5.b[2][1]++, collection.nodeType === undefined)) {
+    cov_2bm0mo2gk5.b[1][0]++;
+    cov_2bm0mo2gk5.s[10]++;
 
     for (var i = 0; i < length; i++) {
-      ++cov_2m5q842xlx.s[11];
+      cov_2bm0mo2gk5.s[11]++;
 
       callback.call(thisArg, collection[i], i, collection);
     }
   } else {
-    ++cov_2m5q842xlx.b[1][1];
-    ++cov_2m5q842xlx.s[12];
+    cov_2bm0mo2gk5.b[1][1]++;
+    cov_2bm0mo2gk5.s[12]++;
 
     callback.call(thisArg, collection, 0, collection);
   }
-  ++cov_2m5q842xlx.s[13];
+  cov_2bm0mo2gk5.s[13]++;
   return collection;
-});
+};
 
 /**
  * Assign enumerable properties from source object(s) to target object
@@ -609,27 +611,28 @@ var each = (++cov_2m5q842xlx.s[7], function (collection, callback, thisArg) {
  *     $.extend({a: 1}, {b: 2}, {a: 3}); // {a: 3, b: 2}
  */
 
-var extend = (++cov_2m5q842xlx.s[14], function (target) {
+cov_2bm0mo2gk5.s[14]++;
+var extend = function extend(target) {
   for (var _len = arguments.length, sources = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     sources[_key - 1] = arguments[_key];
   }
 
-  ++cov_2m5q842xlx.f[2];
-  ++cov_2m5q842xlx.s[15];
+  cov_2bm0mo2gk5.f[2]++;
+  cov_2bm0mo2gk5.s[15]++;
 
   sources.forEach(function (src) {
-    ++cov_2m5q842xlx.f[3];
-    ++cov_2m5q842xlx.s[16];
+    cov_2bm0mo2gk5.f[3]++;
+    cov_2bm0mo2gk5.s[16]++;
 
     for (var prop in src) {
-      ++cov_2m5q842xlx.s[17];
+      cov_2bm0mo2gk5.s[17]++;
 
       target[prop] = src[prop];
     }
   });
-  ++cov_2m5q842xlx.s[18];
+  cov_2bm0mo2gk5.s[18]++;
   return target;
-});
+};
 
 /**
  * Return the collection without duplicates
@@ -639,23 +642,24 @@ var extend = (++cov_2m5q842xlx.s[14], function (target) {
  * @private
  */
 
-var uniq = (++cov_2m5q842xlx.s[19], function (collection) {
-  ++cov_2m5q842xlx.f[4];
-  ++cov_2m5q842xlx.s[20];
+cov_2bm0mo2gk5.s[19]++;
+var uniq = function uniq(collection) {
+  cov_2bm0mo2gk5.f[4]++;
+  cov_2bm0mo2gk5.s[20]++;
   return collection.filter(function (item, index) {
-    ++cov_2m5q842xlx.f[5];
-    ++cov_2m5q842xlx.s[21];
+    cov_2bm0mo2gk5.f[5]++;
+    cov_2bm0mo2gk5.s[21]++;
     return collection.indexOf(item) === index;
   });
-});
+};
 
-var cov_1vldtlv8ck = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/selector/index.js',
-      hash = '7bf46c292f9f1dc38d760af5da4820e47b3341f5',
+var cov_aascn6j1f = function () {
+  var path = '/Users/lars/Projects/domtastic/src/selector/index.js',
+      hash = 'f3cc354b8a7a35dd1b6fda13d6418a519d53c8d5',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/selector/index.js',
+    path: '/Users/lars/Projects/domtastic/src/selector/index.js',
     statementMap: {
       '0': {
         start: {
@@ -2278,11 +2282,11 @@ var cov_1vldtlv8ck = function () {
  * @module Selector
  */
 
-var isPrototypeSet = (++cov_1vldtlv8ck.s[0], false);
+var isPrototypeSet = (cov_aascn6j1f.s[0]++, false);
 
-var reFragment = (++cov_1vldtlv8ck.s[1], /^\s*<(\w+|!)[^>]*>/);
-var reSingleTag = (++cov_1vldtlv8ck.s[2], /^<(\w+)\s*\/?>(?:<\/\1>|)$/);
-var reSimpleSelector = (++cov_1vldtlv8ck.s[3], /^[.#]?[\w-]*$/);
+var reFragment = (cov_aascn6j1f.s[1]++, /^\s*<(\w+|!)[^>]*>/);
+var reSingleTag = (cov_aascn6j1f.s[2]++, /^<(\w+)\s*\/?>(?:<\/\1>|)$/);
+var reSimpleSelector = (cov_aascn6j1f.s[3]++, /^[.#]?[\w-]*$/);
 
 /*
  * Versatile wrapper for `querySelectorAll`.
@@ -2301,65 +2305,65 @@ var reSimpleSelector = (++cov_1vldtlv8ck.s[3], /^[.#]?[\w-]*$/);
  *     var $element = $('<p>evergreen</p>');
  */
 
-++cov_1vldtlv8ck.s[4];
+cov_aascn6j1f.s[4]++;
 var domtastic = function domtastic(selector) {
-  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (++cov_1vldtlv8ck.b[0][0], document);
-  ++cov_1vldtlv8ck.f[0];
+  var context = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (cov_aascn6j1f.b[0][0]++, document);
+  cov_aascn6j1f.f[0]++;
 
 
   var collection = void 0;
 
-  ++cov_1vldtlv8ck.s[5];
+  cov_aascn6j1f.s[5]++;
   if (!selector) {
-    ++cov_1vldtlv8ck.b[1][0];
-    ++cov_1vldtlv8ck.s[6];
+    cov_aascn6j1f.b[1][0]++;
+    cov_aascn6j1f.s[6]++;
 
 
     collection = document.querySelectorAll(null);
   } else {
-      ++cov_1vldtlv8ck.b[1][1];
-      ++cov_1vldtlv8ck.s[7];
+      cov_aascn6j1f.b[1][1]++;
+      cov_aascn6j1f.s[7]++;
       if (selector instanceof DOMtastic) {
-        ++cov_1vldtlv8ck.b[2][0];
-        ++cov_1vldtlv8ck.s[8];
+        cov_aascn6j1f.b[2][0]++;
+        cov_aascn6j1f.s[8]++;
 
 
         return selector;
       } else {
-          ++cov_1vldtlv8ck.b[2][1];
-          ++cov_1vldtlv8ck.s[9];
+          cov_aascn6j1f.b[2][1]++;
+          cov_aascn6j1f.s[9]++;
           if (typeof selector !== 'string') {
-            ++cov_1vldtlv8ck.b[3][0];
-            ++cov_1vldtlv8ck.s[10];
+            cov_aascn6j1f.b[3][0]++;
+            cov_aascn6j1f.s[10]++;
 
 
-            collection = (++cov_1vldtlv8ck.b[5][0], selector.nodeType) || (++cov_1vldtlv8ck.b[5][1], selector === window) ? (++cov_1vldtlv8ck.b[4][0], [selector]) : (++cov_1vldtlv8ck.b[4][1], selector);
+            collection = (cov_aascn6j1f.b[5][0]++, selector.nodeType) || (cov_aascn6j1f.b[5][1]++, selector === window) ? (cov_aascn6j1f.b[4][0]++, [selector]) : (cov_aascn6j1f.b[4][1]++, selector);
           } else {
-              ++cov_1vldtlv8ck.b[3][1];
-              ++cov_1vldtlv8ck.s[11];
+              cov_aascn6j1f.b[3][1]++;
+              cov_aascn6j1f.s[11]++;
               if (reFragment.test(selector)) {
-                ++cov_1vldtlv8ck.b[6][0];
-                ++cov_1vldtlv8ck.s[12];
+                cov_aascn6j1f.b[6][0]++;
+                cov_aascn6j1f.s[12]++;
 
 
                 collection = createFragment(selector);
               } else {
-                ++cov_1vldtlv8ck.b[6][1];
-                ++cov_1vldtlv8ck.s[13];
+                cov_aascn6j1f.b[6][1]++;
+                cov_aascn6j1f.s[13]++;
 
 
-                context = typeof context === 'string' ? (++cov_1vldtlv8ck.b[7][0], document.querySelector(context)) : (++cov_1vldtlv8ck.b[7][1], context.length ? (++cov_1vldtlv8ck.b[8][0], context[0]) : (++cov_1vldtlv8ck.b[8][1], context));
+                context = typeof context === 'string' ? (cov_aascn6j1f.b[7][0]++, document.querySelector(context)) : (cov_aascn6j1f.b[7][1]++, context.length ? (cov_aascn6j1f.b[8][0]++, context[0]) : (cov_aascn6j1f.b[8][1]++, context));
 
-                ++cov_1vldtlv8ck.s[14];
+                cov_aascn6j1f.s[14]++;
                 collection = querySelector(selector, context);
               }
             }
         }
-    }++cov_1vldtlv8ck.s[15];
+    }cov_aascn6j1f.s[15]++;
   return wrap(collection);
 };
 
-var $$2 = (++cov_1vldtlv8ck.s[16], domtastic);
+var $$2 = (cov_aascn6j1f.s[16]++, domtastic);
 
 /*
  * Find descendants matching the provided `selector` for each element in the collection.
@@ -2370,31 +2374,32 @@ var $$2 = (++cov_1vldtlv8ck.s[16], domtastic);
  *     $('.selector').find('.deep').$('.deepest');
  */
 
-var find = (++cov_1vldtlv8ck.s[17], function (selector) {
-  ++cov_1vldtlv8ck.f[1];
+cov_aascn6j1f.s[17]++;
+var find = function find(selector) {
+  cov_aascn6j1f.f[1]++;
 
-  var nodes = (++cov_1vldtlv8ck.s[18], []);
-  ++cov_1vldtlv8ck.s[19];
+  var nodes = (cov_aascn6j1f.s[18]++, []);
+  cov_aascn6j1f.s[19]++;
   each(this, function (node) {
-    ++cov_1vldtlv8ck.f[2];
-    ++cov_1vldtlv8ck.s[20];
+    cov_aascn6j1f.f[2]++;
+    cov_aascn6j1f.s[20]++;
     return each(querySelector(selector, node), function (child) {
-      ++cov_1vldtlv8ck.f[3];
-      ++cov_1vldtlv8ck.s[21];
+      cov_aascn6j1f.f[3]++;
+      cov_aascn6j1f.s[21]++;
 
       if (nodes.indexOf(child) === -1) {
-        ++cov_1vldtlv8ck.b[9][0];
-        ++cov_1vldtlv8ck.s[22];
+        cov_aascn6j1f.b[9][0]++;
+        cov_aascn6j1f.s[22]++;
 
         nodes.push(child);
       } else {
-        ++cov_1vldtlv8ck.b[9][1];
+        cov_aascn6j1f.b[9][1]++;
       }
     });
   });
-  ++cov_1vldtlv8ck.s[23];
+  cov_aascn6j1f.s[23]++;
   return $$2(nodes);
-});
+};
 
 /*
  * Returns `true` if the element would be selected by the specified selector string; otherwise, returns `false`.
@@ -2407,15 +2412,15 @@ var find = (++cov_1vldtlv8ck.s[17], function (selector) {
  *     $.matches(element, '.match');
  */
 
-var matches = (++cov_1vldtlv8ck.s[24], function () {
-  ++cov_1vldtlv8ck.f[4];
+var matches = (cov_aascn6j1f.s[24]++, function () {
+  cov_aascn6j1f.f[4]++;
 
-  var context = (++cov_1vldtlv8ck.s[25], typeof Element !== 'undefined' ? (++cov_1vldtlv8ck.b[10][0], Element.prototype) : (++cov_1vldtlv8ck.b[10][1], win));
-  var _matches = (++cov_1vldtlv8ck.s[26], (++cov_1vldtlv8ck.b[11][0], context.matches) || (++cov_1vldtlv8ck.b[11][1], context.matchesSelector) || (++cov_1vldtlv8ck.b[11][2], context.mozMatchesSelector) || (++cov_1vldtlv8ck.b[11][3], context.msMatchesSelector) || (++cov_1vldtlv8ck.b[11][4], context.oMatchesSelector) || (++cov_1vldtlv8ck.b[11][5], context.webkitMatchesSelector));
-  ++cov_1vldtlv8ck.s[27];
+  var context = (cov_aascn6j1f.s[25]++, typeof Element !== 'undefined' ? (cov_aascn6j1f.b[10][0]++, Element.prototype) : (cov_aascn6j1f.b[10][1]++, win));
+  var _matches = (cov_aascn6j1f.s[26]++, (cov_aascn6j1f.b[11][0]++, context.matches) || (cov_aascn6j1f.b[11][1]++, context.matchesSelector) || (cov_aascn6j1f.b[11][2]++, context.mozMatchesSelector) || (cov_aascn6j1f.b[11][3]++, context.msMatchesSelector) || (cov_aascn6j1f.b[11][4]++, context.oMatchesSelector) || (cov_aascn6j1f.b[11][5]++, context.webkitMatchesSelector));
+  cov_aascn6j1f.s[27]++;
   return function (element, selector) {
-    ++cov_1vldtlv8ck.f[5];
-    ++cov_1vldtlv8ck.s[28];
+    cov_aascn6j1f.f[5]++;
+    cov_aascn6j1f.s[28]++;
     return _matches.call(element, selector);
   };
 }());
@@ -2429,43 +2434,43 @@ var matches = (++cov_1vldtlv8ck.s[24], function () {
  * @return {Object} NodeList, HTMLCollection, or Array of matching elements (depending on method used).
  */
 
-++cov_1vldtlv8ck.s[29];
-var querySelector = function (selector, context) {
-  ++cov_1vldtlv8ck.f[6];
+cov_aascn6j1f.s[29]++;
+var querySelector = function querySelector(selector, context) {
+  cov_aascn6j1f.f[6]++;
 
 
-  var isSimpleSelector = (++cov_1vldtlv8ck.s[30], reSimpleSelector.test(selector));
+  var isSimpleSelector = (cov_aascn6j1f.s[30]++, reSimpleSelector.test(selector));
 
-  ++cov_1vldtlv8ck.s[31];
+  cov_aascn6j1f.s[31]++;
   if (isSimpleSelector) {
-    ++cov_1vldtlv8ck.b[12][0];
-    ++cov_1vldtlv8ck.s[32];
+    cov_aascn6j1f.b[12][0]++;
+    cov_aascn6j1f.s[32]++;
 
     if (selector[0] === '#') {
-      ++cov_1vldtlv8ck.b[13][0];
+      cov_aascn6j1f.b[13][0]++;
 
-      var element = (++cov_1vldtlv8ck.s[33], (context.getElementById ? (++cov_1vldtlv8ck.b[14][0], context) : (++cov_1vldtlv8ck.b[14][1], document)).getElementById(selector.slice(1)));
-      ++cov_1vldtlv8ck.s[34];
-      return element ? (++cov_1vldtlv8ck.b[15][0], [element]) : (++cov_1vldtlv8ck.b[15][1], []);
+      var element = (cov_aascn6j1f.s[33]++, (context.getElementById ? (cov_aascn6j1f.b[14][0]++, context) : (cov_aascn6j1f.b[14][1]++, document)).getElementById(selector.slice(1)));
+      cov_aascn6j1f.s[34]++;
+      return element ? (cov_aascn6j1f.b[15][0]++, [element]) : (cov_aascn6j1f.b[15][1]++, []);
     } else {
-      ++cov_1vldtlv8ck.b[13][1];
+      cov_aascn6j1f.b[13][1]++;
     }
-    ++cov_1vldtlv8ck.s[35];
+    cov_aascn6j1f.s[35]++;
     if (selector[0] === '.') {
-      ++cov_1vldtlv8ck.b[16][0];
-      ++cov_1vldtlv8ck.s[36];
+      cov_aascn6j1f.b[16][0]++;
+      cov_aascn6j1f.s[36]++;
 
       return context.getElementsByClassName(selector.slice(1));
     } else {
-      ++cov_1vldtlv8ck.b[16][1];
+      cov_aascn6j1f.b[16][1]++;
     }
-    ++cov_1vldtlv8ck.s[37];
+    cov_aascn6j1f.s[37]++;
     return context.getElementsByTagName(selector);
   } else {
-    ++cov_1vldtlv8ck.b[12][1];
+    cov_aascn6j1f.b[12][1]++;
   }
 
-  ++cov_1vldtlv8ck.s[38];
+  cov_aascn6j1f.s[38]++;
   return context.querySelectorAll(selector);
 };
 
@@ -2477,36 +2482,36 @@ var querySelector = function (selector, context) {
  * @return {NodeList}
  */
 
-++cov_1vldtlv8ck.s[39];
-var createFragment = function (html) {
-  ++cov_1vldtlv8ck.f[7];
-  ++cov_1vldtlv8ck.s[40];
+cov_aascn6j1f.s[39]++;
+var createFragment = function createFragment(html) {
+  cov_aascn6j1f.f[7]++;
+  cov_aascn6j1f.s[40]++;
 
 
   if (reSingleTag.test(html)) {
-    ++cov_1vldtlv8ck.b[17][0];
-    ++cov_1vldtlv8ck.s[41];
+    cov_aascn6j1f.b[17][0]++;
+    cov_aascn6j1f.s[41]++;
 
     return [document.createElement(RegExp.$1)];
   } else {
-    ++cov_1vldtlv8ck.b[17][1];
+    cov_aascn6j1f.b[17][1]++;
   }
 
-  var elements = (++cov_1vldtlv8ck.s[42], []);
-  var container = (++cov_1vldtlv8ck.s[43], document.createElement('div'));
-  var children = (++cov_1vldtlv8ck.s[44], container.childNodes);
+  var elements = (cov_aascn6j1f.s[42]++, []);
+  var container = (cov_aascn6j1f.s[43]++, document.createElement('div'));
+  var children = (cov_aascn6j1f.s[44]++, container.childNodes);
 
-  ++cov_1vldtlv8ck.s[45];
+  cov_aascn6j1f.s[45]++;
   container.innerHTML = html;
 
-  ++cov_1vldtlv8ck.s[46];
+  cov_aascn6j1f.s[46]++;
   for (var i = 0, l = children.length; i < l; i++) {
-    ++cov_1vldtlv8ck.s[47];
+    cov_aascn6j1f.s[47]++;
 
     elements.push(children[i]);
   }
 
-  ++cov_1vldtlv8ck.s[48];
+  cov_aascn6j1f.s[48]++;
   return elements;
 };
 
@@ -2518,26 +2523,26 @@ var createFragment = function (html) {
  * @return Object) The wrapped collection
  */
 
-++cov_1vldtlv8ck.s[49];
-var wrap = function (collection) {
-  ++cov_1vldtlv8ck.f[8];
-  ++cov_1vldtlv8ck.s[50];
+cov_aascn6j1f.s[49]++;
+var wrap = function wrap(collection) {
+  cov_aascn6j1f.f[8]++;
+  cov_aascn6j1f.s[50]++;
 
 
   if (!isPrototypeSet) {
-    ++cov_1vldtlv8ck.b[18][0];
-    ++cov_1vldtlv8ck.s[51];
+    cov_aascn6j1f.b[18][0]++;
+    cov_aascn6j1f.s[51]++;
 
     DOMtastic.prototype = $$2.fn;
-    ++cov_1vldtlv8ck.s[52];
+    cov_aascn6j1f.s[52]++;
     DOMtastic.prototype.constructor = DOMtastic;
-    ++cov_1vldtlv8ck.s[53];
+    cov_aascn6j1f.s[53]++;
     isPrototypeSet = true;
   } else {
-    ++cov_1vldtlv8ck.b[18][1];
+    cov_aascn6j1f.b[18][1]++;
   }
 
-  ++cov_1vldtlv8ck.s[54];
+  cov_aascn6j1f.s[54]++;
   return new DOMtastic(collection);
 };
 
@@ -2549,20 +2554,21 @@ var wrap = function (collection) {
  * @param {NodeList|Array} collection Element(s) to wrap.
  */
 
-var DOMtastic = (++cov_1vldtlv8ck.s[55], function DOMtastic(collection) {
-  ++cov_1vldtlv8ck.f[9];
+cov_aascn6j1f.s[55]++;
+var DOMtastic = function DOMtastic(collection) {
+  cov_aascn6j1f.f[9]++;
 
-  var i = (++cov_1vldtlv8ck.s[56], 0);
-  var length = (++cov_1vldtlv8ck.s[57], collection.length);
-  ++cov_1vldtlv8ck.s[58];
+  var i = (cov_aascn6j1f.s[56]++, 0);
+  var length = (cov_aascn6j1f.s[57]++, collection.length);
+  cov_aascn6j1f.s[58]++;
   for (; i < length;) {
-    ++cov_1vldtlv8ck.s[59];
+    cov_aascn6j1f.s[59]++;
 
     this[i] = collection[i++];
   }
-  ++cov_1vldtlv8ck.s[60];
+  cov_aascn6j1f.s[60]++;
   this.length = length;
-});
+};
 
 var selector = Object.freeze({
 	$: $$2,
@@ -2571,13 +2577,13 @@ var selector = Object.freeze({
 	DOMtastic: DOMtastic
 });
 
-var cov_1cp43r90bd = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/array.js',
-      hash = 'b0861f617b8eb99bc0736b2a2b76ea043adbb48c',
+var cov_1i7iovxk5y = function () {
+  var path = '/Users/lars/Projects/domtastic/src/array.js',
+      hash = 'c8c9be825cb02f57909b25cf6ed0073451a884a0',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/array.js',
+    path: '/Users/lars/Projects/domtastic/src/array.js',
     statementMap: {
       '0': {
         start: {
@@ -2960,7 +2966,7 @@ var cov_1cp43r90bd = function () {
  * @module Array
  */
 
-var ArrayProto = (++cov_1cp43r90bd.s[0], Array.prototype);
+var ArrayProto = (cov_1i7iovxk5y.s[0]++, Array.prototype);
 
 /**
  * Checks if the given callback returns a true(-ish) value for each element in the collection.
@@ -2975,7 +2981,7 @@ var ArrayProto = (++cov_1cp43r90bd.s[0], Array.prototype);
  *     });
  */
 
-var every = (++cov_1cp43r90bd.s[1], ArrayProto.every);
+var every = (cov_1i7iovxk5y.s[1]++, ArrayProto.every);
 
 /**
  * Filter the collection by selector or function, and return a new collection with the result.
@@ -2992,17 +2998,18 @@ var every = (++cov_1cp43r90bd.s[1], ArrayProto.every);
  *     });
  */
 
-var filter = (++cov_1cp43r90bd.s[2], function (selector, thisArg) {
-  ++cov_1cp43r90bd.f[0];
+cov_1i7iovxk5y.s[2]++;
+var filter = function filter(selector, thisArg) {
+  cov_1i7iovxk5y.f[0]++;
 
-  var callback = (++cov_1cp43r90bd.s[3], typeof selector === 'function' ? (++cov_1cp43r90bd.b[0][0], selector) : (++cov_1cp43r90bd.b[0][1], function (element) {
-    ++cov_1cp43r90bd.f[1];
-    ++cov_1cp43r90bd.s[4];
+  var callback = (cov_1i7iovxk5y.s[3]++, typeof selector === 'function' ? (cov_1i7iovxk5y.b[0][0]++, selector) : (cov_1i7iovxk5y.b[0][1]++, function (element) {
+    cov_1i7iovxk5y.f[1]++;
+    cov_1i7iovxk5y.s[4]++;
     return matches(element, selector);
   }));
-  ++cov_1cp43r90bd.s[5];
+  cov_1i7iovxk5y.s[5]++;
   return $$2(ArrayProto.filter.call(this, callback, thisArg));
-});
+};
 
 /**
  * Execute a function for each element in the collection.
@@ -3017,14 +3024,15 @@ var filter = (++cov_1cp43r90bd.s[2], function (selector, thisArg) {
  *     );
  */
 
-var forEach = (++cov_1cp43r90bd.s[6], function (callback, thisArg) {
-  ++cov_1cp43r90bd.f[2];
-  ++cov_1cp43r90bd.s[7];
+cov_1i7iovxk5y.s[6]++;
+var forEach = function forEach(callback, thisArg) {
+  cov_1i7iovxk5y.f[2]++;
+  cov_1i7iovxk5y.s[7]++;
 
   return each(this, callback, thisArg);
-});
+};
 
-var each$1 = (++cov_1cp43r90bd.s[8], forEach);
+var each$1 = (cov_1i7iovxk5y.s[8]++, forEach);
 
 /**
  * Returns the index of an element in the collection.
@@ -3035,7 +3043,7 @@ var each$1 = (++cov_1cp43r90bd.s[8], forEach);
  *     $('.items').indexOf(element); // 2
  */
 
-var indexOf = (++cov_1cp43r90bd.s[9], ArrayProto.indexOf);
+var indexOf = (cov_1i7iovxk5y.s[9]++, ArrayProto.indexOf);
 
 /**
  * Create a new collection by executing the callback for each element in the collection.
@@ -3049,7 +3057,7 @@ var indexOf = (++cov_1cp43r90bd.s[9], ArrayProto.indexOf);
  *         return element.getAttribute('name')
  */
 
-var map = (++cov_1cp43r90bd.s[10], ArrayProto.map);
+var map = (cov_1i7iovxk5y.s[10]++, ArrayProto.map);
 
 /**
  * Removes the last element from the collection, and returns that element.
@@ -3059,7 +3067,7 @@ var map = (++cov_1cp43r90bd.s[10], ArrayProto.map);
  *     var lastElement = $('.items').pop();
  */
 
-var pop = (++cov_1cp43r90bd.s[11], ArrayProto.pop);
+var pop = (cov_1i7iovxk5y.s[11]++, ArrayProto.pop);
 
 /**
  * Adds one or more elements to the end of the collection, and returns the new length of the collection.
@@ -3070,7 +3078,7 @@ var pop = (++cov_1cp43r90bd.s[11], ArrayProto.pop);
  *     $('.items').push(element);
  */
 
-var push = (++cov_1cp43r90bd.s[12], ArrayProto.push);
+var push = (cov_1i7iovxk5y.s[12]++, ArrayProto.push);
 
 /**
  * Apply a function against each element in the collection, and this accumulator function has to reduce it
@@ -3085,7 +3093,7 @@ var push = (++cov_1cp43r90bd.s[12], ArrayProto.push);
  *     }, 0);
  */
 
-var reduce = (++cov_1cp43r90bd.s[13], ArrayProto.reduce);
+var reduce = (cov_1i7iovxk5y.s[13]++, ArrayProto.reduce);
 
 /**
  * Apply a function against each element in the collection (from right-to-left), and this accumulator function has
@@ -3100,7 +3108,7 @@ var reduce = (++cov_1cp43r90bd.s[13], ArrayProto.reduce);
  *     }, '');
  */
 
-var reduceRight = (++cov_1cp43r90bd.s[14], ArrayProto.reduceRight);
+var reduceRight = (cov_1i7iovxk5y.s[14]++, ArrayProto.reduceRight);
 
 /**
  * Reverses an array in place. The first array element becomes the last and the last becomes the first.
@@ -3111,12 +3119,13 @@ var reduceRight = (++cov_1cp43r90bd.s[14], ArrayProto.reduceRight);
  *     $('.items').reverse();
  */
 
-var reverse = (++cov_1cp43r90bd.s[15], function () {
-  ++cov_1cp43r90bd.f[3];
-  ++cov_1cp43r90bd.s[16];
+cov_1i7iovxk5y.s[15]++;
+var reverse = function reverse() {
+  cov_1i7iovxk5y.f[3]++;
+  cov_1i7iovxk5y.s[16]++;
 
   return $$2(toArray(this).reverse());
-});
+};
 
 /**
  * Removes the first element from the collection, and returns that element.
@@ -3126,7 +3135,7 @@ var reverse = (++cov_1cp43r90bd.s[15], function () {
  *     var firstElement = $('.items').shift();
  */
 
-var shift = (++cov_1cp43r90bd.s[17], ArrayProto.shift);
+var shift = (cov_1i7iovxk5y.s[17]++, ArrayProto.shift);
 
 /**
  * Checks if the given callback returns a true(-ish) value for any of the elements in the collection.
@@ -3139,7 +3148,7 @@ var shift = (++cov_1cp43r90bd.s[17], ArrayProto.shift);
  *     }); // true/false
  */
 
-var some = (++cov_1cp43r90bd.s[18], ArrayProto.some);
+var some = (cov_1i7iovxk5y.s[18]++, ArrayProto.some);
 
 /**
  * Adds one or more elements to the beginning of the collection, and returns the new length of the collection.
@@ -3150,7 +3159,7 @@ var some = (++cov_1cp43r90bd.s[18], ArrayProto.some);
  *     $('.items').unshift(element);
  */
 
-var unshift = (++cov_1cp43r90bd.s[19], ArrayProto.unshift);
+var unshift = (cov_1i7iovxk5y.s[19]++, ArrayProto.unshift);
 
 var array = Object.freeze({
 	every: every,
@@ -3169,13 +3178,13 @@ var array = Object.freeze({
 	unshift: unshift
 });
 
-var cov_2cf1l7epij = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/baseClass.js',
-      hash = 'e7a57ab18e662a5f7416b194e447503c3b45d020',
+var cov_1j4jhl4u3z = function () {
+  var path = '/Users/lars/Projects/domtastic/src/baseClass.js',
+      hash = '4a7463b4dd09ec0b10c62275d95c30d70fab1056',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/baseClass.js',
+    path: '/Users/lars/Projects/domtastic/src/baseClass.js',
     statementMap: {
       '0': {
         start: {
@@ -3288,7 +3297,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  */
 
 var BaseClass = function (api) {
-  ++cov_2cf1l7epij.f[0];
+  cov_1j4jhl4u3z.f[0]++;
 
   /**
    * Provide subclass for classes or components to extend from.
@@ -3323,26 +3332,26 @@ var BaseClass = function (api) {
   var BaseClass = function BaseClass() {
     _classCallCheck(this, BaseClass);
 
-    ++cov_2cf1l7epij.f[1];
-    ++cov_2cf1l7epij.s[0];
+    cov_1j4jhl4u3z.f[1]++;
+    cov_1j4jhl4u3z.s[0]++;
 
     DOMtastic.call(this, $$2.apply(undefined, arguments));
   };
 
-  ++cov_2cf1l7epij.s[1];
+  cov_1j4jhl4u3z.s[1]++;
 
   extend(BaseClass.prototype, api);
-  ++cov_2cf1l7epij.s[2];
+  cov_1j4jhl4u3z.s[2]++;
   return BaseClass;
 };
 
-var cov_n872ptxvi = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/css.js',
-      hash = 'a1edfa95d19224fc6982447b4facb0078a4dec7d',
+var cov_29ewsuhnmk = function () {
+  var path = '/Users/lars/Projects/domtastic/src/css.js',
+      hash = '01c10e7e9ec3758a5a7c23a7b595e6b44c542d33',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/css.js',
+    path: '/Users/lars/Projects/domtastic/src/css.js',
     statementMap: {
       '0': {
         start: {
@@ -4112,28 +4121,28 @@ var cov_n872ptxvi = function () {
  * @module CSS
  */
 
-++cov_n872ptxvi.s[0];
-var isNumeric = function (value) {
-  ++cov_n872ptxvi.f[0];
-  ++cov_n872ptxvi.s[1];
-  return (++cov_n872ptxvi.b[0][0], !isNaN(parseFloat(value))) && (++cov_n872ptxvi.b[0][1], isFinite(value));
+cov_29ewsuhnmk.s[0]++;
+var isNumeric = function isNumeric(value) {
+  cov_29ewsuhnmk.f[0]++;
+  cov_29ewsuhnmk.s[1]++;
+  return (cov_29ewsuhnmk.b[0][0]++, !isNaN(parseFloat(value))) && (cov_29ewsuhnmk.b[0][1]++, isFinite(value));
 };
 
-++cov_n872ptxvi.s[2];
-var camelize = function (value) {
-  ++cov_n872ptxvi.f[1];
-  ++cov_n872ptxvi.s[3];
+cov_29ewsuhnmk.s[2]++;
+var camelize = function camelize(value) {
+  cov_29ewsuhnmk.f[1]++;
+  cov_29ewsuhnmk.s[3]++;
   return value.replace(/-([\da-z])/gi, function (matches, letter) {
-    ++cov_n872ptxvi.f[2];
-    ++cov_n872ptxvi.s[4];
+    cov_29ewsuhnmk.f[2]++;
+    cov_29ewsuhnmk.s[4]++;
     return letter.toUpperCase();
   });
 };
 
-++cov_n872ptxvi.s[5];
-var dasherize = function (value) {
-  ++cov_n872ptxvi.f[3];
-  ++cov_n872ptxvi.s[6];
+cov_29ewsuhnmk.s[5]++;
+var dasherize = function dasherize(value) {
+  cov_29ewsuhnmk.f[3]++;
+  cov_29ewsuhnmk.s[6]++;
   return value.replace(/([a-z\d])([A-Z])/g, '$1-$2').toLowerCase();
 };
 
@@ -4150,101 +4159,102 @@ var dasherize = function (value) {
  *     $('.item').css({'border-width': '1px', display: 'inline-block'}); // set multiple
  */
 
-var css = (++cov_n872ptxvi.s[7], function (key, value) {
-  ++cov_n872ptxvi.f[4];
+cov_29ewsuhnmk.s[7]++;
+var css = function css(key, value) {
+  cov_29ewsuhnmk.f[4]++;
 
 
   var styleProps = void 0,
       prop = void 0,
       val = void 0;
 
-  ++cov_n872ptxvi.s[8];
+  cov_29ewsuhnmk.s[8]++;
   if (typeof key === 'string') {
-    ++cov_n872ptxvi.b[1][0];
-    ++cov_n872ptxvi.s[9];
+    cov_29ewsuhnmk.b[1][0]++;
+    cov_29ewsuhnmk.s[9]++;
 
     key = camelize(key);
 
-    ++cov_n872ptxvi.s[10];
+    cov_29ewsuhnmk.s[10]++;
     if (typeof value === 'undefined') {
-      ++cov_n872ptxvi.b[2][0];
+      cov_29ewsuhnmk.b[2][0]++;
 
-      var element = (++cov_n872ptxvi.s[11], this.nodeType ? (++cov_n872ptxvi.b[3][0], this) : (++cov_n872ptxvi.b[3][1], this[0]));
-      ++cov_n872ptxvi.s[12];
+      var element = (cov_29ewsuhnmk.s[11]++, this.nodeType ? (cov_29ewsuhnmk.b[3][0]++, this) : (cov_29ewsuhnmk.b[3][1]++, this[0]));
+      cov_29ewsuhnmk.s[12]++;
       if (element) {
-        ++cov_n872ptxvi.b[4][0];
-        ++cov_n872ptxvi.s[13];
+        cov_29ewsuhnmk.b[4][0]++;
+        cov_29ewsuhnmk.s[13]++;
 
         val = element.style[key];
-        ++cov_n872ptxvi.s[14];
-        return isNumeric(val) ? (++cov_n872ptxvi.b[5][0], parseFloat(val)) : (++cov_n872ptxvi.b[5][1], val);
+        cov_29ewsuhnmk.s[14]++;
+        return isNumeric(val) ? (cov_29ewsuhnmk.b[5][0]++, parseFloat(val)) : (cov_29ewsuhnmk.b[5][1]++, val);
       } else {
-        ++cov_n872ptxvi.b[4][1];
+        cov_29ewsuhnmk.b[4][1]++;
       }
-      ++cov_n872ptxvi.s[15];
+      cov_29ewsuhnmk.s[15]++;
       return undefined;
     } else {
-      ++cov_n872ptxvi.b[2][1];
+      cov_29ewsuhnmk.b[2][1]++;
     }
 
-    ++cov_n872ptxvi.s[16];
+    cov_29ewsuhnmk.s[16]++;
     styleProps = {};
-    ++cov_n872ptxvi.s[17];
+    cov_29ewsuhnmk.s[17]++;
     styleProps[key] = value;
   } else {
-    ++cov_n872ptxvi.b[1][1];
-    ++cov_n872ptxvi.s[18];
+    cov_29ewsuhnmk.b[1][1]++;
+    cov_29ewsuhnmk.s[18]++;
 
     styleProps = key;
-    ++cov_n872ptxvi.s[19];
+    cov_29ewsuhnmk.s[19]++;
     for (prop in styleProps) {
-      ++cov_n872ptxvi.s[20];
+      cov_29ewsuhnmk.s[20]++;
 
       val = styleProps[prop];
-      ++cov_n872ptxvi.s[21];
+      cov_29ewsuhnmk.s[21]++;
       delete styleProps[prop];
-      ++cov_n872ptxvi.s[22];
+      cov_29ewsuhnmk.s[22]++;
       styleProps[camelize(prop)] = val;
     }
   }
 
-  ++cov_n872ptxvi.s[23];
+  cov_29ewsuhnmk.s[23]++;
   each(this, function (element) {
-    ++cov_n872ptxvi.f[5];
-    ++cov_n872ptxvi.s[24];
+    cov_29ewsuhnmk.f[5]++;
+    cov_29ewsuhnmk.s[24]++;
 
     for (prop in styleProps) {
-      ++cov_n872ptxvi.s[25];
+      cov_29ewsuhnmk.s[25]++;
 
-      if ((++cov_n872ptxvi.b[7][0], styleProps[prop]) || (++cov_n872ptxvi.b[7][1], styleProps[prop] === 0)) {
-        ++cov_n872ptxvi.b[6][0];
-        ++cov_n872ptxvi.s[26];
+      if ((cov_29ewsuhnmk.b[7][0]++, styleProps[prop]) || (cov_29ewsuhnmk.b[7][1]++, styleProps[prop] === 0)) {
+        cov_29ewsuhnmk.b[6][0]++;
+        cov_29ewsuhnmk.s[26]++;
 
         element.style[prop] = styleProps[prop];
       } else {
-        ++cov_n872ptxvi.b[6][1];
-        ++cov_n872ptxvi.s[27];
+        cov_29ewsuhnmk.b[6][1]++;
+        cov_29ewsuhnmk.s[27]++;
 
         element.style.removeProperty(dasherize(prop));
       }
     }
   });
 
-  ++cov_n872ptxvi.s[28];
+  cov_29ewsuhnmk.s[28]++;
   return this;
-});
+};
 
 var css$1 = Object.freeze({
 	css: css
 });
 
-var cov_1g3hi2njpt = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/dom/index.js',
-      hash = 'bf090808bfb03e27e847be5343f011ae4c4caf1e',
+var cov_26grd8udzt = function () {
+  var path = '/Users/lars/Projects/domtastic/src/dom/index.js',
+      hash = 'ac8bd9839fbe32b1aea1ef4d4b57c15dab4111be',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/dom/index.js',
+    path: '/Users/lars/Projects/domtastic/src/dom/index.js',
     statementMap: {
       '0': {
         start: {
@@ -5780,7 +5790,7 @@ var cov_1g3hi2njpt = function () {
  * @module DOM
  */
 
-var forEach$1 = (++cov_1g3hi2njpt.s[0], Array.prototype.forEach);
+var forEach$1 = (cov_26grd8udzt.s[0]++, Array.prototype.forEach);
 
 /**
  * Append element(s) to each element in the collection.
@@ -5793,45 +5803,46 @@ var forEach$1 = (++cov_1g3hi2njpt.s[0], Array.prototype.forEach);
  *     $('.item').append('<p>more</p>');
  */
 
-var append = (++cov_1g3hi2njpt.s[1], function (element) {
-  ++cov_1g3hi2njpt.f[0];
-  ++cov_1g3hi2njpt.s[2];
+cov_26grd8udzt.s[1]++;
+var append = function append(element) {
+  cov_26grd8udzt.f[0]++;
+  cov_26grd8udzt.s[2]++;
 
   if (this instanceof Node) {
-    ++cov_1g3hi2njpt.b[0][0];
-    ++cov_1g3hi2njpt.s[3];
+    cov_26grd8udzt.b[0][0]++;
+    cov_26grd8udzt.s[3]++;
 
     if (typeof element === 'string') {
-      ++cov_1g3hi2njpt.b[1][0];
-      ++cov_1g3hi2njpt.s[4];
+      cov_26grd8udzt.b[1][0]++;
+      cov_26grd8udzt.s[4]++;
 
       this.insertAdjacentHTML('beforeend', element);
     } else {
-      ++cov_1g3hi2njpt.b[1][1];
-      ++cov_1g3hi2njpt.s[5];
+      cov_26grd8udzt.b[1][1]++;
+      cov_26grd8udzt.s[5]++;
 
       if (element instanceof Node) {
-        ++cov_1g3hi2njpt.b[2][0];
-        ++cov_1g3hi2njpt.s[6];
+        cov_26grd8udzt.b[2][0]++;
+        cov_26grd8udzt.s[6]++;
 
         this.appendChild(element);
       } else {
-        ++cov_1g3hi2njpt.b[2][1];
+        cov_26grd8udzt.b[2][1]++;
 
-        var elements = (++cov_1g3hi2njpt.s[7], element instanceof NodeList ? (++cov_1g3hi2njpt.b[3][0], toArray(element)) : (++cov_1g3hi2njpt.b[3][1], element));
-        ++cov_1g3hi2njpt.s[8];
+        var elements = (cov_26grd8udzt.s[7]++, element instanceof NodeList ? (cov_26grd8udzt.b[3][0]++, toArray(element)) : (cov_26grd8udzt.b[3][1]++, element));
+        cov_26grd8udzt.s[8]++;
         forEach$1.call(elements, this.appendChild.bind(this));
       }
     }
   } else {
-    ++cov_1g3hi2njpt.b[0][1];
-    ++cov_1g3hi2njpt.s[9];
+    cov_26grd8udzt.b[0][1]++;
+    cov_26grd8udzt.s[9]++;
 
     _each(this, append, element);
   }
-  ++cov_1g3hi2njpt.s[10];
+  cov_26grd8udzt.s[10]++;
   return this;
-});
+};
 
 /**
  * Place element(s) at the beginning of each element in the collection.
@@ -5844,45 +5855,46 @@ var append = (++cov_1g3hi2njpt.s[1], function (element) {
  *     $('.item').prepend('<span>start</span>');
  */
 
-var prepend = (++cov_1g3hi2njpt.s[11], function (element) {
-  ++cov_1g3hi2njpt.f[1];
-  ++cov_1g3hi2njpt.s[12];
+cov_26grd8udzt.s[11]++;
+var prepend = function prepend(element) {
+  cov_26grd8udzt.f[1]++;
+  cov_26grd8udzt.s[12]++;
 
   if (this instanceof Node) {
-    ++cov_1g3hi2njpt.b[4][0];
-    ++cov_1g3hi2njpt.s[13];
+    cov_26grd8udzt.b[4][0]++;
+    cov_26grd8udzt.s[13]++;
 
     if (typeof element === 'string') {
-      ++cov_1g3hi2njpt.b[5][0];
-      ++cov_1g3hi2njpt.s[14];
+      cov_26grd8udzt.b[5][0]++;
+      cov_26grd8udzt.s[14]++;
 
       this.insertAdjacentHTML('afterbegin', element);
     } else {
-      ++cov_1g3hi2njpt.b[5][1];
-      ++cov_1g3hi2njpt.s[15];
+      cov_26grd8udzt.b[5][1]++;
+      cov_26grd8udzt.s[15]++;
 
       if (element instanceof Node) {
-        ++cov_1g3hi2njpt.b[6][0];
-        ++cov_1g3hi2njpt.s[16];
+        cov_26grd8udzt.b[6][0]++;
+        cov_26grd8udzt.s[16]++;
 
         this.insertBefore(element, this.firstChild);
       } else {
-        ++cov_1g3hi2njpt.b[6][1];
+        cov_26grd8udzt.b[6][1]++;
 
-        var elements = (++cov_1g3hi2njpt.s[17], element instanceof NodeList ? (++cov_1g3hi2njpt.b[7][0], toArray(element)) : (++cov_1g3hi2njpt.b[7][1], element));
-        ++cov_1g3hi2njpt.s[18];
+        var elements = (cov_26grd8udzt.s[17]++, element instanceof NodeList ? (cov_26grd8udzt.b[7][0]++, toArray(element)) : (cov_26grd8udzt.b[7][1]++, element));
+        cov_26grd8udzt.s[18]++;
         forEach$1.call(elements.reverse(), prepend.bind(this));
       }
     }
   } else {
-    ++cov_1g3hi2njpt.b[4][1];
-    ++cov_1g3hi2njpt.s[19];
+    cov_26grd8udzt.b[4][1]++;
+    cov_26grd8udzt.s[19]++;
 
     _each(this, prepend, element);
   }
-  ++cov_1g3hi2njpt.s[20];
+  cov_26grd8udzt.s[20]++;
   return this;
-});
+};
 
 /**
  * Place element(s) before each element in the collection.
@@ -5895,45 +5907,46 @@ var prepend = (++cov_1g3hi2njpt.s[11], function (element) {
  *     $('.items').before('<p>prefix</p>');
  */
 
-var before = (++cov_1g3hi2njpt.s[21], function (element) {
-  ++cov_1g3hi2njpt.f[2];
-  ++cov_1g3hi2njpt.s[22];
+cov_26grd8udzt.s[21]++;
+var before = function before(element) {
+  cov_26grd8udzt.f[2]++;
+  cov_26grd8udzt.s[22]++;
 
   if (this instanceof Node) {
-    ++cov_1g3hi2njpt.b[8][0];
-    ++cov_1g3hi2njpt.s[23];
+    cov_26grd8udzt.b[8][0]++;
+    cov_26grd8udzt.s[23]++;
 
     if (typeof element === 'string') {
-      ++cov_1g3hi2njpt.b[9][0];
-      ++cov_1g3hi2njpt.s[24];
+      cov_26grd8udzt.b[9][0]++;
+      cov_26grd8udzt.s[24]++;
 
       this.insertAdjacentHTML('beforebegin', element);
     } else {
-      ++cov_1g3hi2njpt.b[9][1];
-      ++cov_1g3hi2njpt.s[25];
+      cov_26grd8udzt.b[9][1]++;
+      cov_26grd8udzt.s[25]++;
 
       if (element instanceof Node) {
-        ++cov_1g3hi2njpt.b[10][0];
-        ++cov_1g3hi2njpt.s[26];
+        cov_26grd8udzt.b[10][0]++;
+        cov_26grd8udzt.s[26]++;
 
         this.parentNode.insertBefore(element, this);
       } else {
-        ++cov_1g3hi2njpt.b[10][1];
+        cov_26grd8udzt.b[10][1]++;
 
-        var elements = (++cov_1g3hi2njpt.s[27], element instanceof NodeList ? (++cov_1g3hi2njpt.b[11][0], toArray(element)) : (++cov_1g3hi2njpt.b[11][1], element));
-        ++cov_1g3hi2njpt.s[28];
+        var elements = (cov_26grd8udzt.s[27]++, element instanceof NodeList ? (cov_26grd8udzt.b[11][0]++, toArray(element)) : (cov_26grd8udzt.b[11][1]++, element));
+        cov_26grd8udzt.s[28]++;
         forEach$1.call(elements, before.bind(this));
       }
     }
   } else {
-    ++cov_1g3hi2njpt.b[8][1];
-    ++cov_1g3hi2njpt.s[29];
+    cov_26grd8udzt.b[8][1]++;
+    cov_26grd8udzt.s[29]++;
 
     _each(this, before, element);
   }
-  ++cov_1g3hi2njpt.s[30];
+  cov_26grd8udzt.s[30]++;
   return this;
-});
+};
 
 /**
  * Place element(s) after each element in the collection.
@@ -5945,45 +5958,46 @@ var before = (++cov_1g3hi2njpt.s[21], function (element) {
  *     $('.items').after('<span>suf</span><span>fix</span>');
  */
 
-var after = (++cov_1g3hi2njpt.s[31], function (element) {
-  ++cov_1g3hi2njpt.f[3];
-  ++cov_1g3hi2njpt.s[32];
+cov_26grd8udzt.s[31]++;
+var after = function after(element) {
+  cov_26grd8udzt.f[3]++;
+  cov_26grd8udzt.s[32]++;
 
   if (this instanceof Node) {
-    ++cov_1g3hi2njpt.b[12][0];
-    ++cov_1g3hi2njpt.s[33];
+    cov_26grd8udzt.b[12][0]++;
+    cov_26grd8udzt.s[33]++;
 
     if (typeof element === 'string') {
-      ++cov_1g3hi2njpt.b[13][0];
-      ++cov_1g3hi2njpt.s[34];
+      cov_26grd8udzt.b[13][0]++;
+      cov_26grd8udzt.s[34]++;
 
       this.insertAdjacentHTML('afterend', element);
     } else {
-      ++cov_1g3hi2njpt.b[13][1];
-      ++cov_1g3hi2njpt.s[35];
+      cov_26grd8udzt.b[13][1]++;
+      cov_26grd8udzt.s[35]++;
 
       if (element instanceof Node) {
-        ++cov_1g3hi2njpt.b[14][0];
-        ++cov_1g3hi2njpt.s[36];
+        cov_26grd8udzt.b[14][0]++;
+        cov_26grd8udzt.s[36]++;
 
         this.parentNode.insertBefore(element, this.nextSibling);
       } else {
-        ++cov_1g3hi2njpt.b[14][1];
+        cov_26grd8udzt.b[14][1]++;
 
-        var elements = (++cov_1g3hi2njpt.s[37], element instanceof NodeList ? (++cov_1g3hi2njpt.b[15][0], toArray(element)) : (++cov_1g3hi2njpt.b[15][1], element));
-        ++cov_1g3hi2njpt.s[38];
+        var elements = (cov_26grd8udzt.s[37]++, element instanceof NodeList ? (cov_26grd8udzt.b[15][0]++, toArray(element)) : (cov_26grd8udzt.b[15][1]++, element));
+        cov_26grd8udzt.s[38]++;
         forEach$1.call(elements.reverse(), after.bind(this));
       }
     }
   } else {
-    ++cov_1g3hi2njpt.b[12][1];
-    ++cov_1g3hi2njpt.s[39];
+    cov_26grd8udzt.b[12][1]++;
+    cov_26grd8udzt.s[39]++;
 
     _each(this, after, element);
   }
-  ++cov_1g3hi2njpt.s[40];
+  cov_26grd8udzt.s[40]++;
   return this;
-});
+};
 
 /**
  * Clone a wrapped object.
@@ -5993,12 +6007,13 @@ var after = (++cov_1g3hi2njpt.s[31], function (element) {
  *     $(element).clone();
  */
 
-var clone = (++cov_1g3hi2njpt.s[41], function () {
-  ++cov_1g3hi2njpt.f[4];
-  ++cov_1g3hi2njpt.s[42];
+cov_26grd8udzt.s[41]++;
+var clone = function clone() {
+  cov_26grd8udzt.f[4]++;
+  cov_26grd8udzt.s[42]++;
 
   return $$2(_clone(this));
-});
+};
 
 /**
  * Clone an object
@@ -6008,42 +6023,43 @@ var clone = (++cov_1g3hi2njpt.s[41], function () {
  * @private
  */
 
-var _clone = (++cov_1g3hi2njpt.s[43], function (element) {
-  ++cov_1g3hi2njpt.f[5];
-  ++cov_1g3hi2njpt.s[44];
+cov_26grd8udzt.s[43]++;
+var _clone = function _clone(element) {
+  cov_26grd8udzt.f[5]++;
+  cov_26grd8udzt.s[44]++;
 
   if (typeof element === 'string') {
-    ++cov_1g3hi2njpt.b[16][0];
-    ++cov_1g3hi2njpt.s[45];
+    cov_26grd8udzt.b[16][0]++;
+    cov_26grd8udzt.s[45]++;
 
     return element;
   } else {
-      ++cov_1g3hi2njpt.b[16][1];
-      ++cov_1g3hi2njpt.s[46];
+      cov_26grd8udzt.b[16][1]++;
+      cov_26grd8udzt.s[46]++;
       if (element instanceof Node) {
-        ++cov_1g3hi2njpt.b[17][0];
-        ++cov_1g3hi2njpt.s[47];
+        cov_26grd8udzt.b[17][0]++;
+        cov_26grd8udzt.s[47]++;
 
         return element.cloneNode(true);
       } else {
-          ++cov_1g3hi2njpt.b[17][1];
-          ++cov_1g3hi2njpt.s[48];
+          cov_26grd8udzt.b[17][1]++;
+          cov_26grd8udzt.s[48]++;
           if ('length' in element) {
-            ++cov_1g3hi2njpt.b[18][0];
-            ++cov_1g3hi2njpt.s[49];
+            cov_26grd8udzt.b[18][0]++;
+            cov_26grd8udzt.s[49]++;
 
             return [].map.call(element, function (el) {
-              ++cov_1g3hi2njpt.f[6];
-              ++cov_1g3hi2njpt.s[50];
+              cov_26grd8udzt.f[6]++;
+              cov_26grd8udzt.s[50]++;
               return el.cloneNode(true);
             });
           } else {
-            ++cov_1g3hi2njpt.b[18][1];
+            cov_26grd8udzt.b[18][1]++;
           }
         }
-    }++cov_1g3hi2njpt.s[51];
+    }cov_26grd8udzt.s[51]++;
   return element;
-});
+};
 
 /**
  * Specialized iteration, applying `fn` in reversed manner to a clone of each element, but the provided one.
@@ -6054,17 +6070,18 @@ var _clone = (++cov_1g3hi2njpt.s[43], function (element) {
  * @private
  */
 
-var _each = (++cov_1g3hi2njpt.s[52], function (collection, fn, element) {
-  ++cov_1g3hi2njpt.f[7];
+cov_26grd8udzt.s[52]++;
+var _each = function _each(collection, fn, element) {
+  cov_26grd8udzt.f[7]++;
 
-  var l = (++cov_1g3hi2njpt.s[53], collection.length);
-  ++cov_1g3hi2njpt.s[54];
+  var l = (cov_26grd8udzt.s[53]++, collection.length);
+  cov_26grd8udzt.s[54]++;
   while (l--) {
-    var elm = (++cov_1g3hi2njpt.s[55], l === 0 ? (++cov_1g3hi2njpt.b[19][0], element) : (++cov_1g3hi2njpt.b[19][1], _clone(element)));
-    ++cov_1g3hi2njpt.s[56];
+    var elm = (cov_26grd8udzt.s[55]++, l === 0 ? (cov_26grd8udzt.b[19][0]++, element) : (cov_26grd8udzt.b[19][1]++, _clone(element)));
+    cov_26grd8udzt.s[56]++;
     fn.call(collection[l], elm);
   }
-});
+};
 
 var dom = Object.freeze({
 	append: append,
@@ -6076,13 +6093,13 @@ var dom = Object.freeze({
 	_each: _each
 });
 
-var cov_nt0eimy64 = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/dom/attr.js',
-      hash = '8e7c361a604a8506c98bda0a33ce17d1491ee973',
+var cov_26xt1kaedl = function () {
+  var path = '/Users/lars/Projects/domtastic/src/dom/attr.js',
+      hash = '3a8779825a118d0f43ce10c9ed390544eace88f8',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/dom/attr.js',
+    path: '/Users/lars/Projects/domtastic/src/dom/attr.js',
     statementMap: {
       '0': {
         start: {
@@ -6509,6 +6526,8 @@ var cov_nt0eimy64 = function () {
   return coverage[path] = coverageData;
 }();
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 /**
  * @module Attr
  */
@@ -6526,43 +6545,44 @@ var cov_nt0eimy64 = function () {
  *     $('.item').attr({attr1: 'value1', 'attr-2': 'value2'}); // set multiple
  */
 
-var attr = (++cov_nt0eimy64.s[0], function (key, value) {
-  ++cov_nt0eimy64.f[0];
-  ++cov_nt0eimy64.s[1];
+cov_26xt1kaedl.s[0]++;
+var attr = function attr(key, value) {
+  cov_26xt1kaedl.f[0]++;
+  cov_26xt1kaedl.s[1]++;
 
 
-  if ((++cov_nt0eimy64.b[1][0], typeof key === 'string') && (++cov_nt0eimy64.b[1][1], typeof value === 'undefined')) {
-    ++cov_nt0eimy64.b[0][0];
+  if ((cov_26xt1kaedl.b[1][0]++, typeof key === 'string') && (cov_26xt1kaedl.b[1][1]++, typeof value === 'undefined')) {
+    cov_26xt1kaedl.b[0][0]++;
 
-    var element = (++cov_nt0eimy64.s[2], this.nodeType ? (++cov_nt0eimy64.b[2][0], this) : (++cov_nt0eimy64.b[2][1], this[0]));
-    ++cov_nt0eimy64.s[3];
-    return element ? (++cov_nt0eimy64.b[3][0], element.getAttribute(key)) : (++cov_nt0eimy64.b[3][1], undefined);
+    var element = (cov_26xt1kaedl.s[2]++, this.nodeType ? (cov_26xt1kaedl.b[2][0]++, this) : (cov_26xt1kaedl.b[2][1]++, this[0]));
+    cov_26xt1kaedl.s[3]++;
+    return element ? (cov_26xt1kaedl.b[3][0]++, element.getAttribute(key)) : (cov_26xt1kaedl.b[3][1]++, undefined);
   } else {
-    ++cov_nt0eimy64.b[0][1];
+    cov_26xt1kaedl.b[0][1]++;
   }
 
-  ++cov_nt0eimy64.s[4];
+  cov_26xt1kaedl.s[4]++;
   return each(this, function (element) {
-    ++cov_nt0eimy64.f[1];
-    ++cov_nt0eimy64.s[5];
+    cov_26xt1kaedl.f[1]++;
+    cov_26xt1kaedl.s[5]++;
 
-    if (typeof key === 'object') {
-      ++cov_nt0eimy64.b[4][0];
-      ++cov_nt0eimy64.s[6];
+    if ((typeof key === 'undefined' ? 'undefined' : _typeof(key)) === 'object') {
+      cov_26xt1kaedl.b[4][0]++;
+      cov_26xt1kaedl.s[6]++;
 
       for (var _attr in key) {
-        ++cov_nt0eimy64.s[7];
+        cov_26xt1kaedl.s[7]++;
 
         element.setAttribute(_attr, key[_attr]);
       }
     } else {
-      ++cov_nt0eimy64.b[4][1];
-      ++cov_nt0eimy64.s[8];
+      cov_26xt1kaedl.b[4][1]++;
+      cov_26xt1kaedl.s[8]++;
 
       element.setAttribute(key, value);
     }
   });
-});
+};
 
 /**
  * Remove attribute from each element in the collection.
@@ -6574,29 +6594,30 @@ var attr = (++cov_nt0eimy64.s[0], function (key, value) {
  *     $('.items').removeAttr('attrName');
  */
 
-var removeAttr = (++cov_nt0eimy64.s[9], function (key) {
-  ++cov_nt0eimy64.f[2];
-  ++cov_nt0eimy64.s[10];
+cov_26xt1kaedl.s[9]++;
+var removeAttr = function removeAttr(key) {
+  cov_26xt1kaedl.f[2]++;
+  cov_26xt1kaedl.s[10]++;
 
   return each(this, function (element) {
-    ++cov_nt0eimy64.f[3];
-    ++cov_nt0eimy64.s[11];
+    cov_26xt1kaedl.f[3]++;
+    cov_26xt1kaedl.s[11]++;
     return element.removeAttribute(key);
   });
-});
+};
 
 var dom_attr = Object.freeze({
 	attr: attr,
 	removeAttr: removeAttr
 });
 
-var cov_k94y35yen = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/dom/class.js',
-      hash = 'ae96b01db0c35972449874523e0a1aaaafa056bc',
+var cov_2cbbree573 = function () {
+  var path = '/Users/lars/Projects/domtastic/src/dom/class.js',
+      hash = '57709741acd2ab50e2b84a45f22575155259250e',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/dom/class.js',
+    path: '/Users/lars/Projects/domtastic/src/dom/class.js',
     statementMap: {
       '0': {
         start: {
@@ -7326,21 +7347,22 @@ var cov_k94y35yen = function () {
  *     $('.item').addClass('bar foo');
  */
 
-var addClass = (++cov_k94y35yen.s[0], function (value) {
-  ++cov_k94y35yen.f[0];
-  ++cov_k94y35yen.s[1];
+cov_2cbbree573.s[0]++;
+var addClass = function addClass(value) {
+  cov_2cbbree573.f[0]++;
+  cov_2cbbree573.s[1]++;
 
-  if ((++cov_k94y35yen.b[1][0], value) && (++cov_k94y35yen.b[1][1], value.length)) {
-    ++cov_k94y35yen.b[0][0];
-    ++cov_k94y35yen.s[2];
+  if ((cov_2cbbree573.b[1][0]++, value) && (cov_2cbbree573.b[1][1]++, value.length)) {
+    cov_2cbbree573.b[0][0]++;
+    cov_2cbbree573.s[2]++;
 
     each(value.split(' '), _each$1.bind(this, 'add'));
   } else {
-    ++cov_k94y35yen.b[0][1];
+    cov_2cbbree573.b[0][1]++;
   }
-  ++cov_k94y35yen.s[3];
+  cov_2cbbree573.s[3]++;
   return this;
-});
+};
 
 /**
  * Remove a class from the element(s)
@@ -7353,21 +7375,22 @@ var addClass = (++cov_k94y35yen.s[0], function (value) {
  *     $('.items').removeClass('bar foo');
  */
 
-var removeClass = (++cov_k94y35yen.s[4], function (value) {
-  ++cov_k94y35yen.f[1];
-  ++cov_k94y35yen.s[5];
+cov_2cbbree573.s[4]++;
+var removeClass = function removeClass(value) {
+  cov_2cbbree573.f[1]++;
+  cov_2cbbree573.s[5]++;
 
-  if ((++cov_k94y35yen.b[3][0], value) && (++cov_k94y35yen.b[3][1], value.length)) {
-    ++cov_k94y35yen.b[2][0];
-    ++cov_k94y35yen.s[6];
+  if ((cov_2cbbree573.b[3][0]++, value) && (cov_2cbbree573.b[3][1]++, value.length)) {
+    cov_2cbbree573.b[2][0]++;
+    cov_2cbbree573.s[6]++;
 
     each(value.split(' '), _each$1.bind(this, 'remove'));
   } else {
-    ++cov_k94y35yen.b[2][1];
+    cov_2cbbree573.b[2][1]++;
   }
-  ++cov_k94y35yen.s[7];
+  cov_2cbbree573.s[7]++;
   return this;
-});
+};
 
 /**
  * Toggle a class at the element(s)
@@ -7382,22 +7405,23 @@ var removeClass = (++cov_k94y35yen.s[4], function (value) {
  *     $('.item').toggleClass('bar', true);
  */
 
-var toggleClass = (++cov_k94y35yen.s[8], function (value, state) {
-  ++cov_k94y35yen.f[2];
-  ++cov_k94y35yen.s[9];
+cov_2cbbree573.s[8]++;
+var toggleClass = function toggleClass(value, state) {
+  cov_2cbbree573.f[2]++;
+  cov_2cbbree573.s[9]++;
 
-  if ((++cov_k94y35yen.b[5][0], value) && (++cov_k94y35yen.b[5][1], value.length)) {
-    ++cov_k94y35yen.b[4][0];
+  if ((cov_2cbbree573.b[5][0]++, value) && (cov_2cbbree573.b[5][1]++, value.length)) {
+    cov_2cbbree573.b[4][0]++;
 
-    var action = (++cov_k94y35yen.s[10], typeof state === 'boolean' ? (++cov_k94y35yen.b[6][0], state ? (++cov_k94y35yen.b[7][0], 'add') : (++cov_k94y35yen.b[7][1], 'remove')) : (++cov_k94y35yen.b[6][1], 'toggle'));
-    ++cov_k94y35yen.s[11];
+    var action = (cov_2cbbree573.s[10]++, typeof state === 'boolean' ? (cov_2cbbree573.b[6][0]++, state ? (cov_2cbbree573.b[7][0]++, 'add') : (cov_2cbbree573.b[7][1]++, 'remove')) : (cov_2cbbree573.b[6][1]++, 'toggle'));
+    cov_2cbbree573.s[11]++;
     each(value.split(' '), _each$1.bind(this, action));
   } else {
-    ++cov_k94y35yen.b[4][1];
+    cov_2cbbree573.b[4][1]++;
   }
-  ++cov_k94y35yen.s[12];
+  cov_2cbbree573.s[12]++;
   return this;
-});
+};
 
 /**
  * Check if the element(s) have a class.
@@ -7409,16 +7433,17 @@ var toggleClass = (++cov_k94y35yen.s[8], function (value, state) {
  *     $('.item').hasClass('bar');
  */
 
-var hasClass = (++cov_k94y35yen.s[13], function (value) {
-  ++cov_k94y35yen.f[3];
-  ++cov_k94y35yen.s[14];
+cov_2cbbree573.s[13]++;
+var hasClass = function hasClass(value) {
+  cov_2cbbree573.f[3]++;
+  cov_2cbbree573.s[14]++;
 
-  return (this.nodeType ? (++cov_k94y35yen.b[8][0], [this]) : (++cov_k94y35yen.b[8][1], this)).some(function (element) {
-    ++cov_k94y35yen.f[4];
-    ++cov_k94y35yen.s[15];
+  return (this.nodeType ? (cov_2cbbree573.b[8][0]++, [this]) : (cov_2cbbree573.b[8][1]++, this)).some(function (element) {
+    cov_2cbbree573.f[4]++;
+    cov_2cbbree573.s[15]++;
     return element.classList.contains(value);
   });
-});
+};
 
 /**
  * Specialized iteration, applying `fn` of the classList API to each element.
@@ -7428,14 +7453,14 @@ var hasClass = (++cov_k94y35yen.s[13], function (value) {
  * @private
  */
 
-++cov_k94y35yen.s[16];
-var _each$1 = function (fnName, className) {
-  ++cov_k94y35yen.f[5];
-  ++cov_k94y35yen.s[17];
+cov_2cbbree573.s[16]++;
+var _each$1 = function _each(fnName, className) {
+  cov_2cbbree573.f[5]++;
+  cov_2cbbree573.s[17]++;
 
   return each(this, function (element) {
-    ++cov_k94y35yen.f[6];
-    ++cov_k94y35yen.s[18];
+    cov_2cbbree573.f[6]++;
+    cov_2cbbree573.s[18]++;
     return element.classList[fnName](className);
   });
 };
@@ -7447,13 +7472,13 @@ var dom_class = Object.freeze({
 	hasClass: hasClass
 });
 
-var cov_ek2t3gu67 = function () {
-  var path = "/Users/lars/Projects/DOMtastic/src/dom/contains.js",
-      hash = "99c7320b7aeec69bb54978c437502f8458c46252",
+var cov_1971uuroxv = function () {
+  var path = "/Users/lars/Projects/domtastic/src/dom/contains.js",
+      hash = "a843ca034c13d08482c24c3ebb0548c826ed70b1",
       global = new Function('return this')(),
       gcv = "__coverage__",
       coverageData = {
-    path: "/Users/lars/Projects/DOMtastic/src/dom/contains.js",
+    path: "/Users/lars/Projects/domtastic/src/dom/contains.js",
     statementMap: {
       "0": {
         start: {
@@ -7736,6 +7761,7 @@ var cov_ek2t3gu67 = function () {
   return coverage[path] = coverageData;
 }();
 
+cov_1971uuroxv.s[0]++;
 /**
  * @module contains
  */
@@ -7750,50 +7776,50 @@ var cov_ek2t3gu67 = function () {
  *     $.contains(parentElement, childElement); // true/false
  */
 
-var contains = (++cov_ek2t3gu67.s[0], function (container, element) {
-  ++cov_ek2t3gu67.f[0];
-  ++cov_ek2t3gu67.s[1];
+var contains = function contains(container, element) {
+  cov_1971uuroxv.f[0]++;
+  cov_1971uuroxv.s[1]++;
 
-  if ((++cov_ek2t3gu67.b[1][0], !container) || (++cov_ek2t3gu67.b[1][1], !element) || (++cov_ek2t3gu67.b[1][2], container === element)) {
-    ++cov_ek2t3gu67.b[0][0];
-    ++cov_ek2t3gu67.s[2];
+  if ((cov_1971uuroxv.b[1][0]++, !container) || (cov_1971uuroxv.b[1][1]++, !element) || (cov_1971uuroxv.b[1][2]++, container === element)) {
+    cov_1971uuroxv.b[0][0]++;
+    cov_1971uuroxv.s[2]++;
 
     return false;
   } else {
-      ++cov_ek2t3gu67.b[0][1];
-      ++cov_ek2t3gu67.s[3];
+      cov_1971uuroxv.b[0][1]++;
+      cov_1971uuroxv.s[3]++;
       if (container.contains) {
-        ++cov_ek2t3gu67.b[2][0];
-        ++cov_ek2t3gu67.s[4];
+        cov_1971uuroxv.b[2][0]++;
+        cov_1971uuroxv.s[4]++;
 
         return container.contains(element);
       } else {
-          ++cov_ek2t3gu67.b[2][1];
-          ++cov_ek2t3gu67.s[5];
+          cov_1971uuroxv.b[2][1]++;
+          cov_1971uuroxv.s[5]++;
           if (container.compareDocumentPosition) {
-            ++cov_ek2t3gu67.b[3][0];
-            ++cov_ek2t3gu67.s[6];
+            cov_1971uuroxv.b[3][0]++;
+            cov_1971uuroxv.s[6]++;
 
             return !(container.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_DISCONNECTED);
           } else {
-            ++cov_ek2t3gu67.b[3][1];
+            cov_1971uuroxv.b[3][1]++;
           }
         }
-    }++cov_ek2t3gu67.s[7];
+    }cov_1971uuroxv.s[7]++;
   return false;
-});
+};
 
 var dom_contains = Object.freeze({
 	contains: contains
 });
 
-var cov_1ohk8xccu = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/dom/data.js',
-      hash = '89e57bb7509578f4678bb34064b75edfb9d3fd28',
+var cov_2dr7hgq12w = function () {
+  var path = '/Users/lars/Projects/domtastic/src/dom/data.js',
+      hash = '1083cc34f6563a1c202a86ec3109e19b2c1f22f0',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/dom/data.js',
+    path: '/Users/lars/Projects/domtastic/src/dom/data.js',
     statementMap: {
       '0': {
         start: {
@@ -8574,8 +8600,8 @@ var cov_1ohk8xccu = function () {
  * @module Data
  */
 
-var isSupportsDataSet = (++cov_1ohk8xccu.s[0], (++cov_1ohk8xccu.b[0][0], typeof document !== 'undefined') && (++cov_1ohk8xccu.b[0][1], 'dataset' in document.documentElement));
-var DATAKEYPROP = (++cov_1ohk8xccu.s[1], isSupportsDataSet ? (++cov_1ohk8xccu.b[1][0], 'dataset') : (++cov_1ohk8xccu.b[1][1], '__DOMTASTIC_DATA__'));
+var isSupportsDataSet = (cov_2dr7hgq12w.s[0]++, (cov_2dr7hgq12w.b[0][0]++, typeof document !== 'undefined') && (cov_2dr7hgq12w.b[0][1]++, 'dataset' in document.documentElement));
+var DATAKEYPROP = (cov_2dr7hgq12w.s[1]++, isSupportsDataSet ? (cov_2dr7hgq12w.b[1][0]++, 'dataset') : (cov_2dr7hgq12w.b[1][1]++, '__DOMTASTIC_DATA__'));
 
 /**
  * Get data from first element, or set data for each element in the collection.
@@ -8589,38 +8615,39 @@ var DATAKEYPROP = (++cov_1ohk8xccu.s[1], isSupportsDataSet ? (++cov_1ohk8xccu.b[
  *     $('.item').data('attrName', {any: 'data'}); // set
  */
 
-var data = (++cov_1ohk8xccu.s[2], function (key, value) {
-  ++cov_1ohk8xccu.f[0];
-  ++cov_1ohk8xccu.s[3];
+cov_2dr7hgq12w.s[2]++;
+var data = function data(key, value) {
+  cov_2dr7hgq12w.f[0]++;
+  cov_2dr7hgq12w.s[3]++;
 
 
-  if ((++cov_1ohk8xccu.b[3][0], typeof key === 'string') && (++cov_1ohk8xccu.b[3][1], typeof value === 'undefined')) {
-    ++cov_1ohk8xccu.b[2][0];
+  if ((cov_2dr7hgq12w.b[3][0]++, typeof key === 'string') && (cov_2dr7hgq12w.b[3][1]++, typeof value === 'undefined')) {
+    cov_2dr7hgq12w.b[2][0]++;
 
-    var element = (++cov_1ohk8xccu.s[4], this.nodeType ? (++cov_1ohk8xccu.b[4][0], this) : (++cov_1ohk8xccu.b[4][1], this[0]));
-    ++cov_1ohk8xccu.s[5];
-    return (++cov_1ohk8xccu.b[6][0], element) && (++cov_1ohk8xccu.b[6][1], DATAKEYPROP in element) ? (++cov_1ohk8xccu.b[5][0], element[DATAKEYPROP][key]) : (++cov_1ohk8xccu.b[5][1], undefined);
+    var element = (cov_2dr7hgq12w.s[4]++, this.nodeType ? (cov_2dr7hgq12w.b[4][0]++, this) : (cov_2dr7hgq12w.b[4][1]++, this[0]));
+    cov_2dr7hgq12w.s[5]++;
+    return (cov_2dr7hgq12w.b[6][0]++, element) && (cov_2dr7hgq12w.b[6][1]++, DATAKEYPROP in element) ? (cov_2dr7hgq12w.b[5][0]++, element[DATAKEYPROP][key]) : (cov_2dr7hgq12w.b[5][1]++, undefined);
   } else {
-    ++cov_1ohk8xccu.b[2][1];
+    cov_2dr7hgq12w.b[2][1]++;
   }
 
-  ++cov_1ohk8xccu.s[6];
+  cov_2dr7hgq12w.s[6]++;
   return each(this, function (element) {
-    ++cov_1ohk8xccu.f[1];
-    ++cov_1ohk8xccu.s[7];
+    cov_2dr7hgq12w.f[1]++;
+    cov_2dr7hgq12w.s[7]++;
 
     if (!isSupportsDataSet) {
-      ++cov_1ohk8xccu.b[7][0];
-      ++cov_1ohk8xccu.s[8];
+      cov_2dr7hgq12w.b[7][0]++;
+      cov_2dr7hgq12w.s[8]++;
 
-      element[DATAKEYPROP] = (++cov_1ohk8xccu.b[8][0], element[DATAKEYPROP]) || (++cov_1ohk8xccu.b[8][1], {});
+      element[DATAKEYPROP] = (cov_2dr7hgq12w.b[8][0]++, element[DATAKEYPROP]) || (cov_2dr7hgq12w.b[8][1]++, {});
     } else {
-      ++cov_1ohk8xccu.b[7][1];
+      cov_2dr7hgq12w.b[7][1]++;
     }
-    ++cov_1ohk8xccu.s[9];
+    cov_2dr7hgq12w.s[9]++;
     element[DATAKEYPROP][key] = value;
   });
-});
+};
 
 /**
  * Get property from first element, or set property on each element in the collection.
@@ -8634,41 +8661,42 @@ var data = (++cov_1ohk8xccu.s[2], function (key, value) {
  *     $('.item').prop('attrName', 'attrValue'); // set
  */
 
-var prop = (++cov_1ohk8xccu.s[10], function (key, value) {
-  ++cov_1ohk8xccu.f[2];
-  ++cov_1ohk8xccu.s[11];
+cov_2dr7hgq12w.s[10]++;
+var prop = function prop(key, value) {
+  cov_2dr7hgq12w.f[2]++;
+  cov_2dr7hgq12w.s[11]++;
 
 
-  if ((++cov_1ohk8xccu.b[10][0], typeof key === 'string') && (++cov_1ohk8xccu.b[10][1], typeof value === 'undefined')) {
-    ++cov_1ohk8xccu.b[9][0];
+  if ((cov_2dr7hgq12w.b[10][0]++, typeof key === 'string') && (cov_2dr7hgq12w.b[10][1]++, typeof value === 'undefined')) {
+    cov_2dr7hgq12w.b[9][0]++;
 
-    var element = (++cov_1ohk8xccu.s[12], this.nodeType ? (++cov_1ohk8xccu.b[11][0], this) : (++cov_1ohk8xccu.b[11][1], this[0]));
-    ++cov_1ohk8xccu.s[13];
-    return (++cov_1ohk8xccu.b[13][0], element) && (++cov_1ohk8xccu.b[13][1], element) ? (++cov_1ohk8xccu.b[12][0], element[key]) : (++cov_1ohk8xccu.b[12][1], undefined);
+    var element = (cov_2dr7hgq12w.s[12]++, this.nodeType ? (cov_2dr7hgq12w.b[11][0]++, this) : (cov_2dr7hgq12w.b[11][1]++, this[0]));
+    cov_2dr7hgq12w.s[13]++;
+    return (cov_2dr7hgq12w.b[13][0]++, element) && (cov_2dr7hgq12w.b[13][1]++, element) ? (cov_2dr7hgq12w.b[12][0]++, element[key]) : (cov_2dr7hgq12w.b[12][1]++, undefined);
   } else {
-    ++cov_1ohk8xccu.b[9][1];
+    cov_2dr7hgq12w.b[9][1]++;
   }
 
-  ++cov_1ohk8xccu.s[14];
+  cov_2dr7hgq12w.s[14]++;
   return each(this, function (element) {
-    ++cov_1ohk8xccu.f[3];
-    ++cov_1ohk8xccu.s[15];
+    cov_2dr7hgq12w.f[3]++;
+    cov_2dr7hgq12w.s[15]++;
     return element[key] = value;
   });
-});
+};
 
 var dom_data = Object.freeze({
 	data: data,
 	prop: prop
 });
 
-var cov_1q4gut97cw = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/dom/extra.js',
-      hash = '26c427db9d66c56ad36b961f5049057d31dfc532',
+var cov_18nr33ug8h = function () {
+  var path = '/Users/lars/Projects/domtastic/src/dom/extra.js',
+      hash = 'dff498f09131e23aac26eb8b80f95fbef7198a85',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/dom/extra.js',
+    path: '/Users/lars/Projects/domtastic/src/dom/extra.js',
     statementMap: {
       '0': {
         start: {
@@ -9380,15 +9408,16 @@ var cov_1q4gut97cw = function () {
  *     $('.item').appendTo(container);
  */
 
-var appendTo = (++cov_1q4gut97cw.s[0], function (element) {
-  ++cov_1q4gut97cw.f[0];
+cov_18nr33ug8h.s[0]++;
+var appendTo = function appendTo(element) {
+  cov_18nr33ug8h.f[0]++;
 
-  var context = (++cov_1q4gut97cw.s[1], typeof element === 'string' ? (++cov_1q4gut97cw.b[0][0], $$2(element)) : (++cov_1q4gut97cw.b[0][1], element));
-  ++cov_1q4gut97cw.s[2];
+  var context = (cov_18nr33ug8h.s[1]++, typeof element === 'string' ? (cov_18nr33ug8h.b[0][0]++, $$2(element)) : (cov_18nr33ug8h.b[0][1]++, element));
+  cov_18nr33ug8h.s[2]++;
   append.call(context, this);
-  ++cov_1q4gut97cw.s[3];
+  cov_18nr33ug8h.s[3]++;
   return this;
-});
+};
 
 /*
  * Empty each element in the collection.
@@ -9399,16 +9428,17 @@ var appendTo = (++cov_1q4gut97cw.s[0], function (element) {
  *     $('.item').empty();
  */
 
-var empty = (++cov_1q4gut97cw.s[4], function () {
-  ++cov_1q4gut97cw.f[1];
-  ++cov_1q4gut97cw.s[5];
+cov_18nr33ug8h.s[4]++;
+var empty = function empty() {
+  cov_18nr33ug8h.f[1]++;
+  cov_18nr33ug8h.s[5]++;
 
   return each(this, function (element) {
-    ++cov_1q4gut97cw.f[2];
-    ++cov_1q4gut97cw.s[6];
+    cov_18nr33ug8h.f[2]++;
+    cov_18nr33ug8h.s[6]++;
     return element.innerHTML = '';
   });
-});
+};
 
 /**
  * Remove the collection from the DOM.
@@ -9418,24 +9448,25 @@ var empty = (++cov_1q4gut97cw.s[4], function () {
  *     $('.item').remove();
  */
 
-var remove = (++cov_1q4gut97cw.s[7], function () {
-  ++cov_1q4gut97cw.f[3];
-  ++cov_1q4gut97cw.s[8];
+cov_18nr33ug8h.s[7]++;
+var remove = function remove() {
+  cov_18nr33ug8h.f[3]++;
+  cov_18nr33ug8h.s[8]++;
 
   return each(this, function (element) {
-    ++cov_1q4gut97cw.f[4];
-    ++cov_1q4gut97cw.s[9];
+    cov_18nr33ug8h.f[4]++;
+    cov_18nr33ug8h.s[9]++;
 
     if (element.parentNode) {
-      ++cov_1q4gut97cw.b[1][0];
-      ++cov_1q4gut97cw.s[10];
+      cov_18nr33ug8h.b[1][0]++;
+      cov_18nr33ug8h.s[10]++;
 
       element.parentNode.removeChild(element);
     } else {
-      ++cov_1q4gut97cw.b[1][1];
+      cov_18nr33ug8h.b[1][1]++;
     }
   });
-});
+};
 
 /**
  * Replace each element in the collection with the provided new content, and return the array of elements that were replaced.
@@ -9443,12 +9474,13 @@ var remove = (++cov_1q4gut97cw.s[7], function () {
  * @return {Array} Array containing the replaced elements
  */
 
-var replaceWith = (++cov_1q4gut97cw.s[11], function () {
-  ++cov_1q4gut97cw.f[5];
-  ++cov_1q4gut97cw.s[12];
+cov_18nr33ug8h.s[11]++;
+var replaceWith = function replaceWith() {
+  cov_18nr33ug8h.f[5]++;
+  cov_18nr33ug8h.s[12]++;
 
   return before.apply(this, arguments).remove();
-});
+};
 
 /**
  * Get the `textContent` from the first, or set the `textContent` of each element in the collection.
@@ -9460,27 +9492,28 @@ var replaceWith = (++cov_1q4gut97cw.s[11], function () {
  *     $('.item').text('New content');
  */
 
-var text = (++cov_1q4gut97cw.s[13], function (value) {
-  ++cov_1q4gut97cw.f[6];
-  ++cov_1q4gut97cw.s[14];
+cov_18nr33ug8h.s[13]++;
+var text = function text(value) {
+  cov_18nr33ug8h.f[6]++;
+  cov_18nr33ug8h.s[14]++;
 
 
   if (value === undefined) {
-    ++cov_1q4gut97cw.b[2][0];
-    ++cov_1q4gut97cw.s[15];
+    cov_18nr33ug8h.b[2][0]++;
+    cov_18nr33ug8h.s[15]++;
 
     return this[0].textContent;
   } else {
-    ++cov_1q4gut97cw.b[2][1];
+    cov_18nr33ug8h.b[2][1]++;
   }
 
-  ++cov_1q4gut97cw.s[16];
+  cov_18nr33ug8h.s[16]++;
   return each(this, function (element) {
-    ++cov_1q4gut97cw.f[7];
-    ++cov_1q4gut97cw.s[17];
+    cov_18nr33ug8h.f[7]++;
+    cov_18nr33ug8h.s[17]++;
     return element.textContent = '' + value;
   });
-});
+};
 
 /**
  * Get the `value` from the first, or set the `value` of each element in the collection.
@@ -9492,27 +9525,28 @@ var text = (++cov_1q4gut97cw.s[13], function (value) {
  *     $('input.firstName').val('New value');
  */
 
-var val = (++cov_1q4gut97cw.s[18], function (value) {
-  ++cov_1q4gut97cw.f[8];
-  ++cov_1q4gut97cw.s[19];
+cov_18nr33ug8h.s[18]++;
+var val = function val(value) {
+  cov_18nr33ug8h.f[8]++;
+  cov_18nr33ug8h.s[19]++;
 
 
   if (value === undefined) {
-    ++cov_1q4gut97cw.b[3][0];
-    ++cov_1q4gut97cw.s[20];
+    cov_18nr33ug8h.b[3][0]++;
+    cov_18nr33ug8h.s[20]++;
 
-    return this.length > 0 ? (++cov_1q4gut97cw.b[4][0], this[0].value) : (++cov_1q4gut97cw.b[4][1], undefined);
+    return this.length > 0 ? (cov_18nr33ug8h.b[4][0]++, this[0].value) : (cov_18nr33ug8h.b[4][1]++, undefined);
   } else {
-    ++cov_1q4gut97cw.b[3][1];
+    cov_18nr33ug8h.b[3][1]++;
   }
 
-  ++cov_1q4gut97cw.s[21];
+  cov_18nr33ug8h.s[21]++;
   return each(this, function (element) {
-    ++cov_1q4gut97cw.f[9];
-    ++cov_1q4gut97cw.s[22];
+    cov_18nr33ug8h.f[9]++;
+    cov_18nr33ug8h.s[22]++;
     return element.value = value;
   });
-});
+};
 
 var dom_extra = Object.freeze({
 	appendTo: appendTo,
@@ -9523,13 +9557,13 @@ var dom_extra = Object.freeze({
 	val: val
 });
 
-var cov_38akzeiz = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/dom/html.js',
-      hash = 'f5fa1bc050001eedf5b75b78ba4eab939e5a570f',
+var cov_2o0kln6i8f = function () {
+  var path = '/Users/lars/Projects/domtastic/src/dom/html.js',
+      hash = '729666fcfc7d23a077bfebe676debc283191b769',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/dom/html.js',
+    path: '/Users/lars/Projects/domtastic/src/dom/html.js',
     statementMap: {
       '0': {
         start: {
@@ -9787,40 +9821,41 @@ var cov_38akzeiz = function () {
  *     $('.item').html('<span>more</span>');
  */
 
-var html = (++cov_38akzeiz.s[0], function (fragment) {
-  ++cov_38akzeiz.f[0];
-  ++cov_38akzeiz.s[1];
+cov_2o0kln6i8f.s[0]++;
+var html = function html(fragment) {
+  cov_2o0kln6i8f.f[0]++;
+  cov_2o0kln6i8f.s[1]++;
 
 
   if (fragment === undefined) {
-    ++cov_38akzeiz.b[0][0];
+    cov_2o0kln6i8f.b[0][0]++;
 
-    var element = (++cov_38akzeiz.s[2], this.nodeType ? (++cov_38akzeiz.b[1][0], this) : (++cov_38akzeiz.b[1][1], this[0]));
-    ++cov_38akzeiz.s[3];
-    return element ? (++cov_38akzeiz.b[2][0], element.innerHTML) : (++cov_38akzeiz.b[2][1], undefined);
+    var element = (cov_2o0kln6i8f.s[2]++, this.nodeType ? (cov_2o0kln6i8f.b[1][0]++, this) : (cov_2o0kln6i8f.b[1][1]++, this[0]));
+    cov_2o0kln6i8f.s[3]++;
+    return element ? (cov_2o0kln6i8f.b[2][0]++, element.innerHTML) : (cov_2o0kln6i8f.b[2][1]++, undefined);
   } else {
-    ++cov_38akzeiz.b[0][1];
+    cov_2o0kln6i8f.b[0][1]++;
   }
 
-  ++cov_38akzeiz.s[4];
+  cov_2o0kln6i8f.s[4]++;
   return each(this, function (element) {
-    ++cov_38akzeiz.f[1];
-    ++cov_38akzeiz.s[5];
+    cov_2o0kln6i8f.f[1]++;
+    cov_2o0kln6i8f.s[5]++;
     return element.innerHTML = fragment;
   });
-});
+};
 
 var dom_html = Object.freeze({
 	html: html
 });
 
-var cov_2qd810v3qb = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/selector/closest.js',
-      hash = 'cc8c12c6b080f47e8220fbe6c3a3626fb10094d4',
+var cov_2hlj3vfgib = function () {
+  var path = '/Users/lars/Projects/domtastic/src/selector/closest.js',
+      hash = 'f4f2ba1ff1fcf22bb816464d60dd7c2cb55d9196',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/selector/closest.js',
+    path: '/Users/lars/Projects/domtastic/src/selector/closest.js',
     statementMap: {
       '0': {
         start: {
@@ -10398,70 +10433,70 @@ var cov_2qd810v3qb = function () {
  *     $('.selector').closest('.container');
  */
 
-var closest = (++cov_2qd810v3qb.s[0], function () {
-  ++cov_2qd810v3qb.f[0];
-  ++cov_2qd810v3qb.s[1];
+var closest = (cov_2hlj3vfgib.s[0]++, function () {
+  cov_2hlj3vfgib.f[0]++;
+  cov_2hlj3vfgib.s[1]++;
 
 
-  var closest = function (selector, context) {
-    ++cov_2qd810v3qb.f[1];
+  var closest = function closest(selector, context) {
+    cov_2hlj3vfgib.f[1]++;
 
-    var nodes = (++cov_2qd810v3qb.s[2], []);
-    ++cov_2qd810v3qb.s[3];
+    var nodes = (cov_2hlj3vfgib.s[2]++, []);
+    cov_2hlj3vfgib.s[3]++;
     each(this, function (node) {
-      ++cov_2qd810v3qb.f[2];
-      ++cov_2qd810v3qb.s[4];
+      cov_2hlj3vfgib.f[2]++;
+      cov_2hlj3vfgib.s[4]++;
 
-      while ((++cov_2qd810v3qb.b[0][0], node) && (++cov_2qd810v3qb.b[0][1], node !== context)) {
-        ++cov_2qd810v3qb.s[5];
+      while ((cov_2hlj3vfgib.b[0][0]++, node) && (cov_2hlj3vfgib.b[0][1]++, node !== context)) {
+        cov_2hlj3vfgib.s[5]++;
 
         if (matches(node, selector)) {
-          ++cov_2qd810v3qb.b[1][0];
-          ++cov_2qd810v3qb.s[6];
+          cov_2hlj3vfgib.b[1][0]++;
+          cov_2hlj3vfgib.s[6]++;
 
           nodes.push(node);
-          ++cov_2qd810v3qb.s[7];
+          cov_2hlj3vfgib.s[7]++;
           break;
         } else {
-          ++cov_2qd810v3qb.b[1][1];
+          cov_2hlj3vfgib.b[1][1]++;
         }
-        ++cov_2qd810v3qb.s[8];
+        cov_2hlj3vfgib.s[8]++;
         node = node.parentElement;
       }
     });
-    ++cov_2qd810v3qb.s[9];
+    cov_2hlj3vfgib.s[9]++;
     return $$2(uniq(nodes));
   };
 
-  ++cov_2qd810v3qb.s[10];
-  return (++cov_2qd810v3qb.b[3][0], typeof Element === 'undefined') || (++cov_2qd810v3qb.b[3][1], !Element.prototype.closest) ? (++cov_2qd810v3qb.b[2][0], closest) : (++cov_2qd810v3qb.b[2][1], function (selector, context) {
-    ++cov_2qd810v3qb.f[3];
-    ++cov_2qd810v3qb.s[11];
+  cov_2hlj3vfgib.s[10]++;
+  return (cov_2hlj3vfgib.b[3][0]++, typeof Element === 'undefined') || (cov_2hlj3vfgib.b[3][1]++, !Element.prototype.closest) ? (cov_2hlj3vfgib.b[2][0]++, closest) : (cov_2hlj3vfgib.b[2][1]++, function (selector, context) {
+    cov_2hlj3vfgib.f[3]++;
+    cov_2hlj3vfgib.s[11]++;
 
     if (!context) {
-      ++cov_2qd810v3qb.b[4][0];
+      cov_2hlj3vfgib.b[4][0]++;
 
-      var nodes = (++cov_2qd810v3qb.s[12], []);
-      ++cov_2qd810v3qb.s[13];
+      var nodes = (cov_2hlj3vfgib.s[12]++, []);
+      cov_2hlj3vfgib.s[13]++;
       each(this, function (node) {
-        ++cov_2qd810v3qb.f[4];
+        cov_2hlj3vfgib.f[4]++;
 
-        var n = (++cov_2qd810v3qb.s[14], node.closest(selector));
-        ++cov_2qd810v3qb.s[15];
+        var n = (cov_2hlj3vfgib.s[14]++, node.closest(selector));
+        cov_2hlj3vfgib.s[15]++;
         if (n) {
-          ++cov_2qd810v3qb.b[5][0];
-          ++cov_2qd810v3qb.s[16];
+          cov_2hlj3vfgib.b[5][0]++;
+          cov_2hlj3vfgib.s[16]++;
 
           nodes.push(n);
         } else {
-          ++cov_2qd810v3qb.b[5][1];
+          cov_2hlj3vfgib.b[5][1]++;
         }
       });
-      ++cov_2qd810v3qb.s[17];
+      cov_2hlj3vfgib.s[17]++;
       return $$2(uniq(nodes));
     } else {
-      ++cov_2qd810v3qb.b[4][1];
-      ++cov_2qd810v3qb.s[18];
+      cov_2hlj3vfgib.b[4][1]++;
+      cov_2hlj3vfgib.s[18]++;
 
       return closest.call(this, selector, context);
     }
@@ -10472,13 +10507,13 @@ var selector_closest = Object.freeze({
 	closest: closest
 });
 
-var cov_u2i72se4y = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/event/index.js',
-      hash = '2b3c34338a74a4f36553cbe5ca40b0418945a2c9',
+var cov_2lmzmixj48 = function () {
+  var path = '/Users/lars/Projects/domtastic/src/event/index.js',
+      hash = '8dcfe04bb6281150fc345020d61f4081dd47aab2',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/event/index.js',
+    path: '/Users/lars/Projects/domtastic/src/event/index.js',
     statementMap: {
       '0': {
         start: {
@@ -12993,80 +13028,81 @@ var cov_u2i72se4y = function () {
  *     $('.container').on('click focus', '.item', handler);
  */
 
-var on = (++cov_u2i72se4y.s[0], function (eventNames, selector, handler, useCapture, once) {
+cov_2lmzmixj48.s[0]++;
+var on = function on(eventNames, selector, handler, useCapture, once) {
   var _this = this;
 
-  ++cov_u2i72se4y.f[0];
-  ++cov_u2i72se4y.s[1];
+  cov_2lmzmixj48.f[0]++;
+  cov_2lmzmixj48.s[1]++;
 
 
   if (typeof selector === 'function') {
-    ++cov_u2i72se4y.b[0][0];
-    ++cov_u2i72se4y.s[2];
+    cov_2lmzmixj48.b[0][0]++;
+    cov_2lmzmixj48.s[2]++;
 
     handler = selector;
-    ++cov_u2i72se4y.s[3];
+    cov_2lmzmixj48.s[3]++;
     selector = null;
   } else {
-    ++cov_u2i72se4y.b[0][1];
+    cov_2lmzmixj48.b[0][1]++;
   }
 
   var parts = void 0,
       namespace = void 0,
       eventListener = void 0;
 
-  ++cov_u2i72se4y.s[4];
+  cov_2lmzmixj48.s[4]++;
   eventNames.split(' ').forEach(function (eventName) {
-    ++cov_u2i72se4y.f[1];
-    ++cov_u2i72se4y.s[5];
+    cov_2lmzmixj48.f[1]++;
+    cov_2lmzmixj48.s[5]++;
 
 
     parts = eventName.split('.');
-    ++cov_u2i72se4y.s[6];
-    eventName = (++cov_u2i72se4y.b[1][0], parts[0]) || (++cov_u2i72se4y.b[1][1], null);
-    ++cov_u2i72se4y.s[7];
-    namespace = (++cov_u2i72se4y.b[2][0], parts[1]) || (++cov_u2i72se4y.b[2][1], null);
+    cov_2lmzmixj48.s[6]++;
+    eventName = (cov_2lmzmixj48.b[1][0]++, parts[0]) || (cov_2lmzmixj48.b[1][1]++, null);
+    cov_2lmzmixj48.s[7]++;
+    namespace = (cov_2lmzmixj48.b[2][0]++, parts[1]) || (cov_2lmzmixj48.b[2][1]++, null);
 
-    ++cov_u2i72se4y.s[8];
+    cov_2lmzmixj48.s[8]++;
     eventListener = proxyHandler(handler);
 
-    ++cov_u2i72se4y.s[9];
+    cov_2lmzmixj48.s[9]++;
     each(_this, function (element) {
-      ++cov_u2i72se4y.f[2];
-      ++cov_u2i72se4y.s[10];
+      cov_2lmzmixj48.f[2]++;
+      cov_2lmzmixj48.s[10]++;
 
 
       if (selector) {
-        ++cov_u2i72se4y.b[3][0];
-        ++cov_u2i72se4y.s[11];
+        cov_2lmzmixj48.b[3][0]++;
+        cov_2lmzmixj48.s[11]++;
 
         eventListener = delegateHandler.bind(element, selector, eventListener);
       } else {
-        ++cov_u2i72se4y.b[3][1];
+        cov_2lmzmixj48.b[3][1]++;
       }
 
-      ++cov_u2i72se4y.s[12];
+      cov_2lmzmixj48.s[12]++;
       if (once) {
-        ++cov_u2i72se4y.b[4][0];
+        cov_2lmzmixj48.b[4][0]++;
 
-        var listener = (++cov_u2i72se4y.s[13], eventListener);
-        ++cov_u2i72se4y.s[14];
-        eventListener = function (event) {
-          ++cov_u2i72se4y.f[3];
-          ++cov_u2i72se4y.s[15];
+        var listener = (cov_2lmzmixj48.s[13]++, eventListener);
+        cov_2lmzmixj48.s[14]++;
+        eventListener = function eventListener(event) {
+          cov_2lmzmixj48.f[3]++;
+          cov_2lmzmixj48.s[15]++;
 
           off.call(element, eventNames, selector, handler, useCapture);
-          ++cov_u2i72se4y.s[16];
+          cov_2lmzmixj48.s[16]++;
           listener.call(element, event);
         };
       } else {
-        ++cov_u2i72se4y.b[4][1];
+        cov_2lmzmixj48.b[4][1]++;
       }
 
-      ++cov_u2i72se4y.s[17];
-      element.addEventListener(eventName, eventListener, (++cov_u2i72se4y.b[5][0], useCapture) || (++cov_u2i72se4y.b[5][1], false));
+      cov_2lmzmixj48.s[17]++;
+      element.addEventListener(eventName, eventListener, (cov_2lmzmixj48.b[5][0]++, useCapture) || (cov_2lmzmixj48.b[5][1]++, false));
 
-      ++cov_u2i72se4y.s[18];
+      cov_2lmzmixj48.s[18]++;
       getHandlers(element).push({
         eventName: eventName,
         handler: handler,
@@ -13077,9 +13113,9 @@ var on = (++cov_u2i72se4y.s[0], function (eventNames, selector, handler, useCapt
     });
   }, this);
 
-  ++cov_u2i72se4y.s[19];
+  cov_2lmzmixj48.s[19]++;
   return this;
-});
+};
 
 /**
  * Shorthand for `removeEventListener`.
@@ -13096,92 +13132,93 @@ var on = (++cov_u2i72se4y.s[0], function (eventNames, selector, handler, useCapt
  *     $('.item').off();
  */
 
-var off = (++cov_u2i72se4y.s[20], function () {
-  var eventNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (++cov_u2i72se4y.b[6][0], '');
+cov_2lmzmixj48.s[20]++;
+var off = function off() {
+  var eventNames = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : (cov_2lmzmixj48.b[6][0]++, '');
   var selector = arguments[1];
 
   var _this2 = this;
 
   var handler = arguments[2];
   var useCapture = arguments[3];
-  ++cov_u2i72se4y.f[4];
-  ++cov_u2i72se4y.s[21];
+  cov_2lmzmixj48.f[4]++;
+  cov_2lmzmixj48.s[21]++;
 
 
   if (typeof selector === 'function') {
-    ++cov_u2i72se4y.b[7][0];
-    ++cov_u2i72se4y.s[22];
+    cov_2lmzmixj48.b[7][0]++;
+    cov_2lmzmixj48.s[22]++;
 
     handler = selector;
-    ++cov_u2i72se4y.s[23];
+    cov_2lmzmixj48.s[23]++;
     selector = null;
   } else {
-    ++cov_u2i72se4y.b[7][1];
+    cov_2lmzmixj48.b[7][1]++;
   }
 
   var parts = void 0,
       namespace = void 0,
       handlers = void 0;
 
-  ++cov_u2i72se4y.s[24];
+  cov_2lmzmixj48.s[24]++;
   eventNames.split(' ').forEach(function (eventName) {
-    ++cov_u2i72se4y.f[5];
-    ++cov_u2i72se4y.s[25];
+    cov_2lmzmixj48.f[5]++;
+    cov_2lmzmixj48.s[25]++;
 
 
     parts = eventName.split('.');
-    ++cov_u2i72se4y.s[26];
-    eventName = (++cov_u2i72se4y.b[8][0], parts[0]) || (++cov_u2i72se4y.b[8][1], null);
-    ++cov_u2i72se4y.s[27];
-    namespace = (++cov_u2i72se4y.b[9][0], parts[1]) || (++cov_u2i72se4y.b[9][1], null);
+    cov_2lmzmixj48.s[26]++;
+    eventName = (cov_2lmzmixj48.b[8][0]++, parts[0]) || (cov_2lmzmixj48.b[8][1]++, null);
+    cov_2lmzmixj48.s[27]++;
+    namespace = (cov_2lmzmixj48.b[9][0]++, parts[1]) || (cov_2lmzmixj48.b[9][1]++, null);
 
-    ++cov_u2i72se4y.s[28];
+    cov_2lmzmixj48.s[28]++;
     return each(_this2, function (element) {
-      ++cov_u2i72se4y.f[6];
-      ++cov_u2i72se4y.s[29];
+      cov_2lmzmixj48.f[6]++;
+      cov_2lmzmixj48.s[29]++;
 
 
       handlers = getHandlers(element);
 
-      ++cov_u2i72se4y.s[30];
+      cov_2lmzmixj48.s[30]++;
       each(handlers.filter(function (item) {
-        ++cov_u2i72se4y.f[7];
-        ++cov_u2i72se4y.s[31];
+        cov_2lmzmixj48.f[7]++;
+        cov_2lmzmixj48.s[31]++;
 
-        return ((++cov_u2i72se4y.b[10][0], !eventName) || (++cov_u2i72se4y.b[10][1], item.eventName === eventName)) && ((++cov_u2i72se4y.b[10][2], !namespace) || (++cov_u2i72se4y.b[10][3], item.namespace === namespace)) && ((++cov_u2i72se4y.b[10][4], !handler) || (++cov_u2i72se4y.b[10][5], item.handler === handler)) && ((++cov_u2i72se4y.b[10][6], !selector) || (++cov_u2i72se4y.b[10][7], item.selector === selector));
+        return ((cov_2lmzmixj48.b[10][0]++, !eventName) || (cov_2lmzmixj48.b[10][1]++, item.eventName === eventName)) && ((cov_2lmzmixj48.b[10][2]++, !namespace) || (cov_2lmzmixj48.b[10][3]++, item.namespace === namespace)) && ((cov_2lmzmixj48.b[10][4]++, !handler) || (cov_2lmzmixj48.b[10][5]++, item.handler === handler)) && ((cov_2lmzmixj48.b[10][6]++, !selector) || (cov_2lmzmixj48.b[10][7]++, item.selector === selector));
       }), function (item) {
-        ++cov_u2i72se4y.f[8];
-        ++cov_u2i72se4y.s[32];
+        cov_2lmzmixj48.f[8]++;
+        cov_2lmzmixj48.s[32]++;
 
-        element.removeEventListener(item.eventName, item.eventListener, (++cov_u2i72se4y.b[11][0], useCapture) || (++cov_u2i72se4y.b[11][1], false));
-        ++cov_u2i72se4y.s[33];
+        element.removeEventListener(item.eventName, item.eventListener, (cov_2lmzmixj48.b[11][0]++, useCapture) || (cov_2lmzmixj48.b[11][1]++, false));
+        cov_2lmzmixj48.s[33]++;
         handlers.splice(handlers.indexOf(item), 1);
       });
 
-      ++cov_u2i72se4y.s[34];
-      if ((++cov_u2i72se4y.b[13][0], !eventName) && (++cov_u2i72se4y.b[13][1], !namespace) && (++cov_u2i72se4y.b[13][2], !selector) && (++cov_u2i72se4y.b[13][3], !handler)) {
-        ++cov_u2i72se4y.b[12][0];
-        ++cov_u2i72se4y.s[35];
+      cov_2lmzmixj48.s[34]++;
+      if ((cov_2lmzmixj48.b[13][0]++, !eventName) && (cov_2lmzmixj48.b[13][1]++, !namespace) && (cov_2lmzmixj48.b[13][2]++, !selector) && (cov_2lmzmixj48.b[13][3]++, !handler)) {
+        cov_2lmzmixj48.b[12][0]++;
+        cov_2lmzmixj48.s[35]++;
 
         clearHandlers(element);
       } else {
-          ++cov_u2i72se4y.b[12][1];
-          ++cov_u2i72se4y.s[36];
+          cov_2lmzmixj48.b[12][1]++;
+          cov_2lmzmixj48.s[36]++;
           if (handlers.length === 0) {
-            ++cov_u2i72se4y.b[14][0];
-            ++cov_u2i72se4y.s[37];
+            cov_2lmzmixj48.b[14][0]++;
+            cov_2lmzmixj48.s[37]++;
 
             clearHandlers(element);
           } else {
-            ++cov_u2i72se4y.b[14][1];
+            cov_2lmzmixj48.b[14][1]++;
           }
         }
     });
   }, this);
 
-  ++cov_u2i72se4y.s[38];
+  cov_2lmzmixj48.s[38]++;
   return this;
-});
+};
 
 /**
  * Add event listener and execute the handler at most once per element.
@@ -13196,12 +13233,13 @@ var off = (++cov_u2i72se4y.s[20], function () {
  *     $('.item').one('click', callback);
  */
 
-var one = (++cov_u2i72se4y.s[39], function (eventNames, selector, handler, useCapture) {
-  ++cov_u2i72se4y.f[9];
-  ++cov_u2i72se4y.s[40];
+cov_2lmzmixj48.s[39]++;
+var one = function one(eventNames, selector, handler, useCapture) {
+  cov_2lmzmixj48.f[9]++;
+  cov_2lmzmixj48.s[40]++;
 
   return on.call(this, eventNames, selector, handler, useCapture, 1);
-});
+};
 
 /**
  * Get event handlers from an element
@@ -13211,27 +13249,28 @@ var one = (++cov_u2i72se4y.s[39], function (eventNames, selector, handler, useCa
  * @return {Array}
  */
 
-var eventKeyProp = (++cov_u2i72se4y.s[41], '__domtastic_event__');
-var id = (++cov_u2i72se4y.s[42], 1);
-var handlers = (++cov_u2i72se4y.s[43], {});
-var unusedKeys = (++cov_u2i72se4y.s[44], []);
+var eventKeyProp = (cov_2lmzmixj48.s[41]++, '__domtastic_event__');
+var id = (cov_2lmzmixj48.s[42]++, 1);
+var handlers = (cov_2lmzmixj48.s[43]++, {});
+var unusedKeys = (cov_2lmzmixj48.s[44]++, []);
 
-var getHandlers = (++cov_u2i72se4y.s[45], function (element) {
-  ++cov_u2i72se4y.f[10];
-  ++cov_u2i72se4y.s[46];
+cov_2lmzmixj48.s[45]++;
+var getHandlers = function getHandlers(element) {
+  cov_2lmzmixj48.f[10]++;
+  cov_2lmzmixj48.s[46]++;
 
   if (!element[eventKeyProp]) {
-    ++cov_u2i72se4y.b[15][0];
-    ++cov_u2i72se4y.s[47];
+    cov_2lmzmixj48.b[15][0]++;
+    cov_2lmzmixj48.s[47]++;
 
-    element[eventKeyProp] = unusedKeys.length === 0 ? (++cov_u2i72se4y.b[16][0], ++id) : (++cov_u2i72se4y.b[16][1], unusedKeys.pop());
+    element[eventKeyProp] = unusedKeys.length === 0 ? (cov_2lmzmixj48.b[16][0]++, ++id) : (cov_2lmzmixj48.b[16][1]++, unusedKeys.pop());
   } else {
-    ++cov_u2i72se4y.b[15][1];
+    cov_2lmzmixj48.b[15][1]++;
   }
-  var key = (++cov_u2i72se4y.s[48], element[eventKeyProp]);
-  ++cov_u2i72se4y.s[49];
-  return (++cov_u2i72se4y.b[17][0], handlers[key]) || (++cov_u2i72se4y.b[17][1], handlers[key] = []);
-});
+  var key = (cov_2lmzmixj48.s[48]++, element[eventKeyProp]);
+  cov_2lmzmixj48.s[49]++;
+  return (cov_2lmzmixj48.b[17][0]++, handlers[key]) || (cov_2lmzmixj48.b[17][1]++, handlers[key] = []);
+};
 
 /**
  * Clear event handlers for an element
@@ -13240,24 +13279,25 @@ var getHandlers = (++cov_u2i72se4y.s[45], function (element) {
  * @param {Node} element
  */
 
-var clearHandlers = (++cov_u2i72se4y.s[50], function (element) {
-  ++cov_u2i72se4y.f[11];
+cov_2lmzmixj48.s[50]++;
+var clearHandlers = function clearHandlers(element) {
+  cov_2lmzmixj48.f[11]++;
 
-  var key = (++cov_u2i72se4y.s[51], element[eventKeyProp]);
-  ++cov_u2i72se4y.s[52];
+  var key = (cov_2lmzmixj48.s[51]++, element[eventKeyProp]);
+  cov_2lmzmixj48.s[52]++;
   if (handlers[key]) {
-    ++cov_u2i72se4y.b[18][0];
-    ++cov_u2i72se4y.s[53];
+    cov_2lmzmixj48.b[18][0]++;
+    cov_2lmzmixj48.s[53]++;
 
     handlers[key] = null;
-    ++cov_u2i72se4y.s[54];
+    cov_2lmzmixj48.s[54]++;
     element[eventKeyProp] = null;
-    ++cov_u2i72se4y.s[55];
+    cov_2lmzmixj48.s[55]++;
     unusedKeys.push(key);
   } else {
-    ++cov_u2i72se4y.b[18][1];
+    cov_2lmzmixj48.b[18][1]++;
   }
-});
+};
 
 /**
  * Function to create a handler that augments the event object with some extra methods,
@@ -13268,32 +13308,33 @@ var clearHandlers = (++cov_u2i72se4y.s[50], function (element) {
  * @return {Function}
  */
 
-var proxyHandler = (++cov_u2i72se4y.s[56], function (handler) {
-  ++cov_u2i72se4y.f[12];
-  ++cov_u2i72se4y.s[57];
+cov_2lmzmixj48.s[56]++;
+var proxyHandler = function proxyHandler(handler) {
+  cov_2lmzmixj48.f[12]++;
+  cov_2lmzmixj48.s[57]++;
   return function (event) {
-    ++cov_u2i72se4y.f[13];
-    ++cov_u2i72se4y.s[58];
+    cov_2lmzmixj48.f[13]++;
+    cov_2lmzmixj48.s[58]++;
 
     return handler.call(this, augmentEvent(event));
   };
-});
+};
 
-var eventMethods = (++cov_u2i72se4y.s[59], {
+var eventMethods = (cov_2lmzmixj48.s[59]++, {
   preventDefault: 'isDefaultPrevented',
   stopImmediatePropagation: 'isImmediatePropagationStopped',
   stopPropagation: 'isPropagationStopped'
 });
-++cov_u2i72se4y.s[60];
-var returnTrue = function () {
-  ++cov_u2i72se4y.f[14];
-  ++cov_u2i72se4y.s[61];
+cov_2lmzmixj48.s[60]++;
+var returnTrue = function returnTrue() {
+  cov_2lmzmixj48.f[14]++;
+  cov_2lmzmixj48.s[61]++;
   return true;
 };
-++cov_u2i72se4y.s[62];
-var returnFalse = function () {
-  ++cov_u2i72se4y.f[15];
-  ++cov_u2i72se4y.s[63];
+cov_2lmzmixj48.s[62]++;
+var returnFalse = function returnFalse() {
+  cov_2lmzmixj48.f[15]++;
+  cov_2lmzmixj48.s[63]++;
   return false;
 };
 
@@ -13305,47 +13346,47 @@ var returnFalse = function () {
  * @return {Function}
  */
 
-++cov_u2i72se4y.s[64];
-var augmentEvent = function (event) {
-  ++cov_u2i72se4y.f[16];
-  ++cov_u2i72se4y.s[65];
+cov_2lmzmixj48.s[64]++;
+var augmentEvent = function augmentEvent(event) {
+  cov_2lmzmixj48.f[16]++;
+  cov_2lmzmixj48.s[65]++;
 
-  if ((++cov_u2i72se4y.b[20][0], !event.isDefaultPrevented) || (++cov_u2i72se4y.b[20][1], event.stopImmediatePropagation) || (++cov_u2i72se4y.b[20][2], event.stopPropagation)) {
-    ++cov_u2i72se4y.b[19][0];
-    ++cov_u2i72se4y.s[66];
+  if ((cov_2lmzmixj48.b[20][0]++, !event.isDefaultPrevented) || (cov_2lmzmixj48.b[20][1]++, event.stopImmediatePropagation) || (cov_2lmzmixj48.b[20][2]++, event.stopPropagation)) {
+    cov_2lmzmixj48.b[19][0]++;
+    cov_2lmzmixj48.s[66]++;
 
     for (var methodName in eventMethods) {
-      ++cov_u2i72se4y.s[67];
+      cov_2lmzmixj48.s[67]++;
 
       (function (methodName, testMethodName, originalMethod) {
-        ++cov_u2i72se4y.f[17];
-        ++cov_u2i72se4y.s[68];
+        cov_2lmzmixj48.f[17]++;
+        cov_2lmzmixj48.s[68]++;
 
         event[methodName] = function () {
-          ++cov_u2i72se4y.f[18];
-          ++cov_u2i72se4y.s[69];
+          cov_2lmzmixj48.f[18]++;
+          cov_2lmzmixj48.s[69]++;
 
           this[testMethodName] = returnTrue;
-          ++cov_u2i72se4y.s[70];
-          return (++cov_u2i72se4y.b[21][0], originalMethod) && (++cov_u2i72se4y.b[21][1], originalMethod.apply(this, arguments));
+          cov_2lmzmixj48.s[70]++;
+          return (cov_2lmzmixj48.b[21][0]++, originalMethod) && (cov_2lmzmixj48.b[21][1]++, originalMethod.apply(this, arguments));
         };
-        ++cov_u2i72se4y.s[71];
+        cov_2lmzmixj48.s[71]++;
         event[testMethodName] = returnFalse;
       })(methodName, eventMethods[methodName], event[methodName]);
     }
-    ++cov_u2i72se4y.s[72];
+    cov_2lmzmixj48.s[72]++;
     if (event._preventDefault) {
-      ++cov_u2i72se4y.b[22][0];
-      ++cov_u2i72se4y.s[73];
+      cov_2lmzmixj48.b[22][0]++;
+      cov_2lmzmixj48.s[73]++;
 
       event.preventDefault();
     } else {
-      ++cov_u2i72se4y.b[22][1];
+      cov_2lmzmixj48.b[22][1]++;
     }
   } else {
-    ++cov_u2i72se4y.b[19][1];
+    cov_2lmzmixj48.b[19][1]++;
   }
-  ++cov_u2i72se4y.s[74];
+  cov_2lmzmixj48.s[74]++;
   return event;
 };
 
@@ -13360,31 +13401,32 @@ var augmentEvent = function (event) {
  * @param {Event} event
  */
 
-var delegateHandler = (++cov_u2i72se4y.s[75], function (selector, handler, event) {
-  ++cov_u2i72se4y.f[19];
+cov_2lmzmixj48.s[75]++;
+var delegateHandler = function delegateHandler(selector, handler, event) {
+  cov_2lmzmixj48.f[19]++;
 
-  var eventTarget = (++cov_u2i72se4y.s[76], (++cov_u2i72se4y.b[23][0], event._target) || (++cov_u2i72se4y.b[23][1], event.target));
-  var currentTarget = (++cov_u2i72se4y.s[77], closest.call([eventTarget], selector, this)[0]);
-  ++cov_u2i72se4y.s[78];
-  if ((++cov_u2i72se4y.b[25][0], currentTarget) && (++cov_u2i72se4y.b[25][1], currentTarget !== this)) {
-    ++cov_u2i72se4y.b[24][0];
-    ++cov_u2i72se4y.s[79];
+  var eventTarget = (cov_2lmzmixj48.s[76]++, (cov_2lmzmixj48.b[23][0]++, event._target) || (cov_2lmzmixj48.b[23][1]++, event.target));
+  var currentTarget = (cov_2lmzmixj48.s[77]++, closest.call([eventTarget], selector, this)[0]);
+  cov_2lmzmixj48.s[78]++;
+  if ((cov_2lmzmixj48.b[25][0]++, currentTarget) && (cov_2lmzmixj48.b[25][1]++, currentTarget !== this)) {
+    cov_2lmzmixj48.b[24][0]++;
+    cov_2lmzmixj48.s[79]++;
 
-    if ((++cov_u2i72se4y.b[27][0], currentTarget === eventTarget) || (++cov_u2i72se4y.b[27][1], !((++cov_u2i72se4y.b[28][0], event.isPropagationStopped) && (++cov_u2i72se4y.b[28][1], event.isPropagationStopped())))) {
-      ++cov_u2i72se4y.b[26][0];
-      ++cov_u2i72se4y.s[80];
+    if ((cov_2lmzmixj48.b[27][0]++, currentTarget === eventTarget) || (cov_2lmzmixj48.b[27][1]++, !((cov_2lmzmixj48.b[28][0]++, event.isPropagationStopped) && (cov_2lmzmixj48.b[28][1]++, event.isPropagationStopped())))) {
+      cov_2lmzmixj48.b[26][0]++;
+      cov_2lmzmixj48.s[80]++;
 
       handler.call(currentTarget, event);
     } else {
-      ++cov_u2i72se4y.b[26][1];
+      cov_2lmzmixj48.b[26][1]++;
     }
   } else {
-    ++cov_u2i72se4y.b[24][1];
+    cov_2lmzmixj48.b[24][1]++;
   }
-});
+};
 
-var bind = (++cov_u2i72se4y.s[81], on);
-var unbind = (++cov_u2i72se4y.s[82], off);
+var bind = (cov_2lmzmixj48.s[81]++, on);
+var unbind = (cov_2lmzmixj48.s[82]++, off);
 
 var event = Object.freeze({
 	on: on,
@@ -13398,13 +13440,13 @@ var event = Object.freeze({
 	unbind: unbind
 });
 
-var cov_yzyty35cy = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/event/trigger.js',
-      hash = '240553783e94354b4204a94e26665e2c97f26816',
+var cov_l0mg2fe8q = function () {
+  var path = '/Users/lars/Projects/domtastic/src/event/trigger.js',
+      hash = '94740ee5cdd410dcdfe0b4133687f4f40c7c7948',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/event/trigger.js',
+    path: '/Users/lars/Projects/domtastic/src/event/trigger.js',
     statementMap: {
       '0': {
         start: {
@@ -13413,7 +13455,7 @@ var cov_yzyty35cy = function () {
         },
         end: {
           line: 8,
-          column: 59
+          column: 91
         }
       },
       '1': {
@@ -13423,7 +13465,7 @@ var cov_yzyty35cy = function () {
         },
         end: {
           line: 9,
-          column: 25
+          column: 41
         }
       },
       '2': {
@@ -13513,7 +13555,7 @@ var cov_yzyty35cy = function () {
         },
         end: {
           line: 52,
-          column: 177
+          column: 179
         }
       },
       '11': {
@@ -13523,7 +13565,7 @@ var cov_yzyty35cy = function () {
         },
         end: {
           line: 52,
-          column: 177
+          column: 179
         }
       },
       '12': {
@@ -13889,7 +13931,7 @@ var cov_yzyty35cy = function () {
       '48': {
         start: {
           line: 174,
-          column: 39
+          column: 41
         },
         end: {
           line: 181,
@@ -14005,7 +14047,7 @@ var cov_yzyty35cy = function () {
           },
           end: {
             line: 52,
-            column: 177
+            column: 179
           }
         },
         line: 52
@@ -14207,17 +14249,17 @@ var cov_yzyty35cy = function () {
         decl: {
           start: {
             line: 174,
-            column: 40
+            column: 42
           },
           end: {
             line: 174,
-            column: 41
+            column: 43
           }
         },
         loc: {
           start: {
             line: 174,
-            column: 46
+            column: 48
           },
           end: {
             line: 181,
@@ -14407,27 +14449,27 @@ var cov_yzyty35cy = function () {
           },
           end: {
             line: 52,
-            column: 177
+            column: 179
           }
         },
         type: 'cond-expr',
         locations: [{
           start: {
             line: 52,
-            column: 70
+            column: 72
           },
           end: {
             line: 52,
-            column: 162
+            column: 164
           }
         }, {
           start: {
             line: 52,
-            column: 166
+            column: 168
           },
           end: {
             line: 52,
-            column: 177
+            column: 179
           }
         }],
         line: 52
@@ -14436,31 +14478,31 @@ var cov_yzyty35cy = function () {
         loc: {
           start: {
             line: 52,
-            column: 70
+            column: 72
           },
           end: {
             line: 52,
-            column: 162
+            column: 164
           }
         },
         type: 'cond-expr',
         locations: [{
           start: {
             line: 52,
-            column: 96
+            column: 98
           },
           end: {
             line: 52,
-            column: 106
+            column: 108
           }
         }, {
           start: {
             line: 52,
-            column: 110
+            column: 112
           },
           end: {
             line: 52,
-            column: 161
+            column: 163
           }
         }],
         line: 52
@@ -14469,31 +14511,31 @@ var cov_yzyty35cy = function () {
         loc: {
           start: {
             line: 52,
-            column: 110
+            column: 112
           },
           end: {
             line: 52,
-            column: 161
+            column: 163
           }
         },
         type: 'cond-expr',
         locations: [{
           start: {
             line: 52,
-            column: 134
+            column: 136
           },
           end: {
             line: 52,
-            column: 147
+            column: 149
           }
         }, {
           start: {
             line: 52,
-            column: 150
+            column: 152
           },
           end: {
             line: 52,
-            column: 161
+            column: 163
           }
         }],
         line: 52
@@ -14901,8 +14943,8 @@ var cov_yzyty35cy = function () {
  * @module trigger
  */
 
-var reMouseEvent = (++cov_yzyty35cy.s[0], /^(?:mouse|pointer|contextmenu)|click/);
-var reKeyEvent = (++cov_yzyty35cy.s[1], /^key/);
+var reMouseEvent = (cov_l0mg2fe8q.s[0]++, /^(mouse(down|up|over|out|enter|leave|move)|contextmenu|(dbl)?click)$/);
+var reKeyEvent = (cov_l0mg2fe8q.s[1]++, /^key(down|press|up)$/);
 
 /**
  * Trigger event at element(s)
@@ -14919,42 +14961,43 @@ var reKeyEvent = (++cov_yzyty35cy.s[1], /^key/);
  *     $('.item').trigger('anyEventType');
  */
 
-var trigger = (++cov_yzyty35cy.s[2], function (type, data) {
-  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : (++cov_yzyty35cy.b[0][0], {}),
+cov_l0mg2fe8q.s[2]++;
+var trigger = function trigger(type, data) {
+  var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : (cov_l0mg2fe8q.b[0][0]++, {}),
       _ref$bubbles = _ref.bubbles,
-      bubbles = _ref$bubbles === undefined ? (++cov_yzyty35cy.b[1][0], true) : _ref$bubbles,
+      bubbles = _ref$bubbles === undefined ? (cov_l0mg2fe8q.b[1][0]++, true) : _ref$bubbles,
       _ref$cancelable = _ref.cancelable,
-      cancelable = _ref$cancelable === undefined ? (++cov_yzyty35cy.b[2][0], true) : _ref$cancelable,
+      cancelable = _ref$cancelable === undefined ? (cov_l0mg2fe8q.b[2][0]++, true) : _ref$cancelable,
       _ref$preventDefault = _ref.preventDefault,
-      preventDefault = _ref$preventDefault === undefined ? (++cov_yzyty35cy.b[3][0], false) : _ref$preventDefault;
+      preventDefault = _ref$preventDefault === undefined ? (cov_l0mg2fe8q.b[3][0]++, false) : _ref$preventDefault;
 
-  ++cov_yzyty35cy.f[0];
+  cov_l0mg2fe8q.f[0]++;
 
 
-  var EventConstructor = (++cov_yzyty35cy.s[3], getEventConstructor(type));
-  var event = (++cov_yzyty35cy.s[4], new EventConstructor(type, {
+  var EventConstructor = (cov_l0mg2fe8q.s[3]++, getEventConstructor(type));
+  var event = (cov_l0mg2fe8q.s[4]++, new EventConstructor(type, {
     bubbles: bubbles,
     cancelable: cancelable,
     preventDefault: preventDefault,
     detail: data
   }));
 
-  ++cov_yzyty35cy.s[5];
+  cov_l0mg2fe8q.s[5]++;
   event._preventDefault = preventDefault;
 
-  ++cov_yzyty35cy.s[6];
+  cov_l0mg2fe8q.s[6]++;
   return each(this, function (element) {
-    ++cov_yzyty35cy.f[1];
-    ++cov_yzyty35cy.s[7];
+    cov_l0mg2fe8q.f[1]++;
+    cov_l0mg2fe8q.s[7]++;
 
-    if ((++cov_yzyty35cy.b[5][0], !bubbles) || (++cov_yzyty35cy.b[5][1], isEventBubblingInDetachedTree) || (++cov_yzyty35cy.b[5][2], isAttachedToDocument(element))) {
-      ++cov_yzyty35cy.b[4][0];
-      ++cov_yzyty35cy.s[8];
+    if ((cov_l0mg2fe8q.b[5][0]++, !bubbles) || (cov_l0mg2fe8q.b[5][1]++, isEventBubblingInDetachedTree) || (cov_l0mg2fe8q.b[5][2]++, isAttachedToDocument(element))) {
+      cov_l0mg2fe8q.b[4][0]++;
+      cov_l0mg2fe8q.s[8]++;
 
       dispatchEvent(element, event);
     } else {
-      ++cov_yzyty35cy.b[4][1];
-      ++cov_yzyty35cy.s[9];
+      cov_l0mg2fe8q.b[4][1]++;
+      cov_l0mg2fe8q.s[9]++;
 
       triggerForPath(element, type, {
         bubbles: bubbles,
@@ -14964,13 +15007,13 @@ var trigger = (++cov_yzyty35cy.s[2], function (type, data) {
       });
     }
   });
-});
+};
 
-++cov_yzyty35cy.s[10];
-var getEventConstructor = function (type) {
-  ++cov_yzyty35cy.f[2];
-  ++cov_yzyty35cy.s[11];
-  return supportsOtherEventConstructors ? (++cov_yzyty35cy.b[6][0], reMouseEvent.test(type) ? (++cov_yzyty35cy.b[7][0], MouseEvent) : (++cov_yzyty35cy.b[7][1], reKeyEvent.test(type) ? (++cov_yzyty35cy.b[8][0], KeyboardEvent) : (++cov_yzyty35cy.b[8][1], CustomEvent))) : (++cov_yzyty35cy.b[6][1], CustomEvent);
+cov_l0mg2fe8q.s[10]++;
+var getEventConstructor = function getEventConstructor(type) {
+  cov_l0mg2fe8q.f[2]++;
+  cov_l0mg2fe8q.s[11]++;
+  return isSupportsOtherEventConstructors ? (cov_l0mg2fe8q.b[6][0]++, reMouseEvent.test(type) ? (cov_l0mg2fe8q.b[7][0]++, MouseEvent) : (cov_l0mg2fe8q.b[7][1]++, reKeyEvent.test(type) ? (cov_l0mg2fe8q.b[8][0]++, KeyboardEvent) : (cov_l0mg2fe8q.b[8][1]++, CustomEvent))) : (cov_l0mg2fe8q.b[6][1]++, CustomEvent);
 };
 
 /**
@@ -14986,22 +15029,23 @@ var getEventConstructor = function (type) {
  *     $('form').triggerHandler('submit');
  */
 
-var triggerHandler = (++cov_yzyty35cy.s[12], function (type, data) {
-  ++cov_yzyty35cy.f[3];
-  ++cov_yzyty35cy.s[13];
+cov_l0mg2fe8q.s[12]++;
+var triggerHandler = function triggerHandler(type, data) {
+  cov_l0mg2fe8q.f[3]++;
+  cov_l0mg2fe8q.s[13]++;
 
   if (this[0]) {
-    ++cov_yzyty35cy.b[9][0];
-    ++cov_yzyty35cy.s[14];
+    cov_l0mg2fe8q.b[9][0]++;
+    cov_l0mg2fe8q.s[14]++;
 
     trigger.call(this[0], type, data, {
       bubbles: false,
       preventDefault: true
     });
   } else {
-    ++cov_yzyty35cy.b[9][1];
+    cov_l0mg2fe8q.b[9][1]++;
   }
-});
+};
 
 /**
  * Check whether the element is attached to or detached from) the document
@@ -15011,20 +15055,20 @@ var triggerHandler = (++cov_yzyty35cy.s[12], function (type, data) {
  * @return {Boolean}
  */
 
-++cov_yzyty35cy.s[15];
-var isAttachedToDocument = function (element) {
-  ++cov_yzyty35cy.f[4];
-  ++cov_yzyty35cy.s[16];
+cov_l0mg2fe8q.s[15]++;
+var isAttachedToDocument = function isAttachedToDocument(element) {
+  cov_l0mg2fe8q.f[4]++;
+  cov_l0mg2fe8q.s[16]++;
 
-  if ((++cov_yzyty35cy.b[11][0], element === window) || (++cov_yzyty35cy.b[11][1], element === document)) {
-    ++cov_yzyty35cy.b[10][0];
-    ++cov_yzyty35cy.s[17];
+  if ((cov_l0mg2fe8q.b[11][0]++, element === window) || (cov_l0mg2fe8q.b[11][1]++, element === document)) {
+    cov_l0mg2fe8q.b[10][0]++;
+    cov_l0mg2fe8q.s[17]++;
 
     return true;
   } else {
-    ++cov_yzyty35cy.b[10][1];
+    cov_l0mg2fe8q.b[10][1]++;
   }
-  ++cov_yzyty35cy.s[18];
+  cov_l0mg2fe8q.s[18]++;
   return contains(element.ownerDocument.documentElement, element);
 };
 
@@ -15042,19 +15086,19 @@ var isAttachedToDocument = function (element) {
  * @param {Mixed} params.detail=undefined Additional information about the event.
  */
 
-++cov_yzyty35cy.s[19];
-var triggerForPath = function (element, type) {
-  var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : (++cov_yzyty35cy.b[12][0], {});
-  ++cov_yzyty35cy.f[5];
-  ++cov_yzyty35cy.s[20];
+cov_l0mg2fe8q.s[19]++;
+var triggerForPath = function triggerForPath(element, type) {
+  var params = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : (cov_l0mg2fe8q.b[12][0]++, {});
+  cov_l0mg2fe8q.f[5]++;
+  cov_l0mg2fe8q.s[20]++;
 
   params.bubbles = false;
-  var event = (++cov_yzyty35cy.s[21], new CustomEvent(type, params));
-  ++cov_yzyty35cy.s[22];
+  var event = (cov_l0mg2fe8q.s[21]++, new CustomEvent(type, params));
+  cov_l0mg2fe8q.s[22]++;
   event._target = element;
-  ++cov_yzyty35cy.s[23];
+  cov_l0mg2fe8q.s[23]++;
   do {
-    ++cov_yzyty35cy.s[24];
+    cov_l0mg2fe8q.s[24]++;
 
     dispatchEvent(element, event);
   } while (element = element.parentNode); // eslint-disable-line no-cond-assign
@@ -15069,21 +15113,21 @@ var triggerForPath = function (element, type) {
  * @param {Object} event Event to dispatch
  */
 
-var directEventMethods = (++cov_yzyty35cy.s[25], ['blur', 'focus', 'select', 'submit']);
+var directEventMethods = (cov_l0mg2fe8q.s[25]++, ['blur', 'focus', 'select', 'submit']);
 
-++cov_yzyty35cy.s[26];
-var dispatchEvent = function (element, event) {
-  ++cov_yzyty35cy.f[6];
-  ++cov_yzyty35cy.s[27];
+cov_l0mg2fe8q.s[26]++;
+var dispatchEvent = function dispatchEvent(element, event) {
+  cov_l0mg2fe8q.f[6]++;
+  cov_l0mg2fe8q.s[27]++;
 
-  if ((++cov_yzyty35cy.b[14][0], directEventMethods.indexOf(event.type) !== -1) && (++cov_yzyty35cy.b[14][1], typeof element[event.type] === 'function') && (++cov_yzyty35cy.b[14][2], !event._preventDefault) && (++cov_yzyty35cy.b[14][3], !event.cancelable)) {
-    ++cov_yzyty35cy.b[13][0];
-    ++cov_yzyty35cy.s[28];
+  if ((cov_l0mg2fe8q.b[14][0]++, directEventMethods.indexOf(event.type) !== -1) && (cov_l0mg2fe8q.b[14][1]++, typeof element[event.type] === 'function') && (cov_l0mg2fe8q.b[14][2]++, !event._preventDefault) && (cov_l0mg2fe8q.b[14][3]++, !event.cancelable)) {
+    cov_l0mg2fe8q.b[13][0]++;
+    cov_l0mg2fe8q.s[28]++;
 
     element[event.type]();
   } else {
-    ++cov_yzyty35cy.b[13][1];
-    ++cov_yzyty35cy.s[29];
+    cov_l0mg2fe8q.b[13][1]++;
+    cov_l0mg2fe8q.s[29]++;
 
     element.dispatchEvent(event);
   }
@@ -15094,29 +15138,29 @@ var dispatchEvent = function (element, event) {
  * Needed to support IE (9, 10, 11) & PhantomJS
  */
 
-++cov_yzyty35cy.s[30];
+cov_l0mg2fe8q.s[30]++;
 (function () {
-  ++cov_yzyty35cy.f[7];
-  ++cov_yzyty35cy.s[31];
+  cov_l0mg2fe8q.f[7]++;
+  cov_l0mg2fe8q.s[31]++;
 
-  var CustomEvent = function (event) {
-    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (++cov_yzyty35cy.b[15][0], {
+  var CustomEvent = function CustomEvent(event) {
+    var params = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : (cov_l0mg2fe8q.b[15][0]++, {
       bubbles: false,
       cancelable: false,
       detail: undefined
     });
-    ++cov_yzyty35cy.f[8];
+    cov_l0mg2fe8q.f[8]++;
 
-    var customEvent = (++cov_yzyty35cy.s[32], document.createEvent('CustomEvent'));
-    ++cov_yzyty35cy.s[33];
+    var customEvent = (cov_l0mg2fe8q.s[32]++, document.createEvent('CustomEvent'));
+    cov_l0mg2fe8q.s[33]++;
     customEvent.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
-    ++cov_yzyty35cy.s[34];
+    cov_l0mg2fe8q.s[34]++;
     return customEvent;
   };
 
-  ++cov_yzyty35cy.s[35];
-  CustomEvent.prototype = (++cov_yzyty35cy.b[16][0], win.CustomEvent) && (++cov_yzyty35cy.b[16][1], win.CustomEvent.prototype);
-  ++cov_yzyty35cy.s[36];
+  cov_l0mg2fe8q.s[35]++;
+  CustomEvent.prototype = (cov_l0mg2fe8q.b[16][0]++, win.CustomEvent) && (cov_l0mg2fe8q.b[16][1]++, win.CustomEvent.prototype);
+  cov_l0mg2fe8q.s[36]++;
   win.CustomEvent = CustomEvent;
 })();
 
@@ -15125,49 +15169,49 @@ var dispatchEvent = function (element, event) {
  * @private
  */
 
-var isEventBubblingInDetachedTree = (++cov_yzyty35cy.s[37], function () {
-  ++cov_yzyty35cy.f[9];
+var isEventBubblingInDetachedTree = (cov_l0mg2fe8q.s[37]++, function () {
+  cov_l0mg2fe8q.f[9]++;
 
-  var isBubbling = (++cov_yzyty35cy.s[38], false);
-  var doc = (++cov_yzyty35cy.s[39], win.document);
-  ++cov_yzyty35cy.s[40];
+  var isBubbling = (cov_l0mg2fe8q.s[38]++, false);
+  var doc = (cov_l0mg2fe8q.s[39]++, win.document);
+  cov_l0mg2fe8q.s[40]++;
   if (doc) {
-    ++cov_yzyty35cy.b[17][0];
+    cov_l0mg2fe8q.b[17][0]++;
 
-    var parent = (++cov_yzyty35cy.s[41], doc.createElement('div'));
-    var child = (++cov_yzyty35cy.s[42], parent.cloneNode());
-    ++cov_yzyty35cy.s[43];
+    var parent = (cov_l0mg2fe8q.s[41]++, doc.createElement('div'));
+    var child = (cov_l0mg2fe8q.s[42]++, parent.cloneNode());
+    cov_l0mg2fe8q.s[43]++;
     parent.appendChild(child);
-    ++cov_yzyty35cy.s[44];
+    cov_l0mg2fe8q.s[44]++;
     parent.addEventListener('e', function () {
-      ++cov_yzyty35cy.f[10];
-      ++cov_yzyty35cy.s[45];
+      cov_l0mg2fe8q.f[10]++;
+      cov_l0mg2fe8q.s[45]++;
 
       isBubbling = true;
     });
-    ++cov_yzyty35cy.s[46];
+    cov_l0mg2fe8q.s[46]++;
     child.dispatchEvent(new CustomEvent('e', { bubbles: true }));
   } else {
-    ++cov_yzyty35cy.b[17][1];
+    cov_l0mg2fe8q.b[17][1]++;
   }
-  ++cov_yzyty35cy.s[47];
+  cov_l0mg2fe8q.s[47]++;
   return isBubbling;
 }());
 
-var supportsOtherEventConstructors = (++cov_yzyty35cy.s[48], function () {
-  ++cov_yzyty35cy.f[11];
-  ++cov_yzyty35cy.s[49];
+var isSupportsOtherEventConstructors = (cov_l0mg2fe8q.s[48]++, function () {
+  cov_l0mg2fe8q.f[11]++;
+  cov_l0mg2fe8q.s[49]++;
 
   try {
-    ++cov_yzyty35cy.s[50];
+    cov_l0mg2fe8q.s[50]++;
 
     new MouseEvent('click');
   } catch (e) {
-    ++cov_yzyty35cy.s[51];
+    cov_l0mg2fe8q.s[51]++;
 
     return false;
   }
-  ++cov_yzyty35cy.s[52];
+  cov_l0mg2fe8q.s[52]++;
   return true;
 }());
 
@@ -15176,13 +15220,13 @@ var event_trigger = Object.freeze({
 	triggerHandler: triggerHandler
 });
 
-var cov_yoo0z28kh = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/event/ready.js',
-      hash = '4dff827d9e71a541b21c8500880af9f2ffab00c2',
+var cov_19sc0kvkln = function () {
+  var path = '/Users/lars/Projects/domtastic/src/event/ready.js',
+      hash = '479e7cacc25c64102997d3fb31e0f46d25effa8b',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/event/ready.js',
+    path: '/Users/lars/Projects/domtastic/src/event/ready.js',
     statementMap: {
       '0': {
         start: {
@@ -15355,6 +15399,7 @@ var cov_yoo0z28kh = function () {
   return coverage[path] = coverageData;
 }();
 
+cov_19sc0kvkln.s[0]++;
 /**
  * @module Ready
  */
@@ -15369,36 +15414,36 @@ var cov_yoo0z28kh = function () {
  *     $(document).ready(callback);
  */
 
-var ready = (++cov_yoo0z28kh.s[0], function (handler) {
-  ++cov_yoo0z28kh.f[0];
-  ++cov_yoo0z28kh.s[1];
+var ready = function ready(handler) {
+  cov_19sc0kvkln.f[0]++;
+  cov_19sc0kvkln.s[1]++;
 
-  if ((++cov_yoo0z28kh.b[1][0], /complete|loaded|interactive/.test(document.readyState)) && (++cov_yoo0z28kh.b[1][1], document.body)) {
-    ++cov_yoo0z28kh.b[0][0];
-    ++cov_yoo0z28kh.s[2];
+  if ((cov_19sc0kvkln.b[1][0]++, /complete|loaded|interactive/.test(document.readyState)) && (cov_19sc0kvkln.b[1][1]++, document.body)) {
+    cov_19sc0kvkln.b[0][0]++;
+    cov_19sc0kvkln.s[2]++;
 
     handler();
   } else {
-    ++cov_yoo0z28kh.b[0][1];
-    ++cov_yoo0z28kh.s[3];
+    cov_19sc0kvkln.b[0][1]++;
+    cov_19sc0kvkln.s[3]++;
 
     document.addEventListener('DOMContentLoaded', handler, false);
   }
-  ++cov_yoo0z28kh.s[4];
+  cov_19sc0kvkln.s[4]++;
   return this;
-});
+};
 
 var event_ready = Object.freeze({
 	ready: ready
 });
 
-var cov_27xz4nfkir = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/noconflict.js',
-      hash = 'dbd61bf62f1ad294c2fead3f391d0dfd64feaad5',
+var cov_r0al7vaic = function () {
+  var path = '/Users/lars/Projects/domtastic/src/noconflict.js',
+      hash = '5edbf740d1f572c4813fd76e32195b71681b382b',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/noconflict.js',
+    path: '/Users/lars/Projects/domtastic/src/noconflict.js',
     statementMap: {
       '0': {
         start: {
@@ -15499,7 +15544,7 @@ var cov_27xz4nfkir = function () {
  * @private
  */
 
-var previousLib = (++cov_27xz4nfkir.s[0], win.$);
+var previousLib = (cov_r0al7vaic.s[0]++, win.$);
 
 /**
  * In case another library sets the global `$` variable before DOMtastic does,
@@ -15510,26 +15555,27 @@ var previousLib = (++cov_27xz4nfkir.s[0], win.$);
  *     var domtastic = $.noConflict();
  */
 
-var noConflict = (++cov_27xz4nfkir.s[1], function () {
-  ++cov_27xz4nfkir.f[0];
-  ++cov_27xz4nfkir.s[2];
+cov_r0al7vaic.s[1]++;
+var noConflict = function noConflict() {
+  cov_r0al7vaic.f[0]++;
+  cov_r0al7vaic.s[2]++;
 
   win.$ = previousLib;
-  ++cov_27xz4nfkir.s[3];
+  cov_r0al7vaic.s[3]++;
   return this;
-});
+};
 
 var noconflict = Object.freeze({
 	noConflict: noConflict
 });
 
-var cov_2bnfaw3a1m = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/selector/extra.js',
-      hash = '894c1ff94c53832db42a54abc04ec2af0f0044dc',
+var cov_rvwo6l9z0 = function () {
+  var path = '/Users/lars/Projects/domtastic/src/selector/extra.js',
+      hash = '4e21d6304ac942e93634965755c99f01921fd92c',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/selector/extra.js',
+    path: '/Users/lars/Projects/domtastic/src/selector/extra.js',
     statementMap: {
       '0': {
         start: {
@@ -16706,39 +16752,40 @@ var cov_2bnfaw3a1m = function () {
  *     $('.selector').children('.filter');
  */
 
-var children = (++cov_2bnfaw3a1m.s[0], function (selector) {
-  ++cov_2bnfaw3a1m.f[0];
+cov_rvwo6l9z0.s[0]++;
+var children = function children(selector) {
+  cov_rvwo6l9z0.f[0]++;
 
-  var nodes = (++cov_2bnfaw3a1m.s[1], []);
-  ++cov_2bnfaw3a1m.s[2];
+  var nodes = (cov_rvwo6l9z0.s[1]++, []);
+  cov_rvwo6l9z0.s[2]++;
   each(this, function (element) {
-    ++cov_2bnfaw3a1m.f[1];
-    ++cov_2bnfaw3a1m.s[3];
+    cov_rvwo6l9z0.f[1]++;
+    cov_rvwo6l9z0.s[3]++;
 
     if (element.children) {
-      ++cov_2bnfaw3a1m.b[0][0];
-      ++cov_2bnfaw3a1m.s[4];
+      cov_rvwo6l9z0.b[0][0]++;
+      cov_rvwo6l9z0.s[4]++;
 
       each(element.children, function (child) {
-        ++cov_2bnfaw3a1m.f[2];
-        ++cov_2bnfaw3a1m.s[5];
+        cov_rvwo6l9z0.f[2]++;
+        cov_rvwo6l9z0.s[5]++;
 
-        if ((++cov_2bnfaw3a1m.b[2][0], !selector) || (++cov_2bnfaw3a1m.b[2][1], selector) && (++cov_2bnfaw3a1m.b[2][2], matches(child, selector))) {
-          ++cov_2bnfaw3a1m.b[1][0];
-          ++cov_2bnfaw3a1m.s[6];
+        if ((cov_rvwo6l9z0.b[2][0]++, !selector) || (cov_rvwo6l9z0.b[2][1]++, selector) && (cov_rvwo6l9z0.b[2][2]++, matches(child, selector))) {
+          cov_rvwo6l9z0.b[1][0]++;
+          cov_rvwo6l9z0.s[6]++;
 
           nodes.push(child);
         } else {
-          ++cov_2bnfaw3a1m.b[1][1];
+          cov_rvwo6l9z0.b[1][1]++;
         }
       });
     } else {
-      ++cov_2bnfaw3a1m.b[0][1];
+      cov_rvwo6l9z0.b[0][1]++;
     }
   });
-  ++cov_2bnfaw3a1m.s[7];
+  cov_rvwo6l9z0.s[7]++;
   return $$2(nodes);
-});
+};
 
 /**
  * Add the elements of a wrapped collection to another.
@@ -16751,28 +16798,29 @@ var children = (++cov_2bnfaw3a1m.s[0], function (selector) {
  *     $('.items').concat('<div>more</div>');
  */
 
-var concat = (++cov_2bnfaw3a1m.s[8], function (selector) {
+cov_rvwo6l9z0.s[8]++;
+var concat = function concat(selector) {
   var _this = this;
 
-  ++cov_2bnfaw3a1m.f[3];
-  ++cov_2bnfaw3a1m.s[9];
+  cov_rvwo6l9z0.f[3]++;
+  cov_rvwo6l9z0.s[9]++;
 
   each($$2(selector), function (element) {
-    ++cov_2bnfaw3a1m.f[4];
-    ++cov_2bnfaw3a1m.s[10];
+    cov_rvwo6l9z0.f[4]++;
+    cov_rvwo6l9z0.s[10]++;
 
     if ([].indexOf.call(_this, element) === -1) {
-      ++cov_2bnfaw3a1m.b[3][0];
-      ++cov_2bnfaw3a1m.s[11];
+      cov_rvwo6l9z0.b[3][0]++;
+      cov_rvwo6l9z0.s[11]++;
 
       [].push.call(_this, element);
     } else {
-      ++cov_2bnfaw3a1m.b[3][1];
+      cov_rvwo6l9z0.b[3][1]++;
     }
   });
-  ++cov_2bnfaw3a1m.s[12];
+  cov_rvwo6l9z0.s[12]++;
   return this;
-});
+};
 
 /**
  * Return child nodes of each element in the collection, including text and comment nodes.
@@ -16782,19 +16830,20 @@ var concat = (++cov_2bnfaw3a1m.s[8], function (selector) {
  *     $('.selector').contents();
  */
 
-var contents = (++cov_2bnfaw3a1m.s[13], function () {
-  ++cov_2bnfaw3a1m.f[5];
+cov_rvwo6l9z0.s[13]++;
+var contents = function contents() {
+  cov_rvwo6l9z0.f[5]++;
 
-  var nodes = (++cov_2bnfaw3a1m.s[14], []);
-  ++cov_2bnfaw3a1m.s[15];
+  var nodes = (cov_rvwo6l9z0.s[14]++, []);
+  cov_rvwo6l9z0.s[15]++;
   each(this, function (element) {
-    ++cov_2bnfaw3a1m.f[6];
-    ++cov_2bnfaw3a1m.s[16];
+    cov_rvwo6l9z0.f[6]++;
+    cov_rvwo6l9z0.s[16]++;
     return nodes.push.apply(nodes, toArray(element.childNodes));
   });
-  ++cov_2bnfaw3a1m.s[17];
+  cov_rvwo6l9z0.s[17]++;
   return $$2(nodes);
-});
+};
 
 /**
  * Return a collection containing only the one at the specified index.
@@ -16807,12 +16856,13 @@ var contents = (++cov_2bnfaw3a1m.s[13], function () {
  *     // The second item; result is the same as doing $($('.items')[1]);
  */
 
-var eq = (++cov_2bnfaw3a1m.s[18], function (index) {
-  ++cov_2bnfaw3a1m.f[7];
-  ++cov_2bnfaw3a1m.s[19];
+cov_rvwo6l9z0.s[18]++;
+var eq = function eq(index) {
+  cov_rvwo6l9z0.f[7]++;
+  cov_rvwo6l9z0.s[19]++;
 
   return slice.call(this, index, index + 1);
-});
+};
 
 /**
  * Return a collection containing only the first item.
@@ -16824,12 +16874,13 @@ var eq = (++cov_2bnfaw3a1m.s[18], function (index) {
  *     // The first item; result is the same as doing $($('.items')[0]);
  */
 
-var first = (++cov_2bnfaw3a1m.s[20], function () {
-  ++cov_2bnfaw3a1m.f[8];
-  ++cov_2bnfaw3a1m.s[21];
+cov_rvwo6l9z0.s[20]++;
+var first = function first() {
+  cov_rvwo6l9z0.f[8]++;
+  cov_rvwo6l9z0.s[21]++;
 
   return slice.call(this, 0, 1);
-});
+};
 
 /**
  * Return the DOM element at the specified index.
@@ -16841,12 +16892,13 @@ var first = (++cov_2bnfaw3a1m.s[20], function () {
  *     // The second element; result is the same as doing $('.items')[1];
  */
 
-var get = (++cov_2bnfaw3a1m.s[22], function (index) {
-  ++cov_2bnfaw3a1m.f[9];
-  ++cov_2bnfaw3a1m.s[23];
+cov_rvwo6l9z0.s[22]++;
+var get = function get(index) {
+  cov_rvwo6l9z0.f[9]++;
+  cov_rvwo6l9z0.s[23]++;
 
   return this[index];
-});
+};
 
 /**
  * Return the parent elements of each element in the collection, optionally filtered by a selector.
@@ -16859,27 +16911,28 @@ var get = (++cov_2bnfaw3a1m.s[22], function (index) {
  *     $('.selector').parent('.filter');
  */
 
-var parent = (++cov_2bnfaw3a1m.s[24], function (selector) {
-  ++cov_2bnfaw3a1m.f[10];
+cov_rvwo6l9z0.s[24]++;
+var parent = function parent(selector) {
+  cov_rvwo6l9z0.f[10]++;
 
-  var nodes = (++cov_2bnfaw3a1m.s[25], []);
-  ++cov_2bnfaw3a1m.s[26];
+  var nodes = (cov_rvwo6l9z0.s[25]++, []);
+  cov_rvwo6l9z0.s[26]++;
   each(this, function (element) {
-    ++cov_2bnfaw3a1m.f[11];
-    ++cov_2bnfaw3a1m.s[27];
+    cov_rvwo6l9z0.f[11]++;
+    cov_rvwo6l9z0.s[27]++;
 
-    if ((++cov_2bnfaw3a1m.b[5][0], !selector) || (++cov_2bnfaw3a1m.b[5][1], selector) && (++cov_2bnfaw3a1m.b[5][2], matches(element.parentNode, selector))) {
-      ++cov_2bnfaw3a1m.b[4][0];
-      ++cov_2bnfaw3a1m.s[28];
+    if ((cov_rvwo6l9z0.b[5][0]++, !selector) || (cov_rvwo6l9z0.b[5][1]++, selector) && (cov_rvwo6l9z0.b[5][2]++, matches(element.parentNode, selector))) {
+      cov_rvwo6l9z0.b[4][0]++;
+      cov_rvwo6l9z0.s[28]++;
 
       nodes.push(element.parentNode);
     } else {
-      ++cov_2bnfaw3a1m.b[4][1];
+      cov_rvwo6l9z0.b[4][1]++;
     }
   });
-  ++cov_2bnfaw3a1m.s[29];
+  cov_rvwo6l9z0.s[29]++;
   return $$2(nodes);
-});
+};
 
 /**
  * Return the sibling elements of each element in the collection, optionally filtered by a selector.
@@ -16892,31 +16945,32 @@ var parent = (++cov_2bnfaw3a1m.s[24], function (selector) {
  *     $('.selector').siblings('.filter');
  */
 
-var siblings = (++cov_2bnfaw3a1m.s[30], function (selector) {
-  ++cov_2bnfaw3a1m.f[12];
+cov_rvwo6l9z0.s[30]++;
+var siblings = function siblings(selector) {
+  cov_rvwo6l9z0.f[12]++;
 
-  var nodes = (++cov_2bnfaw3a1m.s[31], []);
-  ++cov_2bnfaw3a1m.s[32];
+  var nodes = (cov_rvwo6l9z0.s[31]++, []);
+  cov_rvwo6l9z0.s[32]++;
   each(this, function (element) {
-    ++cov_2bnfaw3a1m.f[13];
-    ++cov_2bnfaw3a1m.s[33];
+    cov_rvwo6l9z0.f[13]++;
+    cov_rvwo6l9z0.s[33]++;
     return each(element.parentNode.children, function (sibling) {
-      ++cov_2bnfaw3a1m.f[14];
-      ++cov_2bnfaw3a1m.s[34];
+      cov_rvwo6l9z0.f[14]++;
+      cov_rvwo6l9z0.s[34]++;
 
-      if ((++cov_2bnfaw3a1m.b[7][0], sibling !== element) && ((++cov_2bnfaw3a1m.b[7][1], !selector) || (++cov_2bnfaw3a1m.b[7][2], selector) && (++cov_2bnfaw3a1m.b[7][3], matches(sibling, selector)))) {
-        ++cov_2bnfaw3a1m.b[6][0];
-        ++cov_2bnfaw3a1m.s[35];
+      if ((cov_rvwo6l9z0.b[7][0]++, sibling !== element) && ((cov_rvwo6l9z0.b[7][1]++, !selector) || (cov_rvwo6l9z0.b[7][2]++, selector) && (cov_rvwo6l9z0.b[7][3]++, matches(sibling, selector)))) {
+        cov_rvwo6l9z0.b[6][0]++;
+        cov_rvwo6l9z0.s[35]++;
 
         nodes.push(sibling);
       } else {
-        ++cov_2bnfaw3a1m.b[6][1];
+        cov_rvwo6l9z0.b[6][1]++;
       }
     });
   });
-  ++cov_2bnfaw3a1m.s[36];
+  cov_rvwo6l9z0.s[36]++;
   return $$2(nodes);
-});
+};
 
 /**
  * Create a new, sliced collection.
@@ -16929,12 +16983,13 @@ var siblings = (++cov_2bnfaw3a1m.s[30], function (selector) {
  *     // New wrapped collection containing the second, third, and fourth element.
  */
 
-var slice = (++cov_2bnfaw3a1m.s[37], function (start, end) {
-  ++cov_2bnfaw3a1m.f[15];
-  ++cov_2bnfaw3a1m.s[38];
+cov_rvwo6l9z0.s[37]++;
+var slice = function slice(start, end) {
+  cov_rvwo6l9z0.f[15]++;
+  cov_rvwo6l9z0.s[38]++;
   // eslint-disable-line no-unused-vars
   return $$2([].slice.apply(this, arguments));
-});
+};
 
 var selector_extra = Object.freeze({
 	children: children,
@@ -16948,13 +17003,13 @@ var selector_extra = Object.freeze({
 	slice: slice
 });
 
-var cov_2h3p9lxe8g = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/type.js',
-      hash = '01280da6a0e8991919e5b4d05b97cac770b045c1',
+var cov_15hf727kjg = function () {
+  var path = '/Users/lars/Projects/domtastic/src/type.js',
+      hash = '8bae9559376652e744380481f7d3e6d01150b955',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/type.js',
+    path: '/Users/lars/Projects/domtastic/src/type.js',
     statementMap: {
       '0': {
         start: {
@@ -17035,6 +17090,7 @@ var cov_2h3p9lxe8g = function () {
   return coverage[path] = coverageData;
 }();
 
+cov_15hf727kjg.s[0]++;
 /**
  * @module Type
  */
@@ -17050,11 +17106,11 @@ var cov_2h3p9lxe8g = function () {
  *     $.isFunction({}); // false
  */
 
-var isFunction = (++cov_2h3p9lxe8g.s[0], function (obj) {
-  ++cov_2h3p9lxe8g.f[0];
-  ++cov_2h3p9lxe8g.s[1];
+var isFunction = function isFunction(obj) {
+  cov_15hf727kjg.f[0]++;
+  cov_15hf727kjg.s[1]++;
   return typeof obj === 'function';
-});
+};
 
 /*
  * Determine whether the argument is an array.
@@ -17067,20 +17123,20 @@ var isFunction = (++cov_2h3p9lxe8g.s[0], function (obj) {
  *     $.isArray({}); // false
  */
 
-var isArray = (++cov_2h3p9lxe8g.s[2], Array.isArray);
+var isArray = (cov_15hf727kjg.s[2]++, Array.isArray);
 
 var type = Object.freeze({
 	isFunction: isFunction,
 	isArray: isArray
 });
 
-var cov_190ie3wknt = function () {
-  var path = '/Users/lars/Projects/DOMtastic/src/index.js',
-      hash = '7848ae81876cf0f15dab03bcdc4284768d6617dc',
+var cov_2au38hqyi0 = function () {
+  var path = '/Users/lars/Projects/domtastic/src/index.js',
+      hash = 'fda1c4cd401589a6e85603260f507a7ee0b581bf',
       global = new Function('return this')(),
       gcv = '__coverage__',
       coverageData = {
-    path: '/Users/lars/Projects/DOMtastic/src/index.js',
+    path: '/Users/lars/Projects/domtastic/src/index.js',
     statementMap: {
       '0': {
         start: {
@@ -17318,53 +17374,53 @@ var cov_190ie3wknt = function () {
  * @module API
  */
 
-var api = (++cov_190ie3wknt.s[0], {});
-var $ = (++cov_190ie3wknt.s[1], {});
+var api = (cov_2au38hqyi0.s[0]++, {});
+var $ = (cov_2au38hqyi0.s[1]++, {});
 
 // Import modules to build up the API
 
-++cov_190ie3wknt.s[2];
+cov_2au38hqyi0.s[2]++;
 if (typeof selector !== 'undefined') {
-  ++cov_190ie3wknt.b[0][0];
-  ++cov_190ie3wknt.s[3];
+  cov_2au38hqyi0.b[0][0]++;
+  cov_2au38hqyi0.s[3]++;
 
   $ = $$2;
-  ++cov_190ie3wknt.s[4];
+  cov_2au38hqyi0.s[4]++;
   $.matches = matches;
-  ++cov_190ie3wknt.s[5];
+  cov_2au38hqyi0.s[5]++;
   api.find = find;
 } else {
-  ++cov_190ie3wknt.b[0][1];
+  cov_2au38hqyi0.b[0][1]++;
 }
 
-++cov_190ie3wknt.s[6];
+cov_2au38hqyi0.s[6]++;
 extend($, dom_contains, noconflict, type);
-++cov_190ie3wknt.s[7];
+cov_2au38hqyi0.s[7]++;
 extend(api, array, css$1, dom_attr, dom, dom_class, dom_data, dom_extra, dom_html, event, event_trigger, event_ready, selector_closest, selector_extra);
 
-++cov_190ie3wknt.s[8];
+cov_2au38hqyi0.s[8]++;
 $.fn = api;
 
 // Version
 
-++cov_190ie3wknt.s[9];
-$.version = '0.15.2';
+cov_2au38hqyi0.s[9]++;
+$.version = '0.15.3';
 
 // Util
 
-++cov_190ie3wknt.s[10];
+cov_2au38hqyi0.s[10]++;
 $.extend = extend;
 
 // Provide base class to extend from
 
-++cov_190ie3wknt.s[11];
+cov_2au38hqyi0.s[11]++;
 if (typeof BaseClass !== 'undefined') {
-  ++cov_190ie3wknt.b[1][0];
-  ++cov_190ie3wknt.s[12];
+  cov_2au38hqyi0.b[1][0]++;
+  cov_2au38hqyi0.s[12]++;
 
   $.BaseClass = BaseClass($.fn);
 } else {
-  ++cov_190ie3wknt.b[1][1];
+  cov_2au38hqyi0.b[1][1]++;
 }
 
 // Export interface
