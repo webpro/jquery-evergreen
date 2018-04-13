@@ -2265,14 +2265,15 @@ return BaseClass;
 
   if(typeof key &#x3D;&#x3D;&#x3D; &#x27;string&#x27; &amp;&amp; typeof value &#x3D;&#x3D;&#x3D; &#x27;undefined&#x27;) {
     const element &#x3D; this.nodeType ? this : this[0];
-    return element &amp;&amp; DATAKEYPROP in element ? element[DATAKEYPROP][key] : undefined;
+    return element &amp;&amp; DATAKEYPROP in element ? element[DATAKEYPROP][camelize(key)] : undefined;
   }
 
   return each(this, element &#x3D;&gt; {
     if(!isSupportsDataSet) {
       element[DATAKEYPROP] &#x3D; element[DATAKEYPROP] || {};
     }
-    element[DATAKEYPROP][key] &#x3D; value;
+
+    element[DATAKEYPROP][camelize(key)] &#x3D; value;
   });
 };</code></pre>
                                         </div>
