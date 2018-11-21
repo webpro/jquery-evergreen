@@ -17298,7 +17298,7 @@
   $$1.fn = api; // Version
 
   cov_190ie3wknt.s[9]++;
-  $$1.version = '0.15.10'; // Util
+  $$1.version = '0.15.11'; // Util
 
   cov_190ie3wknt.s[10]++;
   $$1.extend = extend; // Provide base class to extend from
